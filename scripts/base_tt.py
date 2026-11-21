@@ -137,6 +137,19 @@ elif stage == "coves":
         S.append({"command": "solid.revolve", "params": {"sketch": f"Cove post {nm} sk",
                   "axis": {"origin": [sx * BALLX, 0, 0], "dir": [0, 0, 1]}, "operation": "join", "targets": [P],
                   "name": f"Cove post {nm}"}})
+elif stage == "gussets":
+    P = "Base plate"
+    for sy in (1, -1):
+        sd = "L" if sy > 0 else "R"
+        yf = sy * (WY - 4)                     # wall inner face
+        tri = [(yf, ZB), (yf, 22.0), (yf - sy * 15.0, ZB)]
+        for k, xc in enumerate((-16.5, 8.5)):
+            nm = f"Gusset {sd}{k+1}"
+            S.append({"command": "sketch.create", "params": {"plane": "YZ", "offset": xc - 2, "name": nm + " sk"}})
+            S.append({"command": "sketch.line", "params": {"points": [[round(a, 4), round(b, 4)] for a, b in tri], "closed": True}})
+            S.append({"command": "sketch.finish", "params": {}})
+            S.append({"command": "solid.extrude", "params": {"sketch": nm + " sk", "distance": 4, "operation": "join",
+                      "targets": [P], "name": nm}})
 elif stage.startswith("fillet"):
     P = "Base plate"
     picks = {
