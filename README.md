@@ -10,6 +10,7 @@ Diseños paramétricos hechos en [SolidCraft](https://github.com/tangency-labs/s
 | `base_tt/` | **Base actual**: una sola placa (178 × 170 mm, cabe en A1 mini) para 2 motores TT amarillos + L298N, dos ruedas locas de bola de 16 mm, batería atrás; se imprime boca abajo sin soportes |
 | `robot_ensamble/` | Ensamble general: base TT + brazo compacto (componentes enlazados a sus `.sc`), STEP y vista |
 | `app/` | **Consola web** (Next.js, lista para Vercel): modos ordenar zona, asistente y saludo, control manual, visión con cámara y simulador integrado. Ver `app/README.md` |
+| `robot_bridge/` | **Puente del robot** (Python, Raspberry Pi): WebSocket para la consola, servos PCA9685, motores L298N, cámara + modelo YOLO y los tres modos. Ver `robot_bridge/README.md` |
 | `scripts/` | Generadores en Python que construyen cada diseño a través del servidor MCP de SolidCraft |
 
 Cada carpeta tiene el diseño `.sc` (editable en SolidCraft), un `.step` del conjunto y los `.stl` de las piezas para imprimir.
