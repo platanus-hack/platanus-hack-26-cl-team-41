@@ -22,11 +22,15 @@ LX, LY, T = 178.0, 170.0, 3.0          # plate
 ZB = 44.5                              # plate underside
 AXZ = 32.5                             # wheel axle height (D65 wheels)
 MY_OUT = LY / 2                        # motor outer face flush with the plate edge
-MT, MH = 18.8, 22.5                    # TT gearbox thickness (along the shaft) and height
-MY_IN = MY_OUT - MT                    # 66.2
+MT, MH = 18.6, 22.44                   # TT gearbox thickness (along the shaft) and height (Adafruit 3777 drawing)
+MY_IN = MY_OUT - MT                    # 66.4  motor inner face
+PAD = 2.5                              # standoff pads: clear the 1.9 mm locating nub on the motor face
+WY = MY_IN - PAD                       # 63.9  wall face toward the motor
+HOLE_X, HOLE_DZ = -22.55, 8.8          # stacked M3 holes: 22.55 mm behind the shaft, 17.6 mm apart
+TAB_X = 14.0                           # front ear hole, 14 mm ahead of the shaft
 MZ0 = AXZ - MH / 2                     # 21.25
 ARMX = -25.0                           # arm axis, set back for stability
-BALLX = 76.0                           # caster posts
+BALLX = 73.0                           # caster posts
 
 def plate():
     P = "Base plate"
@@ -36,16 +40,21 @@ def plate():
         radius=15, body=P, name="Plate corners")
     for sy in (1, -1):
         s = "L" if sy > 0 else "R"
-        # motor wall (inner side) and front stop; motor body runs from x=+11.5 back to x=-58.5
-        box(f"Motor wall {s}", P, [-17.75, sy * (MY_IN - 2), (MZ0 + ZB) / 2], [59.5, 4, ZB - MZ0])
-        box(f"Motor front stop {s}", P, [14, sy * (MY_IN + MT / 2), (MZ0 + 4 + ZB) / 2], [4, MT, ZB - MZ0 - 4])
-        # stiffening rib along the plate, continuing the wall
-        box(f"Rib front {s}", P, [(12 + 85) / 2 + 4, sy * (MY_IN - 2), ZB - 3], [85 - 16, 4, 6])
-        box(f"Rib rear {s}", P, [(-50 - 85) / 2, sy * (MY_IN - 2), ZB - 3], [35, 4, 6])
-        # zip-tie slots just inside the wall
-        for i, x in enumerate([-38, -54]):
-            box(f"Tie slot {s}{i+1}", P, [x, sy * (MY_IN - 6), ZB + 1.5], [5, 3, 6], op="cut")
-        cyl(f"Motor wire hole {s}", P, [-48, sy * (MY_IN - 14), ZB - 1], 10, 5, op="cut")
+        ys = [0, sy, 0]
+        # motor wall (inner side of the motor), z 18..plate, with stiffening ribs continuing it
+        box(f"Motor wall {s}", P, [-15, sy * (WY - 2), (18 + ZB) / 2], [70, 4, ZB - 18])
+        box(f"Rib front {s}", P, [52.5, sy * (WY - 2), ZB - 3], [65, 4, 6])
+        box(f"Rib rear {s}", P, [-67.5, sy * (WY - 2), ZB - 3], [35, 4, 6])
+        # pads the motor face rests on (around the screws)
+        for k, dz in enumerate((-HOLE_DZ, HOLE_DZ)):
+            cyl(f"Motor pad {s}{k+1}", P, [HOLE_X, sy * WY, AXZ + dz], 8, PAD, axis=ys)
+        box(f"Motor ear pad {s}", P, [TAB_X, sy * (WY + PAD / 2), AXZ], [7, PAD, 17])
+        # screw holes (M3 through wall + pad + gearbox, nut on the outside), ear slot, shaft stub clearance
+        for k, dz in enumerate((-HOLE_DZ, HOLE_DZ)):
+            cyl(f"Motor screw hole {s}{k+1}", P, [HOLE_X, sy * (WY - 6), AXZ + dz], 3.4, 10, axis=ys, op="cut")
+        box(f"Motor ear slot {s}", P, [TAB_X, sy * (WY - 1), AXZ], [3.4, 10, 16], op="cut")
+        cyl(f"Shaft stub hole {s}", P, [0, sy * (WY - 6), AXZ], 10, 10, axis=ys, op="cut")
+        cyl(f"Motor wire hole {s}", P, [-48, sy * 48, ZB - 1], 10, 5, op="cut")
     # ball casters front and rear: post with a spherical socket that wraps the ball past its equator,
     # 4 slits make flexible fingers so the ball snaps in. Ball bottom 0.5 mm above the floor.
     for sx, nm in ((1, "front"), (-1, "rear")):
@@ -57,11 +66,11 @@ def plate():
         box(f"Socket slit Y {nm}", P, [x, 0, "0.5 mm + 0.475*bola"], [1.6, "bola + 10 mm", "0.35*bola"], op="cut")
     # L298N standoffs (37 x 37 hole square), front
     for i, (dx, dy) in enumerate([(18.5, 18.5), (-18.5, 18.5), (18.5, -18.5), (-18.5, -18.5)]):
-        cyl(f"L298N standoff {i+1}", P, [42 + dx, dy, ZB - 6], 6.5, 6.01)
-        cyl(f"L298N pilot {i+1}", P, [42 + dx, dy, ZB - 7], 2.6, 8, op="cut")
+        cyl(f"L298N standoff {i+1}", P, [38 + dx, dy, ZB - 6], 6.5, 6.01)
+        cyl(f"L298N pilot {i+1}", P, [38 + dx, dy, ZB - 7], 2.6, 8, op="cut")
     # battery strap slots (front, under the plate)
     for sy in (1, -1):
-        box(f"Strap slot {'L' if sy > 0 else 'R'}", P, [-37, sy * 37.5, ZB + 1.5], [22, 3, 6], op="cut")
+        box(f"Strap slot {'L' if sy > 0 else 'R'}", P, [-32, sy * 37.5, ZB + 1.5], [22, 3, 6], op="cut")
     # arm: 4 x M4 on D150 at 45 deg, centre cable hole
     for i, (x, y) in enumerate([(53.03, 53.03), (-53.03, 53.03), (-53.03, -53.03), (53.03, -53.03)]):
         cyl(f"Arm bolt {i+1}", P, [ARMX + x, y, ZB - 1], 4.5, 5, op="cut")
@@ -74,13 +83,16 @@ def dummies():
     for sy in (1, -1):
         s = "L" if sy > 0 else "R"
         yc = sy * (MY_IN + MT / 2)
-        box(f"TT gearbox {s}", f"TT motor {s}", [(11.5 - 48) / 2, yc, AXZ], [59.5, MT, MH], new=True)
-        cyl(f"TT can {s}", f"TT motor {s}", [-48, yc, AXZ], 20, 10.5, axis=[-1, 0, 0])
+        box(f"TT gearbox {s}", f"TT motor {s}", [-7.5, yc, AXZ], [37, MT, MH], new=True)
+        box(f"TT motor can {s}", f"TT motor {s}", [-40.1, yc, AXZ], [28.2, 18.6, 20.38])
+        box(f"TT ear {s}", f"TT motor {s}", [13.4, sy * (MY_IN + 1.5), AXZ], [4.8, 3, 8])
+        cyl(f"TT nub {s}", f"TT motor {s}", [-8, sy * MY_IN, AXZ + 6], 4, 1.9, axis=[0, -sy, 0])
+        cyl(f"TT shaft in {s}", f"TT motor {s}", [0, sy * MY_IN, AXZ], 5.4, 8.7, axis=[0, -sy, 0])
         cyl(f"TT shaft {s}", f"TT motor {s}", [0, sy * MY_OUT, AXZ], 5.4, 9, axis=[0, sy, 0])
         cyl(f"Wheel {s}", f"Wheel {s}", [0, sy * (MY_OUT + 2), AXZ], 65, 26, axis=[0, sy, 0], new=True)
-    box("L298N board", "L298N", [42, 0, ZB - 6 - 0.8], [43, 43, 1.6], new=True)
-    box("L298N heatsink", "L298N", [42, 12, ZB - 7.6 - 12.5], [23, 16, 25])
-    box("Battery 3S", "Battery", [-37, 0, ZB - 12.5], [50, 70, 25], new=True)
+    box("L298N board", "L298N", [38, 0, ZB - 6 - 0.8], [43, 43, 1.6], new=True)
+    box("L298N heatsink", "L298N", [38, 12, ZB - 7.6 - 12.5], [23, 16, 25])
+    box("Battery 3S", "Battery", [-32, 0, ZB - 12.5], [50, 70, 25], new=True)
     for sx, nm in ((1, "front"), (-1, "rear")):
         S.append({"command": "solid.sphere", "params": {"diameter": "bola", "center": [sx * BALLX, 0, "0.5 mm + bola/2"],
                   "body_name": f"Ball {nm}", "name": f"Ball {nm}"}})
@@ -90,6 +102,47 @@ pre = []
 if stage == "plate":
     pre = [{"tool": "new_design"}]
     plate()
+elif stage == "coves":
+    import math
+    P = "Base plate"
+    def cove(r, n=10):
+        """quarter-round cove profile in (u, v): corner at (0,0), u away from the wall, v down from the plate"""
+        pts = [(0, -r)] + [(r - r * math.cos(t), -r + r * math.sin(t)) for t in
+               [math.pi / 2 * i / n for i in range(1, n)]] + [(r, 0), (0, 0)]
+        return pts
+    def along_x(name, yf, d, r, x0, x1):
+        # sketch on YZ (sketch x=+Y, y=+Z) at X=x0, extrude +X
+        pts = [(yf + d * u, ZB + v) for u, v in cove(r)]
+        S.append({"command": "sketch.create", "params": {"plane": "YZ", "offset": x0, "name": name + " sk"}})
+        S.append({"command": "sketch.line", "params": {"points": [[round(a, 4), round(b, 4)] for a, b in pts], "closed": True}})
+        S.append({"command": "sketch.finish", "params": {}})
+        S.append({"command": "solid.extrude", "params": {"sketch": name + " sk", "distance": x1 - x0, "operation": "join",
+                  "targets": [P], "name": name}})
+    for sy in (1, -1):
+        sd = "L" if sy > 0 else "R"
+        along_x(f"Cove wall inner {sd}", sy * (WY - 4), -sy, 3, -85, 85)
+        along_x(f"Cove wall outer {sd}", sy * WY, sy, 2, -85, 85)
+    for sx, nm in ((1, "front"), (-1, "rear")):
+        R = 12.0; r = 3.0
+        pts = [(sx * BALLX + R + u, ZB + v) for u, v in cove(r)]
+        S.append({"command": "sketch.create", "params": {"plane": "XZ", "name": f"Cove post {nm} sk"}})
+        S.append({"command": "sketch.line", "params": {"points": [[round(a, 4), round(-b, 4)] for a, b in pts], "closed": True}})
+        S.append({"command": "sketch.finish", "params": {}})
+        S.append({"command": "solid.revolve", "params": {"sketch": f"Cove post {nm} sk",
+                  "axis": {"origin": [sx * BALLX, 0, 0], "dir": [0, 0, 1]}, "operation": "join", "targets": [P],
+                  "name": f"Cove post {nm}"}})
+elif stage.startswith("fillet"):
+    P = "Base plate"
+    picks = {
+      "fillet_in":   ([[sy * 0 - 15, sy * (WY - 4), ZB] for sy in (1, -1)], 3),
+      "fillet_rf":   ([[52.5, sy * (WY - 4), ZB] for sy in (1, -1)] + [[52.5, sy * WY, ZB] for sy in (1, -1)], 3),
+      "fillet_rr":   ([[-67.5, sy * (WY - 4), ZB] for sy in (1, -1)] + [[-67.5, sy * WY, ZB] for sy in (1, -1)], 3),
+      "fillet_out":  ([[-38, sy * WY, ZB] for sy in (1, -1)] + [[-3, sy * WY, ZB] for sy in (1, -1)], 1.5),
+      "fillet_post": ([[sx * BALLX, 12, ZB] for sx in (1, -1)], 4),
+      "fillet_so":   ([[38 + dx, dy + 3.25, ZB] for dx in (18.5, -18.5) for dy in (18.5, -18.5)], 1.5),
+    }[stage]
+    S.append({"command": "solid.fillet", "params": {"edges": picks[0], "radius": picks[1], "body": P,
+              "name": "Root " + stage.split("_")[1]}})
 elif stage == "dummies":
     dummies()
 print(json.dumps(pre + [{"tool": "batch", "args": {"commands": S, "verbose": False}},
