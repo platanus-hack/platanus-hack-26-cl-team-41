@@ -1,0 +1,52 @@
+# Nexa robot bridge configuration (runs on the Radxa Zero 3W). Units: metres, degrees, seconds.
+
+[server]
+host = "0.0.0.0"
+port = 8765
+telemetry_hz = 15
+
+[robot]
+name = "Nexa"
+# Where the robot starts on the console map (x, y in metres, heading in degrees).
+# The console's zone, drop point and stations use the same coordinates.
+start_pose = [0.4, 2.6, 0.0]
+
+[mavlink]
+# Matek H743 TX1/RX1 (SERIAL2) <-> Radxa pins 32/33 (/dev/ttyS5), MAVLink 2
+device = "/dev/ttyS5"
+baud = 115200
+gcs_sysid = 255        # must match SYSID_MYGCS on the H743 for RC overrides to be accepted
+# RC override encoding shared with h743/nexa.lua:
+#   ch1..5 joint angle = 1500 + deg * deg_scale, ch6 gripper 1000..2000, ch7/ch8 wheel duty 1500 + 500 * duty
+deg_scale = 5.0
+
+[arm]
+# joint limits in degrees (0 = arm straight up); servo calibration lives in h743/nexa.lua
+joint_min = [-90, -90, -90, -90, -90]
+joint_max = [90, 90, 95, 90, 90]   # elbow: the forearm hits the upper arm past ~96° (CAD)
+speed_dps = 90          # max joint speed when moving to a target
+
+[drive]
+max_wheel_speed = 0.45  # m/s at full duty (the Lua script caps the duty at 0.55); measure it: odometry depends on it
+track = 0.20            # distance between the wheel centres
+invert_left = false
+invert_right = false
+watchdog_s = 0.5        # stop if no drive command arrives in this time (manual mode)
+
+[camera]
+# DECXIN global-shutter USB camera on the Radxa, streamed by ustreamer at http://<radxa>:8080/stream
+hfov_deg = 62           # horizontal field of view: measure it, the visual approach uses it
+
+[behaviors]
+# image-based approach: bbox height as a fraction of the image when the object is in reach
+pick_bbox_h = 0.45
+# a person's bbox height (fraction of the image) at 1 m; used to estimate distance
+person_bbox_h_at_1m = 0.85
+greet_distance = 0.9
+deliver_distance = 0.55
+# stations on the console map (metres)
+tool_station = [0.35, 0.35]
+material_bin = [3.65, 0.35]
+search_turn_speed = 0.6     # rad/s while scanning
+approach_speed = 0.15       # m/s while closing in on a target
+confirm_timeout = 25

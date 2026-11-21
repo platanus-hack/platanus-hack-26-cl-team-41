@@ -28,3 +28,9 @@ __pycache__/
 /simulation/grasp_debug_*.png
 /simulation/*_expert_debug.json
 /simulation/trained/curriculum/evaluation_progress.json
+
+# robot (SolidCraft, consola y puente)
+.~*.lock
+*.lock
+*.bak
+*.rar
