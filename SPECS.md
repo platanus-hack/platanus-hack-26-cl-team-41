@@ -35,6 +35,23 @@
   - **Matek H743:** montada rígida en la bandeja, a 38 mm del eje de la base del brazo, porque su IMU mide la inclinación que se compensa. Separadores de 5 mm para M3 a 30,5 × 30,5 mm (supuesto: medir la placa y cambiar `FC_DX`/`FC_DY` en `scripts/base_tt.py`). Queda 9,9 mm por debajo del servo de la base.
   - **Radxa Zero 3W:** en la bandeja, con separadores de 4 mm para M2,5 en el patrón de Pi Zero (58 × 23 mm), y la cámara conectada a su puerto USB 3.0.
 
+### Mástil de la cámara
+
+- **Varilla:** fibra de carbono de 12 × 500 mm, entera, vertical detrás de la base del brazo (eje en x = −99,5 mm, centrada).
+- **Soporte de la varilla** (`base_tt/Soporte_varilla.stl`, 11,3 cm³): se pega al borde trasero de la placa con una pestaña arriba (8 × 60 mm), una pared contra el canto trasero y dos uñas por debajo que esquivan la rueda loca trasera. Encaje de 46 mm de profundidad con holgura de 0,3 mm para el adhesivo, y una cartela hasta la pestaña. La varilla apoya en el fondo del encaje, a ras de la cara inferior de la placa.
+- **Cabezal** (`base_tt/Cabezal_camara.stl`, 7,5 cm³): casquillo que entra a tope en la punta de la varilla, con un brazo que sostiene el marco de 42 × 42 mm para la cámara de 38 × 38 (ventana de 30 × 30 y 4 agujeros guía M2 a 34 mm), inclinado **50° hacia abajo** y mirando hacia adelante.
+- **Centro óptico:** a 525 mm del suelo y 58 mm detrás del eje del brazo.
+- **Cobertura del suelo** (delante del eje del brazo, según el campo de visión vertical, que está por medir):
+
+  | Campo vertical | Desde | Hasta |
+  |---|---|---|
+  | 37° (16:9 con 62° de horizontal) | 149 mm | 798 mm |
+  | 48° (4:3 con 62° de horizontal) | 92 mm | 1018 mm |
+
+  La inclinación es el parámetro `TILT` en `scripts/base_tt.py`: con 37° de campo vertical, 45° ve de 203 a 994 mm y 55° de 97 a 651 mm.
+- **Línea de visión sobre el brazo:** hacia un punto de agarre a 150 mm, pasa por encima del eje del brazo a 378 mm de altura, más alta que el brazo plegado (~250 mm).
+- **Límite para el brazo:** con la base del brazo mirando hacia adelante, el brazo recto no puede inclinarse hacia atrás más de ~12° sin tocar la varilla. Con el soporte de cámara del gripper montado, el límite baja a ~4°: con la cámara en el mástil, ese soporte ya no hace falta.
+
 ### Ensamble completo
 
 - **Peso:** unos 980 g, de los que el brazo son unos 560 g.

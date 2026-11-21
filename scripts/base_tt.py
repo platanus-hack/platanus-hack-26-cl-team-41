@@ -186,6 +186,70 @@ elif stage == "tray":
     box("H743 parts", "Matek H743", [FC[0], FC[1], z0 + TT_ + 5 + 1.6 + 3], [30, 30, 6])
     box("Radxa board", "Radxa Zero 3W", [RX[0], RX[1], z0 + TT_ + 4 + 0.8], [30, 65, 1.6], new=True)
     box("Radxa parts", "Radxa Zero 3W", [RX[0], RX[1], z0 + TT_ + 4 + 1.6 + 1.5], [24, 55, 3])
+elif stage == "mast":
+    # Camera mast: a 500 mm x 12 mm carbon rod behind the arm, held by a socket glued to the plate's
+    # rear edge (top tab + rear wall + two lips under the plate), and a head glued on the rod's tip
+    # that holds the 38 x 38 camera tilted TILT degrees down, looking forward over the folded arm.
+    import math
+    ROD_D, ROD_L, BORE = 12.0, 500.0, 12.3
+    SO = BORE + 6.0                                # socket / sleeve outer diameter (3 mm wall)
+    RX_, z_top = -99.5, ZB + T                     # rod axis x, plate top
+    TILT = 50.0
+    SK = "Soporte varilla"
+    z_floor = ZB                                   # rod rests on the socket floor, flush with the plate underside
+    box("Mast top tab", SK, [-85, 0, z_top + 1.5], [8, 60, 3], new=True)
+    box("Mast rear wall", SK, [-90.5, 0, ZB - 3 + 4.5], [3, 60, 9])
+    for sy in (1, -1):
+        box(f"Mast lip {'L' if sy > 0 else 'R'}", SK, [-87.5, sy * 23, ZB - 1.5], [3, 14, 3])
+    cyl("Mast socket", SK, [RX_, 0, ZB - 3], SO, 49)
+    gus = [(-99.5, ZB - 3), (-89, ZB - 3), (-89, z_top + 3), (-81, z_top + 3), (-81, z_top + 6), (-99.5, ZB + 43.5)]
+    cmd("sketch.create", plane="XZ", offset=-3, name="Mast gusset sk")
+    cmd("sketch.line", points=[[x, -z] for x, z in gus], closed=True)
+    cmd("sketch.finish")
+    S.append({"command": "solid.extrude", "params": {"sketch": "Mast gusset sk", "distance": 6, "operation": "join", "targets": [SK], "name": "Mast gusset"}})
+    cyl("Mast bore", SK, [RX_, 0, z_floor], BORE, 50, op="cut")
+    # rod (reference)
+    cyl("Carbon rod", "Varilla CF 12x500", [RX_, 0, z_floor], ROD_D, ROD_L, new=True)
+    # head on the rod tip
+    HD = "Cabezal camara"
+    rod_top = z_floor + ROD_L
+    cyl("Head sleeve", HD, [RX_, 0, rod_top - 25], SO, 28, new=True)
+    c, s_ = math.cos(math.radians(TILT)), math.sin(math.radians(TILT))
+    v = (s_, c)          # frame "up" in XZ
+    n = (c, -s_)         # camera axis: forward and down
+    E = (RX_ + SO / 2 + 2, rod_top - 16.5)            # frame bottom-back edge, 2 mm ahead of the sleeve
+    Cb = (E[0] + 21 * v[0], E[1] + 21 * v[1])        # frame back-face centre
+    Eb1 = (E[0] + 6 * v[0] + 0.5 * n[0], E[1] + 6 * v[1] + 0.5 * n[1])
+    D = (E[0] + 0.5 * n[0], E[1] + 0.5 * n[1])
+    neck = [(RX_, rod_top - 24.5), (RX_, rod_top - 8.5), Eb1, D, (D[0], rod_top - 24.5)]
+    cmd("sketch.create", plane="XZ", offset=-8, name="Head neck sk")
+    cmd("sketch.line", points=[[round(x, 4), round(-z, 4)] for x, z in neck], closed=True)
+    cmd("sketch.finish")
+    S.append({"command": "solid.extrude", "params": {"sketch": "Head neck sk", "distance": 16, "operation": "join", "targets": [HD], "name": "Head neck"}})
+    def tilted(name, offset_n, size, depth, body, op="join", circle=None, holes=False, window=False, new=False):
+        o = [Cb[0] + offset_n * n[0], 0.0, Cb[1] + offset_n * n[1]]
+        cmd("sketch.create", plane={"origin": [round(x, 4) for x in o], "x_dir": [0, 1, 0], "y_dir": [round(v[0], 6), 0, round(v[1], 6)]}, name=name + " sk")
+        if circle:
+            cmd("sketch.circle.center", center=[0, 0], radius=circle)
+        else:
+            cmd("sketch.rectangle.center", center=[0, 0], corner=[size / 2, size / 2])
+        if window:
+            cmd("sketch.rectangle.center", center=[0, 0], corner=[15, 15])
+        if holes:
+            for hx, hy in ((17, 17), (-17, 17), (17, -17), (-17, -17)):
+                cmd("sketch.circle.center", center=[hx, hy], radius=0.85)
+        cmd("sketch.finish")
+        p = {"sketch": name + " sk", "distance": depth, "name": name}
+        if new:
+            p["body_name"] = body
+        else:
+            p.update(operation=op, targets=[body])
+        S.append({"command": "solid.extrude", "params": p})
+    tilted("Head frame", 0.0, 42, 2.5, HD, window=True, holes=True)
+    cyl("Head bore", HD, [RX_, 0, rod_top - 26], BORE, 26, op="cut")
+    tilted("Mast cam board", 2.5, 38, 1.6, "Camara mastil", new=True)
+    tilted("Mast cam holder", 4.1, 15, 14, "Camara mastil")
+    tilted("Mast cam lens", 18.1, 0, 8, "Camara mastil", circle=6)
 elif stage == "dummies":
     dummies()
 print(json.dumps(pre + [{"tool": "batch", "args": {"commands": S, "verbose": False}},
