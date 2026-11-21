@@ -70,9 +70,6 @@ def plate():
     for i, (x, y) in enumerate([(53.03, 53.03), (-53.03, 53.03), (-53.03, -53.03), (53.03, -53.03)]):
         cyl(f"Arm bolt {i+1}", P, [ARMX + x, y, ZB - 1], 4.5, 5, op="cut")
     cyl("Arm cable hole", P, [6, 0, ZB - 1], 24, 5, op="cut")
-    # controller mounting holes (2 rows, 20 mm pitch) under the arm base, rear-left/right
-    for i, (x, y) in enumerate([(-20, 40), (0, 40), (20, 40), (-20, -40), (0, -40), (20, -40)]):
-        cyl(f"Mount hole {i+1}", P, [x, y, ZB - 1], 3.2, 5, op="cut")
 
 def dummies():
     for sy in (1, -1):
