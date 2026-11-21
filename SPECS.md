@@ -26,6 +26,11 @@
 
 - **Una sola pieza** de 178 × 170 mm y 132 cm³ de modelo sólido, que se imprime boca abajo sin soportes.
 - **Tracción diferencial:** 2 motores TT de 1:48 con ruedas de Ø65 mm, más 2 ruedas locas de bola de 16 mm (el diámetro de la bola es un parámetro).
+- **Ruedas impresas** (`rueda_tt/`, generador `scripts/rueda_tt.py`), en reemplazo de las amarillas del TT:
+  - **Medidas:** Ø65 mm exterior (misma altura del eje: 32,5 mm) y 34 mm de ancho total, contra 26 mm de la de fábrica. El robot queda en 242 mm de ancho.
+  - **Llanta de PLA** (`Llanta_TT_PLA.stl`, 17,3 cm³): asiento de Ø55, dos rebordes de Ø57,4 × 1,6 mm que encierran el neumático, alma con 6 ventanas y cubo con agujero en doble D para el eje del TT (Ø5,6 con caras planas a 3,9 mm, 9,6 mm de profundidad) y agujero de Ø2,3 para el tornillo del motor.
+  - **Impresión de la llanta:** de pie, con la cara del motor sobre la cama. Sin soportes: el reborde superior lleva un chaflán de 45° y las ventanas son pasantes verticales.
+  - **Neumático de TPU** (`Neumatico_TT_TPU.stl`, 30,1 cm³): Ø65 × Ø54,4, ancho 30,6 mm. Queda con 0,3 mm de apriete por lado sobre el asiento y tiene un chaflán interior que calza con el reborde. Para montarlo se estira un 5,5 % sobre el reborde, lo que va bien con TPU 95A.
 - **Soportes de motor:** según el plano del TT, con 2 tornillos M3 y la oreja, una ventana para el tetón de ubicación, 2 atiesadores por lado y empalmes en las uniones.
 - **Distribución:**
   - **Debajo de la placa:** el L298N y la LiPo 3S, esta última lo más atrás posible para que sirva de contrapeso del brazo.
@@ -75,7 +80,7 @@
 
   | Postura | Ángulos | Nota |
   |---|---|---|
-  | Recoger | 0, 65,2, 61,3, 53,5 | Punta de los dedos a 5 mm del suelo y a 150 mm del eje del brazo, con la pinza vertical |
+  | Recoger | 0, 65,2, 61,3, 53,5 | Punta de los dedos a 5 mm del suelo y a 150 mm del eje del brazo, con la pinza vertical. Con las ruedas de 34 mm, a ras de suelo solo en el sector frontal (base entre −60° y +60°): girada entre ~65° y 80°, la pinza toca la rueda |
   | Transportar | 0, 0, 95, 60 | |
   | Entregar | 0, 48, 30, 12 | |
   | Saludar | 0, 10, 60, −20 | |

@@ -81,7 +81,7 @@ def dummies():
         cyl(f"TT nub {s}", f"TT motor {s}", [NUB_X, sy * MY_IN, AXZ], 4, 1.9, axis=[0, -sy, 0])
         cyl(f"TT shaft in {s}", f"TT motor {s}", [0, sy * MY_IN, AXZ], 5.4, 8.7, axis=[0, -sy, 0])
         cyl(f"TT shaft {s}", f"TT motor {s}", [0, sy * MY_OUT, AXZ], 5.4, 9, axis=[0, sy, 0])
-        cyl(f"Wheel {s}", f"Wheel {s}", [0, sy * (MY_OUT + 2), AXZ], 65, 26, axis=[0, sy, 0], new=True)
+        cyl(f"Wheel {s}", f"Wheel {s}", [0, sy * (MY_OUT + 2), AXZ], 65, 34, axis=[0, sy, 0], new=True)  # printed wheel: rueda_tt (34 mm wide)
     box("L298N board", "L298N", [38, 0, ZB - 6 - 0.8], [43, 43, 1.6], new=True)
     box("L298N heatsink", "L298N", [38, 12, ZB - 7.6 - 12.5], [23, 16, 25])
     box("Battery 3S", "Battery", [-32, 0, ZB - 12.5], [50, 70, 25], new=True)
