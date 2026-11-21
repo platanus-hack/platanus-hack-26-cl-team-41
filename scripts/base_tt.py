@@ -158,6 +158,34 @@ elif stage.startswith("fillet"):
     }[stage]
     S.append({"command": "solid.fillet", "params": {"edges": picks[0], "radius": picks[1], "body": P,
               "name": "Root " + stage.split("_")[1]}})
+elif stage == "tray":
+    # Electronics tray: a disc clamped between the plate and the arm's base flange by the same 4 M4 bolts,
+    # so the plate keeps printing upside down in one piece. It carries the Matek H743 (close to the arm
+    # axis, for its IMU) and the Radxa Zero 3W, both inside the arm's hollow base. Printed flat, standoffs up.
+    TR = "Bandeja electronica"
+    TT_ = 2.4
+    z0 = ZB + T                                    # plate top, 47.5
+    FC = (38.0, 0.0); FC_DX = FC_DY = 30.5         # H743 hole pattern: MEASURE your board and change these
+    RX = (-36.0, 0.0)                              # Radxa Zero 3W, long side along Y, Pi Zero pattern 58 x 23 (M2.5)
+    cyl("Tray disc", TR, [ARMX, 0, z0], 160, TT_, new=True)
+    for i, (x, y) in enumerate([(53.03, 53.03), (-53.03, 53.03), (-53.03, -53.03), (53.03, -53.03)]):
+        cyl(f"Tray arm bolt {i+1}", TR, [ARMX + x, y, z0 - 1], 4.5, TT_ + 2, op="cut")
+    cyl("Tray cable hole", TR, [6, 0, z0 - 1], 24, TT_ + 2, op="cut")
+    for sy in (1, -1):
+        box(f"Tray window {'L' if sy > 0 else 'R'}", TR, [ARMX, sy * 45, z0 + TT_ / 2], [50, 18, TT_ + 2], op="cut")
+    for i, (dx, dy) in enumerate([(1, 1), (-1, 1), (1, -1), (-1, -1)]):
+        x, y = FC[0] + dx * FC_DX / 2, FC[1] + dy * FC_DY / 2
+        cyl(f"FC standoff {i+1}", TR, [x, y, z0 + TT_ - 0.01], 6.5, 5.01)
+        cyl(f"FC pilot {i+1}", TR, [x, y, z0 + 0.8], 2.6, 7, op="cut")
+    for i, (dx, dy) in enumerate([(1, 1), (-1, 1), (1, -1), (-1, -1)]):
+        x, y = RX[0] + dx * 23 / 2, RX[1] + dy * 58 / 2
+        cyl(f"Radxa standoff {i+1}", TR, [x, y, z0 + TT_ - 0.01], 5.5, 4.01)
+        cyl(f"Radxa pilot {i+1}", TR, [x, y, z0 + 0.8], 2.2, 6, op="cut")
+    # reference boards (for collision checks)
+    box("H743 board", "Matek H743", [FC[0], FC[1], z0 + TT_ + 5 + 0.8], [36, 36, 1.6], new=True)
+    box("H743 parts", "Matek H743", [FC[0], FC[1], z0 + TT_ + 5 + 1.6 + 3], [30, 30, 6])
+    box("Radxa board", "Radxa Zero 3W", [RX[0], RX[1], z0 + TT_ + 4 + 0.8], [30, 65, 1.6], new=True)
+    box("Radxa parts", "Radxa Zero 3W", [RX[0], RX[1], z0 + TT_ + 4 + 1.6 + 1.5], [24, 55, 3])
 elif stage == "dummies":
     dummies()
 print(json.dumps(pre + [{"tool": "batch", "args": {"commands": S, "verbose": False}},

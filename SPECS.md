@@ -20,6 +20,7 @@
 - **Carga útil:**
   - **Brazo estirado:** el hombro necesita unos 7 kg·cm, frente a los 9–11 kg·cm de bloqueo del MG995 a 6 V. Ese es el máximo instantáneo, no un valor de trabajo continuo.
   - **Carga de trabajo declarada:** unos 50 g (pelota de ping-pong, cubo de espuma, lata vacía), agarrando a 15–20 cm del eje del brazo y no con el brazo estirado del todo.
+- **Soporte de cámara:** pieza aparte (`brazo_compacto/stl/SoporteCamara.stl`, 8,1 cm³) que se pega con cianoacrilato a la pared lateral izquierda del gripper y al canto de su placa frontal. Marco de 42 × 42 mm para la cámara de 38 × 38, con ventana central de 30 × 30 y 4 agujeros guía M2 a 34 mm (medir la cámara; también se puede pegar), inclinado 15° hacia los dedos. Centro de la cámara a 52 mm del eje del gripper. No reduce el rango de la muñeca (±96,7° de inclinación, giro completo).
 - **Exportado:** STL por pieza, STEP del conjunto y URDF con las 6 articulaciones.
 
 ### Base móvil (versión actual, TT)
@@ -30,8 +31,9 @@
 - **Distribución:**
   - **Debajo de la placa:** el L298N y la LiPo 3S, esta última lo más atrás posible para que sirva de contrapeso del brazo.
   - **Arriba:** el brazo, con 4 tornillos M4 a Ø150.
-  - **Matek H743:** montada rígida y cerca del eje de la base del brazo, porque su IMU mide la inclinación que se compensa.
-  - **Radxa Zero 3W:** sobre la placa, con la cámara conectada a su puerto USB 3.0.
+  - **Bandeja de electrónica** (`base_tt/Bandeja_electronica.stl`, 43,5 cm³): disco de Ø160 × 2,4 mm apretado entre la placa y la brida de la base del brazo con los mismos 4 M4, así la placa sigue saliendo en una sola impresión. Se imprime plana, con los separadores hacia arriba, y todo queda dentro de la base hueca del brazo. El brazo sube 2,4 mm.
+  - **Matek H743:** montada rígida en la bandeja, a 38 mm del eje de la base del brazo, porque su IMU mide la inclinación que se compensa. Separadores de 5 mm para M3 a 30,5 × 30,5 mm (supuesto: medir la placa y cambiar `FC_DX`/`FC_DY` en `scripts/base_tt.py`). Queda 9,9 mm por debajo del servo de la base.
+  - **Radxa Zero 3W:** en la bandeja, con separadores de 4 mm para M2,5 en el patrón de Pi Zero (58 × 23 mm), y la cámara conectada a su puerto USB 3.0.
 
 ### Ensamble completo
 
@@ -181,7 +183,6 @@ Estos specs describen la arquitectura con la Matek H743 y la Radxa. El código y
 | Video con ustreamer en `/stream` y `/snapshot` | El puente sirve su propio MJPEG en `/stream.mjpg` |
 | YOLO en el PC, que lee el video y envía las detecciones al puente | YOLO corre dentro del puente, en el robot; el puente no recibe detecciones externas |
 | Consola con la orientación de la IMU en la telemetría | La telemetría y la consola no tienen campo de orientación |
-| Soportes para la H743 y la Radxa en la placa | La placa TT no tiene soportes para ninguna de las dos |
 | Consola servida en local como modo principal | `app/README.md` presenta Vercel como despliegue principal |
 
 Nota de alimentación: 4 MG995 pueden pedir ~10 A de pico si se traban a la vez, por encima de los ~8 A del Vx. Conviene no mover los cuatro con carga al mismo tiempo, o medir la caída de tensión en una prueba.
