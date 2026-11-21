@@ -24,8 +24,9 @@ AXZ = 32.5                             # wheel axle height (D65 wheels)
 MY_OUT = LY / 2                        # motor outer face flush with the plate edge
 MT, MH = 18.6, 22.44                   # TT gearbox thickness (along the shaft) and height (Adafruit 3777 drawing)
 MY_IN = MY_OUT - MT                    # 66.4  motor inner face
-PAD = 2.5                              # standoff pads: clear the 1.9 mm locating nub on the motor face
-WY = MY_IN - PAD                       # 63.9  wall face toward the motor
+WY = MY_IN                             # 66.4  wall face, the motor sits flush on it
+NUB_X = -11.25                         # locating nub (D4 x 1.9) on the motor face -> window in the wall
+WX0, WX1 = -28.0, 19.0                 # wall only where the motor is screwed
 HOLE_X, HOLE_DZ = -22.55, 8.8          # stacked M3 holes: 22.55 mm behind the shaft, 17.6 mm apart
 TAB_X = 14.0                           # front ear hole, 14 mm ahead of the shaft
 MZ0 = AXZ - MH / 2                     # 21.25
@@ -41,19 +42,14 @@ def plate():
     for sy in (1, -1):
         s = "L" if sy > 0 else "R"
         ys = [0, sy, 0]
-        # motor wall (inner side of the motor), z 18..plate, with stiffening ribs continuing it
-        box(f"Motor wall {s}", P, [-15, sy * (WY - 2), (18 + ZB) / 2], [70, 4, ZB - 18])
-        box(f"Rib front {s}", P, [52.5, sy * (WY - 2), ZB - 3], [65, 4, 6])
-        box(f"Rib rear {s}", P, [-67.5, sy * (WY - 2), ZB - 3], [35, 4, 6])
-        # pads the motor face rests on (around the screws)
-        for k, dz in enumerate((-HOLE_DZ, HOLE_DZ)):
-            cyl(f"Motor pad {s}{k+1}", P, [HOLE_X, sy * WY, AXZ + dz], 8, PAD, axis=ys)
-        box(f"Motor ear pad {s}", P, [TAB_X, sy * (WY + PAD / 2), AXZ], [7, PAD, 17])
-        # screw holes (M3 through wall + pad + gearbox, nut on the outside), ear slot, shaft stub clearance
+        # motor wall, only along the screwed part of the gearbox; motor face sits flush on it
+        box(f"Motor wall {s}", P, [(WX0 + WX1) / 2, sy * (WY - 2), (18 + ZB) / 2], [WX1 - WX0, 4, ZB - 18])
+        # screw holes (M3 through wall + gearbox, nut outside), ear slot, shaft stub and nub windows
         for k, dz in enumerate((-HOLE_DZ, HOLE_DZ)):
             cyl(f"Motor screw hole {s}{k+1}", P, [HOLE_X, sy * (WY - 6), AXZ + dz], 3.4, 10, axis=ys, op="cut")
         box(f"Motor ear slot {s}", P, [TAB_X, sy * (WY - 1), AXZ], [3.4, 10, 16], op="cut")
         cyl(f"Shaft stub hole {s}", P, [0, sy * (WY - 6), AXZ], 10, 10, axis=ys, op="cut")
+        box(f"Nub window {s}", P, [NUB_X, sy * (WY - 1), AXZ], [6, 10, 14], op="cut")
         cyl(f"Motor wire hole {s}", P, [-48, sy * 48, ZB - 1], 10, 5, op="cut")
     # ball casters front and rear: post with a spherical socket that wraps the ball past its equator,
     # 4 slits make flexible fingers so the ball snaps in. Ball bottom 0.5 mm above the floor.
@@ -86,7 +82,7 @@ def dummies():
         box(f"TT gearbox {s}", f"TT motor {s}", [-7.5, yc, AXZ], [37, MT, MH], new=True)
         box(f"TT motor can {s}", f"TT motor {s}", [-40.1, yc, AXZ], [28.2, 18.6, 20.38])
         box(f"TT ear {s}", f"TT motor {s}", [13.4, sy * (MY_IN + 1.5), AXZ], [4.8, 3, 8])
-        cyl(f"TT nub {s}", f"TT motor {s}", [-8, sy * MY_IN, AXZ + 6], 4, 1.9, axis=[0, -sy, 0])
+        cyl(f"TT nub {s}", f"TT motor {s}", [NUB_X, sy * MY_IN, AXZ], 4, 1.9, axis=[0, -sy, 0])
         cyl(f"TT shaft in {s}", f"TT motor {s}", [0, sy * MY_IN, AXZ], 5.4, 8.7, axis=[0, -sy, 0])
         cyl(f"TT shaft {s}", f"TT motor {s}", [0, sy * MY_OUT, AXZ], 5.4, 9, axis=[0, sy, 0])
         cyl(f"Wheel {s}", f"Wheel {s}", [0, sy * (MY_OUT + 2), AXZ], 65, 26, axis=[0, sy, 0], new=True)
@@ -118,10 +114,20 @@ elif stage == "coves":
         S.append({"command": "sketch.finish", "params": {}})
         S.append({"command": "solid.extrude", "params": {"sketch": name + " sk", "distance": x1 - x0, "operation": "join",
                   "targets": [P], "name": name}})
+    def along_y(name, xf, d, r, y0, y1):
+        # sketch on XZ (sketch x=+X, y=-Z) at Y=y0, extrude +Y
+        pts = [(xf + d * u, ZB + v) for u, v in cove(r)]
+        S.append({"command": "sketch.create", "params": {"plane": "XZ", "offset": y0, "name": name + " sk"}})
+        S.append({"command": "sketch.line", "params": {"points": [[round(a, 4), round(-b, 4)] for a, b in pts], "closed": True}})
+        S.append({"command": "sketch.finish", "params": {}})
+        S.append({"command": "solid.extrude", "params": {"sketch": name + " sk", "distance": y1 - y0, "operation": "join",
+                  "targets": [P], "name": name}})
     for sy in (1, -1):
         sd = "L" if sy > 0 else "R"
-        along_x(f"Cove wall inner {sd}", sy * (WY - 4), -sy, 3, -85, 85)
-        along_x(f"Cove wall outer {sd}", sy * WY, sy, 2, -85, 85)
+        along_x(f"Cove wall inner {sd}", sy * (WY - 4), -sy, 3, WX0, WX1)
+        y0 = min(sy * (WY - 4), sy * WY)
+        along_y(f"Cove wall front {sd}", WX1, 1, 3, y0, y0 + 4)
+        along_y(f"Cove wall rear {sd}", WX0, -1, 3, y0, y0 + 4)
     for sx, nm in ((1, "front"), (-1, "rear")):
         R = 12.0; r = 3.0
         pts = [(sx * BALLX + R + u, ZB + v) for u, v in cove(r)]
