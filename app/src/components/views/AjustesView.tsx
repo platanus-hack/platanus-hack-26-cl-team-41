@@ -17,10 +17,15 @@ const PROTOCOL = `// Consola -> robot (JSON por WebSocket)
 { "type": "person_seen", "source": "browser_camera", "confidence": 0.93 }
 
 // Robot -> consola
-{ "type": "telemetry", "telemetry": { mode, phase, task, pose:{x,y,th}, speed:{v,w}, joints:[5], gripper, battery, carrying, estop } }
+{ "type": "telemetry", "telemetry": { mode, phase, task, pose:{x,y,th}, speed:{v,w}, joints:[5], gripper, battery, carrying, estop,
+                                     attitude:{roll,pitch} (°, IMU de la H743), voltage, links:{fc, vision} } }
 { "type": "detections", "detections": [ { id, cls, confidence, pos?:{x,y}, bbox?:[x,y,w,h] (0..1) } ] }
 { "type": "event", "event": { t, level: "info"|"ok"|"warn"|"error", text, speak? } }
-{ "type": "world", "world": {...} }     { "type": "stats", "stats": { collected, delivered, received, greeted } }`;
+{ "type": "world", "world": {...} }     { "type": "stats", "stats": { collected, delivered, received, greeted } }
+
+// Visión del PC -> robot (mismo WebSocket; el puente reenvía las detecciones a la consola)
+{ "type": "hello", "client": "nexa-vision" }
+{ "type": "vision_detections", "detections": [ { cls, confidence, bbox:[x,y,w,h] (0..1) } ] }`;
 
 export function AjustesView() {
   const settings = useRobot((s) => s.settings);
@@ -84,10 +89,10 @@ export function AjustesView() {
       </Card>
 
       <Card title="Visión" icon={<Eye size={16} />}>
-        <Field label="Video del robot (MJPEG)" hint="Ej: http://raspberrypi.local:8080/stream.mjpg. Se muestra en «Cámara del robot».">
+        <Field label="Video del robot (ustreamer en la Radxa)" hint="Ej: http://radxa-zero3.local:8080/stream. Se muestra en «Cámara del robot» con las detecciones de YOLO encima.">
           <div className="relative">
             <Video size={14} className="absolute left-3 top-3 text-muted" />
-            <input className={`${inputCls} pl-9`} value={settings.cameraUrl} onChange={(e) => setSettings({ cameraUrl: e.target.value })} placeholder="http://…/stream.mjpg" />
+            <input className={`${inputCls} pl-9`} value={settings.cameraUrl} onChange={(e) => setSettings({ cameraUrl: e.target.value })} placeholder="http://<radxa>:8080/stream" />
           </div>
         </Field>
         <Slider label="Confianza mínima (cámara local)" value={settings.minConfidence} min={0.3} max={0.95} step={0.05} onChange={(v) => setSettings({ minConfidence: v })} />

@@ -101,6 +101,12 @@ export function TopBar({ onView }: { onView: (v: View) => void }) {
             <WifiOff size={12} /> {status === "connecting" ? "Conectando…" : "Sin conexión"}
           </Badge>
         )}
+        {online && kind === "ws" && tel?.links && (
+          <>
+            <Badge tone={tel.links.fc ? "ok" : "danger"}>H743</Badge>
+            <Badge tone={tel.links.vision ? "ok" : "danger"}>Visión</Badge>
+          </>
+        )}
         {!online && status !== "connecting" && (
           <Button size="sm" variant="ghost" onClick={() => (kind === "ws" ? onView("ajustes") : connectSim())}>
             <Plug size={14} /> {kind === "ws" ? "Revisar conexión" : "Iniciar simulador"}

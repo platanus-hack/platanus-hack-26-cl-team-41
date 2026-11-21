@@ -8,10 +8,22 @@ import math
 import time
 from typing import Any, Awaitable, Callable
 
-from .hardware import POSE_PRESETS, Arm, Drive, Odometry, clamp
+from .hardware import POSE_PRESETS, Arm, Controller, Drive, clamp
 from .vision import Det, Vision
 
 log = logging.getLogger("nexa.robot")
+
+
+class Odometry:
+    """Pose on the console map (metres, radians)."""
+
+    def __init__(self, x: float, y: float, th: float) -> None:
+        self.x, self.y, self.th = x, y, th
+
+    def integrate(self, v: float, w: float, dt: float) -> None:
+        self.th = math.atan2(math.sin(self.th + w * dt), math.cos(self.th + w * dt))
+        self.x += v * math.cos(self.th) * dt
+        self.y += v * math.sin(self.th) * dt
 
 DEFAULT_MISSION = {
     "ordenar": {"zone": {"x0": 0.5, "y0": 0.4, "x1": 2.6, "y1": 2.0}, "drop": {"x": 3.4, "y": 2.5}, "classes": ["botella", "taza", "lata", "juguete"]},
@@ -25,15 +37,18 @@ class Cancelled(Exception):
 
 
 class Robot:
-    def __init__(self, cfg: dict[str, Any], arm: Arm, drive: Drive, vision: Vision, emit: Callable[[dict], None]) -> None:
+    def __init__(self, cfg: dict[str, Any], arm: Arm, drive: Drive, fc: Controller, vision: Vision, emit: Callable[[dict], None]) -> None:
         self.cfg = cfg
         self.b = cfg["behaviors"]
         self.arm = arm
         self.drive = drive
+        self.fc = fc
         self.vision = vision
         self.emit = emit
         sx, sy, sth = cfg["robot"]["start_pose"]
         self.odom = Odometry(sx, sy, math.radians(sth))
+        self._yaw0: float | None = None  # IMU yaw when the bridge started, aligned to start_pose
+        self.armed = False
         self.mode = "idle"
         self.phase = "Listo"
         self.task = "Esperando instrucciones"
@@ -65,6 +80,10 @@ class Robot:
         self.phase, self.task = phase, task
 
     def telemetry(self) -> dict:
+        att = self.fc.attitude()
+        volt = self.fc.voltage()
+        if volt:  # 3S LiPo: 9.9 V empty .. 12.6 V full
+            self.battery = clamp((volt - 9.9) / (12.6 - 9.9) * 100, 0, 100)
         return {
             "t": time.monotonic(),
             "mode": self.mode,
@@ -77,6 +96,9 @@ class Robot:
             "battery": self.battery,
             "carrying": self.carrying,
             "estop": self.estop,
+            "attitude": {"roll": math.degrees(att[0]), "pitch": math.degrees(att[1])} if att else None,
+            "voltage": volt,
+            "links": {"fc": bool(self.fc.connected), "vision": self.vision.alive()},
         }
 
     # ---------------- control loop ----------------
@@ -90,14 +112,31 @@ class Robot:
             step, last = now - last, now
             if self.estop:
                 self.drive.stop()
-                continue
-            self.arm.update(step)
-            if self.mode == "manual":
-                v, w = self.manual_cmd if now < self.manual_until else (0.0, 0.0)
             else:
-                v, w = self._cmd
-            self.drive.set(v, w)
-            self.odom.integrate(self.drive.v, self.drive.w, step)
+                self.arm.update(step)
+                if self.mode == "manual":
+                    v, w = self.manual_cmd if now < self.manual_until else (0.0, 0.0)
+                else:
+                    v, w = self._cmd
+                self.drive.set(v, w)
+            want_armed = not self.estop and self.mode != "idle"
+            if want_armed != self.armed:
+                self.fc.set_armed(want_armed)
+                self.armed = want_armed
+            self.fc.send(self.arm.joints, self.arm.gripper, self.drive.left, self.drive.right)
+            self._odometry(step)
+
+    def _odometry(self, dt: float) -> None:
+        """Distance from the commanded speed (no encoders); heading from the H743's IMU when it reports one."""
+        att = self.fc.attitude()
+        if att is not None:
+            if self._yaw0 is None:
+                self._yaw0 = att[2] - self.odom.th
+            th = att[2] - self._yaw0
+            self.odom.th = math.atan2(math.sin(th), math.cos(th))
+            self.odom.integrate(self.drive.v, 0.0, dt)
+        else:
+            self.odom.integrate(self.drive.v, self.drive.w, dt)
 
     # ---------------- mode switching ----------------
 

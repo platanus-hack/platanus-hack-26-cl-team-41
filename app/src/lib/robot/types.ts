@@ -48,6 +48,12 @@ export type Telemetry = {
   battery: number;
   carrying: string | null;
   estop: boolean;
+  /** Base tilt from the flight controller's IMU (degrees). */
+  attitude?: { roll: number; pitch: number } | null;
+  /** Battery voltage reported by the flight controller. */
+  voltage?: number | null;
+  /** Health of the robot's links: flight controller (MAVLink) and PC vision. */
+  links?: { fc: boolean; vision: boolean };
 };
 
 export type Detection = {

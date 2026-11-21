@@ -66,26 +66,46 @@ class Bridge:
                 self.emit({"type": "stats", "stats": r.stats})
 
     async def handler(self, ws: ServerConnection) -> None:
+        """Consoles get the telemetry; the PC vision client (hello client="nexa-vision") only sends detections."""
         r = self.robot
         assert r
+        is_vision = False
         self.clients.add(ws)
-        log.info("Console connected (%s), %d open", ws.remote_address, len(self.clients))
+        log.info("Client connected (%s)", ws.remote_address)
         await ws.send(json.dumps({"type": "world", "world": self.world()}))
-        r.event("ok", f"{self.cfg['robot']['name']} conectado a la consola.")
         try:
             async for raw in ws:
                 try:
                     msg = json.loads(raw)
                 except (TypeError, ValueError):
                     continue
-                if isinstance(msg, dict):
-                    self.handle(msg)
+                if not isinstance(msg, dict):
+                    continue
+                if msg.get("type") == "hello":
+                    if msg.get("client") == "nexa-vision":
+                        is_vision = True
+                        self.clients.discard(ws)
+                        r.event("ok", "Visión del PC conectada.")
+                    else:
+                        r.event("ok", f"{self.cfg['robot']['name']} conectado a la consola.")
+                    continue
+                if msg.get("type") == "vision_detections":
+                    if not is_vision:
+                        is_vision = True
+                        self.clients.discard(ws)
+                    update = getattr(r.vision, "update", None)
+                    if update and isinstance(msg.get("detections"), list):
+                        update(msg["detections"])
+                    continue
+                self.handle(msg)
         except ConnectionClosed:
             pass
         finally:
             self.clients.discard(ws)
-            log.info("Console left, %d open", len(self.clients))
-            if not self.clients and r.mode == "manual":
+            if is_vision:
+                r.event("warn", "Se desconectó la visión del PC.")
+            log.info("Client left, %d consoles open", len(self.clients))
+            if not is_vision and not self.clients and r.mode == "manual":
                 r.start_mode("idle", BEHAVIOURS)  # nobody is driving any more
 
     def handle(self, msg: dict) -> None:

@@ -1,0 +1,22 @@
+# PC vision client (runs on the PC with the RTX 3070)
+
+[robot]
+video_url = "http://radxa-zero3.local:8080/stream"   # ustreamer on the Radxa
+bridge_url = "ws://radxa-zero3.local:8765"            # nexa_bridge on the Radxa
+
+[vision]
+model = "models/best.pt"   # the model you trained
+device = 0                 # CUDA GPU index ("cpu" to test without the GPU)
+confidence = 0.5
+rate_hz = 10               # detections sent per second (at most one per new frame)
+
+# model class name -> name the console uses
+[vision.class_map]
+person = "persona"
+bottle = "botella"
+cup = "taza"
+can = "lata"
+toy = "juguete"
+"teddy bear" = "juguete"
+screw = "tornillo"
+book = "libro"

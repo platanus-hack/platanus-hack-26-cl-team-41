@@ -8,17 +8,20 @@ import logging
 import signal
 
 from . import config as config_mod
-from .hardware import Arm, Drive
+from .hardware import Arm, Controller, Drive, MockController
 from .robot import Robot
 from .server import Bridge
-from .vision import CameraVision, FakeVision, MjpegServer, Vision
+from .vision import ExternalVision, FakeVision, Vision
 
 
 def main() -> None:
-    ap = argparse.ArgumentParser(prog="nexa_bridge", description="Bridge between the Nexa web console and the robot.")
+    ap = argparse.ArgumentParser(prog="nexa_bridge", description="Bridge between the Nexa web console and the robot (Matek H743 over MAVLink).")
     ap.add_argument("--config", help="path to config.toml (default: the one next to the package)")
-    ap.add_argument("--mock", action="store_true", help="no hardware: fake servos, motors and camera (for a PC)")
+    ap.add_argument("--mock", action="store_true", help="no hardware: simulated H743 and a fake camera world (for a PC)")
+    ap.add_argument("--vision", choices=["fake", "external"], default=None,
+                    help="with --mock: 'fake' (default) simulates the camera, 'external' waits for the PC vision client")
     ap.add_argument("--port", type=int, help="override the WebSocket port")
+    ap.add_argument("--device", help="override the MAVLink serial device (e.g. /dev/ttyS5)")
     ap.add_argument("-v", "--verbose", action="store_true")
     args = ap.parse_args()
 
@@ -27,28 +30,31 @@ def main() -> None:
     cfg = config_mod.load(args.config)
     if args.port:
         cfg["server"]["port"] = args.port
+    if args.device:
+        cfg["mavlink"]["device"] = args.device
 
-    arm = Arm(cfg["arm"], mock=args.mock)
-    drive = Drive(cfg["drive"], mock=args.mock)
+    arm = Arm(cfg["arm"])
+    drive = Drive(cfg["drive"])
     bridge = Bridge(cfg)
     holder: dict[str, Robot] = {}
 
+    fc: Controller
     vision: Vision
     if args.mock:
-        vision = FakeVision(cfg, lambda: (holder["r"].odom.x, holder["r"].odom.y, holder["r"].odom.th))
-    elif cfg["camera"].get("enabled", True):
-        vision = CameraVision(cfg)
+        fc = MockController(cfg, track=float(cfg["drive"]["track"]), max_v=float(cfg["drive"]["max_wheel_speed"]))
+        if args.vision == "external":
+            vision = ExternalVision(cfg)
+        else:
+            vision = FakeVision(cfg, lambda: (holder["r"].odom.x, holder["r"].odom.y, holder["r"].odom.th))
     else:
-        vision = Vision(cfg)
+        from .hardware import MavlinkController  # needs pymavlink, only on the robot
 
-    robot = Robot(cfg, arm, drive, vision, bridge.emit)
+        fc = MavlinkController(cfg["mavlink"])
+        vision = ExternalVision(cfg)
+
+    robot = Robot(cfg, arm, drive, fc, vision, bridge.emit)
     holder["r"] = robot
-    try:
-        vision.start()
-        if isinstance(vision, CameraVision):
-            MjpegServer(vision, int(cfg["camera"].get("mjpeg_port", 8080))).start()
-    except Exception as e:  # camera or model problems must not stop the robot from driving
-        log.error("Vision disabled: %s", e)
+    vision.start()
 
     async def run() -> None:
         loop = asyncio.get_running_loop()
@@ -67,8 +73,9 @@ def main() -> None:
     except KeyboardInterrupt:
         pass
     finally:
-        log.info("Stopping: motors off")
-        drive.close()
+        log.info("Stopping: wheels stopped, H743 disarmed")
+        drive.stop()
+        fc.close()
         vision.stop()
 
 

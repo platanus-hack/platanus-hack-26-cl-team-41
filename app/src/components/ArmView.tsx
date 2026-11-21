@@ -71,7 +71,10 @@ export function ArmView() {
         </text>
       </svg>
       <div className="flex flex-col justify-between gap-2 min-w-[150px]">
-        <BaseDial yaw={j[0]} />
+        <div className="flex items-center justify-center gap-2">
+          <BaseDial yaw={j[0]} />
+          <TiltIndicator roll={tel?.attitude?.roll ?? 0} pitch={tel?.attitude?.pitch ?? 0} live={Boolean(tel?.attitude)} />
+        </div>
         <div className="space-y-1">
           {JOINT_INFO.map((ji, i) => (
             <div key={ji.name} className="flex items-center justify-between text-xs">
@@ -86,6 +89,33 @@ export function ArmView() {
         </div>
       </div>
     </div>
+  );
+}
+
+/** Artificial horizon of the base from the IMU (roll rotates it, pitch shifts it). */
+function TiltIndicator({ roll, pitch, live }: { roll: number; pitch: number; live: boolean }) {
+  const shift = Math.max(-30, Math.min(30, pitch * 3));
+  return (
+    <svg viewBox="-50 -50 100 100" className="w-24 h-24" role="img" aria-label={`Inclinación: roll ${roll.toFixed(1)}°, pitch ${pitch.toFixed(1)}°`}>
+      <defs>
+        <clipPath id="tiltClip">
+          <circle r={44} />
+        </clipPath>
+      </defs>
+      <g clipPath="url(#tiltClip)">
+        <rect x={-60} y={-60} width={120} height={120} fill="rgba(34,211,238,0.08)" />
+        <g transform={`rotate(${-roll}) translate(0 ${shift})`}>
+          <rect x={-80} y={0} width={160} height={80} fill="rgba(167,139,250,0.22)" />
+          <line x1={-80} y1={0} x2={80} y2={0} stroke="#a78bfa" strokeWidth={2} />
+        </g>
+      </g>
+      <circle r={44} fill="none" stroke="rgba(148,163,184,0.25)" />
+      <line x1={-18} y1={0} x2={-6} y2={0} stroke="#22d3ee" strokeWidth={3} strokeLinecap="round" />
+      <line x1={6} y1={0} x2={18} y2={0} stroke="#22d3ee" strokeWidth={3} strokeLinecap="round" />
+      <text y={30} fontSize={10} fill="#8b98ab" textAnchor="middle">
+        {live ? `${roll.toFixed(1)}° / ${pitch.toFixed(1)}°` : "sin IMU"}
+      </text>
+    </svg>
   );
 }
 

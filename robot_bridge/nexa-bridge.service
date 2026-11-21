@@ -1,13 +1,13 @@
 [Unit]
-Description=Nexa robot bridge (web console <-> arm, drive and vision)
+Description=Nexa robot bridge (web console <-> Matek H743 over MAVLink)
 After=network-online.target
 Wants=network-online.target
 
 [Service]
-# adjust the user and the path to where the repository lives on the Pi
-User=pi
-WorkingDirectory=/home/pi/SOLIDCRAFT/robot_bridge
-ExecStart=/home/pi/SOLIDCRAFT/robot_bridge/.venv/bin/python -m nexa_bridge
+# adjust the user and the path to where the repository lives on the Radxa
+User=radxa
+WorkingDirectory=/home/radxa/SOLIDCRAFT/robot_bridge
+ExecStart=/home/radxa/SOLIDCRAFT/robot_bridge/.venv/bin/python -m nexa_bridge
 Restart=on-failure
 RestartSec=3
 

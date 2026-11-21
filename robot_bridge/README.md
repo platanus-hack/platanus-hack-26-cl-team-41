@@ -1,119 +1,109 @@
 # Nexa · puente del robot
 
-Programa en Python que corre en el robot (Raspberry Pi 4/5 recomendada) y une la **consola web** con el
-hardware: el brazo (PCA9685), las ruedas (L298N), la cámara y **su modelo de reconocimiento**.
-Habla el protocolo WebSocket de la consola (`app/src/lib/robot/types.ts`) y ejecuta los modos
-**ordenar zona**, **asistente** y **saludo** en el propio robot.
+Programa en Python que corre en la **Radxa Zero 3W** y une la **consola web** con el robot. Habla el
+protocolo WebSocket de la consola (`app/src/lib/robot/types.ts`), manda los servos y los motores a la
+**Matek H743** por MAVLink, recibe las detecciones de YOLO desde el **PC** y ejecuta los modos
+**ordenar zona**, **asistente** y **saludo**.
 
 ```
-consola web ──WebSocket :8765──▶ nexa_bridge ──I2C──▶ PCA9685 ──▶ 4×MG995 + 2×SG90
-   ▲                               │  └─GPIO PWM──▶ L298N ──▶ 2 motores TT
-   └──── video MJPEG :8080 ◀── cámara + YOLO (best.pt)
+                 WebSocket :8765                        MAVLink 2, 115200 (SERIAL2 ↔ /dev/ttyS5)
+consola (PC) ◀──────────────────▶ nexa_bridge (Radxa) ◀────────────────────▶ H743 + nexa.lua
+                                     ▲                                       │  S1–S6  6 servos (50 Hz)
+visión (PC, YOLO) ──vision_detections┘                                       │  S7–S10 IN1–IN4 del L298N (490 Hz)
+      ▲                                                                      └  IMU → ATTITUDE, batería → SYS_STATUS
+      └── video MJPEG ◀── ustreamer :8080/stream (Radxa) ◀── cámara USB 3.0
 ```
 
-## Cableado
+## Qué hace cada equipo
+
+| Equipo | Hace |
+|---|---|
+| H743 (`h743/nexa.lua`) | Recibe las órdenes como sobreescrituras de canales RC, suma la compensación de la IMU, calibra y genera el PWM de servos y motores; frena las ruedas si deja de recibir |
+| Radxa (`nexa_bridge`) | Consola, misiones, odometría (rumbo de la IMU), suavizado de articulaciones, arma y desarma la H743 |
+| Radxa (ustreamer) | Video de la cámara sin recomprimir en `:8080/stream` y `:8080/snapshot` |
+| PC (`pc_vision`) | YOLO en la GPU sobre ese video; envía las detecciones al puente |
+
+## Conexiones
 
 | Desde | Hacia | Nota |
 |---|---|---|
-| Pi pin 3 (GPIO2, SDA) | PCA9685 SDA | |
-| Pi pin 5 (GPIO3, SCL) | PCA9685 SCL | |
-| Pi pin 1 (3,3 V) | PCA9685 VCC | lógica |
-| Regulador 6 V **≥10 A** | PCA9685 V+ (borne de servos) | los 4 MG995 piden ~10 A de pico; nunca desde la Pi |
-| PCA9685 canales 0–4 | base, hombro, codo, muñeca, giro de muñeca | ver `[arm] channels` |
-| PCA9685 canal 5 | pinza (SG90) | |
-| Pi GPIO12 (pin 32) | L298N **ENA** | quita el puente (jumper) de ENA |
-| Pi GPIO5 / GPIO6 | L298N IN1 / IN2 | motor izquierdo |
-| Pi GPIO13 (pin 33) | L298N **ENB** | quita el puente de ENB |
-| Pi GPIO19 / GPIO26 | L298N IN3 / IN4 | motor derecho |
-| Batería 3S | L298N 12 V | con interruptor y fusible |
-| **Todas las tierras** | GND común | Pi, PCA9685, regulador y L298N |
+| H743 TX1 / RX1 (SERIAL2) | Radxa pin 33 / pin 32 (`/dev/ttyS5`) | MAVLink 2, 115200, cruzado (TX→RX) |
+| H743 GND | Radxa GND | tierra común |
+| H743 S1–S6 | servos: base, hombro, codo, inclinación de muñeca, giro de muñeca, pinza | alimentados por el Vx a 6 V |
+| H743 S7–S10 | L298N IN1, IN2, IN3, IN4 | ENA y ENB con jumper |
+| LiPo 3S | H743 (entrada de batería) y L298N 12 V | con interruptor y fusible |
+| H743 5 V (2 A) o power bank | Radxa | 0,8–1,4 A con la cámara |
+| Cámara DECXIN | Radxa USB 3.0 | |
 
-La Pi se alimenta aparte, con un regulador de 5 V / 5 A desde la batería.
+Parámetros de la H743 y calibración de servos y motores: [`h743/README.md`](../h743/README.md).
 
-## Instalación (Raspberry Pi OS Bookworm, 64 bits)
+## Instalación en la Radxa
 
 ```bash
-sudo raspi-config nonint do_i2c 0           # activa I2C
-sudo apt install -y python3-venv python3-lgpio
+sudo apt install -y python3-venv ustreamer
 cd ~/SOLIDCRAFT/robot_bridge
-python3 -m venv --system-site-packages .venv
-.venv/bin/pip install -r requirements.txt
-mkdir -p models && cp /ruta/a/best.pt models/best.pt   # el modelo que entrenaron
+python3 -m venv .venv
+.venv/bin/pip install -r requirements.txt     # websockets + pymavlink
 ```
 
-Clases del modelo: en `config.toml`, `[vision.class_map]` traduce el nombre de cada clase de su
-modelo al nombre que usa la consola (`persona`, `botella`, `taza`, `lata`, `juguete`, `tornillo`, `libro`).
-La clase de las personas tiene que llegar como `persona`.
+UART: activa el overlay del UART que usa los pines 32/33 (`/dev/ttyS5`) con `rsetup` y comprueba que no
+lo ocupe una consola serie.
+
+Video con ustreamer (servicio, por ejemplo `/etc/systemd/system/ustreamer.service`):
+
+```bash
+ustreamer --device /dev/video0 --format MJPEG --resolution 1280x720 --desired-fps 30 \
+          --host 0.0.0.0 --port 8080
+```
+
+Deja el video en `http://<radxa>:8080/stream` y una foto en `/snapshot`, sin recomprimir (unos 15 Mbit/s).
 
 ## Uso
 
 ```bash
-.venv/bin/python -m nexa_bridge          # robot real
-.venv/bin/python -m nexa_bridge --mock   # en un PC, sin hardware: servos, motores y cámara simulados
+.venv/bin/python -m nexa_bridge                       # robot real (H743 en /dev/ttyS5)
+.venv/bin/python -m nexa_bridge --device /dev/ttyACM0 # H743 por USB para probar en la mesa
+.venv/bin/python -m nexa_bridge --mock                # en un PC: H743 y cámara simuladas
+.venv/bin/python -m nexa_bridge --mock --vision external   # H743 simulada + detecciones reales del PC
 ```
 
-En la consola: **Ajustes → Robot real**, dirección `ws://<ip-del-robot>:8765`, y en **Visión** el video
-`http://<ip-del-robot>:8080/stream.mjpg`.
+1. En el PC: `python pc_vision/vision_client.py --show` (ver [`pc_vision/README.md`](../pc_vision/README.md)).
+2. En el PC: la consola en local (`npm run dev` en `app/`). En **Ajustes → Robot real** pon `ws://<radxa>:8765`, y en **Visión** pon `http://<radxa>:8080/stream`.
+3. En la barra superior deben aparecer **H743** y **Visión** en verde.
 
-**Consola en Vercel (https):** el navegador bloquea `ws://` hacia otra máquina. Expón el robot con un
-túnel, por ejemplo `cloudflared tunnel --url http://localhost:8765`, y conéctate a la dirección
-`wss://….trycloudflare.com` que te da. O usa la consola en local (`npm run dev` en `app/`), en la misma red que el robot.
+Arranque automático: `sudo cp nexa-bridge.service /etc/systemd/system/ && sudo systemctl enable --now nexa-bridge`
+(ajusta el usuario y la ruta del archivo).
 
-Arranque automático al encender:
+## Calibración (en este orden, con el brazo sin carga)
 
-```bash
-sudo cp nexa-bridge.service /etc/systemd/system/
-sudo systemctl enable --now nexa-bridge
-journalctl -u nexa-bridge -f      # ver el registro
-```
-
-## Calibración (hazla en este orden, con el brazo sin carga)
-
-1. **Servos.** En la consola, **Control manual → Posturas → Recto**. Cada articulación debe quedar en 0°
-   (el brazo recto hacia arriba). Corrige con `[arm] offset` (grados) y, si una gira al revés,
-   pon `-1` en `direction`. Ajusta `gripper_closed` / `gripper_open` para la pinza.
-2. **Ruedas.** Avanza con el joystick: si una rueda va al revés, usa `invert_left` / `invert_right`.
-   Mide cuántos metros recorre en 5 s a fondo y pon esa velocidad en `max_wheel_speed`: la
-   odometría (y por tanto la zona y las estaciones del mapa) depende de este número.
+1. **Servos y compensación** en `h743/nexa.lua` (dirección, offset, µs/grado, pinza, signos de la compensación de inclinación).
+2. **Ruedas.**
+   - Si una rueda va al revés: `invert_left` / `invert_right` en `config.toml`.
+   - Mide cuántos metros recorre en 5 s a fondo y pon esa velocidad en `max_wheel_speed`. La distancia de la odometría depende de este número; el rumbo lo da la IMU.
 3. **Visión.**
-   - `pick_bbox_h`: qué tan alto se ve un objeto en la imagen (fracción de la imagen) cuando la pinza lo alcanza con la postura «Recoger».
-   - `person_bbox_h_at_1m`: altura del recuadro de una persona a 1 m.
-   - Con ambos el robot calcula a qué distancia detenerse.
-4. **Mapa.** `start_pose` es dónde dejas el robot al encenderlo, en las coordenadas del mapa de la
-   consola. Las estaciones de herramientas y el contenedor van en `[behaviors]`.
+   - `[camera] hfov_deg`: el campo de visión real de la cámara.
+   - `pick_bbox_h`: alto del recuadro de un objeto cuando la pinza lo alcanza con la postura «Recoger».
+   - `person_bbox_h_at_1m`: alto del recuadro de una persona a 1 m.
+4. **Mapa.**
+   - `start_pose`: dónde dejas el robot al encenderlo, en coordenadas del mapa de la consola.
+   - En `[behaviors]`: la estación de herramientas y el contenedor.
 
-## Cómo funcionan los modos
+## Seguridad
 
-- **Ordenar zona:**
-  - Barre la zona en zigzag usando la odometría.
-  - Cuando el modelo ve una clase elegida, se acerca guiado por la cámara hasta que el recuadro alcanza `pick_bbox_h`.
-  - Lo recoge, va al punto de entrega y lo suelta. Luego sigue el barrido.
-- **Asistente:**
-  - Mantiene a la persona centrada en la imagen y a la distancia de seguimiento.
-  - Si le pides una herramienta: va a la estación, la toma, vuelve, te busca, te la extiende y espera tu confirmación.
-  - Si le pasas un material: lo recibe y lo lleva al contenedor.
-- **Saludo:**
-  - Recorre el área. Cuando ve a una persona se acerca a `greet_distance`, saluda con el brazo y la consola habla.
-  - Después espera un rato antes de volver a saludar.
-  - Si la cámara de la consola ve a alguien, también saluda.
-
-Seguridad:
-- **Parada de emergencia:** frena los motores al instante y congela el brazo.
-- **Sin mando en manual:** si deja de llegar el mando durante `watchdog_s`, el robot frena.
-- **Al cerrar el programa:** apaga los motores.
-
-**Límites conocidos:**
-- Los motores TT no tienen encoders. La posición sale de la velocidad mandada y se desvía con el tiempo. Para recorridos largos conviene volver a la posición inicial o agregar encoders o un IMU.
-- El modo asistente sigue a la persona más grande de la imagen, sin reconocer quién es.
+- **Parada de emergencia:** frena las ruedas, congela el brazo y desarma la H743.
+- **En reposo** (`idle`): la H743 queda desarmada y los motores no reciben pulsos.
+- **Si se cae el enlace con la Radxa:** las sobreescrituras expiran a los 0,5 s (`RC_OVERRIDE_TIME`) y el script frena las ruedas.
+- **Si deja de llegar el mando manual:** el puente frena en `watchdog_s`.
+- **Si se cae el WiFi:** el robot pierde la visión (la consola muestra «Visión» en rojo). La estabilización sigue, porque corre en la H743.
 
 ## Estructura
 
 | Archivo | Qué hace |
 |---|---|
-| `nexa_bridge/__main__.py` | Arranque y opciones (`--mock`, `--config`, `--port`) |
-| `nexa_bridge/server.py` | Servidor WebSocket y protocolo de la consola |
-| `nexa_bridge/robot.py` | Estado, lazo de control a 50 Hz y primitivas (ir a, buscar, acercarse, mover el brazo) |
+| `nexa_bridge/__main__.py` | Arranque y opciones (`--mock`, `--vision`, `--device`, `--port`, `--config`) |
+| `nexa_bridge/server.py` | Servidor WebSocket: consola y cliente de visión |
+| `nexa_bridge/robot.py` | Estado, lazo de control a 50 Hz, odometría con rumbo de la IMU y primitivas de movimiento |
 | `nexa_bridge/behaviors.py` | Los tres modos |
-| `nexa_bridge/hardware.py` | Brazo (PCA9685) y tracción (L298N), con versiones simuladas |
-| `nexa_bridge/vision.py` | Cámara, modelo YOLO, video MJPEG y el mundo falso de `--mock` |
-| `config.toml` | Pines, servos, velocidades, clases y estaciones |
+| `nexa_bridge/hardware.py` | `MavlinkController` (H743), `MockController`, brazo y tracción |
+| `nexa_bridge/vision.py` | `ExternalVision` (detecciones del PC) y `FakeVision` (mundo falso de `--mock`) |
+| `config.toml` | MAVLink, límites, velocidades, cámara y estaciones |

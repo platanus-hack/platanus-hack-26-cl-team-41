@@ -174,15 +174,10 @@ WiFi de 5 GHz con WPA3. Medido en la red del evento:
 
 ## 6. Diferencias con el repositorio actual
 
-Estos specs describen la arquitectura con la Matek H743 y la Radxa. El código y el CAD del repositorio todavía corresponden a la versión anterior (Raspberry Pi con PCA9685 y L298N por GPIO):
+El código está alineado con estos specs: el puente usa MAVLink hacia la H743 (`robot_bridge/`, `h743/nexa.lua`), el rumbo sale de la IMU, el video es ustreamer, YOLO corre en el PC (`pc_vision/`) y la consola muestra la orientación y el estado de los enlaces. Falta verificarlo en hardware:
 
-| Spec | Estado en el repositorio |
-|---|---|
-| Puente por MAVLink 2 con pymavlink hacia la H743 | `robot_bridge/` maneja los servos con un PCA9685 por I2C y los motores con gpiozero |
-| Rumbo de la odometría corregido con el giroscopio | La odometría usa solo la velocidad mandada |
-| Video con ustreamer en `/stream` y `/snapshot` | El puente sirve su propio MJPEG en `/stream.mjpg` |
-| YOLO en el PC, que lee el video y envía las detecciones al puente | YOLO corre dentro del puente, en el robot; el puente no recibe detecciones externas |
-| Consola con la orientación de la IMU en la telemetría | La telemetría y la consola no tienen campo de orientación |
-| Consola servida en local como modo principal | `app/README.md` presenta Vercel como despliegue principal |
+- El puente conectado a la H743 real (solo probado con la H743 simulada).
+- `nexa.lua` en la placa: si su script ya verificado usa otra forma de recibir las órdenes, hay que adoptar `nexa.lua` o adaptar la tabla de canales (`h743/README.md`).
+- El cliente de visión con la cámara, el modelo propio y la GPU (solo probado el envío de detecciones con un cliente falso).
 
 Nota de alimentación: 4 MG995 pueden pedir ~10 A de pico si se traban a la vez, por encima de los ~8 A del Vx. Conviene no mover los cuatro con carga al mismo tiempo, o medir la caída de tensión en una prueba.

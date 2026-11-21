@@ -1,4 +1,4 @@
-# Nexa robot bridge configuration. Units: metres, degrees, seconds.
+# Nexa robot bridge configuration (runs on the Radxa Zero 3W). Units: metres, degrees, seconds.
 
 [server]
 host = "0.0.0.0"
@@ -11,64 +11,31 @@ name = "Nexa"
 # The console's zone, drop point and stations use the same coordinates.
 start_pose = [0.4, 2.6, 0.0]
 
+[mavlink]
+# Matek H743 TX1/RX1 (SERIAL2) <-> Radxa pins 32/33 (/dev/ttyS5), MAVLink 2
+device = "/dev/ttyS5"
+baud = 115200
+gcs_sysid = 255        # must match SYSID_MYGCS on the H743 for RC overrides to be accepted
+# RC override encoding shared with h743/nexa.lua:
+#   ch1..5 joint angle = 1500 + deg * deg_scale, ch6 gripper 1000..2000, ch7/ch8 wheel duty 1500 + 500 * duty
+deg_scale = 5.0
+
 [arm]
-# PCA9685 channels: base, shoulder, elbow, wrist pitch, wrist roll, gripper
-channels = [0, 1, 2, 3, 4]
-gripper_channel = 5
-# servo angle = 90 + direction * joint + offset   (calibrate so joint 0 = arm straight up)
-direction = [1, 1, 1, 1, 1]
-offset = [0, 0, 0, 0, 0]
-# pulse range per servo in microseconds (MG995 ~500-2500, SG90 ~500-2400)
-min_pulse = [500, 500, 500, 500, 500, 500]
-max_pulse = [2500, 2500, 2500, 2500, 2400, 2400]
+# joint limits in degrees (0 = arm straight up); servo calibration lives in h743/nexa.lua
 joint_min = [-90, -90, -90, -90, -90]
 joint_max = [90, 90, 120, 90, 90]
-# gripper servo angle when closed / fully open
-gripper_closed = 25
-gripper_open = 95
 speed_dps = 90          # max joint speed when moving to a target
 
 [drive]
-# L298N: remove the ENA/ENB jumpers and wire them to PWM pins (BCM numbering)
-left_enable = 12
-left_in1 = 5
-left_in2 = 6
-right_enable = 13
-right_in1 = 19
-right_in2 = 26
+max_wheel_speed = 0.45  # m/s at full duty (the Lua script caps the duty at 0.55); measure it: odometry depends on it
+track = 0.20            # distance between the wheel centres
 invert_left = false
 invert_right = false
-max_duty = 0.6          # TT motors are 3-6 V: with a 3S battery keep the duty at or below ~0.6
-max_wheel_speed = 0.45  # m/s reached at max_duty (measure it and adjust: odometry depends on it)
-track = 0.20            # distance between the wheel centres
 watchdog_s = 0.5        # stop if no drive command arrives in this time (manual mode)
 
 [camera]
-enabled = true
-index = 0
-width = 640
-height = 480
-fps = 15
-hfov_deg = 62           # horizontal field of view of the camera
-mjpeg_port = 8080       # video for the console: http://<robot>:8080/stream.mjpg
-
-[vision]
-# "none" | "yolo" (Ultralytics, e.g. the best.pt you train)
-backend = "yolo"
-model = "models/best.pt"
-confidence = 0.5
-rate_hz = 6
-
-# model class name -> name the console uses
-[vision.class_map]
-person = "persona"
-bottle = "botella"
-cup = "taza"
-can = "lata"
-toy = "juguete"
-"teddy bear" = "juguete"
-screw = "tornillo"
-book = "libro"
+# DECXIN global-shutter USB camera on the Radxa, streamed by ustreamer at http://<radxa>:8080/stream
+hfov_deg = 62           # horizontal field of view: measure it, the visual approach uses it
 
 [behaviors]
 # image-based approach: bbox height as a fraction of the image when the object is in reach

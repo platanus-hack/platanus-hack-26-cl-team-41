@@ -64,6 +64,7 @@ export class Simulator implements RobotLink, SimControls {
   private battery = 100;
   private carrying: WorldObject | null = null;
   private carryingLabel: string | null = null;
+  private prevV = 0;
 
   private mode: Mode = "idle";
   private phase = "Listo";
@@ -211,6 +212,7 @@ export class Simulator implements RobotLink, SimControls {
       this.carrying.pos = { x: this.pose.x + 0.18 * Math.cos(this.pose.th), y: this.pose.y + 0.18 * Math.sin(this.pose.th) };
     }
     this.emitTelemetry();
+    this.prevV = this.cmd.v;
     if (this.tick % 6 === 0) {
       this.emitWorld();
       this.emitDetections();
@@ -267,6 +269,10 @@ export class Simulator implements RobotLink, SimControls {
       battery: this.battery,
       carrying: this.carryingLabel,
       estop: this.estop,
+      // the simulated base leans a little when it accelerates and turns
+      attitude: { roll: clamp(-this.cmd.w * this.cmd.v * 6, -4, 4), pitch: clamp((this.cmd.v - this.prevV) * 60, -3, 3) },
+      voltage: 9.9 + (this.battery / 100) * 2.7,
+      links: { fc: true, vision: true },
     };
     this.h.onMessage({ type: "telemetry", telemetry });
   }

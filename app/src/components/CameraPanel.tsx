@@ -8,7 +8,7 @@ import { Badge, Button, Card, cx } from "./ui";
 
 type Source = "browser" | "robot";
 
-/** Camera with object/person detection. Browser: webcam + COCO-SSD. Robot: MJPEG stream + the robot's own detections. */
+/** Camera with object/person detection. Browser: webcam + COCO-SSD. Robot: ustreamer MJPEG from the Radxa + the YOLO detections relayed by the bridge. */
 export function CameraPanel({ title = "Visión", compact = false }: { title?: string; compact?: boolean }) {
   const [source, setSource] = useState<Source>("browser");
   return (
@@ -186,7 +186,7 @@ function RobotCamera({ compact }: { compact: boolean }) {
           <img src={url} alt="Cámara del robot" className="absolute inset-0 h-full w-full object-cover" />
         ) : (
           <div className="absolute inset-0 grid place-items-center p-4 text-center text-sm text-muted">
-            Configura la URL del video del robot (MJPEG) en Ajustes. Las detecciones de tu modelo llegan por el canal del robot.
+            Configura en Ajustes la URL del video de la Radxa (http://&lt;radxa&gt;:8080/stream). Las detecciones de YOLO llegan desde el PC a través del robot.
           </div>
         )}
         <svg viewBox="0 0 1 1" preserveAspectRatio="none" className="absolute inset-0 h-full w-full">
