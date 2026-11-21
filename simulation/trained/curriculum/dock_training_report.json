@@ -1,0 +1,27 @@
+{
+  "examples": 10000,
+  "training_examples": 8334,
+  "validation_examples": 1666,
+  "history": [
+    {
+      "epoch": 1,
+      "validation_rmse": 0.031155906535777253
+    },
+    {
+      "epoch": 41,
+      "validation_rmse": 0.0030025181874913484
+    },
+    {
+      "epoch": 81,
+      "validation_rmse": 0.002432638492859359
+    },
+    {
+      "epoch": 121,
+      "validation_rmse": 0.001970944021020222
+    },
+    {
+      "epoch": 140,
+      "validation_rmse": 0.001475749391782396
+    }
+  ]
+}

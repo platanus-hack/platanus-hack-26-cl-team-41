@@ -1,0 +1,145 @@
+{
+  "task": "Pick up a 16mm, 6g block and hold it above the table for 1 second, with bilateral jaw contacts on >=80% of hold samples.",
+  "episodes": 6,
+  "successes": 6,
+  "success_rate": 1.0,
+  "held_out_seeds": [
+    100,
+    105
+  ],
+  "controller": "analytic teacher",
+  "object_position_range_m": [
+    [
+      0.126,
+      0.006
+    ],
+    [
+      0.134,
+      0.023
+    ]
+  ],
+  "no_object_attachment": true,
+  "results": [
+    {
+      "task": "block",
+      "lift_success": true,
+      "min_hold_height_m": 0.036424107005338165,
+      "start_height_m": 0.007946725390725204,
+      "bilateral_hold_fraction": 1.0,
+      "tcp_errors_m": {
+        "approach": 0.003308900800439303,
+        "descend": 0.0033045700724253493,
+        "close": 0.00024013925559185958,
+        "lift": 0.0001462971716240592,
+        "hold": 0.00016763158418761775
+      },
+      "object_final_m": [
+        0.13314647368575344,
+        0.016849959185835994,
+        0.03649179524280484
+      ],
+      "seed": 100
+    },
+    {
+      "task": "block",
+      "lift_success": true,
+      "min_hold_height_m": 0.032235648605323894,
+      "start_height_m": 0.007946725390725204,
+      "bilateral_hold_fraction": 1.0,
+      "tcp_errors_m": {
+        "approach": 0.0022285529643574662,
+        "descend": 0.0036400810498196413,
+        "close": 0.0016607278477510042,
+        "lift": 0.003599827792332812,
+        "hold": 0.0014826809513026032
+      },
+      "object_final_m": [
+        0.1326990751343747,
+        0.011699888114431633,
+        0.0349772402459127
+      ],
+      "seed": 101
+    },
+    {
+      "task": "block",
+      "lift_success": true,
+      "min_hold_height_m": 0.03544759475537835,
+      "start_height_m": 0.007946725390725204,
+      "bilateral_hold_fraction": 1.0,
+      "tcp_errors_m": {
+        "approach": 0.009816038547003672,
+        "descend": 0.00376010135482891,
+        "close": 0.0006444536317295688,
+        "lift": 0.0010354604080466347,
+        "hold": 0.0016581544913246047
+      },
+      "object_final_m": [
+        0.12870561027978458,
+        0.016073226979564273,
+        0.03785381751802232
+      ],
+      "seed": 102
+    },
+    {
+      "task": "block",
+      "lift_success": true,
+      "min_hold_height_m": 0.03325784762029599,
+      "start_height_m": 0.007946725390725202,
+      "bilateral_hold_fraction": 1.0,
+      "tcp_errors_m": {
+        "approach": 0.00985758641543556,
+        "descend": 0.003983191934835029,
+        "close": 0.0016828257734272526,
+        "lift": 0.0027782494348326412,
+        "hold": 0.0033357346493370654
+      },
+      "object_final_m": [
+        0.13098174749883595,
+        0.009946729011154502,
+        0.038701855443637016
+      ],
+      "seed": 103
+    },
+    {
+      "task": "block",
+      "lift_success": true,
+      "min_hold_height_m": 0.03180402150322518,
+      "start_height_m": 0.007946725390725202,
+      "bilateral_hold_fraction": 1.0,
+      "tcp_errors_m": {
+        "approach": 0.0030590813149128566,
+        "descend": 0.0036322421022013133,
+        "close": 0.002630080469579411,
+        "lift": 0.0005807312893263784,
+        "hold": 0.004617961767801398
+      },
+      "object_final_m": [
+        0.12979352970245753,
+        0.017944215783305274,
+        0.03180402150322518
+      ],
+      "seed": 104
+    },
+    {
+      "task": "block",
+      "lift_success": true,
+      "min_hold_height_m": 0.0324726941675892,
+      "start_height_m": 0.007946725390725204,
+      "bilateral_hold_fraction": 1.0,
+      "tcp_errors_m": {
+        "approach": 0.005342253641099963,
+        "descend": 0.0037612890000580336,
+        "close": 0.0014159643180260016,
+        "lift": 0.002195030607839482,
+        "hold": 0.001272802663933179
+      },
+      "object_final_m": [
+        0.13183810045553795,
+        0.024315588019732878,
+        0.036990201460297356
+      ],
+      "seed": 105
+    }
+  ],
+  "physics_status": "preassembly_prior_not_hardware_calibrated"
+}

@@ -1,0 +1,291 @@
+{
+  "task": "Pick up a 16mm, 6g block, hold it above the table for 1 second with bilateral jaw contacts, place it in the tray and release.",
+  "episodes": 12,
+  "lift_successes": 12,
+  "place_successes": 12,
+  "successes": 12,
+  "success_rate": 1.0,
+  "held_out_seeds": [
+    2000,
+    2011
+  ],
+  "controller": "learned goal policy + scripted contact phases + gravity/joint feedback",
+  "object_position_range_m": [
+    [
+      0.126,
+      0.006
+    ],
+    [
+      0.134,
+      0.023
+    ]
+  ],
+  "no_object_attachment": true,
+  "results": [
+    {
+      "task": "block",
+      "lift_success": true,
+      "min_hold_height_m": 0.036144177508646395,
+      "start_height_m": 0.007946725390725202,
+      "bilateral_hold_fraction": 1.0,
+      "tcp_errors_m": {
+        "approach": 0.002838642947163684,
+        "descend": 0.0015319182525617419,
+        "close": 0.0011479166674276276,
+        "lift": 0.0016064654050671288,
+        "hold": 0.0014999258161175802
+      },
+      "object_final_m": [
+        0.13006774888615108,
+        -0.05758874927039077,
+        0.011946997029885262
+      ],
+      "place_success": true,
+      "pick_place_success": true,
+      "seed": 2000
+    },
+    {
+      "task": "block",
+      "lift_success": true,
+      "min_hold_height_m": 0.03619466839805457,
+      "start_height_m": 0.007946725390725202,
+      "bilateral_hold_fraction": 1.0,
+      "tcp_errors_m": {
+        "approach": 0.003733105329435063,
+        "descend": 0.0016162630726652039,
+        "close": 0.001261205155604315,
+        "lift": 0.001373070085031342,
+        "hold": 0.0012660538759561653
+      },
+      "object_final_m": [
+        0.12896761122672962,
+        -0.05882483880314777,
+        0.011946997029963883
+      ],
+      "place_success": true,
+      "pick_place_success": true,
+      "seed": 2001
+    },
+    {
+      "task": "block",
+      "lift_success": true,
+      "min_hold_height_m": 0.03623460485622872,
+      "start_height_m": 0.007946725390725202,
+      "bilateral_hold_fraction": 1.0,
+      "tcp_errors_m": {
+        "approach": 0.001444259108008839,
+        "descend": 0.0012980225199011905,
+        "close": 0.0008306427811208792,
+        "lift": 0.0012634862300467463,
+        "hold": 0.0011303694230578416
+      },
+      "object_final_m": [
+        0.12992477690814874,
+        -0.05832594448908237,
+        0.01194699702995997
+      ],
+      "place_success": true,
+      "pick_place_success": true,
+      "seed": 2002
+    },
+    {
+      "task": "block",
+      "lift_success": true,
+      "min_hold_height_m": 0.03616889299998934,
+      "start_height_m": 0.007946725390725204,
+      "bilateral_hold_fraction": 1.0,
+      "tcp_errors_m": {
+        "approach": 0.0034671635454946283,
+        "descend": 0.001360377438278603,
+        "close": 0.00101730181344609,
+        "lift": 0.0012926927315322905,
+        "hold": 0.001204509707375513
+      },
+      "object_final_m": [
+        0.12969921499295356,
+        -0.058086766975642024,
+        0.01194699702988165
+      ],
+      "place_success": true,
+      "pick_place_success": true,
+      "seed": 2003
+    },
+    {
+      "task": "block",
+      "lift_success": true,
+      "min_hold_height_m": 0.03619482135569727,
+      "start_height_m": 0.007946725390725202,
+      "bilateral_hold_fraction": 1.0,
+      "tcp_errors_m": {
+        "approach": 0.0030469167755394367,
+        "descend": 0.0017558859694043652,
+        "close": 0.0014532914940716725,
+        "lift": 0.001505876481070358,
+        "hold": 0.001410381841919027
+      },
+      "object_final_m": [
+        0.12936815865845394,
+        -0.059284594775055696,
+        0.011946997030014934
+      ],
+      "place_success": true,
+      "pick_place_success": true,
+      "seed": 2004
+    },
+    {
+      "task": "block",
+      "lift_success": true,
+      "min_hold_height_m": 0.036094656326751094,
+      "start_height_m": 0.007946725390725202,
+      "bilateral_hold_fraction": 1.0,
+      "tcp_errors_m": {
+        "approach": 0.002451361698162884,
+        "descend": 0.0013925644771378095,
+        "close": 0.0008894496818677652,
+        "lift": 0.001235487843494967,
+        "hold": 0.0011080992374740341
+      },
+      "object_final_m": [
+        0.1295298217931183,
+        -0.058632308958068736,
+        0.011946997030044093
+      ],
+      "place_success": true,
+      "pick_place_success": true,
+      "seed": 2005
+    },
+    {
+      "task": "block",
+      "lift_success": true,
+      "min_hold_height_m": 0.03613381834618003,
+      "start_height_m": 0.007946725390725202,
+      "bilateral_hold_fraction": 1.0,
+      "tcp_errors_m": {
+        "approach": 0.0020673440654091994,
+        "descend": 0.001574529971687322,
+        "close": 0.001261648364934724,
+        "lift": 0.0016831910890754928,
+        "hold": 0.0015787272495823223
+      },
+      "object_final_m": [
+        0.13014082236106755,
+        -0.057494628380794104,
+        0.011946997029905336
+      ],
+      "place_success": true,
+      "pick_place_success": true,
+      "seed": 2006
+    },
+    {
+      "task": "block",
+      "lift_success": true,
+      "min_hold_height_m": 0.03616241652108726,
+      "start_height_m": 0.007946725390725202,
+      "bilateral_hold_fraction": 1.0,
+      "tcp_errors_m": {
+        "approach": 0.0023172075067515617,
+        "descend": 0.0013980871157754007,
+        "close": 0.000926069675187083,
+        "lift": 0.0012394899855594332,
+        "hold": 0.001112507875683727
+      },
+      "object_final_m": [
+        0.1293666102041341,
+        -0.058632202468745336,
+        0.01194699703004976
+      ],
+      "place_success": true,
+      "pick_place_success": true,
+      "seed": 2007
+    },
+    {
+      "task": "block",
+      "lift_success": true,
+      "min_hold_height_m": 0.03621827583379998,
+      "start_height_m": 0.007946725390725202,
+      "bilateral_hold_fraction": 1.0,
+      "tcp_errors_m": {
+        "approach": 0.001853627056017368,
+        "descend": 0.0014878188592495057,
+        "close": 0.001156145677729985,
+        "lift": 0.0015758575375248113,
+        "hold": 0.001471993477658267
+      },
+      "object_final_m": [
+        0.13004483382289111,
+        -0.05761629243244857,
+        0.011946997029985796
+      ],
+      "place_success": true,
+      "pick_place_success": true,
+      "seed": 2008
+    },
+    {
+      "task": "block",
+      "lift_success": true,
+      "min_hold_height_m": 0.03605335072514105,
+      "start_height_m": 0.007946725390725202,
+      "bilateral_hold_fraction": 1.0,
+      "tcp_errors_m": {
+        "approach": 0.004109326667137536,
+        "descend": 0.0016119527155308553,
+        "close": 0.0012336456818032896,
+        "lift": 0.0016763220420631217,
+        "hold": 0.001585834466179122
+      },
+      "object_final_m": [
+        0.13016426692691987,
+        -0.057443071871210324,
+        0.011946997027378484
+      ],
+      "place_success": true,
+      "pick_place_success": true,
+      "seed": 2009
+    },
+    {
+      "task": "block",
+      "lift_success": true,
+      "min_hold_height_m": 0.03610419333597798,
+      "start_height_m": 0.007946725390725202,
+      "bilateral_hold_fraction": 1.0,
+      "tcp_errors_m": {
+        "approach": 0.004024626529232295,
+        "descend": 0.0016110382654495128,
+        "close": 0.001256578117186662,
+        "lift": 0.0016777342440738958,
+        "hold": 0.0015873791167219842
+      },
+      "object_final_m": [
+        0.13028794758431683,
+        -0.057582994845226616,
+        0.011946997030006448
+      ],
+      "place_success": true,
+      "pick_place_success": true,
+      "seed": 2010
+    },
+    {
+      "task": "block",
+      "lift_success": true,
+      "min_hold_height_m": 0.03613696293062935,
+      "start_height_m": 0.007946725390725202,
+      "bilateral_hold_fraction": 1.0,
+      "tcp_errors_m": {
+        "approach": 0.002686065626827725,
+        "descend": 0.001693799331712661,
+        "close": 0.0013550799690491436,
+        "lift": 0.0014580296770681615,
+        "hold": 0.001357428962610426
+      },
+      "object_final_m": [
+        0.12917707950915602,
+        -0.05931515187219907,
+        0.011946997029908436
+      ],
+      "place_success": true,
+      "pick_place_success": true,
+      "seed": 2011
+    }
+  ],
+  "physics_status": "preassembly_prior_not_hardware_calibrated"
+}

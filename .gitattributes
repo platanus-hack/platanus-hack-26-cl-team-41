@@ -3,3 +3,15 @@
 *.step binary
 *.stl binary
 *.blend binary
+*.3mf binary
+*.sc binary
+*.npz binary
+*.rar binary
+
+# Keep evaluated source hashes stable across Windows and other checkouts.
+*.py text eol=lf
+*.json text eol=lf
+*.xml text eol=lf
+*.urdf text eol=lf
+*.md text eol=lf
+*.cmd text eol=crlf

@@ -1,0 +1,157 @@
+{
+  "task": "Position and hold a cold 25g tool in an assumed rigid 8g holder for one second.",
+  "controller": "Same learned goal policy plus scripted joint/gravity feedback",
+  "trials": 12,
+  "successes": 12,
+  "requires_physical_holder": true,
+  "heat_simulated": false,
+  "cable_forces_simulated": false,
+  "loose_tool_grasping_demonstrated": false,
+  "hardware_validated": false,
+  "results": [
+    {
+      "trial": 0,
+      "goal_m": [
+        0.13137068521549528,
+        0.022952348983083314,
+        0.035886017256366906
+      ],
+      "success": true,
+      "max_hold_tcp_error_m": 0.0032733524960983805,
+      "hold_drift_m": 0.002946207957269402,
+      "tool_axis_vertical_component": 5.311980699009445e-06
+    },
+    {
+      "trial": 1,
+      "goal_m": [
+        0.13461982335407427,
+        -0.0024448315560807246,
+        0.025885636446581532
+      ],
+      "success": true,
+      "max_hold_tcp_error_m": 0.0019290494552860345,
+      "hold_drift_m": 4.770225363387347e-05,
+      "tool_axis_vertical_component": 7.689309001399948e-06
+    },
+    {
+      "trial": 2,
+      "goal_m": [
+        0.13029518755685213,
+        -0.0001629278753443944,
+        0.02888723195107885
+      ],
+      "success": true,
+      "max_hold_tcp_error_m": 0.0005482809898374203,
+      "hold_drift_m": 1.562036683017877e-05,
+      "tool_axis_vertical_component": 2.3129804749986906e-06
+    },
+    {
+      "trial": 3,
+      "goal_m": [
+        0.13009507526712852,
+        -0.0049352092302094655,
+        0.02652994474761117
+      ],
+      "success": true,
+      "max_hold_tcp_error_m": 0.0018809602394328083,
+      "hold_drift_m": 3.7206036153109324e-05,
+      "tool_axis_vertical_component": 7.427168286432487e-06
+    },
+    {
+      "trial": 4,
+      "goal_m": [
+        0.13309270144495322,
+        -0.008585228353960615,
+        0.02713018552961668
+      ],
+      "success": true,
+      "max_hold_tcp_error_m": 0.0016959281137352055,
+      "hold_drift_m": 6.257826746369267e-06,
+      "tool_axis_vertical_component": 8.253787653007653e-06
+    },
+    {
+      "trial": 5,
+      "goal_m": [
+        0.12600419144539254,
+        -0.009231953187594937,
+        0.02863450686589497
+      ],
+      "success": true,
+      "max_hold_tcp_error_m": 0.0012980047997029648,
+      "hold_drift_m": 2.33487137275625e-05,
+      "tool_axis_vertical_component": 2.1345042095454164e-06
+    },
+    {
+      "trial": 6,
+      "goal_m": [
+        0.13448542050046328,
+        -0.03438618039919537,
+        0.03032992913755623
+      ],
+      "success": true,
+      "max_hold_tcp_error_m": 0.00178153798057975,
+      "hold_drift_m": 4.668116007785522e-05,
+      "tool_axis_vertical_component": 2.8480697004364813e-05
+    },
+    {
+      "trial": 7,
+      "goal_m": [
+        0.13398888515837049,
+        -0.00021007759188991504,
+        0.03435300296265899
+      ],
+      "success": true,
+      "max_hold_tcp_error_m": 0.001786184505359093,
+      "hold_drift_m": 6.083789537651204e-05,
+      "tool_axis_vertical_component": 2.6184769519936764e-05
+    },
+    {
+      "trial": 8,
+      "goal_m": [
+        0.12872860116713172,
+        -0.026395741523396757,
+        0.034224244788070124
+      ],
+      "success": true,
+      "max_hold_tcp_error_m": 0.0016008505833045442,
+      "hold_drift_m": 2.0080907147990868e-05,
+      "tool_axis_vertical_component": 1.799344938487957e-05
+    },
+    {
+      "trial": 9,
+      "goal_m": [
+        0.1271373197111287,
+        0.016373964603072416,
+        0.036799668728843084
+      ],
+      "success": true,
+      "max_hold_tcp_error_m": 0.0017372593605124646,
+      "hold_drift_m": 1.847636407477964e-05,
+      "tool_axis_vertical_component": 2.51844250445752e-05
+    },
+    {
+      "trial": 10,
+      "goal_m": [
+        0.12592608703430286,
+        0.015998892702010978,
+        0.030101142996142354
+      ],
+      "success": true,
+      "max_hold_tcp_error_m": 0.0013547558337222985,
+      "hold_drift_m": 3.914210259256456e-05,
+      "tool_axis_vertical_component": 1.8137102336101933e-05
+    },
+    {
+      "trial": 11,
+      "goal_m": [
+        0.13254092225419578,
+        -0.02684207819623199,
+        0.029722343176014986
+      ],
+      "success": true,
+      "max_hold_tcp_error_m": 0.0017320143489700918,
+      "hold_drift_m": 2.9874004204964744e-05,
+      "tool_axis_vertical_component": 1.9513473253417873e-05
+    }
+  ]
+}

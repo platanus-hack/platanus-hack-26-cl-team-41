@@ -1,0 +1,524 @@
+{
+  "jobs": [
+    {
+      "project": "A2L_Base_TT_PLA_0.20mm.3mf",
+      "printer": "Bambu Lab A2L 0.4 nozzle",
+      "filament": "Generic PLA @BBL A2L",
+      "layer_height_mm": 0.2,
+      "parts": [
+        {
+          "name": "Base_TT_M3_pilot_bosses",
+          "source": "print_jobs\\toolhead_and_TT\\sources\\Placa_base_TT_original.stl",
+          "source_sha256": "0f9f64a76d2624f6125c815a288bf1fbd63aa857bacea0108e901bd1b6debaea",
+          "bounds_mm": [
+            [
+              76.0,
+              75.0,
+              0.0
+            ],
+            [
+              254.0,
+              245.0,
+              42.199999809265144
+            ]
+          ],
+          "rotation": [
+            [
+              1.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              -1.0,
+              -1.2246467991473532e-16
+            ],
+            [
+              0.0,
+              1.2246467991473532e-16,
+              -1.0
+            ]
+          ],
+          "support": true,
+          "note": "Broad plate face down, bosses and TT mounts up. Four 2.6 mm blind M3 pilot bores are retained; tap for M3 machine screws.",
+          "closed_mesh": true,
+          "triangles": 43380
+        }
+      ],
+      "settings": {
+        "wall_loops": "6",
+        "sparse_infill_density": "40%",
+        "sparse_infill_pattern": "gyroid",
+        "xy_hole_compensation": "0",
+        "elefant_foot_compensation": "0.15",
+        "curr_bed_type": "Textured PEI Plate"
+      },
+      "status": "configured, arranged project; not sliced"
+    },
+    {
+      "project": "A2L_Toolhead_M3_PLA_0.16mm.3mf",
+      "printer": "Bambu Lab A2L 0.4 nozzle",
+      "filament": "Generic PLA @BBL A2L",
+      "layer_height_mm": 0.16,
+      "parts": [
+        {
+          "name": "Right_M3_retention_shoe",
+          "source": "toolhead_13mm\\stl\\01_Right_Retention_Shoe.stl",
+          "source_sha256": "a8e25cc6e393a8541a03d505b7b50ccc960d8584b0f730fc961fd43c65179ea3",
+          "bounds_mm": [
+            [
+              58.95025158018689,
+              139.25098235020414,
+              0.0
+            ],
+            [
+              71.04974841981311,
+              150.74901764979586,
+              13.000000000000002
+            ]
+          ],
+          "rotation": [
+            [
+              1.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              -1.0,
+              -1.2246467991473532e-16
+            ],
+            [
+              0.0,
+              1.2246467991473532e-16,
+              -1.0
+            ]
+          ],
+          "support": false,
+          "note": "Broad flat flange down, nut boss up; M3 bore vertical.",
+          "closed_mesh": true,
+          "triangles": 1324
+        },
+        {
+          "name": "Left_M3_retention_shoe",
+          "source": "toolhead_13mm\\stl\\02_Left_Retention_Shoe.stl",
+          "source_sha256": "3a38e6b6f4030cbd30ef72b33e370e51a38d06eb7c833d93a4eac6c2835f6be2",
+          "bounds_mm": [
+            [
+              98.95030235499144,
+              139.25006103515625,
+              0.0
+            ],
+            [
+              111.04969764500856,
+              150.74993896484375,
+              13.000000000000005
+            ]
+          ],
+          "rotation": [
+            [
+              1.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              -1.0,
+              -1.2246467991473532e-16
+            ],
+            [
+              0.0,
+              1.2246467991473532e-16,
+              -1.0
+            ]
+          ],
+          "support": false,
+          "note": "Broad flat flange down, nut boss up; M3 bore vertical.",
+          "closed_mesh": true,
+          "triangles": 1634
+        },
+        {
+          "name": "Expansion_receiver",
+          "source": "toolhead_13mm\\stl\\03_Expansion_Receiver.stl",
+          "source_sha256": "e7ae423078ad515255e3231f3b2b42f63929aecfc2996d227889407c8f36195f",
+          "bounds_mm": [
+            [
+              52.0,
+              65.0,
+              0.0
+            ],
+            [
+              118.0,
+              95.0,
+              20.79999961704016
+            ]
+          ],
+          "rotation": [
+            [
+              1.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              -1.0,
+              -1.2246467991473532e-16
+            ],
+            [
+              0.0,
+              1.2246467991473532e-16,
+              -1.0
+            ]
+          ],
+          "support": true,
+          "note": "Rear flange down; mouth up. Remove internal supports through the mouth.",
+          "closed_mesh": true,
+          "triangles": 3476
+        },
+        {
+          "name": "Angled_handle_saddle",
+          "source": "toolhead_13mm\\stl\\04_Angled_Handle_Saddle.stl",
+          "source_sha256": "e0be13494443205a55e972010981af6429134f1fefa9bae1c29db89a756e7a50",
+          "bounds_mm": [
+            [
+              147.0,
+              63.06012535095215,
+              0.0
+            ],
+            [
+              213.0,
+              96.93987464904785,
+              34.629825592041016
+            ]
+          ],
+          "rotation": [
+            [
+              1.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              1.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              1.0
+            ]
+          ],
+          "support": true,
+          "note": "Mounting plate down; automatic supports under angled saddle.",
+          "closed_mesh": true,
+          "triangles": 3296
+        },
+        {
+          "name": "Handle_clamp_cap",
+          "source": "toolhead_13mm\\stl\\05_Handle_Clamp_Cap.stl",
+          "source_sha256": "8e5bef6b8535ca323533b7034266e09e68a97ae2cccd306cfccdd1367796d090",
+          "bounds_mm": [
+            [
+              244.0,
+              74.27500009536743,
+              0.0
+            ],
+            [
+              276.0,
+              85.72499990463257,
+              30.000000000000007
+            ]
+          ],
+          "rotation": [
+            [
+              1.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              1.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              1.0
+            ]
+          ],
+          "support": false,
+          "note": "Collar end down; 5 mm brim stabilizes 30 mm height. Small M3 holes bridge.",
+          "closed_mesh": true,
+          "triangles": 1356
+        },
+        {
+          "name": "Right_replacement_jaw_M3",
+          "source": "toolhead_13mm\\stl\\06_JawR_M3.stl",
+          "source_sha256": "4b7c8e2426e671b9749f071870696938184326c92a3a7eace51e8be8c1483f51",
+          "bounds_mm": [
+            [
+              158.1451005935669,
+              136.5,
+              0.0
+            ],
+            [
+              181.8548994064331,
+              203.5,
+              5.0
+            ]
+          ],
+          "rotation": [
+            [
+              1.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              1.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              1.0
+            ]
+          ],
+          "support": false,
+          "note": "Flat side down, teeth in bed plane, M3 attachment hole vertical.",
+          "closed_mesh": true,
+          "triangles": 3016
+        },
+        {
+          "name": "Left_replacement_jaw_M3",
+          "source": "toolhead_13mm\\stl\\07_JawL_M3.stl",
+          "source_sha256": "4ee063d390eae3adfe243e6a02a398975945e9918f466a6a3f9cd9970a7286ee",
+          "bounds_mm": [
+            [
+              208.0,
+              136.5725555419922,
+              0.0
+            ],
+            [
+              232.0,
+              203.4274444580078,
+              5.0
+            ]
+          ],
+          "rotation": [
+            [
+              1.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              1.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              1.0
+            ]
+          ],
+          "support": false,
+          "note": "Flat side down, teeth in bed plane, M3 attachment hole vertical.",
+          "closed_mesh": true,
+          "triangles": 2994
+        },
+        {
+          "name": "Handle_fit_13.0_13.2_13.4mm",
+          "source": "toolhead_13mm\\stl\\08_Handle_Fit_Coupon.stl",
+          "source_sha256": "62f56a340297a10700ec02054a272bb964fa564aa91f8a7eb8d73ed1f703f930",
+          "bounds_mm": [
+            [
+              54.0,
+              233.0,
+              0.0
+            ],
+            [
+              126.0,
+              257.0,
+              5.0
+            ]
+          ],
+          "rotation": [
+            [
+              1.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              1.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              1.0
+            ]
+          ],
+          "support": false,
+          "note": "1/2/3 notches identify 13.0/13.2/13.4 mm bores.",
+          "closed_mesh": true,
+          "triangles": 1380
+        },
+        {
+          "name": "M3_fit_clearance_3.1_3.2_3.3_3.4_nuts_AF5.6_5.7_5.8",
+          "source": "print_jobs\\toolhead_and_TT\\sources\\M3_Fit_Coupon.stl",
+          "source_sha256": "13e61207d3557aa04a2eac3c30f587e3dc704b0ec98ff6d904a0c0c37416cb28",
+          "bounds_mm": [
+            [
+              188.0,
+              226.0,
+              0.0
+            ],
+            [
+              252.0,
+              264.0,
+              4.0
+            ]
+          ],
+          "rotation": [
+            [
+              1.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              1.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              1.0
+            ]
+          ],
+          "support": false,
+          "note": "Through-hole row has 1/2/3/4 notches; nut row 1/2/3.",
+          "closed_mesh": true,
+          "triangles": 3896
+        }
+      ],
+      "settings": {
+        "wall_loops": "5",
+        "sparse_infill_density": "35%",
+        "sparse_infill_pattern": "gyroid",
+        "xy_hole_compensation": "0",
+        "elefant_foot_compensation": "0.15",
+        "curr_bed_type": "Textured PEI Plate"
+      },
+      "status": "configured, arranged project; not sliced"
+    },
+    {
+      "project": "A2L_M3_and_Handle_Fit_Test_0.16mm.3mf",
+      "printer": "Bambu Lab A2L 0.4 nozzle",
+      "filament": "Generic PLA @BBL A2L",
+      "layer_height_mm": 0.16,
+      "parts": [
+        {
+          "name": "Handle_fit_13.0_13.2_13.4mm",
+          "source": "toolhead_13mm\\stl\\08_Handle_Fit_Coupon.stl",
+          "source_sha256": "62f56a340297a10700ec02054a272bb964fa564aa91f8a7eb8d73ed1f703f930",
+          "bounds_mm": [
+            [
+              79.0,
+              148.0,
+              0.0
+            ],
+            [
+              151.0,
+              172.0,
+              5.0
+            ]
+          ],
+          "rotation": [
+            [
+              1.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              1.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              1.0
+            ]
+          ],
+          "support": false,
+          "note": "1/2/3 notches identify 13.0/13.2/13.4 mm bores.",
+          "closed_mesh": true,
+          "triangles": 1380
+        },
+        {
+          "name": "M3_fit_clearance_3.1_3.2_3.3_3.4_nuts_AF5.6_5.7_5.8",
+          "source": "print_jobs\\toolhead_and_TT\\sources\\M3_Fit_Coupon.stl",
+          "source_sha256": "13e61207d3557aa04a2eac3c30f587e3dc704b0ec98ff6d904a0c0c37416cb28",
+          "bounds_mm": [
+            [
+              183.0,
+              141.0,
+              0.0
+            ],
+            [
+              247.0,
+              179.0,
+              4.0
+            ]
+          ],
+          "rotation": [
+            [
+              1.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              1.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              1.0
+            ]
+          ],
+          "support": false,
+          "note": "Through-hole row has 1/2/3/4 notches; nut row 1/2/3.",
+          "closed_mesh": true,
+          "triangles": 3896
+        }
+      ],
+      "settings": {
+        "wall_loops": "5",
+        "sparse_infill_density": "35%",
+        "sparse_infill_pattern": "gyroid",
+        "xy_hole_compensation": "0",
+        "elefant_foot_compensation": "0.15",
+        "curr_bed_type": "Textured PEI Plate"
+      },
+      "status": "configured, arranged project; not sliced"
+    }
+  ],
+  "base_input_sha256": "0f9f64a76d2624f6125c815a288bf1fbd63aa857bacea0108e901bd1b6debaea",
+  "source_geometry_unchanged": true,
+  "bed_mm": [
+    330,
+    320
+  ],
+  "notes": [
+    "Base broad plate face down, source Z reversed.",
+    "Base 4 blind 2.6 mm pilots are for M3 tapping, not M3 through clearance.",
+    "Toolhead retains 3.2\u20133.3 mm screw clearance and 5.7 mm AF nuts.",
+    "Fit coupon is optional; print fit test before the full toolhead.",
+    "PLA toolhead is a cold-fit prototype."
+  ]
+}

@@ -1,0 +1,47 @@
+{
+  "learned_component": "Goal xyz to arm joint targets, trained from analytic kinematic demonstrations.",
+  "scripted_components": [
+    "Task phases",
+    "Gripper contact/preload feedback",
+    "Gravity and joint-position feedback",
+    "Mechanical jaw coupling"
+  ],
+  "independent_fk_tests": 1000,
+  "learned_goal_position_rmse_m": 0.0001340548319639176,
+  "learned_goal_position_max_error_m": 0.00037844592612516645,
+  "analytic_teacher_max_fk_error_m": 2.0920506204726484e-16,
+  "block_pick_place": {
+    "passed": 12,
+    "total": 12,
+    "seeds": [
+      2000,
+      2011
+    ]
+  },
+  "block_variants": {
+    "passed": 12,
+    "total": 12,
+    "sizes_mm": [
+      12,
+      16,
+      18
+    ]
+  },
+  "mounted_cold_tool": {
+    "passed": 12,
+    "total": 12,
+    "requires_holder": true,
+    "heat_simulated": false,
+    "cable_forces_simulated": false
+  },
+  "physics_status": "preassembly_prior_not_hardware_calibrated",
+  "uses_privileged_simulator_state": true,
+  "hardware_deployment": false,
+  "camera_policy_trained": false,
+  "language_policy_trained": false,
+  "sha256": {
+    "trained\\goal_policy.npz": "b9cdfbc6c9a564dfe40c5083718b2210f4a7636289e755550b04150d3a994287",
+    "physics_profile.json": "58c6aaf686ec52c8f022da2bc58339d62722dae875119909ce7727a39185a637",
+    "manipulation_tasks.py": "ae863607579bebecd20c6029e37a682c979041690413e29471ade84b58854e74"
+  }
+}

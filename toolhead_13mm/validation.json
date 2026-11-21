@@ -1,0 +1,238 @@
+{
+  "parameters": {
+    "handle_max_diameter_mm": 13.0,
+    "bore_diameter_mm": 13.4,
+    "usable_handle_length_mm": 40.0,
+    "clamp_length_mm": 30.0,
+    "tip_to_handle_front_mm": 53.0,
+    "tip_to_clamp_center_mm": 73.0,
+    "tool_angle_deg": 45.0,
+    "tool_mass_g": null,
+    "tool_center_of_mass_from_clamp_mm": null,
+    "latch_angle_deg": 5.5,
+    "maximum_operating_opening_deg": 6.0,
+    "mouth_width_mm": 40.2,
+    "pocket_width_mm": 49.2,
+    "lip_rear_z_mm": 45.4,
+    "cavity_back_z_mm": 57.8,
+    "prototype_status": "Cold fit prototype. No physical load, heat or retention rating."
+  },
+  "frame": "Jaw pivots +/-10.6 X, 0 Y, 0 Z; +Z insertion. Original CAD shifted Y=-14.5 and Z=-376.",
+  "opening_checks": [
+    {
+      "opening_deg": 0.0,
+      "receiver_interferences": []
+    },
+    {
+      "opening_deg": 4.5,
+      "receiver_interferences": []
+    },
+    {
+      "opening_deg": 5.5,
+      "receiver_interferences": []
+    },
+    {
+      "opening_deg": 6.0,
+      "receiver_interferences": []
+    }
+  ],
+  "closed_insertion_samples": [
+    {
+      "axial_offset_mm": 0.0,
+      "interference_mm3": 0.0
+    },
+    {
+      "axial_offset_mm": -2.0,
+      "interference_mm3": 0.0
+    },
+    {
+      "axial_offset_mm": -5.0,
+      "interference_mm3": 0.0
+    },
+    {
+      "axial_offset_mm": -10.0,
+      "interference_mm3": 0.0
+    },
+    {
+      "axial_offset_mm": -15.0,
+      "interference_mm3": 0.0
+    },
+    {
+      "axial_offset_mm": -20.0,
+      "interference_mm3": 0.0
+    }
+  ],
+  "withdrawal_checks": [
+    {
+      "opening_deg": 0.0,
+      "samples": [
+        {
+          "axial_offset_mm": -1.0,
+          "interference_mm3": 0.0
+        },
+        {
+          "axial_offset_mm": -2.0,
+          "interference_mm3": 0.0
+        },
+        {
+          "axial_offset_mm": -4.0,
+          "interference_mm3": 0.0
+        },
+        {
+          "axial_offset_mm": -8.0,
+          "interference_mm3": 0.0
+        },
+        {
+          "axial_offset_mm": -12.0,
+          "interference_mm3": 0.0
+        }
+      ],
+      "lip_blocks_axial_withdrawal": false
+    },
+    {
+      "opening_deg": 4.5,
+      "samples": [
+        {
+          "axial_offset_mm": -1.0,
+          "interference_mm3": 2.292631973535258
+        },
+        {
+          "axial_offset_mm": -2.0,
+          "interference_mm3": 34.95562562731543
+        },
+        {
+          "axial_offset_mm": -4.0,
+          "interference_mm3": 104.5315051034316
+        },
+        {
+          "axial_offset_mm": -8.0,
+          "interference_mm3": 194.48329581977833
+        },
+        {
+          "axial_offset_mm": -12.0,
+          "interference_mm3": 198.12925368483275
+        }
+      ],
+      "lip_blocks_axial_withdrawal": true
+    },
+    {
+      "opening_deg": 5.5,
+      "samples": [
+        {
+          "axial_offset_mm": -1.0,
+          "interference_mm3": 10.329541578691448
+        },
+        {
+          "axial_offset_mm": -2.0,
+          "interference_mm3": 58.049469015327865
+        },
+        {
+          "axial_offset_mm": -4.0,
+          "interference_mm3": 158.68893249126782
+        },
+        {
+          "axial_offset_mm": -8.0,
+          "interference_mm3": 282.2868007874723
+        },
+        {
+          "axial_offset_mm": -12.0,
+          "interference_mm3": 272.2430164664892
+        }
+      ],
+      "lip_blocks_axial_withdrawal": true
+    },
+    {
+      "opening_deg": 6.0,
+      "samples": [
+        {
+          "axial_offset_mm": -1.0,
+          "interference_mm3": 16.0100560143607
+        },
+        {
+          "axial_offset_mm": -2.0,
+          "interference_mm3": 71.29258406993381
+        },
+        {
+          "axial_offset_mm": -4.0,
+          "interference_mm3": 188.18241476964522
+        },
+        {
+          "axial_offset_mm": -8.0,
+          "interference_mm3": 320.6289384061915
+        },
+        {
+          "axial_offset_mm": -12.0,
+          "interference_mm3": 299.48129968247395
+        }
+      ],
+      "lip_blocks_axial_withdrawal": true
+    }
+  ],
+  "parts": [
+    {
+      "part": "01_Right_Retention_Shoe",
+      "volume_mm3": 839.1116242474201,
+      "solid_valid": true,
+      "solids": 1,
+      "fully_solid_PLA_mass_g": 1.040498414066801,
+      "note": "M3x16 through the replacement jaw; captive M3 nut. Print side down, support only nut pocket."
+    },
+    {
+      "part": "02_Left_Retention_Shoe",
+      "volume_mm3": 840.2321419662744,
+      "solid_valid": true,
+      "solids": 1,
+      "fully_solid_PLA_mass_g": 1.0418878560381803,
+      "note": "Mirror shoe. M3x16 and M3 hex nut."
+    },
+    {
+      "part": "03_Expansion_Receiver",
+      "volume_mm3": 14775.287795314485,
+      "solid_valid": true,
+      "solids": 1,
+      "fully_solid_PLA_mass_g": 18.321356866189962,
+      "note": "Entry face down with removable internal supports. Clean the 40.2mm throat and shoulders before testing."
+    },
+    {
+      "part": "04_Angled_Handle_Saddle",
+      "volume_mm3": 12508.519381722848,
+      "solid_valid": true,
+      "solids": 1,
+      "fully_solid_PLA_mass_g": 15.510564033336331,
+      "note": "4x M3x8 to receiver; captive nuts. Collar bore 13.4mm. Supports under the angled saddle may be required."
+    },
+    {
+      "part": "05_Handle_Clamp_Cap",
+      "volume_mm3": 4624.288137345004,
+      "solid_valid": true,
+      "solids": 1,
+      "fully_solid_PLA_mass_g": 5.734117290307805,
+      "note": "2x M3x12 and M3 nuts. Tighten evenly against the cool handle only."
+    },
+    {
+      "part": "06_JawR_M3",
+      "volume_mm3": 3611.0881280977355,
+      "solid_valid": true,
+      "solids": 1,
+      "fully_solid_PLA_mass_g": 4.477749278841192,
+      "note": "Exact original jaw geometry plus one 3.2mm through-hole for shoe retention. Print flat."
+    },
+    {
+      "part": "07_JawL_M3",
+      "volume_mm3": 3654.373407362338,
+      "solid_valid": true,
+      "solids": 1,
+      "fully_solid_PLA_mass_g": 4.5314230251293,
+      "note": "Exact original jaw geometry plus one 3.2mm through-hole for shoe retention. Print flat."
+    },
+    {
+      "part": "08_Handle_Fit_Coupon",
+      "volume_mm3": 6562.969200879069,
+      "solid_valid": true,
+      "solids": 1,
+      "fully_solid_PLA_mass_g": 8.138081809090046,
+      "note": "One notch: 13.0; two: 13.2; three: 13.4mm. Check the real handle before printing the clamp."
+    }
+  ],
+  "limits": "Geometric and export checks only. No certified retention force, print-fit, thermal or physical validation."
+}

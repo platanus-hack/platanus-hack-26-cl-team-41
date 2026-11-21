@@ -1,0 +1,50 @@
+[
+  {
+    "mesh": "brazo_compacto-Base_part.stl",
+    "boundary_edges": 0,
+    "nonmanifold_edges": 0,
+    "degenerate_faces": 0
+  },
+  {
+    "mesh": "brazo_compacto-Forearm_part.stl",
+    "boundary_edges": 0,
+    "nonmanifold_edges": 39,
+    "degenerate_faces": 0
+  },
+  {
+    "mesh": "brazo_compacto-Gripper_part.stl",
+    "boundary_edges": 0,
+    "nonmanifold_edges": 0,
+    "degenerate_faces": 0
+  },
+  {
+    "mesh": "brazo_compacto-JawL_part.stl",
+    "boundary_edges": 0,
+    "nonmanifold_edges": 0,
+    "degenerate_faces": 0
+  },
+  {
+    "mesh": "brazo_compacto-JawR_part.stl",
+    "boundary_edges": 0,
+    "nonmanifold_edges": 0,
+    "degenerate_faces": 0
+  },
+  {
+    "mesh": "brazo_compacto-Shoulder_part.stl",
+    "boundary_edges": 0,
+    "nonmanifold_edges": 120,
+    "degenerate_faces": 0
+  },
+  {
+    "mesh": "brazo_compacto-UpperArm_part.stl",
+    "boundary_edges": 0,
+    "nonmanifold_edges": 0,
+    "degenerate_faces": 0
+  },
+  {
+    "mesh": "brazo_compacto-Wrist_part.stl",
+    "boundary_edges": 0,
+    "nonmanifold_edges": 0,
+    "degenerate_faces": 0
+  }
+]

@@ -1,0 +1,18 @@
+{
+  "handle_max_diameter_mm": 13.0,
+  "bore_diameter_mm": 13.4,
+  "usable_handle_length_mm": 40.0,
+  "clamp_length_mm": 30.0,
+  "tip_to_handle_front_mm": 53.0,
+  "tip_to_clamp_center_mm": 73.0,
+  "tool_angle_deg": 45.0,
+  "tool_mass_g": null,
+  "tool_center_of_mass_from_clamp_mm": null,
+  "latch_angle_deg": 5.5,
+  "maximum_operating_opening_deg": 6.0,
+  "mouth_width_mm": 40.2,
+  "pocket_width_mm": 49.2,
+  "lip_rear_z_mm": 45.4,
+  "cavity_back_z_mm": 57.8,
+  "prototype_status": "Cold fit prototype. No physical load, heat or retention rating."
+}

@@ -1,0 +1,391 @@
+{
+  "A2L_structural": [
+    {
+      "part": "Base",
+      "source": "C:\\Users\\claud\\OneDrive\\Documents\\ChatGPT\\PlatanusHack\\solidcraft_import\\brazo_compacto\\stl\\Base.stl",
+      "quantity": 1,
+      "bed_bounds_mm": [
+        [
+          10.0,
+          10.0,
+          0.0
+        ],
+        [
+          170.0,
+          170.0,
+          55.0
+        ]
+      ],
+      "orientation": "Flange down; internal tree support",
+      "rotation": [
+        [
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    {
+      "part": "Turntable",
+      "source": "C:\\Users\\claud\\OneDrive\\Documents\\ChatGPT\\PlatanusHack\\solidcraft_import\\brazo_compacto\\stl\\Turntable.stl",
+      "quantity": 1,
+      "bed_bounds_mm": [
+        [
+          203.0009250640869,
+          18.00031661987304,
+          0.0
+        ],
+        [
+          306.9990749359131,
+          121.99968338012695,
+          15.000000000000007
+        ]
+      ],
+      "orientation": "Flat cap face down; skirt up",
+      "rotation": [
+        [
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          -1.0,
+          -1.2246467991473532e-16
+        ],
+        [
+          0.0,
+          1.2246467991473532e-16,
+          -1.0
+        ]
+      ]
+    },
+    {
+      "part": "UpperArm",
+      "source": "C:\\Users\\claud\\OneDrive\\Documents\\ChatGPT\\PlatanusHack\\solidcraft_import\\brazo_compacto\\stl\\UpperArm.stl",
+      "quantity": 1,
+      "bed_bounds_mm": [
+        [
+          16.000015258789062,
+          211.0,
+          0.0
+        ],
+        [
+          153.99998474121094,
+          259.0,
+          66.0
+        ]
+      ],
+      "orientation": "Broad outer cheek down; tree support for upper cheek",
+      "rotation": [
+        [
+          6.123233995736766e-17,
+          -6.123233995736766e-17,
+          -1.0
+        ],
+        [
+          1.0,
+          3.749399456654644e-33,
+          6.123233995736766e-17
+        ],
+        [
+          0.0,
+          -1.0,
+          6.123233995736766e-17
+        ]
+      ]
+    },
+    {
+      "part": "WristFork",
+      "source": "C:\\Users\\claud\\OneDrive\\Documents\\ChatGPT\\PlatanusHack\\solidcraft_import\\brazo_compacto\\stl\\WristFork.stl",
+      "quantity": 1,
+      "bed_bounds_mm": [
+        [
+          184.14999389648438,
+          206.0,
+          0.0
+        ],
+        [
+          255.85000610351562,
+          254.0,
+          66.0
+        ]
+      ],
+      "orientation": "Broad outer cheek down; tree support for upper cheek",
+      "rotation": [
+        [
+          6.123233995736766e-17,
+          -6.123233995736766e-17,
+          -1.0
+        ],
+        [
+          1.0,
+          3.749399456654644e-33,
+          6.123233995736766e-17
+        ],
+        [
+          0.0,
+          -1.0,
+          6.123233995736766e-17
+        ]
+      ]
+    },
+    {
+      "part": "GripperFrame",
+      "source": "C:\\Users\\claud\\OneDrive\\Documents\\ChatGPT\\PlatanusHack\\solidcraft_import\\brazo_compacto\\stl\\GripperFrame.stl",
+      "quantity": 1,
+      "bed_bounds_mm": [
+        [
+          255.0,
+          140.0,
+          0.0
+        ],
+        [
+          315.0,
+          180.0,
+          41.0
+        ]
+      ],
+      "orientation": "Palm down; tree support at horizontal bosses",
+      "rotation": [
+        [
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ]
+    }
+  ],
+  "A1mini_links_and_jaws": [
+    {
+      "part": "Forearm",
+      "source": "C:\\Users\\claud\\OneDrive\\Documents\\ChatGPT\\PlatanusHack\\solidcraft_import\\brazo_compacto\\stl\\Forearm.stl",
+      "quantity": 1,
+      "bed_bounds_mm": [
+        [
+          5.0,
+          5.0000152587890625,
+          0.0
+        ],
+        [
+          53.0,
+          137.99998474121094,
+          45.00000000000001
+        ]
+      ],
+      "orientation": "Closed back down; cavity opens upward",
+      "rotation": [
+        [
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          6.123233995736766e-17,
+          1.0
+        ],
+        [
+          0.0,
+          -1.0,
+          6.123233995736766e-17
+        ]
+      ]
+    },
+    {
+      "part": "ForearmLid",
+      "source": "C:\\Users\\claud\\OneDrive\\Documents\\ChatGPT\\PlatanusHack\\solidcraft_import\\brazo_compacto\\stl\\ForearmLid.stl",
+      "quantity": 1,
+      "bed_bounds_mm": [
+        [
+          59.0,
+          5.0000152587890625,
+          0.0
+        ],
+        [
+          107.0,
+          137.99998474121094,
+          7.500000000000007
+        ]
+      ],
+      "orientation": "Flat outer lid face down; bosses up",
+      "rotation": [
+        [
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          6.123233995736766e-17,
+          -1.0
+        ],
+        [
+          0.0,
+          1.0,
+          6.123233995736766e-17
+        ]
+      ]
+    },
+    {
+      "part": "Tower",
+      "source": "C:\\Users\\claud\\OneDrive\\Documents\\ChatGPT\\PlatanusHack\\solidcraft_import\\brazo_compacto\\stl\\Tower.stl",
+      "quantity": 1,
+      "bed_bounds_mm": [
+        [
+          113.0,
+          5.0000152587890625,
+          0.0
+        ],
+        [
+          161.0,
+          69.99998474121094,
+          45.0
+        ]
+      ],
+      "orientation": "Closed back down; cavity opens upward",
+      "rotation": [
+        [
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          6.123233995736766e-17,
+          1.0
+        ],
+        [
+          0.0,
+          -1.0,
+          6.123233995736766e-17
+        ]
+      ]
+    },
+    {
+      "part": "TowerLid",
+      "source": "C:\\Users\\claud\\OneDrive\\Documents\\ChatGPT\\PlatanusHack\\solidcraft_import\\brazo_compacto\\stl\\TowerLid.stl",
+      "quantity": 1,
+      "bed_bounds_mm": [
+        [
+          113.0,
+          76.00001525878906,
+          0.0
+        ],
+        [
+          161.0,
+          140.99998474121094,
+          7.5000000000000036
+        ]
+      ],
+      "orientation": "Flat outer lid face down; bosses up",
+      "rotation": [
+        [
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          6.123233995736766e-17,
+          -1.0
+        ],
+        [
+          0.0,
+          1.0,
+          6.123233995736766e-17
+        ]
+      ]
+    },
+    {
+      "part": "JawL",
+      "source": "C:\\Users\\claud\\OneDrive\\Documents\\ChatGPT\\PlatanusHack\\solidcraft_import\\brazo_compacto\\stl\\JawL.stl",
+      "quantity": 1,
+      "bed_bounds_mm": [
+        [
+          5.0725555419921875,
+          146.99999982118607,
+          0.0
+        ],
+        [
+          71.92744445800781,
+          171.00000017881393,
+          5.000000000000005
+        ]
+      ],
+      "orientation": "Broad flat face down; gear teeth in bed plane",
+      "rotation": [
+        [
+          6.123233995736766e-17,
+          -6.123233995736766e-17,
+          -1.0
+        ],
+        [
+          1.0,
+          3.749399456654644e-33,
+          6.123233995736766e-17
+        ],
+        [
+          0.0,
+          -1.0,
+          6.123233995736766e-17
+        ]
+      ]
+    },
+    {
+      "part": "JawR",
+      "source": "C:\\Users\\claud\\OneDrive\\Documents\\ChatGPT\\PlatanusHack\\solidcraft_import\\brazo_compacto\\stl\\JawR.stl",
+      "quantity": 1,
+      "bed_bounds_mm": [
+        [
+          80.0,
+          147.14510077238083,
+          0.0
+        ],
+        [
+          147.0,
+          170.85489922761917,
+          5.000000000000005
+        ]
+      ],
+      "orientation": "Broad flat face down; horn recess upward",
+      "rotation": [
+        [
+          6.123233995736766e-17,
+          -6.123233995736766e-17,
+          -1.0
+        ],
+        [
+          1.0,
+          3.749399456654644e-33,
+          6.123233995736766e-17
+        ],
+        [
+          0.0,
+          -1.0,
+          6.123233995736766e-17
+        ]
+      ]
+    }
+  ]
+}

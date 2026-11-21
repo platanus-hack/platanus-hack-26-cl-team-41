@@ -1,0 +1,4 @@
+surface,slide_angle_deg,notes
+table,,Angle at onset of sliding; identifies static friction only
+finger,,Use the actual printed finger/pad and object material
+block,,Paired material test; see README before applying

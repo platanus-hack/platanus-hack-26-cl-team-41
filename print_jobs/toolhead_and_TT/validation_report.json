@@ -1,0 +1,32 @@
+{
+  "delivery": "editable arranged A2L projects; user will slice",
+  "projects": [
+    {
+      "file": "A2L_M3_and_Handle_Fit_Test_0.16mm.3mf",
+      "sha256": "5cf2d8615668d616383e71d565815fab693620d3f48015560c493db208ab5261",
+      "zip_and_native_structure_valid": true,
+      "bed_bounds_and_placements_match": true,
+      "embedded_A2L_PLA_profile_verified": true,
+      "quantity": 2,
+      "sliced": false
+    },
+    {
+      "file": "A2L_Toolhead_M3_PLA_0.16mm.3mf",
+      "sha256": "e8e3d83694c12dc00c80f04ee28187117f7eea7ae4eedc14de39053ffbc93cd2",
+      "zip_and_native_structure_valid": true,
+      "bed_bounds_and_placements_match": true,
+      "embedded_A2L_PLA_profile_verified": true,
+      "quantity": 9,
+      "sliced": false
+    },
+    {
+      "file": "A2L_Base_TT_PLA_0.20mm.3mf",
+      "sha256": "f6be4d712ac86aedbc3ea1ad1bcd6c4ecd24e3d040eb476e2bb765822e8587b0",
+      "zip_and_native_structure_valid": true,
+      "bed_bounds_and_placements_match": true,
+      "embedded_A2L_PLA_profile_verified": true,
+      "quantity": 1,
+      "sliced": false
+    }
+  ]
+}

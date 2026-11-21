@@ -1,0 +1,31 @@
+{
+  "task": "cold tool in an assumed rigid holder",
+  "heat": false,
+  "loose_grasp": false,
+  "results": [
+    {
+      "goal_m": [
+        0.13,
+        0.01,
+        0.034
+      ],
+      "final_tcp_error_m": 0.0010735107895459934
+    },
+    {
+      "goal_m": [
+        0.13,
+        -0.02,
+        0.031
+      ],
+      "final_tcp_error_m": 0.0018516549655099724
+    },
+    {
+      "goal_m": [
+        0.128,
+        0.015,
+        0.038
+      ],
+      "final_tcp_error_m": 0.001728354306585905
+    }
+  ]
+}

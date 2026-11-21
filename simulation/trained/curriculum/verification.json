@@ -1,0 +1,33 @@
+{
+  "reach_fk": {
+    "sampled_teacher_feasible_goals": 1000,
+    "neural_joint_limit_refusals": 0,
+    "mean_fk_error_mm": 0.14158787359462574,
+    "p95_fk_error_mm": 0.2401327398612395,
+    "max_fk_error_mm": 0.520626160523119,
+    "seed": 17641
+  },
+  "dock_fk": {
+    "sampled_teacher_feasible_goals": 1000,
+    "neural_joint_limit_refusals": 0,
+    "mean_fk_error_mm": 0.07147945874124327,
+    "p95_fk_error_mm": 0.14538663477011937,
+    "max_fk_error_mm": 0.2945313438114811,
+    "seed": 17642
+  },
+  "holder_has_free_joint_and_no_welds": true,
+  "injected_collision_stopped_within_one_2ms_step": true,
+  "hashes": {
+    "curriculum_network.py": "d8cbb639ca0e7d9d3627e352a163db7207daadada6d2ca090bd9ca39e94fc07c",
+    "obstacle_curriculum.py": "6ff1fab5b0f44c45b764b53551b8af3751b950ba5ed02a00a92212e207b1887c",
+    "dock_curriculum.py": "1f805059f30c1f9a01d0aa266e9f474e7c1807394839e5fb41ac969738b644d5",
+    "servo_physics.py": "1cb9f82bd91e3c98f2d1c44287a19874346aa64481c62b1bd3fd966b1345d751",
+    "physics_profile.json": "58c6aaf686ec52c8f022da2bc58339d62722dae875119909ce7727a39185a637",
+    "manipulation_tasks.py": "ae863607579bebecd20c6029e37a682c979041690413e29471ade84b58854e74",
+    "reach_policy.npz": "66288777b54f7b5b51f49d38f7b24df554efbea21aa997d4c5973b354d938266",
+    "route_policy.npz": "14aa1b65b95cdf451d2539eaba01a3029577fc691fe7039c7883c301e9fa04b3",
+    "dock_reach_policy.npz": "3a96b778d8c2b5a53f1af157c6be537d1a18023ba248bb210fdcb1ee98b544bf",
+    "route_dataset.npz": "408db842cdf45b195a26bac928e422dfce3e20f7795a0275ce198642296d29a5"
+  },
+  "limits": "FK errors are simulation kinematics, not physical accuracy. Discrete primitive guards do not certify CAD clearance or hardware safety."
+}

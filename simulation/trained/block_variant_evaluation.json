@@ -1,0 +1,302 @@
+{
+  "task": "Held-out size/mass variations of the learned hybrid block pick-and-place skill.",
+  "episodes": 12,
+  "successes": 12,
+  "sizes_mm": [
+    12,
+    16,
+    18
+  ],
+  "mass_rule": "6g at 16mm, scaled with cube volume.",
+  "results": [
+    {
+      "task": "block",
+      "lift_success": true,
+      "min_hold_height_m": 0.033918834056189194,
+      "start_height_m": 0.005946630852098003,
+      "bilateral_hold_fraction": 1.0,
+      "tcp_errors_m": {
+        "approach": 0.003723239987274813,
+        "descend": 0.0018115290044516355,
+        "close": 0.0013123224485500921,
+        "lift": 0.0015403773455149147,
+        "hold": 0.00145009093696168
+      },
+      "object_final_m": [
+        0.1291440972305749,
+        -0.05949226959470189,
+        0.009946997027379119
+      ],
+      "place_success": true,
+      "pick_place_success": true,
+      "seed": 3000,
+      "size_m": 0.012,
+      "mass_kg": 0.00253125
+    },
+    {
+      "task": "block",
+      "lift_success": true,
+      "min_hold_height_m": 0.03410902299449429,
+      "start_height_m": 0.005946630852098003,
+      "bilateral_hold_fraction": 1.0,
+      "tcp_errors_m": {
+        "approach": 0.0015525058088048727,
+        "descend": 0.0013459653734082427,
+        "close": 0.0007802071401204244,
+        "lift": 0.0013770719696516377,
+        "hold": 0.0012635932566434699
+      },
+      "object_final_m": [
+        0.1301157911602707,
+        -0.05760397092330844,
+        0.009946997027469628
+      ],
+      "place_success": true,
+      "pick_place_success": true,
+      "seed": 3001,
+      "size_m": 0.012,
+      "mass_kg": 0.00253125
+    },
+    {
+      "task": "block",
+      "lift_success": true,
+      "min_hold_height_m": 0.03436119481613436,
+      "start_height_m": 0.005946630852098001,
+      "bilateral_hold_fraction": 1.0,
+      "tcp_errors_m": {
+        "approach": 0.0043308327596813,
+        "descend": 0.0014143627326169163,
+        "close": 0.0008707554424346302,
+        "lift": 0.001381514490123931,
+        "hold": 0.0012766237548322867
+      },
+      "object_final_m": [
+        0.13013859328662905,
+        -0.05766274896059376,
+        0.009946997029838906
+      ],
+      "place_success": true,
+      "pick_place_success": true,
+      "seed": 3002,
+      "size_m": 0.012,
+      "mass_kg": 0.00253125
+    },
+    {
+      "task": "block",
+      "lift_success": true,
+      "min_hold_height_m": 0.033844240841855194,
+      "start_height_m": 0.005946630852098003,
+      "bilateral_hold_fraction": 1.0,
+      "tcp_errors_m": {
+        "approach": 0.004264883646892483,
+        "descend": 0.0013759753160146905,
+        "close": 0.0008175536344107806,
+        "lift": 0.0012926045293741393,
+        "hold": 0.0011701827752934769
+      },
+      "object_final_m": [
+        0.13016104126059214,
+        -0.0581665459696733,
+        0.00994699702992488
+      ],
+      "place_success": true,
+      "pick_place_success": true,
+      "seed": 3003,
+      "size_m": 0.012,
+      "mass_kg": 0.00253125
+    },
+    {
+      "task": "block",
+      "lift_success": true,
+      "min_hold_height_m": 0.03615022864170756,
+      "start_height_m": 0.007946725390725202,
+      "bilateral_hold_fraction": 1.0,
+      "tcp_errors_m": {
+        "approach": 0.003723261006875876,
+        "descend": 0.001811678642308168,
+        "close": 0.001401578117564071,
+        "lift": 0.0015401355854986552,
+        "hold": 0.0014672493693076746
+      },
+      "object_final_m": [
+        0.12892926324820905,
+        -0.05922982546972126,
+        0.011946997029972057
+      ],
+      "place_success": true,
+      "pick_place_success": true,
+      "seed": 3000,
+      "size_m": 0.016,
+      "mass_kg": 0.006
+    },
+    {
+      "task": "block",
+      "lift_success": true,
+      "min_hold_height_m": 0.036140964656012894,
+      "start_height_m": 0.007946725390725202,
+      "bilateral_hold_fraction": 1.0,
+      "tcp_errors_m": {
+        "approach": 0.0015523657181446056,
+        "descend": 0.0013459041340685893,
+        "close": 0.0008983335178087939,
+        "lift": 0.0013759184686278065,
+        "hold": 0.001259451624968285
+      },
+      "object_final_m": [
+        0.12993239445999402,
+        -0.05802251745723431,
+        0.01194699702994713
+      ],
+      "place_success": true,
+      "pick_place_success": true,
+      "seed": 3001,
+      "size_m": 0.016,
+      "mass_kg": 0.006
+    },
+    {
+      "task": "block",
+      "lift_success": true,
+      "min_hold_height_m": 0.03610449220917972,
+      "start_height_m": 0.007946725390725202,
+      "bilateral_hold_fraction": 1.0,
+      "tcp_errors_m": {
+        "approach": 0.004330815037067663,
+        "descend": 0.0014147624670980089,
+        "close": 0.0009642566978119384,
+        "lift": 0.0013839402454956934,
+        "hold": 0.0012674648049492757
+      },
+      "object_final_m": [
+        0.1298286739582755,
+        -0.05783531079236967,
+        0.011946997027398794
+      ],
+      "place_success": true,
+      "pick_place_success": true,
+      "seed": 3002,
+      "size_m": 0.016,
+      "mass_kg": 0.006
+    },
+    {
+      "task": "block",
+      "lift_success": true,
+      "min_hold_height_m": 0.036205506315376924,
+      "start_height_m": 0.007946725390725204,
+      "bilateral_hold_fraction": 1.0,
+      "tcp_errors_m": {
+        "approach": 0.0042635207566415236,
+        "descend": 0.0013759392142150286,
+        "close": 0.0010151380859529506,
+        "lift": 0.0012889576096190665,
+        "hold": 0.0011845740573259544
+      },
+      "object_final_m": [
+        0.12980498619048056,
+        -0.05812255671743571,
+        0.011946997027398636
+      ],
+      "place_success": true,
+      "pick_place_success": true,
+      "seed": 3003,
+      "size_m": 0.016,
+      "mass_kg": 0.006
+    },
+    {
+      "task": "block",
+      "lift_success": true,
+      "min_hold_height_m": 0.03629343565335713,
+      "start_height_m": 0.008946725318424949,
+      "bilateral_hold_fraction": 1.0,
+      "tcp_errors_m": {
+        "approach": 0.0037238660302512903,
+        "descend": 0.0017976882979769176,
+        "close": 0.0014443763423024687,
+        "lift": 0.0015395373565495185,
+        "hold": 0.0014592115944602226
+      },
+      "object_final_m": [
+        0.1293008517288176,
+        -0.05937994817773719,
+        0.012946997027407647
+      ],
+      "place_success": true,
+      "pick_place_success": true,
+      "seed": 3000,
+      "size_m": 0.018,
+      "mass_kg": 0.00854296875
+    },
+    {
+      "task": "block",
+      "lift_success": true,
+      "min_hold_height_m": 0.03599947031056919,
+      "start_height_m": 0.008946725318424949,
+      "bilateral_hold_fraction": 1.0,
+      "tcp_errors_m": {
+        "approach": 0.001552973464307117,
+        "descend": 0.0013333882289585303,
+        "close": 0.0010164445430024794,
+        "lift": 0.0013752451366812895,
+        "hold": 0.0012606002600649827
+      },
+      "object_final_m": [
+        0.12964052315106658,
+        -0.058296454067877986,
+        0.012946997029915017
+      ],
+      "place_success": true,
+      "pick_place_success": true,
+      "seed": 3001,
+      "size_m": 0.018,
+      "mass_kg": 0.00854296875
+    },
+    {
+      "task": "block",
+      "lift_success": true,
+      "min_hold_height_m": 0.03611056710913852,
+      "start_height_m": 0.008946725318424949,
+      "bilateral_hold_fraction": 1.0,
+      "tcp_errors_m": {
+        "approach": 0.004331462473220297,
+        "descend": 0.0013973784681009438,
+        "close": 0.0011017219854646935,
+        "lift": 0.0013826428162204375,
+        "hold": 0.0012724488802949058
+      },
+      "object_final_m": [
+        0.12981193461325755,
+        -0.05781596744285583,
+        0.012946997029855599
+      ],
+      "place_success": true,
+      "pick_place_success": true,
+      "seed": 3002,
+      "size_m": 0.018,
+      "mass_kg": 0.00854296875
+    },
+    {
+      "task": "block",
+      "lift_success": true,
+      "min_hold_height_m": 0.03554617990411485,
+      "start_height_m": 0.008946725318424949,
+      "bilateral_hold_fraction": 1.0,
+      "tcp_errors_m": {
+        "approach": 0.004265507201190649,
+        "descend": 0.0013589098274873533,
+        "close": 0.0009503233213273149,
+        "lift": 0.001291752582461678,
+        "hold": 0.001190221930102912
+      },
+      "object_final_m": [
+        0.13054264798165002,
+        -0.05901503131109807,
+        0.012946997027429762
+      ],
+      "place_success": true,
+      "pick_place_success": true,
+      "seed": 3003,
+      "size_m": 0.018,
+      "mass_kg": 0.00854296875
+    }
+  ],
+  "hardware_validated": false
+}

@@ -1,0 +1,67 @@
+{
+  "method": "Supervised imitation of analytic downward-pose IK using a 3-64-64-4 tanh MLP; hybrid contact skill uses scripted phases and state feedback.",
+  "train_examples": 10000,
+  "validation_examples": 2000,
+  "unseen_goal_examples": 1000,
+  "epochs": 220,
+  "unseen_goal_joint_rmse_deg": 0.04027493353612551,
+  "history": [
+    {
+      "epoch": 1,
+      "validation_joint_rmse_deg": 2.5821030359794515
+    },
+    {
+      "epoch": 21,
+      "validation_joint_rmse_deg": 0.3929593129808869
+    },
+    {
+      "epoch": 41,
+      "validation_joint_rmse_deg": 0.15915471007052034
+    },
+    {
+      "epoch": 61,
+      "validation_joint_rmse_deg": 0.10893615248325106
+    },
+    {
+      "epoch": 81,
+      "validation_joint_rmse_deg": 0.08012924482113974
+    },
+    {
+      "epoch": 101,
+      "validation_joint_rmse_deg": 0.11622015271609061
+    },
+    {
+      "epoch": 121,
+      "validation_joint_rmse_deg": 0.05051846615010264
+    },
+    {
+      "epoch": 141,
+      "validation_joint_rmse_deg": 0.10503888081820363
+    },
+    {
+      "epoch": 161,
+      "validation_joint_rmse_deg": 0.04809917775164125
+    },
+    {
+      "epoch": 181,
+      "validation_joint_rmse_deg": 0.06291115591782769
+    },
+    {
+      "epoch": 201,
+      "validation_joint_rmse_deg": 0.040716113759135045
+    },
+    {
+      "epoch": 220,
+      "validation_joint_rmse_deg": 0.04840631841191179
+    }
+  ],
+  "elapsed_s": 13.98943018913269,
+  "physics_status": "preassembly_prior_not_hardware_calibrated",
+  "input": "Desired TCP xyz in metres; all poses have downward gripper axis and zero wrist roll.",
+  "limitations": [
+    "No learned camera perception or natural-language understanding.",
+    "No physical-robot deployment.",
+    "Jaw state/contact feedback is privileged simulator state.",
+    "Task contact solver uses elliptic friction cones and no-slip iterations to resolve narrow CAD pads."
+  ]
+}

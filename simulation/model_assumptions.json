@@ -1,0 +1,183 @@
+{
+  "status": "preassembly_prior_not_hardware_calibrated",
+  "supply_voltage_V": 5.0,
+  "source": "C:\\Users\\claud\\OneDrive\\Documents\\ChatGPT\\PlatanusHack\\solidcraft_import\\brazo_compacto\\brazo_compacto.urdf",
+  "actuated_joints": [
+    "J1_base",
+    "J2_shoulder",
+    "J3_elbow",
+    "J4_wrist_pitch",
+    "J5_wrist_roll",
+    "J6_jaw_R"
+  ],
+  "joints": [
+    {
+      "joint": "J1_base",
+      "range_rad": [
+        -1.5707963267948966,
+        1.5707963267948966
+      ],
+      "assumed_peak_torque_Nm": 0.9218251,
+      "parameters": {
+        "stall_torque_Nm": 0.9218251,
+        "no_load_speed_rad_s": 5.235987756,
+        "kp_Nm_rad": 35.0,
+        "kv_Nm_s_rad": 0.35,
+        "passive_damping_Nm_s_rad": 0.005,
+        "frictionloss_Nm": 0.01,
+        "armature_kg_m2": 5e-05,
+        "deadband_deg": 0.6,
+        "type": "MG995"
+      },
+      "assumptions": "Preassembly prior; stall torque is not a continuous-duty rating."
+    },
+    {
+      "joint": "J2_shoulder",
+      "range_rad": [
+        -1.5707963267948966,
+        1.5707963267948966
+      ],
+      "assumed_peak_torque_Nm": 0.9218251,
+      "parameters": {
+        "stall_torque_Nm": 0.9218251,
+        "no_load_speed_rad_s": 5.235987756,
+        "kp_Nm_rad": 35.0,
+        "kv_Nm_s_rad": 0.35,
+        "passive_damping_Nm_s_rad": 0.005,
+        "frictionloss_Nm": 0.01,
+        "armature_kg_m2": 5e-05,
+        "deadband_deg": 0.6,
+        "type": "MG995"
+      },
+      "assumptions": "Preassembly prior; stall torque is not a continuous-duty rating."
+    },
+    {
+      "joint": "J3_elbow",
+      "range_rad": [
+        -1.5707963267948966,
+        1.5707963267948966
+      ],
+      "assumed_peak_torque_Nm": 0.9218251,
+      "parameters": {
+        "stall_torque_Nm": 0.9218251,
+        "no_load_speed_rad_s": 5.235987756,
+        "kp_Nm_rad": 35.0,
+        "kv_Nm_s_rad": 0.35,
+        "passive_damping_Nm_s_rad": 0.005,
+        "frictionloss_Nm": 0.01,
+        "armature_kg_m2": 5e-05,
+        "deadband_deg": 0.6,
+        "type": "MG995"
+      },
+      "assumptions": "Preassembly prior; stall torque is not a continuous-duty rating."
+    },
+    {
+      "joint": "J4_wrist_pitch",
+      "range_rad": [
+        -1.5707963267948966,
+        1.5707963267948966
+      ],
+      "assumed_peak_torque_Nm": 0.9218251,
+      "parameters": {
+        "stall_torque_Nm": 0.9218251,
+        "no_load_speed_rad_s": 5.235987756,
+        "kp_Nm_rad": 35.0,
+        "kv_Nm_s_rad": 0.35,
+        "passive_damping_Nm_s_rad": 0.005,
+        "frictionloss_Nm": 0.01,
+        "armature_kg_m2": 5e-05,
+        "deadband_deg": 0.6,
+        "type": "MG995"
+      },
+      "assumptions": "Preassembly prior; stall torque is not a continuous-duty rating."
+    },
+    {
+      "joint": "J5_wrist_roll",
+      "range_rad": [
+        -1.5707963267948966,
+        1.5707963267948966
+      ],
+      "assumed_peak_torque_Nm": 0.1765197,
+      "parameters": {
+        "stall_torque_Nm": 0.1765197,
+        "no_load_speed_rad_s": 8.72664626,
+        "kp_Nm_rad": 8.0,
+        "kv_Nm_s_rad": 0.06,
+        "passive_damping_Nm_s_rad": 0.0005,
+        "frictionloss_Nm": 0.002,
+        "armature_kg_m2": 2e-06,
+        "deadband_deg": 0.2,
+        "type": "SG90"
+      },
+      "assumptions": "Preassembly prior; stall torque is not a continuous-duty rating."
+    },
+    {
+      "joint": "J6_jaw_R",
+      "range_rad": [
+        -0.05235987755982989,
+        0.6108652381980153
+      ],
+      "assumed_peak_torque_Nm": 0.1765197,
+      "parameters": {
+        "stall_torque_Nm": 0.1765197,
+        "no_load_speed_rad_s": 8.72664626,
+        "kp_Nm_rad": 8.0,
+        "kv_Nm_s_rad": 0.06,
+        "passive_damping_Nm_s_rad": 0.0005,
+        "frictionloss_Nm": 0.002,
+        "armature_kg_m2": 2e-06,
+        "deadband_deg": 0.2,
+        "type": "SG90"
+      },
+      "assumptions": "Preassembly prior; stall torque is not a continuous-duty rating."
+    },
+    {
+      "joint": "J6_jaw_L",
+      "range_rad": [
+        -0.6108652381980153,
+        0.05235987755982989
+      ],
+      "assumed_peak_torque_Nm": 0.1765197,
+      "parameters": {
+        "stall_torque_Nm": 0.1765197,
+        "no_load_speed_rad_s": 8.72664626,
+        "kp_Nm_rad": 8.0,
+        "kv_Nm_s_rad": 0.06,
+        "passive_damping_Nm_s_rad": 0.0005,
+        "frictionloss_Nm": 0.002,
+        "armature_kg_m2": 2e-06,
+        "deadband_deg": 0.2,
+        "type": "SG90"
+      },
+      "assumptions": "Preassembly prior; stall torque is not a continuous-duty rating."
+    }
+  ],
+  "tcp": "Midpoint between closed finger pads; fixed reference independent of jaw angle.",
+  "contact_model": "Primitive approximations; visual meshes preserve SolidCraft geometry. Not a CAD collision certification.",
+  "mass_model": "Integrate closed original print meshes. Catalog-mass servo boxes and hardware allowances; parallel-axis combination into actual URDF link frames.",
+  "mass_estimate_kg": 0.7760711563406898,
+  "jaw_coupling": "q_left = -q_right",
+  "controller": {
+    "command_period_s": 0.02,
+    "command_delay_s": 0.04,
+    "torque_speed_curve": "linear motoring envelope; full stall torque available for braking",
+    "provenance": "50 Hz command timing is a design choice. Delay, gains, friction, armature and deadband are unmeasured priors. Backlash and thermal behavior are not modeled."
+  },
+  "sources": {
+    "MG995": {
+      "url": "https://www.mouser.com/catalog/specsheets/Soldered_109042.pdf",
+      "basis": "Published MG995 listing: 55 g, 9.4 kgf cm and 0.20 s/60deg at 4.8 V. Reuse lower-voltage data as a 5 V prior, not a measurement. PDF packaging/footer says 66 g; main specification says 55 g."
+    },
+    "SG90": {
+      "url": "https://towerpro.com.tw/product/sg90-analog/",
+      "basis": "Manufacturer analog SG90 specification: 9 g, 1.8 kgf cm, 0.12 s/60deg at 4.8 V. Product table also says 0.1s; use the slower specification. Actual variant is not confirmed."
+    },
+    "PLA": {
+      "basis": "Engineering density assumption for PLA. Filament brand, actual printed mass and infill distribution are not measured."
+    }
+  },
+  "limitations": [
+    "Preassembly priors only; no measured calibration of masses, COM, gains, delays, friction, backlash, thermal limits or PWM mapping.",
+    "A 5-DOF arm cannot command arbitrary 6-DOF poses."
+  ]
+}

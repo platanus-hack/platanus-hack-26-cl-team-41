@@ -1,0 +1,18 @@
+{
+  "status": "preassembly_prior_not_hardware_calibrated",
+  "hardware_confirmed_by_user": {"servos": "4 MG995 + 2 SG90", "supply_voltage_V": 5.0, "assembled": false},
+  "mass": {"pla_density_kg_m3": 1240.0, "printed_solid_fraction": 0.85, "printed_fraction_uncertainty": [0.65, 1.0], "MG995_mass_kg": 0.055, "SG90_mass_kg": 0.009},
+  "sources": {
+    "MG995": {"url": "https://www.mouser.com/catalog/specsheets/Soldered_109042.pdf", "basis": "Published MG995 listing: 55 g, 9.4 kgf cm and 0.20 s/60deg at 4.8 V. Reuse lower-voltage data as a 5 V prior, not a measurement. PDF packaging/footer says 66 g; main specification says 55 g."},
+    "SG90": {"url": "https://towerpro.com.tw/product/sg90-analog/", "basis": "Manufacturer analog SG90 specification: 9 g, 1.8 kgf cm, 0.12 s/60deg at 4.8 V. Product table also says 0.1s; use the slower specification. Actual variant is not confirmed."},
+    "PLA": {"basis": "Engineering density assumption for PLA. Filament brand, actual printed mass and infill distribution are not measured."}
+  },
+  "servo_types": {
+    "MG995": {"stall_torque_Nm": 0.9218251, "no_load_speed_rad_s": 5.235987756, "kp_Nm_rad": 35.0, "kv_Nm_s_rad": 0.35, "passive_damping_Nm_s_rad": 0.005, "frictionloss_Nm": 0.010, "armature_kg_m2": 0.00005, "deadband_deg": 0.6},
+    "SG90": {"stall_torque_Nm": 0.1765197, "no_load_speed_rad_s": 8.72664626, "kp_Nm_rad": 8.0, "kv_Nm_s_rad": 0.06, "passive_damping_Nm_s_rad": 0.0005, "frictionloss_Nm": 0.002, "armature_kg_m2": 0.000002, "deadband_deg": 0.2}
+  },
+  "controller": {"command_period_s": 0.02, "command_delay_s": 0.04, "torque_speed_curve": "linear motoring envelope; full stall torque available for braking", "provenance": "50 Hz command timing is a design choice. Delay, gains, friction, armature and deadband are unmeasured priors. Backlash and thermal behavior are not modeled."},
+  "contacts": {"table_slide_friction": 0.5, "finger_slide_friction": 0.6, "block_slide_friction": 0.5, "torsional_friction_m": 0.002, "rolling_friction_m": 0.0001, "time_constant_s": 0.02, "damping_ratio": 1.0, "provenance": "Unmeasured contact priors. MuJoCo friction combines pair parameters; replace using surface tests."},
+  "joint_overrides": {},
+  "measurements_applied": []
+}

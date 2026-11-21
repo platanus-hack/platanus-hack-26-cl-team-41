@@ -1,0 +1,7 @@
+joint,voltage_V,start_deg,end_deg,delay_ms,travel_time_s,notes
+J1_base,5,,,,,Measure an unloaded isolated servo before fitting speed
+J2_shoulder,5,,,,,Measure an unloaded isolated servo before fitting speed
+J3_elbow,5,,,,,Measure an unloaded isolated servo before fitting speed
+J4_wrist_pitch,5,,,,,Measure an unloaded isolated servo before fitting speed
+J5_wrist_roll,5,,,,,Confirm analog or digital SG90 variant
+J6_jaw_R,5,,,,,Measure with jaw gear disengaged for no-load speed

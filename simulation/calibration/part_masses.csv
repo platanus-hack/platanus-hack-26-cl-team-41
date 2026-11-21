@@ -1,0 +1,26 @@
+component,mass_g,notes
+Base,,Printed part only
+MG995 Base,,Servo and its own lead; exclude horn and mounting screws
+hardware_Base_part,,Fasteners horn and external wires only
+Turntable,,Printed part only
+Tower,,Printed part only
+TowerLid,,Printed part only
+MG995 Shoulder,,Servo and its own lead; exclude horn and mounting screws
+hardware_Shoulder_part,,Fasteners horn and external wires only
+UpperArm,,Printed part only
+hardware_UpperArm_part,,Fasteners horn and external wires only
+Forearm,,Printed part only
+ForearmLid,,Printed part only
+MG995 Elbow,,Servo and its own lead; exclude horn and mounting screws
+MG995 Wrist,,Servo and its own lead; exclude horn and mounting screws
+hardware_Forearm_part,,Fasteners horns and external wires only
+WristFork,,Printed part only
+SG90 Roll,,Servo and its own lead; exclude horn and mounting screws
+hardware_Wrist_part,,Fasteners horn and external wires only
+GripperFrame,,Printed part only
+SG90 Grip,,Servo and its own lead; exclude horn and mounting screws
+hardware_Gripper_part,,Fasteners horn and external wires only
+JawR,,Printed part only
+hardware_JawR_part,,Fasteners only
+JawL,,Printed part only
+hardware_JawL_part,,Fasteners only

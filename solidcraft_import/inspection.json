@@ -1,0 +1,1733 @@
+{
+  "native": {
+    "base_movil": {
+      "format": "solidcraft/63",
+      "params": [],
+      "components": [],
+      "assembly": {},
+      "feature_count": 148,
+      "reference_body_names": []
+    },
+    "brazo_compacto": {
+      "format": "solidcraft/63",
+      "params": [
+        {
+          "expr": "112 mm",
+          "model": false,
+          "name": "zS",
+          "unit": "mm"
+        },
+        {
+          "expr": "90 mm",
+          "model": false,
+          "name": "L1",
+          "unit": "mm"
+        },
+        {
+          "expr": "85 mm",
+          "model": false,
+          "name": "L2",
+          "unit": "mm"
+        },
+        {
+          "expr": "zS + L1",
+          "model": false,
+          "name": "zE",
+          "unit": "mm"
+        },
+        {
+          "expr": "zE + L2",
+          "model": false,
+          "name": "zW",
+          "unit": "mm"
+        }
+      ],
+      "components": [
+        {
+          "id": 194,
+          "identification_color_index": 0,
+          "name": "Base part",
+          "parent": 0
+        },
+        {
+          "id": 198,
+          "identification_color_index": 1,
+          "name": "Shoulder part",
+          "parent": 0
+        },
+        {
+          "id": 204,
+          "identification_color_index": 2,
+          "name": "UpperArm part",
+          "parent": 0
+        },
+        {
+          "id": 207,
+          "identification_color_index": 3,
+          "name": "Forearm part",
+          "parent": 0
+        },
+        {
+          "id": 213,
+          "identification_color_index": 4,
+          "name": "Wrist part",
+          "parent": 0
+        },
+        {
+          "id": 217,
+          "identification_color_index": 5,
+          "name": "Gripper part",
+          "parent": 0
+        },
+        {
+          "id": 221,
+          "identification_color_index": 6,
+          "name": "JawR part",
+          "parent": 0
+        },
+        {
+          "id": 224,
+          "identification_color_index": 7,
+          "name": "JawL part",
+          "parent": 0
+        }
+      ],
+      "assembly": {
+        "joints": [
+          {
+            "a": {
+              "occurrence": 195,
+              "snap": {
+                "origin": [
+                  0.0,
+                  0.0,
+                  66.0
+                ],
+                "type": "frame",
+                "x": [
+                  0.0,
+                  1.0,
+                  0.0
+                ],
+                "z": [
+                  0.0,
+                  0.0,
+                  1.0
+                ]
+              }
+            },
+            "angle": 0.0,
+            "b": {
+              "occurrence": 199,
+              "snap": {
+                "point": [
+                  0.0,
+                  0.0,
+                  66.0
+                ],
+                "type": "point",
+                "z": [
+                  0.0,
+                  0.0,
+                  1.0
+                ]
+              }
+            },
+            "flip": true,
+            "id": 227,
+            "kind": "revolute",
+            "limits": [
+              [
+                -1.5707963267948966,
+                1.5707963267948966
+              ]
+            ],
+            "name": "J1 base",
+            "offset": 0.0,
+            "offset_xy": [
+              0.0,
+              0.0
+            ],
+            "values": [
+              0.0
+            ]
+          },
+          {
+            "a": {
+              "occurrence": 199,
+              "snap": {
+                "origin": [
+                  0.0,
+                  0.0,
+                  112.0
+                ],
+                "type": "frame",
+                "x": [
+                  0.0,
+                  0.0,
+                  -1.0
+                ],
+                "z": [
+                  0.0,
+                  1.0,
+                  0.0
+                ]
+              }
+            },
+            "angle": 0.0,
+            "b": {
+              "occurrence": 205,
+              "snap": {
+                "point": [
+                  0.0,
+                  0.0,
+                  112.0
+                ],
+                "type": "point",
+                "z": [
+                  0.0,
+                  1.0,
+                  0.0
+                ]
+              }
+            },
+            "flip": true,
+            "id": 228,
+            "kind": "revolute",
+            "limits": [
+              [
+                -1.5707963267948966,
+                1.5707963267948966
+              ]
+            ],
+            "name": "J2 shoulder",
+            "offset": 0.0,
+            "offset_xy": [
+              0.0,
+              0.0
+            ],
+            "values": [
+              0.0
+            ]
+          },
+          {
+            "a": {
+              "occurrence": 205,
+              "snap": {
+                "origin": [
+                  0.0,
+                  0.0,
+                  202.0
+                ],
+                "type": "frame",
+                "x": [
+                  0.0,
+                  0.0,
+                  -1.0
+                ],
+                "z": [
+                  0.0,
+                  1.0,
+                  0.0
+                ]
+              }
+            },
+            "angle": 0.0,
+            "b": {
+              "occurrence": 208,
+              "snap": {
+                "point": [
+                  0.0,
+                  0.0,
+                  202.0
+                ],
+                "type": "point",
+                "z": [
+                  0.0,
+                  1.0,
+                  0.0
+                ]
+              }
+            },
+            "flip": true,
+            "id": 229,
+            "kind": "revolute",
+            "limits": [
+              [
+                -1.5707963267948966,
+                1.5707963267948966
+              ]
+            ],
+            "name": "J3 elbow",
+            "offset": 0.0,
+            "offset_xy": [
+              0.0,
+              0.0
+            ],
+            "values": [
+              0.0
+            ]
+          },
+          {
+            "a": {
+              "occurrence": 208,
+              "snap": {
+                "origin": [
+                  0.0,
+                  0.0,
+                  287.0
+                ],
+                "type": "frame",
+                "x": [
+                  0.0,
+                  0.0,
+                  -1.0
+                ],
+                "z": [
+                  0.0,
+                  1.0,
+                  0.0
+                ]
+              }
+            },
+            "angle": 0.0,
+            "b": {
+              "occurrence": 214,
+              "snap": {
+                "point": [
+                  0.0,
+                  0.0,
+                  287.0
+                ],
+                "type": "point",
+                "z": [
+                  0.0,
+                  1.0,
+                  0.0
+                ]
+              }
+            },
+            "flip": true,
+            "id": 230,
+            "kind": "revolute",
+            "limits": [
+              [
+                -1.5707963267948966,
+                1.5707963267948966
+              ]
+            ],
+            "name": "J4 wrist pitch",
+            "offset": 0.0,
+            "offset_xy": [
+              0.0,
+              0.0
+            ],
+            "values": [
+              0.0
+            ]
+          },
+          {
+            "a": {
+              "occurrence": 214,
+              "snap": {
+                "origin": [
+                  0.0,
+                  0.0,
+                  349.0
+                ],
+                "type": "frame",
+                "x": [
+                  0.0,
+                  1.0,
+                  0.0
+                ],
+                "z": [
+                  0.0,
+                  0.0,
+                  1.0
+                ]
+              }
+            },
+            "angle": 0.0,
+            "b": {
+              "occurrence": 218,
+              "snap": {
+                "point": [
+                  0.0,
+                  0.0,
+                  349.0
+                ],
+                "type": "point",
+                "z": [
+                  0.0,
+                  0.0,
+                  1.0
+                ]
+              }
+            },
+            "flip": true,
+            "id": 231,
+            "kind": "revolute",
+            "limits": [
+              [
+                -1.5707963267948966,
+                1.5707963267948966
+              ]
+            ],
+            "name": "J5 wrist roll",
+            "offset": 0.0,
+            "offset_xy": [
+              0.0,
+              0.0
+            ],
+            "values": [
+              0.0
+            ]
+          },
+          {
+            "a": {
+              "occurrence": 218,
+              "snap": {
+                "origin": [
+                  10.6,
+                  12.0,
+                  376.0
+                ],
+                "type": "frame",
+                "x": [
+                  0.0,
+                  0.0,
+                  -1.0
+                ],
+                "z": [
+                  0.0,
+                  1.0,
+                  0.0
+                ]
+              }
+            },
+            "angle": 0.0,
+            "b": {
+              "occurrence": 222,
+              "snap": {
+                "point": [
+                  10.6,
+                  12.0,
+                  376.0
+                ],
+                "type": "point",
+                "z": [
+                  0.0,
+                  1.0,
+                  0.0
+                ]
+              }
+            },
+            "flip": true,
+            "id": 232,
+            "kind": "revolute",
+            "limits": [
+              [
+                -0.05235987755982989,
+                0.6108652381980153
+              ]
+            ],
+            "name": "J6 jaw R",
+            "offset": 0.0,
+            "offset_xy": [
+              0.0,
+              0.0
+            ],
+            "values": [
+              0.0
+            ]
+          },
+          {
+            "a": {
+              "occurrence": 218,
+              "snap": {
+                "origin": [
+                  -10.6,
+                  12.0,
+                  376.0
+                ],
+                "type": "frame",
+                "x": [
+                  0.0,
+                  0.0,
+                  -1.0
+                ],
+                "z": [
+                  0.0,
+                  1.0,
+                  0.0
+                ]
+              }
+            },
+            "angle": 0.0,
+            "b": {
+              "occurrence": 225,
+              "snap": {
+                "point": [
+                  -10.6,
+                  12.0,
+                  376.0
+                ],
+                "type": "point",
+                "z": [
+                  0.0,
+                  1.0,
+                  0.0
+                ]
+              }
+            },
+            "flip": true,
+            "id": 233,
+            "kind": "revolute",
+            "limits": [
+              [
+                -0.6108652381980153,
+                0.05235987755982989
+              ]
+            ],
+            "name": "J6 jaw L",
+            "offset": 0.0,
+            "offset_xy": [
+              0.0,
+              0.0
+            ],
+            "values": [
+              0.0
+            ]
+          }
+        ],
+        "links": [
+          {
+            "a": 232,
+            "b": 233,
+            "ia": 0,
+            "ib": 0,
+            "offset": 0.0,
+            "ratio": -1.0
+          }
+        ]
+      },
+      "feature_count": 210,
+      "reference_body_names": [
+        "MG995 Base",
+        "MG995 Elbow",
+        "MG995 Shoulder",
+        "MG995 Wrist",
+        "SG90 Grip",
+        "SG90 Roll"
+      ]
+    },
+    "brazo_robotico": {
+      "format": "solidcraft/63",
+      "params": [
+        {
+          "expr": "91 mm",
+          "model": false,
+          "name": "zS",
+          "unit": "mm"
+        },
+        {
+          "expr": "100 mm",
+          "model": false,
+          "name": "L1",
+          "unit": "mm"
+        },
+        {
+          "expr": "90 mm",
+          "model": false,
+          "name": "L2",
+          "unit": "mm"
+        },
+        {
+          "expr": "zS + L1",
+          "model": false,
+          "name": "zE",
+          "unit": "mm"
+        },
+        {
+          "expr": "zE + L2",
+          "model": false,
+          "name": "zW",
+          "unit": "mm"
+        }
+      ],
+      "components": [
+        {
+          "id": 136,
+          "identification_color_index": 0,
+          "name": "Base part",
+          "parent": 0
+        },
+        {
+          "id": 140,
+          "identification_color_index": 1,
+          "name": "Shoulder part",
+          "parent": 0
+        },
+        {
+          "id": 144,
+          "identification_color_index": 2,
+          "name": "UpperArm part",
+          "parent": 0
+        },
+        {
+          "id": 148,
+          "identification_color_index": 3,
+          "name": "Forearm part",
+          "parent": 0
+        },
+        {
+          "id": 152,
+          "identification_color_index": 4,
+          "name": "Wrist part",
+          "parent": 0
+        },
+        {
+          "id": 156,
+          "identification_color_index": 5,
+          "name": "Gripper part",
+          "parent": 0
+        },
+        {
+          "id": 160,
+          "identification_color_index": 6,
+          "name": "JawR part",
+          "parent": 0
+        },
+        {
+          "id": 163,
+          "identification_color_index": 7,
+          "name": "JawL part",
+          "parent": 0
+        }
+      ],
+      "assembly": {
+        "joints": [
+          {
+            "a": {
+              "occurrence": 137,
+              "snap": {
+                "origin": [
+                  0.0,
+                  0.0,
+                  48.0
+                ],
+                "type": "frame",
+                "x": [
+                  0.0,
+                  1.0,
+                  0.0
+                ],
+                "z": [
+                  0.0,
+                  0.0,
+                  1.0
+                ]
+              }
+            },
+            "angle": 0.0,
+            "b": {
+              "occurrence": 141,
+              "snap": {
+                "point": [
+                  0.0,
+                  0.0,
+                  48.0
+                ],
+                "type": "point",
+                "z": [
+                  0.0,
+                  0.0,
+                  1.0
+                ]
+              }
+            },
+            "flip": true,
+            "id": 166,
+            "kind": "revolute",
+            "limits": [
+              [
+                -1.5707963267948966,
+                1.5707963267948966
+              ]
+            ],
+            "name": "J1 base",
+            "offset": 0.0,
+            "offset_xy": [
+              0.0,
+              0.0
+            ],
+            "values": [
+              0.0
+            ]
+          },
+          {
+            "a": {
+              "occurrence": 141,
+              "snap": {
+                "origin": [
+                  0.0,
+                  0.0,
+                  91.0
+                ],
+                "type": "frame",
+                "x": [
+                  0.0,
+                  0.0,
+                  -1.0
+                ],
+                "z": [
+                  0.0,
+                  1.0,
+                  0.0
+                ]
+              }
+            },
+            "angle": 0.0,
+            "b": {
+              "occurrence": 145,
+              "snap": {
+                "point": [
+                  0.0,
+                  0.0,
+                  91.0
+                ],
+                "type": "point",
+                "z": [
+                  0.0,
+                  1.0,
+                  0.0
+                ]
+              }
+            },
+            "flip": true,
+            "id": 167,
+            "kind": "revolute",
+            "limits": [
+              [
+                -1.5707963267948966,
+                1.5707963267948966
+              ]
+            ],
+            "name": "J2 shoulder",
+            "offset": 0.0,
+            "offset_xy": [
+              0.0,
+              0.0
+            ],
+            "values": [
+              0.0
+            ]
+          },
+          {
+            "a": {
+              "occurrence": 145,
+              "snap": {
+                "origin": [
+                  0.0,
+                  0.0,
+                  191.0
+                ],
+                "type": "frame",
+                "x": [
+                  0.0,
+                  0.0,
+                  -1.0
+                ],
+                "z": [
+                  0.0,
+                  1.0,
+                  0.0
+                ]
+              }
+            },
+            "angle": 0.0,
+            "b": {
+              "occurrence": 149,
+              "snap": {
+                "point": [
+                  0.0,
+                  0.0,
+                  191.0
+                ],
+                "type": "point",
+                "z": [
+                  0.0,
+                  1.0,
+                  0.0
+                ]
+              }
+            },
+            "flip": true,
+            "id": 168,
+            "kind": "revolute",
+            "limits": [
+              [
+                -1.5707963267948966,
+                1.5707963267948966
+              ]
+            ],
+            "name": "J3 elbow",
+            "offset": 0.0,
+            "offset_xy": [
+              0.0,
+              0.0
+            ],
+            "values": [
+              0.0
+            ]
+          },
+          {
+            "a": {
+              "occurrence": 149,
+              "snap": {
+                "origin": [
+                  0.0,
+                  0.0,
+                  281.0
+                ],
+                "type": "frame",
+                "x": [
+                  0.0,
+                  0.0,
+                  -1.0
+                ],
+                "z": [
+                  0.0,
+                  1.0,
+                  0.0
+                ]
+              }
+            },
+            "angle": 0.0,
+            "b": {
+              "occurrence": 153,
+              "snap": {
+                "point": [
+                  0.0,
+                  0.0,
+                  281.0
+                ],
+                "type": "point",
+                "z": [
+                  0.0,
+                  1.0,
+                  0.0
+                ]
+              }
+            },
+            "flip": true,
+            "id": 169,
+            "kind": "revolute",
+            "limits": [
+              [
+                -1.5707963267948966,
+                1.5707963267948966
+              ]
+            ],
+            "name": "J4 wrist pitch",
+            "offset": 0.0,
+            "offset_xy": [
+              0.0,
+              0.0
+            ],
+            "values": [
+              0.0
+            ]
+          },
+          {
+            "a": {
+              "occurrence": 153,
+              "snap": {
+                "origin": [
+                  0.0,
+                  0.0,
+                  348.5
+                ],
+                "type": "frame",
+                "x": [
+                  0.0,
+                  1.0,
+                  0.0
+                ],
+                "z": [
+                  0.0,
+                  0.0,
+                  1.0
+                ]
+              }
+            },
+            "angle": 0.0,
+            "b": {
+              "occurrence": 157,
+              "snap": {
+                "point": [
+                  0.0,
+                  0.0,
+                  348.5
+                ],
+                "type": "point",
+                "z": [
+                  0.0,
+                  0.0,
+                  1.0
+                ]
+              }
+            },
+            "flip": true,
+            "id": 170,
+            "kind": "revolute",
+            "limits": [
+              [
+                -1.5707963267948966,
+                1.5707963267948966
+              ]
+            ],
+            "name": "J5 wrist roll",
+            "offset": 0.0,
+            "offset_xy": [
+              0.0,
+              0.0
+            ],
+            "values": [
+              0.0
+            ]
+          },
+          {
+            "a": {
+              "occurrence": 157,
+              "snap": {
+                "origin": [
+                  10.6,
+                  12.0,
+                  375.5
+                ],
+                "type": "frame",
+                "x": [
+                  0.0,
+                  0.0,
+                  -1.0
+                ],
+                "z": [
+                  0.0,
+                  1.0,
+                  0.0
+                ]
+              }
+            },
+            "angle": 0.0,
+            "b": {
+              "occurrence": 161,
+              "snap": {
+                "point": [
+                  10.6,
+                  12.0,
+                  375.5
+                ],
+                "type": "point",
+                "z": [
+                  0.0,
+                  1.0,
+                  0.0
+                ]
+              }
+            },
+            "flip": true,
+            "id": 171,
+            "kind": "revolute",
+            "limits": [
+              [
+                -0.08726646259971647,
+                0.6108652381980153
+              ]
+            ],
+            "name": "J6 jaw R",
+            "offset": 0.0,
+            "offset_xy": [
+              0.0,
+              0.0
+            ],
+            "values": [
+              0.0
+            ]
+          },
+          {
+            "a": {
+              "occurrence": 157,
+              "snap": {
+                "origin": [
+                  -10.6,
+                  12.0,
+                  375.5
+                ],
+                "type": "frame",
+                "x": [
+                  0.0,
+                  0.0,
+                  -1.0
+                ],
+                "z": [
+                  0.0,
+                  1.0,
+                  0.0
+                ]
+              }
+            },
+            "angle": 0.0,
+            "b": {
+              "occurrence": 164,
+              "snap": {
+                "point": [
+                  -10.6,
+                  12.0,
+                  375.5
+                ],
+                "type": "point",
+                "z": [
+                  0.0,
+                  1.0,
+                  0.0
+                ]
+              }
+            },
+            "flip": true,
+            "id": 172,
+            "kind": "revolute",
+            "limits": [
+              [
+                -0.6108652381980153,
+                0.08726646259971647
+              ]
+            ],
+            "name": "J6 jaw L",
+            "offset": 0.0,
+            "offset_xy": [
+              0.0,
+              0.0
+            ],
+            "values": [
+              0.0
+            ]
+          }
+        ],
+        "links": [
+          {
+            "a": 171,
+            "b": 172,
+            "ia": 0,
+            "ib": 0,
+            "offset": 0.0,
+            "ratio": -1.0
+          }
+        ]
+      },
+      "feature_count": 149,
+      "reference_body_names": [
+        "MG995 Base",
+        "MG995 Elbow",
+        "MG995 Shoulder",
+        "MG995 Wrist",
+        "SG90 Grip",
+        "SG90 Roll"
+      ]
+    }
+  },
+  "step": {
+    "base_movil": {
+      "valid": true,
+      "solids": 38,
+      "bbox_mm": [
+        -135.0803691996708,
+        -146.50000000000006,
+        -5.080369199670781,
+        135.0803691996708,
+        146.50000000000009,
+        125.0
+      ],
+      "invalid_solids": 0
+    },
+    "brazo_compacto": {
+      "valid": true,
+      "solids": 17,
+      "bbox_mm": [
+        -80.0,
+        -80.0,
+        -3.7071550455168783e-13,
+        80.0,
+        80.0,
+        431.0
+      ],
+      "invalid_solids": 0
+    },
+    "brazo_robotico": {
+      "valid": true,
+      "solids": 14,
+      "bbox_mm": [
+        -60.00000000000003,
+        -60.000000000000036,
+        -1.4210854715202023e-14,
+        60.00000000000001,
+        60.00000000000001,
+        430.5
+      ],
+      "invalid_solids": 0
+    }
+  },
+  "meshes": [
+    {
+      "path": "base_movil\\stl\\Chassis.stl",
+      "closed": true,
+      "triangles": 49120,
+      "bbox": [
+        -121.0,
+        -118.0,
+        9.0,
+        121.0,
+        118.0,
+        122.0
+      ]
+    },
+    {
+      "path": "base_movil\\stl\\Cluster_A_60T_12T.stl",
+      "closed": true,
+      "triangles": 44392,
+      "bbox": [
+        27.38010025024414,
+        -99.5,
+        53.02009963989258,
+        89.31990051269531,
+        -86.0,
+        114.95989990234375
+      ]
+    },
+    {
+      "path": "base_movil\\stl\\Cluster_B_48T_12T.stl",
+      "closed": true,
+      "triangles": 36330,
+      "bbox": [
+        11.252099990844727,
+        -106.0,
+        18.752099990844727,
+        73.7479019165039,
+        -93.0,
+        81.2479019165039
+      ]
+    },
+    {
+      "path": "base_movil\\stl\\Deck.stl",
+      "closed": true,
+      "triangles": 6342,
+      "bbox": [
+        -121.0,
+        -110.0,
+        122.0,
+        121.0,
+        110.0,
+        125.0
+      ]
+    },
+    {
+      "path": "base_movil\\stl\\Eje_hex.stl",
+      "closed": true,
+      "triangles": 3426,
+      "bbox": [
+        72.00120544433594,
+        -146.5,
+        42.00019454956055,
+        87.99879455566406,
+        -60.5,
+        57.9987907409668
+      ]
+    },
+    {
+      "path": "base_movil\\stl\\Engranaje_salida_48T.stl",
+      "closed": true,
+      "triangles": 27530,
+      "bbox": [
+        48.797401428222656,
+        -106.0,
+        18.797399520874023,
+        111.20259857177734,
+        -100.0,
+        81.20259857177734
+      ]
+    },
+    {
+      "path": "base_movil\\stl\\Neumatico_TPU.stl",
+      "closed": true,
+      "triangles": 9600,
+      "bbox": [
+        30.002628326416016,
+        -146.5,
+        1.490883732913062e-05,
+        129.99993896484375,
+        -118.5,
+        99.99986267089844
+      ]
+    },
+    {
+      "path": "base_movil\\stl\\Pinon_motor_12T_m1.stl",
+      "closed": true,
+      "triangles": 10852,
+      "bbox": [
+        87.3499984741211,
+        -92.0,
+        76.98999786376953,
+        101.3499984741211,
+        -86.0,
+        90.98999786376953
+      ]
+    },
+    {
+      "path": "base_movil\\stl\\Pod_derecho_FR_y_RL.stl",
+      "closed": true,
+      "triangles": 42108,
+      "bbox": [
+        7.800000190734863,
+        -107.0,
+        15.300000190734863,
+        111.3499984741211,
+        -62.5,
+        122.0
+      ]
+    },
+    {
+      "path": "base_movil\\stl\\Pod_izquierdo_FL_y_RR.stl",
+      "closed": true,
+      "triangles": 42144,
+      "bbox": [
+        7.800000190734863,
+        62.5,
+        15.300000190734863,
+        111.3499984741211,
+        107.0,
+        122.0
+      ]
+    },
+    {
+      "path": "base_movil\\stl\\Rueda.stl",
+      "closed": true,
+      "triangles": 19092,
+      "bbox": [
+        34.00115203857422,
+        -146.5,
+        4.000043869018555,
+        125.99999237060547,
+        -118.5,
+        95.99999237060547
+      ]
+    },
+    {
+      "path": "brazo_compacto\\brazo_compacto-Base_part.stl",
+      "closed": true,
+      "triangles": 23416,
+      "bbox": [
+        -0.07999999821186066,
+        -0.07999999821186066,
+        0.0,
+        0.07999999821186066,
+        0.07999999821186066,
+        0.06539999693632126
+      ]
+    },
+    {
+      "path": "brazo_compacto\\brazo_compacto-Forearm_part.stl",
+      "closed": false,
+      "triangles": 108730,
+      "bbox": [
+        -0.024000000208616257,
+        -0.024000000208616257,
+        0.17800000309944153,
+        0.024000000208616257,
+        0.027499999850988388,
+        0.3109999895095825
+      ]
+    },
+    {
+      "path": "brazo_compacto\\brazo_compacto-Gripper_part.stl",
+      "closed": true,
+      "triangles": 18646,
+      "bbox": [
+        -0.029999999329447746,
+        -0.02199999988079071,
+        0.3490000069141388,
+        0.029999999329447746,
+        0.017999999225139618,
+        0.38999998569488525
+      ]
+    },
+    {
+      "path": "brazo_compacto\\brazo_compacto-JawL_part.stl",
+      "closed": true,
+      "triangles": 4466,
+      "bbox": [
+        -0.022600000724196434,
+        0.012000000104308128,
+        0.36414510011672974,
+        0.00139999995008111,
+        0.017000000923871994,
+        0.4309999942779541
+      ]
+    },
+    {
+      "path": "brazo_compacto\\brazo_compacto-JawR_part.stl",
+      "closed": true,
+      "triangles": 4570,
+      "bbox": [
+        -0.001254899543710053,
+        0.012000000104308128,
+        0.36399999260902405,
+        0.022454898804426193,
+        0.017000000923871994,
+        0.4309999942779541
+      ]
+    },
+    {
+      "path": "brazo_compacto\\brazo_compacto-Shoulder_part.stl",
+      "closed": false,
+      "triangles": 126340,
+      "bbox": [
+        -0.05199815332889557,
+        -0.05199987813830376,
+        0.0560000017285347,
+        0.05199999734759331,
+        0.05199949070811272,
+        0.13599997758865356
+      ]
+    },
+    {
+      "path": "brazo_compacto\\brazo_compacto-UpperArm_part.stl",
+      "closed": true,
+      "triangles": 36260,
+      "bbox": [
+        -0.024000000208616257,
+        -0.032999999821186066,
+        0.08799999952316284,
+        0.024000000208616257,
+        0.032999999821186066,
+        0.22599998116493225
+      ]
+    },
+    {
+      "path": "brazo_compacto\\brazo_compacto-Wrist_part.stl",
+      "closed": true,
+      "triangles": 34882,
+      "bbox": [
+        -0.024000000208616257,
+        -0.032999999821186066,
+        0.2630000114440918,
+        0.024000000208616257,
+        0.032999999821186066,
+        0.34850001335144043
+      ]
+    },
+    {
+      "path": "brazo_compacto\\stl\\Base.stl",
+      "closed": true,
+      "triangles": 20824,
+      "bbox": [
+        -80.0,
+        -80.0,
+        0.0,
+        80.0,
+        80.0,
+        55.0
+      ]
+    },
+    {
+      "path": "brazo_compacto\\stl\\Forearm.stl",
+      "closed": true,
+      "triangles": 79046,
+      "bbox": [
+        -24.0,
+        -21.0,
+        178.0,
+        24.0,
+        24.0,
+        310.9999694824219
+      ]
+    },
+    {
+      "path": "brazo_compacto\\stl\\ForearmLid.stl",
+      "closed": true,
+      "triangles": 24460,
+      "bbox": [
+        -24.0,
+        -24.0,
+        178.0,
+        24.0,
+        -16.5,
+        310.9999694824219
+      ]
+    },
+    {
+      "path": "brazo_compacto\\stl\\GripperFrame.stl",
+      "closed": true,
+      "triangles": 14880,
+      "bbox": [
+        -30.0,
+        -22.0,
+        349.0,
+        30.0,
+        18.0,
+        390.0
+      ]
+    },
+    {
+      "path": "brazo_compacto\\stl\\JawL.stl",
+      "closed": true,
+      "triangles": 4466,
+      "bbox": [
+        -22.600000381469727,
+        12.0,
+        364.1451110839844,
+        1.399999976158142,
+        17.0,
+        431.0
+      ]
+    },
+    {
+      "path": "brazo_compacto\\stl\\JawR.stl",
+      "closed": true,
+      "triangles": 4570,
+      "bbox": [
+        -1.2548996210098267,
+        12.0,
+        364.0,
+        22.454898834228516,
+        17.0,
+        431.0
+      ]
+    },
+    {
+      "path": "brazo_compacto\\stl\\Tower.stl",
+      "closed": true,
+      "triangles": 77158,
+      "bbox": [
+        -24.0,
+        -21.0,
+        71.0,
+        24.0,
+        24.0,
+        135.99996948242188
+      ]
+    },
+    {
+      "path": "brazo_compacto\\stl\\TowerLid.stl",
+      "closed": true,
+      "triangles": 18804,
+      "bbox": [
+        -24.0,
+        -24.0,
+        71.0,
+        24.0,
+        -16.5,
+        135.99996948242188
+      ]
+    },
+    {
+      "path": "brazo_compacto\\stl\\Turntable.stl",
+      "closed": true,
+      "triangles": 27762,
+      "bbox": [
+        -51.99815368652344,
+        -51.9998779296875,
+        56.0,
+        51.999996185302734,
+        51.999488830566406,
+        71.0
+      ]
+    },
+    {
+      "path": "brazo_compacto\\stl\\UpperArm.stl",
+      "closed": true,
+      "triangles": 36260,
+      "bbox": [
+        -24.0,
+        -33.0,
+        88.0,
+        24.0,
+        33.0,
+        225.99996948242188
+      ]
+    },
+    {
+      "path": "brazo_compacto\\stl\\WristFork.stl",
+      "closed": true,
+      "triangles": 31208,
+      "bbox": [
+        -24.0,
+        -33.0,
+        263.0,
+        24.0,
+        33.0,
+        334.70001220703125
+      ]
+    },
+    {
+      "path": "brazo_robotico\\stl\\Base.stl",
+      "closed": true,
+      "triangles": 21828,
+      "bbox": [
+        -59.99993896484375,
+        -59.99794387817383,
+        0.0,
+        60.0,
+        59.999908447265625,
+        47.0
+      ]
+    },
+    {
+      "path": "brazo_robotico\\stl\\Forearm.stl",
+      "closed": true,
+      "triangles": 12758,
+      "bbox": [
+        -17.0,
+        -29.0,
+        176.0,
+        17.0,
+        29.0,
+        302.0
+      ]
+    },
+    {
+      "path": "brazo_robotico\\stl\\GripperFrame.stl",
+      "closed": true,
+      "triangles": 13202,
+      "bbox": [
+        -30.0,
+        -22.0,
+        348.5,
+        30.0,
+        18.0,
+        389.5
+      ]
+    },
+    {
+      "path": "brazo_robotico\\stl\\JawL.stl",
+      "closed": true,
+      "triangles": 4464,
+      "bbox": [
+        -22.600000381469727,
+        12.0,
+        363.6451110839844,
+        1.399999976158142,
+        17.0,
+        430.5
+      ]
+    },
+    {
+      "path": "brazo_robotico\\stl\\JawR.stl",
+      "closed": true,
+      "triangles": 4614,
+      "bbox": [
+        -1.2548996210098267,
+        12.0,
+        363.5,
+        22.454898834228516,
+        17.0,
+        430.5
+      ]
+    },
+    {
+      "path": "brazo_robotico\\stl\\Shoulder.stl",
+      "closed": true,
+      "triangles": 12472,
+      "bbox": [
+        -57.99134063720703,
+        -57.99134063720703,
+        48.0,
+        57.99134063720703,
+        57.99134063720703,
+        112.0
+      ]
+    },
+    {
+      "path": "brazo_robotico\\stl\\UpperArm.stl",
+      "closed": true,
+      "triangles": 12196,
+      "bbox": [
+        -17.0,
+        -29.0,
+        76.0,
+        17.0,
+        29.0,
+        212.0
+      ]
+    },
+    {
+      "path": "brazo_robotico\\stl\\Wrist.stl",
+      "closed": true,
+      "triangles": 14782,
+      "bbox": [
+        -15.0,
+        -29.0,
+        266.0,
+        24.0,
+        29.0,
+        332.70001220703125
+      ]
+    }
+  ],
+  "urdf": {
+    "joints": [
+      {
+        "name": "Base_part_fixed",
+        "type": "fixed",
+        "axis": null,
+        "limits": null,
+        "mimic": null
+      },
+      {
+        "name": "J1_base",
+        "type": "revolute",
+        "axis": "0 0 1",
+        "limits": {
+          "lower": "-1.5707963267948966",
+          "upper": "1.5707963267948966",
+          "effort": "1000",
+          "velocity": "10"
+        },
+        "mimic": null
+      },
+      {
+        "name": "J2_shoulder",
+        "type": "revolute",
+        "axis": "0 0 1",
+        "limits": {
+          "lower": "-1.5707963267948966",
+          "upper": "1.5707963267948966",
+          "effort": "1000",
+          "velocity": "10"
+        },
+        "mimic": null
+      },
+      {
+        "name": "J3_elbow",
+        "type": "revolute",
+        "axis": "0 0 1",
+        "limits": {
+          "lower": "-1.5707963267948966",
+          "upper": "1.5707963267948966",
+          "effort": "1000",
+          "velocity": "10"
+        },
+        "mimic": null
+      },
+      {
+        "name": "J4_wrist_pitch",
+        "type": "revolute",
+        "axis": "0 0 1",
+        "limits": {
+          "lower": "-1.5707963267948966",
+          "upper": "1.5707963267948966",
+          "effort": "1000",
+          "velocity": "10"
+        },
+        "mimic": null
+      },
+      {
+        "name": "J5_wrist_roll",
+        "type": "revolute",
+        "axis": "0 0 1",
+        "limits": {
+          "lower": "-1.5707963267948966",
+          "upper": "1.5707963267948966",
+          "effort": "1000",
+          "velocity": "10"
+        },
+        "mimic": null
+      },
+      {
+        "name": "J6_jaw_R",
+        "type": "revolute",
+        "axis": "0 0 1",
+        "limits": {
+          "lower": "-0.05235987755982989",
+          "upper": "0.6108652381980153",
+          "effort": "1000",
+          "velocity": "10"
+        },
+        "mimic": null
+      },
+      {
+        "name": "J6_jaw_L",
+        "type": "revolute",
+        "axis": "0 0 1",
+        "limits": {
+          "lower": "-0.6108652381980153",
+          "upper": "0.05235987755982989",
+          "effort": "1000",
+          "velocity": "10"
+        },
+        "mimic": null
+      }
+    ],
+    "total_exported_mass_kg": 0.7727658450958342
+  },
+  "compact_home_jacobian": {
+    "angles_deg": [
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "tcp_pad_midpoint_mm": [
+      0.0,
+      14.5,
+      422.5
+    ],
+    "J0": [
+      [
+        -14.5,
+        310.5,
+        220.5,
+        135.5,
+        -14.5
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        1.0,
+        1.0,
+        1.0,
+        0.0
+      ],
+      [
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    ],
+    "XYZ_rank": 1,
+    "arm_rank": 3
+  }
+}

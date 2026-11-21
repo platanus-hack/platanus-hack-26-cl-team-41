@@ -1,0 +1,107 @@
+{
+  "method": "supervised imitation; learned expanded downward reach + per-candidate collision-free route probabilities; deterministic full-arm primitive guard",
+  "reach": {
+    "examples": 18000,
+    "training_examples": 15000,
+    "validation_examples": 3000,
+    "history": [
+      {
+        "epoch": 1,
+        "validation_rmse": 0.06533372851803984
+      },
+      {
+        "epoch": 41,
+        "validation_rmse": 0.0025483427660829647
+      },
+      {
+        "epoch": 81,
+        "validation_rmse": 0.0031068108687183353
+      },
+      {
+        "epoch": 121,
+        "validation_rmse": 0.0012085236961761558
+      },
+      {
+        "epoch": 140,
+        "validation_rmse": 0.0014001051747025883
+      }
+    ]
+  },
+  "routes": {
+    "examples": 1800,
+    "training_examples": 1500,
+    "validation_examples": 300,
+    "history": [
+      {
+        "epoch": 1,
+        "validation_binary_accuracy": 0.6722222222222223
+      },
+      {
+        "epoch": 41,
+        "validation_binary_accuracy": 0.9344444444444444
+      },
+      {
+        "epoch": 81,
+        "validation_binary_accuracy": 0.9488888888888889
+      },
+      {
+        "epoch": 121,
+        "validation_binary_accuracy": 0.9516666666666667
+      },
+      {
+        "epoch": 161,
+        "validation_binary_accuracy": 0.9522222222222222
+      },
+      {
+        "epoch": 201,
+        "validation_binary_accuracy": 0.9533333333333334
+      },
+      {
+        "epoch": 241,
+        "validation_binary_accuracy": 0.9522222222222222
+      },
+      {
+        "epoch": 280,
+        "validation_binary_accuracy": 0.9516666666666667
+      }
+    ]
+  },
+  "route_positive_fraction": [
+    0.11888888888888889,
+    0.2627777777777778,
+    0.4077777777777778,
+    0.10722222222222222,
+    0.23277777777777778,
+    0.41555555555555557
+  ],
+  "route_names": [
+    "direct",
+    "over_45mm",
+    "inner_115mm_over_50mm",
+    "outer_140mm",
+    "inner_115mm",
+    "inner_105mm_over_45mm"
+  ],
+  "elapsed_s": 63.800570249557495,
+  "workspace_bounds_m": [
+    [
+      0.102,
+      -0.085,
+      0.01
+    ],
+    [
+      0.174,
+      0.045,
+      0.074
+    ]
+  ],
+  "training_seed": 520,
+  "teacher_margin_m": 0.003,
+  "path_sample_spacing_m": 0.004,
+  "not_learned": [
+    "grasp phase sequence",
+    "jaw feedback and gravity compensation",
+    "collision guard"
+  ],
+  "state_source": "privileged simulator object/obstacle poses"
+}

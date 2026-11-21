@@ -1,0 +1,23 @@
+{
+  "test": "Loaded copied scenes and meshes from an independent temporary folder outside OneDrive",
+  "scenes": [
+    {
+      "scene": "scene.xml",
+      "loaded_outside_onedrive": true,
+      "bodies": 12,
+      "geoms": 25
+    },
+    {
+      "scene": "curriculum_scene.xml",
+      "loaded_outside_onedrive": true,
+      "bodies": 20,
+      "geoms": 33
+    },
+    {
+      "scene": "dock_curriculum_scene.xml",
+      "loaded_outside_onedrive": true,
+      "bodies": 15,
+      "geoms": 49
+    }
+  ]
+}

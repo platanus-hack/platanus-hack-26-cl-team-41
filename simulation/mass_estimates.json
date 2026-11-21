@@ -1,0 +1,390 @@
+{
+  "status": "preassembly_estimates",
+  "method": "Integrate closed original print meshes. Catalog-mass servo boxes and hardware allowances; parallel-axis combination into actual URDF link frames.",
+  "profile_mass_assumptions": {
+    "pla_density_kg_m3": 1240.0,
+    "printed_solid_fraction": 0.85,
+    "printed_fraction_uncertainty": [
+      0.65,
+      1.0
+    ],
+    "MG995_mass_kg": 0.055,
+    "SG90_mass_kg": 0.009
+  },
+  "measured_components": [],
+  "components": [
+    {
+      "component": "Base",
+      "kind": "printed",
+      "mass_kg": 0.11479937698994068,
+      "solid_volume_cm3": 108.91781498096839,
+      "provenance": "CAD volume x assumed PLA density x assumed solid fraction"
+    },
+    {
+      "component": "MG995 Base",
+      "kind": "MG995",
+      "mass_kg": 0.055,
+      "provenance": "catalog mass, approximate box distribution"
+    },
+    {
+      "component": "hardware_Base_part",
+      "kind": "hardware",
+      "mass_kg": 0.01,
+      "provenance": "unmeasured screw/horn/wire allowance"
+    },
+    {
+      "component": "Turntable",
+      "kind": "printed",
+      "mass_kg": 0.053579195840208364,
+      "solid_volume_cm3": 50.834151651051585,
+      "provenance": "CAD volume x assumed PLA density x assumed solid fraction"
+    },
+    {
+      "component": "Tower",
+      "kind": "printed",
+      "mass_kg": 0.0429233792766629,
+      "solid_volume_cm3": 40.72426876343729,
+      "provenance": "CAD volume x assumed PLA density x assumed solid fraction"
+    },
+    {
+      "component": "TowerLid",
+      "kind": "printed",
+      "mass_kg": 0.00915059595598343,
+      "solid_volume_cm3": 8.681779844386556,
+      "provenance": "CAD volume x assumed PLA density x assumed solid fraction"
+    },
+    {
+      "component": "MG995 Shoulder",
+      "kind": "MG995",
+      "mass_kg": 0.055,
+      "provenance": "catalog mass, approximate box distribution"
+    },
+    {
+      "component": "hardware_Shoulder_part",
+      "kind": "hardware",
+      "mass_kg": 0.008,
+      "provenance": "unmeasured screw/horn/wire allowance"
+    },
+    {
+      "component": "UpperArm",
+      "kind": "printed",
+      "mass_kg": 0.10566314735540296,
+      "solid_volume_cm3": 100.24966542258345,
+      "provenance": "CAD volume x assumed PLA density x assumed solid fraction"
+    },
+    {
+      "component": "hardware_UpperArm_part",
+      "kind": "hardware",
+      "mass_kg": 0.008,
+      "provenance": "unmeasured screw/horn/wire allowance"
+    },
+    {
+      "component": "Forearm",
+      "kind": "printed",
+      "mass_kg": 0.07310447528673515,
+      "solid_volume_cm3": 69.35908471227245,
+      "provenance": "CAD volume x assumed PLA density x assumed solid fraction"
+    },
+    {
+      "component": "ForearmLid",
+      "kind": "printed",
+      "mass_kg": 0.018538907356274736,
+      "solid_volume_cm3": 17.589096163448517,
+      "provenance": "CAD volume x assumed PLA density x assumed solid fraction"
+    },
+    {
+      "component": "MG995 Elbow",
+      "kind": "MG995",
+      "mass_kg": 0.055,
+      "provenance": "catalog mass, approximate box distribution"
+    },
+    {
+      "component": "MG995 Wrist",
+      "kind": "MG995",
+      "mass_kg": 0.055,
+      "provenance": "catalog mass, approximate box distribution"
+    },
+    {
+      "component": "hardware_Forearm_part",
+      "kind": "hardware",
+      "mass_kg": 0.008,
+      "provenance": "unmeasured screw/horn/wire allowance"
+    },
+    {
+      "component": "WristFork",
+      "kind": "printed",
+      "mass_kg": 0.045118390651917084,
+      "solid_volume_cm3": 42.80682225039572,
+      "provenance": "CAD volume x assumed PLA density x assumed solid fraction"
+    },
+    {
+      "component": "SG90 Roll",
+      "kind": "SG90",
+      "mass_kg": 0.009,
+      "provenance": "catalog mass, approximate box distribution"
+    },
+    {
+      "component": "hardware_Wrist_part",
+      "kind": "hardware",
+      "mass_kg": 0.005,
+      "provenance": "unmeasured screw/horn/wire allowance"
+    },
+    {
+      "component": "GripperFrame",
+      "kind": "printed",
+      "mass_kg": 0.0204511234591523,
+      "solid_volume_cm3": 19.4033429403722,
+      "provenance": "CAD volume x assumed PLA density x assumed solid fraction"
+    },
+    {
+      "component": "SG90 Grip",
+      "kind": "SG90",
+      "mass_kg": 0.009,
+      "provenance": "catalog mass, approximate box distribution"
+    },
+    {
+      "component": "hardware_Gripper_part",
+      "kind": "hardware",
+      "mass_kg": 0.004,
+      "provenance": "unmeasured screw/horn/wire allowance"
+    },
+    {
+      "component": "JawR",
+      "kind": "printed",
+      "mass_kg": 0.0038484707421530275,
+      "solid_volume_cm3": 3.6513005143766866,
+      "provenance": "CAD volume x assumed PLA density x assumed solid fraction"
+    },
+    {
+      "component": "hardware_JawR_part",
+      "kind": "hardware",
+      "mass_kg": 0.002,
+      "provenance": "unmeasured screw/horn/wire allowance"
+    },
+    {
+      "component": "JawL",
+      "kind": "printed",
+      "mass_kg": 0.0038940934262592826,
+      "solid_volume_cm3": 3.694585793414879,
+      "provenance": "CAD volume x assumed PLA density x assumed solid fraction"
+    },
+    {
+      "component": "hardware_JawL_part",
+      "kind": "hardware",
+      "mass_kg": 0.002,
+      "provenance": "unmeasured screw/horn/wire allowance"
+    }
+  ],
+  "links": {
+    "Base_part": {
+      "mass_kg": 0.1797993769899407,
+      "com_m": [
+        0.0031439327363164656,
+        4.167536208785225e-07,
+        0.032343167155867276
+      ],
+      "inertia_kg_m2": [
+        [
+          0.000260216503110151,
+          -6.612776518238854e-10,
+          -3.7528659070447426e-06
+        ],
+        [
+          -6.612776518160139e-10,
+          0.0002668118640389343,
+          -4.0139675803777685e-10
+        ],
+        [
+          -3.752865907044743e-06,
+          -4.0139675803096626e-10,
+          0.0004107434789345469
+        ]
+      ],
+      "source_urdf_mass_kg": 0.17886679157228155
+    },
+    "Shoulder_part": {
+      "mass_kg": 0.1686531710728547,
+      "com_m": [
+        0.0010688167935057875,
+        1.3549173001122072e-08,
+        0.023682822667537434
+      ],
+      "inertia_kg_m2": [
+        [
+          0.00012880168248559677,
+          7.096118873288057e-10,
+          -1.6713756475422462e-06
+        ],
+        [
+          7.096118873286305e-10,
+          0.0001336943160418243,
+          1.2706103998744684e-10
+        ],
+        [
+          -1.6713756475422462e-06,
+          1.2706103998735769e-10,
+          0.00011992352561445761
+        ]
+      ],
+      "source_urdf_mass_kg": 0.16767267493999
+    },
+    "UpperArm_part": {
+      "mass_kg": 0.11366314735540295,
+      "com_m": [
+        -0.04500070336464955,
+        4.096992201189842e-09,
+        -0.00016576080721250814
+      ],
+      "inertia_kg_m2": [
+        [
+          9.479846730944794e-05,
+          2.2961759890177404e-11,
+          2.9092789414352337e-10
+        ],
+        [
+          2.2961759890804045e-11,
+          0.00017192768259263982,
+          1.5793687425685393e-11
+        ],
+        [
+          2.909278941442281e-10,
+          1.5793687425734562e-11,
+          0.00011554146405738732
+        ]
+      ],
+      "source_urdf_mass_kg": 0.1293220673464765
+    },
+    "Forearm_part": {
+      "mass_kg": 0.20964338264300988,
+      "com_m": [
+        -0.04250023851909812,
+        1.6384919515177533e-07,
+        0.0016407441170781518
+      ],
+      "inertia_kg_m2": [
+        [
+          6.7701225077392e-05,
+          1.2751838388727798e-09,
+          6.920772175128497e-10
+        ],
+        [
+          1.2751838388710727e-09,
+          0.0003093993595477825,
+          -6.856969355254791e-11
+        ],
+        [
+          6.920772175139085e-10,
+          -6.856969355234899e-11,
+          0.000299224015365186
+        ]
+      ],
+      "source_urdf_mass_kg": 0.18888878319772245
+    },
+    "Wrist_part": {
+      "mass_kg": 0.05911839065191708,
+      "com_m": [
+        -0.022006484781644353,
+        -0.0011871135495172954,
+        -0.00015964450928081957
+      ],
+      "inertia_kg_m2": [
+        [
+          3.6387301678384296e-05,
+          -1.4518554326595468e-06,
+          2.0764842523481052e-07
+        ],
+        [
+          -1.4518554326595464e-06,
+          4.7016363498717466e-05,
+          1.1173170820057659e-08
+        ],
+        [
+          2.076484252348102e-07,
+          1.1173170820057558e-08,
+          2.7899984701962956e-05
+        ]
+      ],
+      "source_urdf_mass_kg": 0.06436490940610722
+    },
+    "Gripper_part": {
+      "mass_kg": 0.0334511234591523,
+      "com_m": [
+        -0.0035320468862995802,
+        -0.0024678891879322154,
+        0.016039300593356842
+      ],
+      "inertia_kg_m2": [
+        [
+          1.3214241550243421e-05,
+          -3.974930470587584e-07,
+          2.885094361935293e-07
+        ],
+        [
+          -3.9749304705875855e-07,
+          6.851338509633391e-06,
+          4.4527181213717717e-07
+        ],
+        [
+          2.885094361935293e-07,
+          4.4527181213717706e-07,
+          1.1161648907079519e-05
+        ]
+      ],
+      "source_urdf_mass_kg": 0.034174425907723696
+    },
+    "JawR_part": {
+      "mass_kg": 0.005848470742153028,
+      "com_m": [
+        -0.021335579966851148,
+        0.00031984887881261243,
+        0.0025218018664947234
+      ],
+      "inertia_kg_m2": [
+        [
+          8.474163370770856e-08,
+          4.707381374054419e-08,
+          -2.720445553242176e-09
+        ],
+        [
+          4.707381374054419e-08,
+          1.583652609297883e-06,
+          4.077686422917978e-11
+        ],
+        [
+          -2.7204455532421752e-09,
+          4.077686422917907e-11,
+          1.6441167298993631e-06
+        ]
+      ],
+      "source_urdf_mass_kg": 0.004710176888084433
+    },
+    "JawL_part": {
+      "mass_kg": 0.005894093426259283,
+      "com_m": [
+        -0.021144172767505298,
+        -0.0003173557533407352,
+        0.0024999998086608403
+      ],
+      "inertia_kg_m2": [
+        [
+          8.507086579401456e-08,
+          -4.7433368567670235e-08,
+          2.2698764889722754e-14
+        ],
+        [
+          -4.743336856767025e-08,
+          1.6096020596248293e-06,
+          -7.861407672515907e-16
+        ],
+        [
+          2.26987648871735e-14,
+          -7.861407675176577e-16,
+          1.6701147118092009e-06
+        ]
+      ],
+      "source_urdf_mass_kg": 0.004766015837448542
+    }
+  },
+  "total_mass_kg": 0.7760711563406898,
+  "unmodeled": "Actual infill spatial distribution, servo internal mass distribution, measured COM and hardware distribution."
+}

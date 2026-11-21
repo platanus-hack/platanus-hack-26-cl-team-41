@@ -1,0 +1,111 @@
+<?xml version='1.0' encoding='utf-8'?>
+<mujoco model="SolidCraft compact arm tabletop">
+  <compiler angle="radian" autolimits="true" meshdir="../solidcraft_import/brazo_compacto" inertiafromgeom="false" />
+  <option timestep="0.002" integrator="implicitfast" gravity="0 0 -9.81" iterations="60" />
+  <size njmax="2000" nconmax="300" />
+  <visual>
+    <global offwidth="640" offheight="480" />
+    <headlight diffuse="0.6 0.6 0.6" ambient="0.3 0.3 0.3" />
+  </visual>
+  <default>
+    <geom friction="0.5 0.002 0.0001" solref="0.02 1" solimp="0.95 0.99 0.001" condim="4" />
+  </default>
+  <asset>
+    <texture name="checker" type="2d" builtin="checker" rgb1="0.25 0.29 0.32" rgb2="0.30 0.34 0.37" width="256" height="256" />
+    <material name="worktop" texture="checker" texrepeat="5 5" reflectance="0" />
+    <mesh name="Base_part_mesh0" file="brazo_compacto-Base_part.stl" />
+    <mesh name="Shoulder_part_mesh0" file="brazo_compacto-Shoulder_part.stl" />
+    <mesh name="UpperArm_part_mesh0" file="brazo_compacto-UpperArm_part.stl" />
+    <mesh name="Forearm_part_mesh0" file="brazo_compacto-Forearm_part.stl" />
+    <mesh name="Wrist_part_mesh0" file="brazo_compacto-Wrist_part.stl" />
+    <mesh name="Gripper_part_mesh0" file="brazo_compacto-Gripper_part.stl" />
+    <mesh name="JawR_part_mesh0" file="brazo_compacto-JawR_part.stl" />
+    <mesh name="JawL_part_mesh0" file="brazo_compacto-JawL_part.stl" />
+  </asset>
+  <worldbody>
+    <light pos="0.2 -0.5 1.2" dir="0 0 -1" diffuse="0.8 0.8 0.8" />
+    <geom name="table" type="plane" size="0.6 0.6 0.02" material="worktop" />
+    <camera name="workspace" pos="0.16 -0.62 0.53" xyaxes="1 0 0 0 0.637 0.771" fovy="48" />
+    <camera name="overhead" pos="0.12 0 0.85" xyaxes="1 0 0 0 1 0" fovy="40" />
+    <body name="base_link">
+      <body name="Base_part" pos="0 0 0" quat="1 0 0 0">
+        <inertial pos="0.00314393274 4.16753621e-07 0.0323431672" mass="0.1797993769899407" fullinertia="0.000260216503 0.000266811864 0.000410743479 -6.61277652e-10 -3.75286591e-06 -4.01396758e-10" />
+        <geom name="Base_part_visual" type="mesh" mesh="Base_part_mesh0" rgba="0.843137264251709 0.8549019694328308 0.8745098114013672 1" contype="0" conaffinity="0" group="2" pos="0 0 0" quat="1 0 0 0" />
+        <geom type="cylinder" group="3" rgba="0.2 0.6 0.3 0.25" name="base_collision" pos="0 0 0.0275" size="0.08 0.0275" />
+        <body name="Shoulder_part" pos="0 0 0.066" quat="0.707106781 0 0 0.707106781">
+          <joint name="J1_base" type="hinge" axis="0 0 1" range="-1.5707963267948966 1.5707963267948966" damping="0.005" armature="5e-05" frictionloss="0.01" />
+          <inertial pos="0.00106881679 1.3549173e-08 0.0236828227" mass="0.1686531710728547" fullinertia="0.000128801682 0.000133694316 0.000119923526 7.09611887e-10 -1.67137565e-06 1.2706104e-10" />
+          <geom name="Shoulder_part_visual" type="mesh" mesh="Shoulder_part_mesh0" rgba="0.7058823704719543 0.7254902124404907 0.7529411911964417 1" contype="0" conaffinity="0" group="2" pos="0 0 -0.066" quat="0.707106781 0 0 -0.707106781" />
+          <geom type="capsule" group="3" rgba="0.2 0.6 0.3 0.25" fromto="0 0 0.012 0 0 0.046" size="0.021" />
+          <body name="UpperArm_part" pos="0 0 0.046" quat="0.707106781 0 0.707106781 0">
+            <joint name="J2_shoulder" type="hinge" axis="0 0 1" range="-1.5707963267948966 1.5707963267948966" damping="0.005" armature="5e-05" frictionloss="0.01" />
+            <inertial pos="-0.0450007034 4.0969922e-09 -0.000165760807" mass="0.11366314735540295" fullinertia="9.47984673e-05 0.000171927683 0.000115541464 2.29617599e-11 2.90927894e-10 1.57936874e-11" />
+            <geom name="UpperArm_part_visual" type="mesh" mesh="UpperArm_part_mesh0" rgba="0.843137264251709 0.8549019694328308 0.8745098114013672 1" contype="0" conaffinity="0" group="2" pos="0.112 0 0" quat="0.5 0.5 -0.5 -0.5" />
+            <geom type="capsule" group="3" rgba="0.2 0.6 0.3 0.25" fromto="-0.012 0 0 -0.078 0 0" size="0.018" />
+            <body name="Forearm_part" pos="-0.09 0 0" quat="1 0 0 0">
+              <joint name="J3_elbow" type="hinge" axis="0 0 1" range="-1.5707963267948966 1.5707963267948966" damping="0.005" armature="5e-05" frictionloss="0.01" />
+              <inertial pos="-0.0425002385 1.63849195e-07 0.00164074412" mass="0.20964338264300988" fullinertia="6.77012251e-05 0.00030939936 0.000299224015 1.27518384e-09 6.92077218e-10 -6.85696936e-11" />
+              <geom name="Forearm_part_visual" type="mesh" mesh="Forearm_part_mesh0" rgba="0.843137264251709 0.8549019694328308 0.8745098114013672 1" contype="0" conaffinity="0" group="2" pos="0.202 0 0" quat="0.5 0.5 -0.5 -0.5" />
+              <geom type="capsule" group="3" rgba="0.2 0.6 0.3 0.25" fromto="-0.012 0 0 -0.073 0 0" size="0.021" />
+              <body name="Wrist_part" pos="-0.085 0 0" quat="1 0 0 0">
+                <joint name="J4_wrist_pitch" type="hinge" axis="0 0 1" range="-1.5707963267948966 1.5707963267948966" damping="0.005" armature="5e-05" frictionloss="0.01" />
+                <inertial pos="-0.0220064848 -0.00118711355 -0.000159644509" mass="0.05911839065191708" fullinertia="3.63873017e-05 4.70163635e-05 2.78999847e-05 -1.45185543e-06 2.07648425e-07 1.11731708e-08" />
+                <geom name="Wrist_part_visual" type="mesh" mesh="Wrist_part_mesh0" rgba="0.843137264251709 0.8549019694328308 0.8745098114013672 1" contype="0" conaffinity="0" group="2" pos="0.28700000000000003 0 0" quat="0.5 0.5 -0.5 -0.5" />
+                <geom type="capsule" group="3" rgba="0.2 0.6 0.3 0.25" fromto="-0.010 0 0 -0.051 0 0" size="0.015" />
+                <body name="Gripper_part" pos="-0.062 0 0" quat="0.707106781 0 -0.707106781 0">
+                  <joint name="J5_wrist_roll" type="hinge" axis="0 0 1" range="-1.5707963267948966 1.5707963267948966" damping="0.0005" armature="2e-06" frictionloss="0.002" />
+                  <inertial pos="-0.00353204689 -0.00246788919 0.0160393006" mass="0.0334511234591523" fullinertia="1.32142416e-05 6.85133851e-06 1.11616489e-05 -3.97493047e-07 2.88509436e-07 4.45271812e-07" />
+                  <geom name="Gripper_part_visual" type="mesh" mesh="Gripper_part_mesh0" rgba="0.843137264251709 0.8549019694328308 0.8745098114013672 1" contype="0" conaffinity="0" group="2" pos="0 0 -0.34900000000000003" quat="0.707106781 0 0 -0.707106781" />
+                  <geom type="box" group="3" rgba="0.2 0.6 0.3 0.25" pos="0 0 0.018" size="0.027 0.019 0.018" />
+                  <site name="tcp" pos="0.0145 0 0.0735" size="0.004" rgba="0 1 0 0.8" />
+                  <site name="tool_axis" pos="0.0145 0 0.0535" size="0.001" rgba="0 1 0 0" />
+                  <body name="JawR_part" pos="0.012 -0.0106 0.027" quat="0.707106781 0 0.707106781 0">
+                    <joint name="J6_jaw_R" type="hinge" axis="0 0 1" range="-0.05235987755982989 0.6108652381980153" damping="0.0005" armature="2e-06" frictionloss="0.002" />
+                    <inertial pos="-0.02133558 0.000319848879 0.00252180187" mass="0.005848470742153028" fullinertia="8.47416337e-08 1.58365261e-06 1.64411673e-06 4.70738137e-08 -2.72044555e-09 4.07768642e-11" />
+                    <geom name="JawR_part_visual" type="mesh" mesh="JawR_part_mesh0" rgba="0.8235294222831726 0.23529411852359772 0.23529411852359772 1" contype="0" conaffinity="0" group="2" pos="0.376 0.0106 -0.012" quat="0.5 0.5 -0.5 -0.5" />
+                    <geom type="box" group="3" rgba="0.2 0.6 0.3 0.25" name="JawR_part_finger" pos="-0.0275 0 0.0025" size="0.0275 0.004 0.0025" friction="0.6 0.002 0.0001" />
+                    <geom type="box" group="3" rgba="0.2 0.6 0.3 0.25" name="JawR_part_pad" pos="-0.0465 0.0058 0.0025" size="0.0085 0.0018 0.0025" friction="0.6 0.002 0.0001" />
+                  </body>
+                  <body name="JawL_part" pos="0.012 0.0106 0.027" quat="0.707106781 0 0.707106781 0">
+                    <joint name="J6_jaw_L" type="hinge" axis="0 0 1" range="-0.6108652381980153 0.05235987755982989" damping="0.0005" armature="2e-06" frictionloss="0.002" />
+                    <inertial pos="-0.0211441728 -0.000317355753 0.00249999981" mass="0.005894093426259283" fullinertia="8.50708658e-08 1.60960206e-06 1.67011471e-06 -4.74333686e-08 2.26987649e-14 -7.86140767e-16" />
+                    <geom name="JawL_part_visual" type="mesh" mesh="JawL_part_mesh0" rgba="0.8235294222831726 0.23529411852359772 0.23529411852359772 1" contype="0" conaffinity="0" group="2" pos="0.376 -0.0106 -0.012" quat="0.5 0.5 -0.5 -0.5" />
+                    <geom type="box" group="3" rgba="0.2 0.6 0.3 0.25" name="JawL_part_finger" pos="-0.0275 0 0.0025" size="0.0275 0.004 0.0025" friction="0.6 0.002 0.0001" />
+                    <geom type="box" group="3" rgba="0.2 0.6 0.3 0.25" name="JawL_part_pad" pos="-0.0465 -0.0058 0.0025" size="0.0085 0.0018 0.0025" friction="0.6 0.002 0.0001" />
+                  </body>
+                </body>
+              </body>
+            </body>
+          </body>
+        </body>
+      </body>
+    </body>
+    <body name="block" pos="0.125 0.0145 0.008">
+      <freejoint name="block_free" />
+      <inertial pos="0 0 0" mass="0.006" diaginertia="0.000000256 0.000000256 0.000000256" />
+      <geom name="block_geom" type="box" size="0.008 0.008 0.008" rgba="0.9 0.18 0.08 1" friction="0.5 0.002 0.0001" />
+    </body>
+    <site name="reach_goal" pos="0.15 0.04 0.08" size="0.006" rgba="0.1 0.8 0.9 0.65" />
+    <body name="tray" pos="0.145 -0.095 0">
+      <geom type="box" pos="0 0 0.002" size="0.030 0.030 0.002" rgba="0.1 0.35 0.7 1" />
+      <geom type="box" pos="0 0.029 .009" size="0.03 0.001 .007" rgba="0.1 0.35 0.7 1" />
+      <geom type="box" pos="0 -0.029 .009" size="0.03 0.001 .007" rgba="0.1 0.35 0.7 1" />
+      <geom type="box" pos="0.029 0 .009" size="0.001 0.028 .007" rgba="0.1 0.35 0.7 1" />
+      <geom type="box" pos="-0.029 0 .009" size="0.001 0.028 .007" rgba="0.1 0.35 0.7 1" />
+    </body>
+  </worldbody>
+  <contact>
+    <exclude body1="JawR_part" body2="JawL_part" />
+  </contact>
+  <equality>
+    <joint name="jaw_gearing" joint1="J6_jaw_L" joint2="J6_jaw_R" polycoef="0 -1 0 0 0" solref="0.005 1" />
+  </equality>
+  <actuator>
+    <position name="J1_base_servo" joint="J1_base" kp="35.0" kv="0.35" ctrlrange="-1.57079633 1.57079633" forcerange="-0.9218251 0.9218251" />
+    <position name="J2_shoulder_servo" joint="J2_shoulder" kp="35.0" kv="0.35" ctrlrange="-1.57079633 1.57079633" forcerange="-0.9218251 0.9218251" />
+    <position name="J3_elbow_servo" joint="J3_elbow" kp="35.0" kv="0.35" ctrlrange="-1.57079633 1.57079633" forcerange="-0.9218251 0.9218251" />
+    <position name="J4_wrist_pitch_servo" joint="J4_wrist_pitch" kp="35.0" kv="0.35" ctrlrange="-1.57079633 1.57079633" forcerange="-0.9218251 0.9218251" />
+    <position name="J5_wrist_roll_servo" joint="J5_wrist_roll" kp="8.0" kv="0.06" ctrlrange="-1.57079633 1.57079633" forcerange="-0.1765197 0.1765197" />
+    <position name="J6_jaw_R_servo" joint="J6_jaw_R" kp="8.0" kv="0.06" ctrlrange="-0.0523598776 0.610865238" forcerange="-0.1765197 0.1765197" />
+  </actuator>
+</mujoco>

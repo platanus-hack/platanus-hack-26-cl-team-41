@@ -1,0 +1,4 @@
+.~*.lock
+*.lock
+*.bak
+__pycache__/

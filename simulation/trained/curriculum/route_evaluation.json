@@ -1,0 +1,1814 @@
+{
+  "cases": 200,
+  "independent_seed": 8271,
+  "raw_network_proposals_clear": 82,
+  "teacher_feasible": 86,
+  "guarded_executions": 85,
+  "unsafe_guarded_paths": 0,
+  "refusals": 115,
+  "blocked_challenges": 20,
+  "blocked_challenges_refused": 20,
+  "feasible_guard_fallbacks": 3,
+  "results": [
+    {
+      "blocked_challenge": true,
+      "teacher_feasible": false,
+      "network_proposal_clear": false,
+      "executed_clear": null,
+      "refused": true,
+      "fallback": true,
+      "route": null
+    },
+    {
+      "blocked_challenge": false,
+      "teacher_feasible": true,
+      "network_proposal_clear": true,
+      "executed_clear": true,
+      "refused": false,
+      "fallback": false,
+      "route": "over_45mm"
+    },
+    {
+      "blocked_challenge": false,
+      "teacher_feasible": true,
+      "network_proposal_clear": true,
+      "executed_clear": true,
+      "refused": false,
+      "fallback": false,
+      "route": "over_45mm"
+    },
+    {
+      "blocked_challenge": false,
+      "teacher_feasible": false,
+      "network_proposal_clear": false,
+      "executed_clear": null,
+      "refused": true,
+      "fallback": true,
+      "route": null
+    },
+    {
+      "blocked_challenge": false,
+      "teacher_feasible": false,
+      "network_proposal_clear": false,
+      "executed_clear": null,
+      "refused": true,
+      "fallback": true,
+      "route": null
+    },
+    {
+      "blocked_challenge": false,
+      "teacher_feasible": true,
+      "network_proposal_clear": true,
+      "executed_clear": true,
+      "refused": false,
+      "fallback": false,
+      "route": "inner_105mm_over_45mm"
+    },
+    {
+      "blocked_challenge": false,
+      "teacher_feasible": true,
+      "network_proposal_clear": true,
+      "executed_clear": true,
+      "refused": false,
+      "fallback": false,
+      "route": "inner_115mm_over_50mm"
+    },
+    {
+      "blocked_challenge": false,
+      "teacher_feasible": false,
+      "network_proposal_clear": false,
+      "executed_clear": null,
+      "refused": true,
+      "fallback": true,
+      "route": null
+    },
+    {
+      "blocked_challenge": false,
+      "teacher_feasible": true,
+      "network_proposal_clear": true,
+      "executed_clear": true,
+      "refused": false,
+      "fallback": false,
+      "route": "over_45mm"
+    },
+    {
+      "blocked_challenge": false,
+      "teacher_feasible": false,
+      "network_proposal_clear": false,
+      "executed_clear": null,
+      "refused": true,
+      "fallback": true,
+      "route": null
+    },
+    {
+      "blocked_challenge": true,
+      "teacher_feasible": false,
+      "network_proposal_clear": false,
+      "executed_clear": null,
+      "refused": true,
+      "fallback": true,
+      "route": null
+    },
+    {
+      "blocked_challenge": false,
+      "teacher_feasible": false,
+      "network_proposal_clear": false,
+      "executed_clear": null,
+      "refused": true,
+      "fallback": true,
+      "route": null
+    },
+    {
+      "blocked_challenge": false,
+      "teacher_feasible": false,
+      "network_proposal_clear": false,
+      "executed_clear": null,
+      "refused": true,
+      "fallback": true,
+      "route": null
+    },
+    {
+      "blocked_challenge": false,
+      "teacher_feasible": true,
+      "network_proposal_clear": true,
+      "executed_clear": true,
+      "refused": false,
+      "fallback": false,
+      "route": "inner_105mm_over_45mm"
+    },
+    {
+      "blocked_challenge": false,
+      "teacher_feasible": true,
+      "network_proposal_clear": true,
+      "executed_clear": true,
+      "refused": false,
+      "fallback": false,
+      "route": "direct"
+    },
+    {
+      "blocked_challenge": false,
+      "teacher_feasible": true,
+      "network_proposal_clear": true,
+      "executed_clear": true,
+      "refused": false,
+      "fallback": false,
+      "route": "inner_115mm"
+    },
+    {
+      "blocked_challenge": false,
+      "teacher_feasible": true,
+      "network_proposal_clear": true,
+      "executed_clear": true,
+      "refused": false,
+      "fallback": false,
+      "route": "over_45mm"
+    },
+    {
+      "blocked_challenge": false,
+      "teacher_feasible": true,
+      "network_proposal_clear": true,
+      "executed_clear": true,
+      "refused": false,
+      "fallback": false,
+      "route": "inner_105mm_over_45mm"
+    },
+    {
+      "blocked_challenge": false,
+      "teacher_feasible": false,
+      "network_proposal_clear": false,
+      "executed_clear": null,
+      "refused": true,
+      "fallback": true,
+      "route": null
+    },
+    {
+      "blocked_challenge": false,
+      "teacher_feasible": true,
+      "network_proposal_clear": true,
+      "executed_clear": true,
+      "refused": false,
+      "fallback": false,
+      "route": "inner_105mm_over_45mm"
+    },
+    {
+      "blocked_challenge": true,
+      "teacher_feasible": false,
+      "network_proposal_clear": false,
+      "executed_clear": null,
+      "refused": true,
+      "fallback": true,
+      "route": null
+    },
+    {
+      "blocked_challenge": false,
+      "teacher_feasible": true,
+      "network_proposal_clear": true,
+      "executed_clear": true,
+      "refused": false,
+      "fallback": false,
+      "route": "over_45mm"
+    },
+    {
+      "blocked_challenge": false,
+      "teacher_feasible": false,
+      "network_proposal_clear": false,
+      "executed_clear": null,
+      "refused": true,
+      "fallback": true,
+      "route": null
+    },
+    {
+      "blocked_challenge": false,
+      "teacher_feasible": false,
+      "network_proposal_clear": false,
+      "executed_clear": null,
+      "refused": true,
+      "fallback": true,
+      "route": null
+    },
+    {
+      "blocked_challenge": false,
+      "teacher_feasible": true,
+      "network_proposal_clear": true,
+      "executed_clear": true,
+      "refused": false,
+      "fallback": false,
+      "route": "inner_115mm_over_50mm"
+    },
+    {
+      "blocked_challenge": false,
+      "teacher_feasible": false,
+      "network_proposal_clear": false,
+      "executed_clear": null,
+      "refused": true,
+      "fallback": true,
+      "route": null
+    },
+    {
+      "blocked_challenge": false,
+      "teacher_feasible": true,
+      "network_proposal_clear": true,
+      "executed_clear": true,
+      "refused": false,
+      "fallback": false,
+      "route": "inner_105mm_over_45mm"
+    },
+    {
+      "blocked_challenge": false,
+      "teacher_feasible": true,
+      "network_proposal_clear": false,
+      "executed_clear": true,
+      "refused": false,
+      "fallback": true,
+      "route": "over_45mm"
+    },
+    {
+      "blocked_challenge": false,
+      "teacher_feasible": true,
+      "network_proposal_clear": true,
+      "executed_clear": true,
+      "refused": false,
+      "fallback": false,
+      "route": "inner_105mm_over_45mm"
+    },
+    {
+      "blocked_challenge": false,
+      "teacher_feasible": false,
+      "network_proposal_clear": false,
+      "executed_clear": null,
+      "refused": true,
+      "fallback": true,
+      "route": null
+    },
+    {
+      "blocked_challenge": true,
+      "teacher_feasible": false,
+      "network_proposal_clear": false,
+      "executed_clear": null,
+      "refused": true,
+      "fallback": true,
+      "route": null
+    },
+    {
+      "blocked_challenge": false,
+      "teacher_feasible": false,
+      "network_proposal_clear": false,
+      "executed_clear": null,
+      "refused": true,
+      "fallback": true,
+      "route": null
+    },
+    {
+      "blocked_challenge": false,
+      "teacher_feasible": false,
+      "network_proposal_clear": false,
+      "executed_clear": null,
+      "refused": true,
+      "fallback": true,
+      "route": null
+    },
+    {
+      "blocked_challenge": false,
+      "teacher_feasible": true,
+      "network_proposal_clear": false,
+      "executed_clear": null,
+      "refused": true,
+      "fallback": true,
+      "route": null
+    },
+    {
+      "blocked_challenge": false,
+      "teacher_feasible": true,
+      "network_proposal_clear": true,
+      "executed_clear": true,
+      "refused": false,
+      "fallback": false,
+      "route": "over_45mm"
+    },
+    {
+      "blocked_challenge": false,
+      "teacher_feasible": true,
+      "network_proposal_clear": true,
+      "executed_clear": true,
+      "refused": false,
+      "fallback": false,
+      "route": "over_45mm"
+    },
+    {
+      "blocked_challenge": false,
+      "teacher_feasible": true,
+      "network_proposal_clear": true,
+      "executed_clear": true,
+      "refused": false,
+      "fallback": false,
+      "route": "over_45mm"
+    },
+    {
+      "blocked_challenge": false,
+      "teacher_feasible": true,
+      "network_proposal_clear": true,
+      "executed_clear": true,
+      "refused": false,
+      "fallback": false,
+      "route": "over_45mm"
+    },
+    {
+      "blocked_challenge": false,
+      "teacher_feasible": false,
+      "network_proposal_clear": false,
+      "executed_clear": null,
+      "refused": true,
+      "fallback": true,
+      "route": null
+    },
+    {
+      "blocked_challenge": false,
+      "teacher_feasible": true,
+      "network_proposal_clear": true,
+      "executed_clear": true,
+      "refused": false,
+      "fallback": false,
+      "route": "inner_115mm_over_50mm"
+    },
+    {
+      "blocked_challenge": true,
+      "teacher_feasible": false,
+      "network_proposal_clear": false,
+      "executed_clear": null,
+      "refused": true,
+      "fallback": true,
+      "route": null
+    },
+    {
+      "blocked_challenge": false,
+      "teacher_feasible": true,
+      "network_proposal_clear": true,
+      "executed_clear": true,
+      "refused": false,
+      "fallback": false,
+      "route": "inner_115mm_over_50mm"
+    },
+    {
+      "blocked_challenge": false,
+      "teacher_feasible": false,
+      "network_proposal_clear": false,
+      "executed_clear": null,
+      "refused": true,
+      "fallback": true,
+      "route": null
+    },
+    {
+      "blocked_challenge": false,
+      "teacher_feasible": false,
+      "network_proposal_clear": false,
+      "executed_clear": null,
+      "refused": true,
+      "fallback": true,
+      "route": null
+    },
+    {
+      "blocked_challenge": false,
+      "teacher_feasible": false,
+      "network_proposal_clear": false,
+      "executed_clear": null,
+      "refused": true,
+      "fallback": true,
+      "route": null
+    },
+    {
+      "blocked_challenge": false,
+      "teacher_feasible": true,
+      "network_proposal_clear": true,
+      "executed_clear": true,
+      "refused": false,
+      "fallback": false,
+      "route": "inner_105mm_over_45mm"
+    },
+    {
+      "blocked_challenge": false,
+      "teacher_feasible": false,
+      "network_proposal_clear": false,
+      "executed_clear": null,
+      "refused": true,
+      "fallback": true,
+      "route": null
+    },
+    {
+      "blocked_challenge": false,
+      "teacher_feasible": false,
+      "network_proposal_clear": false,
+      "executed_clear": null,
+      "refused": true,
+      "fallback": true,
+      "route": null
+    },
+    {
+      "blocked_challenge": false,
+      "teacher_feasible": false,
+      "network_proposal_clear": false,
+      "executed_clear": null,
+      "refused": true,
+      "fallback": true,
+      "route": null
+    },
+    {
+      "blocked_challenge": false,
+      "teacher_feasible": false,
+      "network_proposal_clear": false,
+      "executed_clear": null,
+      "refused": true,
+      "fallback": true,
+      "route": null
+    },
+    {
+      "blocked_challenge": true,
+      "teacher_feasible": false,
+      "network_proposal_clear": false,
+      "executed_clear": null,
+      "refused": true,
+      "fallback": true,
+      "route": null
+    },
+    {
+      "blocked_challenge": false,
+      "teacher_feasible": false,
+      "network_proposal_clear": false,
+      "executed_clear": null,
+      "refused": true,
+      "fallback": true,
+      "route": null
+    },
+    {
+      "blocked_challenge": false,
+      "teacher_feasible": true,
+      "network_proposal_clear": true,
+      "executed_clear": true,
+      "refused": false,
+      "fallback": false,
+      "route": "over_45mm"
+    },
+    {
+      "blocked_challenge": false,
+      "teacher_feasible": false,
+      "network_proposal_clear": false,
+      "executed_clear": null,
+      "refused": true,
+      "fallback": true,
+      "route": null
+    },
+    {
+      "blocked_challenge": false,
+      "teacher_feasible": false,
+      "network_proposal_clear": false,
+      "executed_clear": null,
+      "refused": true,
+      "fallback": true,
+      "route": null
+    },
+    {
+      "blocked_challenge": false,
+      "teacher_feasible": false,
+      "network_proposal_clear": false,
+      "executed_clear": null,
+      "refused": true,
+      "fallback": true,
+      "route": null
+    },
+    {
+      "blocked_challenge": false,
+      "teacher_feasible": true,
+      "network_proposal_clear": true,
+      "executed_clear": true,
+      "refused": false,
+      "fallback": false,
+      "route": "direct"
+    },
+    {
+      "blocked_challenge": false,
+      "teacher_feasible": true,
+      "network_proposal_clear": true,
+      "executed_clear": true,
+      "refused": false,
+      "fallback": false,
+      "route": "inner_115mm_over_50mm"
+    },
+    {
+      "blocked_challenge": false,
+      "teacher_feasible": true,
+      "network_proposal_clear": true,
+      "executed_clear": true,
+      "refused": false,
+      "fallback": false,
+      "route": "inner_115mm"
+    },
+    {
+      "blocked_challenge": false,
+      "teacher_feasible": false,
+      "network_proposal_clear": false,
+      "executed_clear": null,
+      "refused": true,
+      "fallback": true,
+      "route": null
+    },
+    {
+      "blocked_challenge": true,
+      "teacher_feasible": false,
+      "network_proposal_clear": false,
+      "executed_clear": null,
+      "refused": true,
+      "fallback": true,
+      "route": null
+    },
+    {
+      "blocked_challenge": false,
+      "teacher_feasible": false,
+      "network_proposal_clear": false,
+      "executed_clear": null,
+      "refused": true,
+      "fallback": true,
+      "route": null
+    },
+    {
+      "blocked_challenge": false,
+      "teacher_feasible": true,
+      "network_proposal_clear": true,
+      "executed_clear": true,
+      "refused": false,
+      "fallback": false,
+      "route": "inner_105mm_over_45mm"
+    },
+    {
+      "blocked_challenge": false,
+      "teacher_feasible": false,
+      "network_proposal_clear": false,
+      "executed_clear": null,
+      "refused": true,
+      "fallback": true,
+      "route": null
+    },
+    {
+      "blocked_challenge": false,
+      "teacher_feasible": false,
+      "network_proposal_clear": false,
+      "executed_clear": null,
+      "refused": true,
+      "fallback": true,
+      "route": null
+    },
+    {
+      "blocked_challenge": false,
+      "teacher_feasible": false,
+      "network_proposal_clear": false,
+      "executed_clear": null,
+      "refused": true,
+      "fallback": true,
+      "route": null
+    },
+    {
+      "blocked_challenge": false,
+      "teacher_feasible": true,
+      "network_proposal_clear": true,
+      "executed_clear": true,
+      "refused": false,
+      "fallback": false,
+      "route": "direct"
+    },
+    {
+      "blocked_challenge": false,
+      "teacher_feasible": true,
+      "network_proposal_clear": true,
+      "executed_clear": true,
+      "refused": false,
+      "fallback": false,
+      "route": "over_45mm"
+    },
+    {
+      "blocked_challenge": false,
+      "teacher_feasible": false,
+      "network_proposal_clear": false,
+      "executed_clear": null,
+      "refused": true,
+      "fallback": true,
+      "route": null
+    },
+    {
+      "blocked_challenge": false,
+      "teacher_feasible": false,
+      "network_proposal_clear": false,
+      "executed_clear": null,
+      "refused": true,
+      "fallback": true,
+      "route": null
+    },
+    {
+      "blocked_challenge": true,
+      "teacher_feasible": false,
+      "network_proposal_clear": false,
+      "executed_clear": null,
+      "refused": true,
+      "fallback": true,
+      "route": null
+    },
+    {
+      "blocked_challenge": false,
+      "teacher_feasible": true,
+      "network_proposal_clear": true,
+      "executed_clear": true,
+      "refused": false,
+      "fallback": false,
+      "route": "direct"
+    },
+    {
+      "blocked_challenge": false,
+      "teacher_feasible": true,
+      "network_proposal_clear": true,
+      "executed_clear": true,
+      "refused": false,
+      "fallback": false,
+      "route": "direct"
+    },
+    {
+      "blocked_challenge": false,
+      "teacher_feasible": false,
+      "network_proposal_clear": false,
+      "executed_clear": null,
+      "refused": true,
+      "fallback": true,
+      "route": null
+    },
+    {
+      "blocked_challenge": false,
+      "teacher_feasible": true,
+      "network_proposal_clear": true,
+      "executed_clear": true,
+      "refused": false,
+      "fallback": false,
+      "route": "direct"
+    },
+    {
+      "blocked_challenge": false,
+      "teacher_feasible": true,
+      "network_proposal_clear": true,
+      "executed_clear": true,
+      "refused": false,
+      "fallback": false,
+      "route": "over_45mm"
+    },
+    {
+      "blocked_challenge": false,
+      "teacher_feasible": false,
+      "network_proposal_clear": false,
+      "executed_clear": null,
+      "refused": true,
+      "fallback": true,
+      "route": null
+    },
+    {
+      "blocked_challenge": false,
+      "teacher_feasible": false,
+      "network_proposal_clear": false,
+      "executed_clear": null,
+      "refused": true,
+      "fallback": true,
+      "route": null
+    },
+    {
+      "blocked_challenge": false,
+      "teacher_feasible": false,
+      "network_proposal_clear": false,
+      "executed_clear": null,
+      "refused": true,
+      "fallback": true,
+      "route": null
+    },
+    {
+      "blocked_challenge": false,
+      "teacher_feasible": true,
+      "network_proposal_clear": true,
+      "executed_clear": true,
+      "refused": false,
+      "fallback": false,
+      "route": "inner_105mm_over_45mm"
+    },
+    {
+      "blocked_challenge": true,
+      "teacher_feasible": false,
+      "network_proposal_clear": false,
+      "executed_clear": null,
+      "refused": true,
+      "fallback": true,
+      "route": null
+    },
+    {
+      "blocked_challenge": false,
+      "teacher_feasible": true,
+      "network_proposal_clear": true,
+      "executed_clear": true,
+      "refused": false,
+      "fallback": false,
+      "route": "inner_115mm_over_50mm"
+    },
+    {
+      "blocked_challenge": false,
+      "teacher_feasible": false,
+      "network_proposal_clear": false,
+      "executed_clear": null,
+      "refused": true,
+      "fallback": true,
+      "route": null
+    },
+    {
+      "blocked_challenge": false,
+      "teacher_feasible": false,
+      "network_proposal_clear": false,
+      "executed_clear": null,
+      "refused": true,
+      "fallback": true,
+      "route": null
+    },
+    {
+      "blocked_challenge": false,
+      "teacher_feasible": false,
+      "network_proposal_clear": false,
+      "executed_clear": null,
+      "refused": true,
+      "fallback": true,
+      "route": null
+    },
+    {
+      "blocked_challenge": false,
+      "teacher_feasible": true,
+      "network_proposal_clear": true,
+      "executed_clear": true,
+      "refused": false,
+      "fallback": false,
+      "route": "inner_115mm"
+    },
+    {
+      "blocked_challenge": false,
+      "teacher_feasible": false,
+      "network_proposal_clear": false,
+      "executed_clear": null,
+      "refused": true,
+      "fallback": true,
+      "route": null
+    },
+    {
+      "blocked_challenge": false,
+      "teacher_feasible": false,
+      "network_proposal_clear": false,
+      "executed_clear": null,
+      "refused": true,
+      "fallback": true,
+      "route": null
+    },
+    {
+      "blocked_challenge": false,
+      "teacher_feasible": true,
+      "network_proposal_clear": true,
+      "executed_clear": true,
+      "refused": false,
+      "fallback": false,
+      "route": "over_45mm"
+    },
+    {
+      "blocked_challenge": false,
+      "teacher_feasible": false,
+      "network_proposal_clear": false,
+      "executed_clear": null,
+      "refused": true,
+      "fallback": true,
+      "route": null
+    },
+    {
+      "blocked_challenge": true,
+      "teacher_feasible": false,
+      "network_proposal_clear": false,
+      "executed_clear": null,
+      "refused": true,
+      "fallback": true,
+      "route": null
+    },
+    {
+      "blocked_challenge": false,
+      "teacher_feasible": true,
+      "network_proposal_clear": true,
+      "executed_clear": true,
+      "refused": false,
+      "fallback": false,
+      "route": "direct"
+    },
+    {
+      "blocked_challenge": false,
+      "teacher_feasible": true,
+      "network_proposal_clear": true,
+      "executed_clear": true,
+      "refused": false,
+      "fallback": false,
+      "route": "over_45mm"
+    },
+    {
+      "blocked_challenge": false,
+      "teacher_feasible": true,
+      "network_proposal_clear": true,
+      "executed_clear": true,
+      "refused": false,
+      "fallback": false,
+      "route": "inner_115mm_over_50mm"
+    },
+    {
+      "blocked_challenge": false,
+      "teacher_feasible": true,
+      "network_proposal_clear": true,
+      "executed_clear": true,
+      "refused": false,
+      "fallback": false,
+      "route": "inner_115mm_over_50mm"
+    },
+    {
+      "blocked_challenge": false,
+      "teacher_feasible": false,
+      "network_proposal_clear": false,
+      "executed_clear": null,
+      "refused": true,
+      "fallback": true,
+      "route": null
+    },
+    {
+      "blocked_challenge": false,
+      "teacher_feasible": false,
+      "network_proposal_clear": false,
+      "executed_clear": null,
+      "refused": true,
+      "fallback": true,
+      "route": null
+    },
+    {
+      "blocked_challenge": false,
+      "teacher_feasible": true,
+      "network_proposal_clear": true,
+      "executed_clear": true,
+      "refused": false,
+      "fallback": false,
+      "route": "over_45mm"
+    },
+    {
+      "blocked_challenge": false,
+      "teacher_feasible": false,
+      "network_proposal_clear": false,
+      "executed_clear": null,
+      "refused": true,
+      "fallback": true,
+      "route": null
+    },
+    {
+      "blocked_challenge": false,
+      "teacher_feasible": false,
+      "network_proposal_clear": false,
+      "executed_clear": null,
+      "refused": true,
+      "fallback": true,
+      "route": null
+    },
+    {
+      "blocked_challenge": true,
+      "teacher_feasible": false,
+      "network_proposal_clear": false,
+      "executed_clear": null,
+      "refused": true,
+      "fallback": true,
+      "route": null
+    },
+    {
+      "blocked_challenge": false,
+      "teacher_feasible": false,
+      "network_proposal_clear": false,
+      "executed_clear": null,
+      "refused": true,
+      "fallback": true,
+      "route": null
+    },
+    {
+      "blocked_challenge": false,
+      "teacher_feasible": false,
+      "network_proposal_clear": false,
+      "executed_clear": null,
+      "refused": true,
+      "fallback": true,
+      "route": null
+    },
+    {
+      "blocked_challenge": false,
+      "teacher_feasible": true,
+      "network_proposal_clear": true,
+      "executed_clear": true,
+      "refused": false,
+      "fallback": false,
+      "route": "direct"
+    },
+    {
+      "blocked_challenge": false,
+      "teacher_feasible": true,
+      "network_proposal_clear": true,
+      "executed_clear": true,
+      "refused": false,
+      "fallback": false,
+      "route": "inner_115mm_over_50mm"
+    },
+    {
+      "blocked_challenge": false,
+      "teacher_feasible": false,
+      "network_proposal_clear": false,
+      "executed_clear": null,
+      "refused": true,
+      "fallback": true,
+      "route": null
+    },
+    {
+      "blocked_challenge": false,
+      "teacher_feasible": true,
+      "network_proposal_clear": true,
+      "executed_clear": true,
+      "refused": false,
+      "fallback": false,
+      "route": "direct"
+    },
+    {
+      "blocked_challenge": false,
+      "teacher_feasible": false,
+      "network_proposal_clear": false,
+      "executed_clear": null,
+      "refused": true,
+      "fallback": true,
+      "route": null
+    },
+    {
+      "blocked_challenge": false,
+      "teacher_feasible": false,
+      "network_proposal_clear": false,
+      "executed_clear": null,
+      "refused": true,
+      "fallback": true,
+      "route": null
+    },
+    {
+      "blocked_challenge": false,
+      "teacher_feasible": false,
+      "network_proposal_clear": false,
+      "executed_clear": null,
+      "refused": true,
+      "fallback": true,
+      "route": null
+    },
+    {
+      "blocked_challenge": true,
+      "teacher_feasible": false,
+      "network_proposal_clear": false,
+      "executed_clear": null,
+      "refused": true,
+      "fallback": true,
+      "route": null
+    },
+    {
+      "blocked_challenge": false,
+      "teacher_feasible": false,
+      "network_proposal_clear": false,
+      "executed_clear": null,
+      "refused": true,
+      "fallback": true,
+      "route": null
+    },
+    {
+      "blocked_challenge": false,
+      "teacher_feasible": true,
+      "network_proposal_clear": true,
+      "executed_clear": true,
+      "refused": false,
+      "fallback": false,
+      "route": "inner_105mm_over_45mm"
+    },
+    {
+      "blocked_challenge": false,
+      "teacher_feasible": true,
+      "network_proposal_clear": false,
+      "executed_clear": true,
+      "refused": false,
+      "fallback": true,
+      "route": "over_45mm"
+    },
+    {
+      "blocked_challenge": false,
+      "teacher_feasible": false,
+      "network_proposal_clear": false,
+      "executed_clear": null,
+      "refused": true,
+      "fallback": true,
+      "route": null
+    },
+    {
+      "blocked_challenge": false,
+      "teacher_feasible": false,
+      "network_proposal_clear": false,
+      "executed_clear": null,
+      "refused": true,
+      "fallback": true,
+      "route": null
+    },
+    {
+      "blocked_challenge": false,
+      "teacher_feasible": true,
+      "network_proposal_clear": true,
+      "executed_clear": true,
+      "refused": false,
+      "fallback": false,
+      "route": "inner_105mm_over_45mm"
+    },
+    {
+      "blocked_challenge": false,
+      "teacher_feasible": true,
+      "network_proposal_clear": true,
+      "executed_clear": true,
+      "refused": false,
+      "fallback": false,
+      "route": "inner_115mm_over_50mm"
+    },
+    {
+      "blocked_challenge": false,
+      "teacher_feasible": true,
+      "network_proposal_clear": true,
+      "executed_clear": true,
+      "refused": false,
+      "fallback": false,
+      "route": "over_45mm"
+    },
+    {
+      "blocked_challenge": false,
+      "teacher_feasible": true,
+      "network_proposal_clear": true,
+      "executed_clear": true,
+      "refused": false,
+      "fallback": false,
+      "route": "inner_105mm_over_45mm"
+    },
+    {
+      "blocked_challenge": true,
+      "teacher_feasible": false,
+      "network_proposal_clear": false,
+      "executed_clear": null,
+      "refused": true,
+      "fallback": true,
+      "route": null
+    },
+    {
+      "blocked_challenge": false,
+      "teacher_feasible": true,
+      "network_proposal_clear": true,
+      "executed_clear": true,
+      "refused": false,
+      "fallback": false,
+      "route": "over_45mm"
+    },
+    {
+      "blocked_challenge": false,
+      "teacher_feasible": true,
+      "network_proposal_clear": true,
+      "executed_clear": true,
+      "refused": false,
+      "fallback": false,
+      "route": "inner_115mm_over_50mm"
+    },
+    {
+      "blocked_challenge": false,
+      "teacher_feasible": true,
+      "network_proposal_clear": true,
+      "executed_clear": true,
+      "refused": false,
+      "fallback": false,
+      "route": "inner_105mm_over_45mm"
+    },
+    {
+      "blocked_challenge": false,
+      "teacher_feasible": true,
+      "network_proposal_clear": true,
+      "executed_clear": true,
+      "refused": false,
+      "fallback": false,
+      "route": "inner_105mm_over_45mm"
+    },
+    {
+      "blocked_challenge": false,
+      "teacher_feasible": false,
+      "network_proposal_clear": false,
+      "executed_clear": null,
+      "refused": true,
+      "fallback": true,
+      "route": null
+    },
+    {
+      "blocked_challenge": false,
+      "teacher_feasible": true,
+      "network_proposal_clear": true,
+      "executed_clear": true,
+      "refused": false,
+      "fallback": false,
+      "route": "inner_115mm_over_50mm"
+    },
+    {
+      "blocked_challenge": false,
+      "teacher_feasible": true,
+      "network_proposal_clear": true,
+      "executed_clear": true,
+      "refused": false,
+      "fallback": false,
+      "route": "inner_105mm_over_45mm"
+    },
+    {
+      "blocked_challenge": false,
+      "teacher_feasible": true,
+      "network_proposal_clear": true,
+      "executed_clear": true,
+      "refused": false,
+      "fallback": false,
+      "route": "inner_115mm_over_50mm"
+    },
+    {
+      "blocked_challenge": false,
+      "teacher_feasible": false,
+      "network_proposal_clear": false,
+      "executed_clear": null,
+      "refused": true,
+      "fallback": true,
+      "route": null
+    },
+    {
+      "blocked_challenge": true,
+      "teacher_feasible": false,
+      "network_proposal_clear": false,
+      "executed_clear": null,
+      "refused": true,
+      "fallback": true,
+      "route": null
+    },
+    {
+      "blocked_challenge": false,
+      "teacher_feasible": true,
+      "network_proposal_clear": true,
+      "executed_clear": true,
+      "refused": false,
+      "fallback": false,
+      "route": "inner_105mm_over_45mm"
+    },
+    {
+      "blocked_challenge": false,
+      "teacher_feasible": false,
+      "network_proposal_clear": false,
+      "executed_clear": null,
+      "refused": true,
+      "fallback": true,
+      "route": null
+    },
+    {
+      "blocked_challenge": false,
+      "teacher_feasible": true,
+      "network_proposal_clear": true,
+      "executed_clear": true,
+      "refused": false,
+      "fallback": false,
+      "route": "inner_105mm_over_45mm"
+    },
+    {
+      "blocked_challenge": false,
+      "teacher_feasible": true,
+      "network_proposal_clear": true,
+      "executed_clear": true,
+      "refused": false,
+      "fallback": false,
+      "route": "inner_115mm_over_50mm"
+    },
+    {
+      "blocked_challenge": false,
+      "teacher_feasible": false,
+      "network_proposal_clear": false,
+      "executed_clear": null,
+      "refused": true,
+      "fallback": true,
+      "route": null
+    },
+    {
+      "blocked_challenge": false,
+      "teacher_feasible": true,
+      "network_proposal_clear": true,
+      "executed_clear": true,
+      "refused": false,
+      "fallback": false,
+      "route": "inner_115mm_over_50mm"
+    },
+    {
+      "blocked_challenge": false,
+      "teacher_feasible": true,
+      "network_proposal_clear": false,
+      "executed_clear": true,
+      "refused": false,
+      "fallback": true,
+      "route": "over_45mm"
+    },
+    {
+      "blocked_challenge": false,
+      "teacher_feasible": false,
+      "network_proposal_clear": false,
+      "executed_clear": null,
+      "refused": true,
+      "fallback": true,
+      "route": null
+    },
+    {
+      "blocked_challenge": false,
+      "teacher_feasible": true,
+      "network_proposal_clear": true,
+      "executed_clear": true,
+      "refused": false,
+      "fallback": false,
+      "route": "direct"
+    },
+    {
+      "blocked_challenge": true,
+      "teacher_feasible": false,
+      "network_proposal_clear": false,
+      "executed_clear": null,
+      "refused": true,
+      "fallback": true,
+      "route": null
+    },
+    {
+      "blocked_challenge": false,
+      "teacher_feasible": false,
+      "network_proposal_clear": false,
+      "executed_clear": null,
+      "refused": true,
+      "fallback": true,
+      "route": null
+    },
+    {
+      "blocked_challenge": false,
+      "teacher_feasible": true,
+      "network_proposal_clear": true,
+      "executed_clear": true,
+      "refused": false,
+      "fallback": false,
+      "route": "inner_105mm_over_45mm"
+    },
+    {
+      "blocked_challenge": false,
+      "teacher_feasible": false,
+      "network_proposal_clear": false,
+      "executed_clear": null,
+      "refused": true,
+      "fallback": true,
+      "route": null
+    },
+    {
+      "blocked_challenge": false,
+      "teacher_feasible": true,
+      "network_proposal_clear": true,
+      "executed_clear": true,
+      "refused": false,
+      "fallback": false,
+      "route": "over_45mm"
+    },
+    {
+      "blocked_challenge": false,
+      "teacher_feasible": false,
+      "network_proposal_clear": false,
+      "executed_clear": null,
+      "refused": true,
+      "fallback": true,
+      "route": null
+    },
+    {
+      "blocked_challenge": false,
+      "teacher_feasible": false,
+      "network_proposal_clear": false,
+      "executed_clear": null,
+      "refused": true,
+      "fallback": true,
+      "route": null
+    },
+    {
+      "blocked_challenge": false,
+      "teacher_feasible": false,
+      "network_proposal_clear": false,
+      "executed_clear": null,
+      "refused": true,
+      "fallback": true,
+      "route": null
+    },
+    {
+      "blocked_challenge": false,
+      "teacher_feasible": false,
+      "network_proposal_clear": false,
+      "executed_clear": null,
+      "refused": true,
+      "fallback": true,
+      "route": null
+    },
+    {
+      "blocked_challenge": false,
+      "teacher_feasible": true,
+      "network_proposal_clear": true,
+      "executed_clear": true,
+      "refused": false,
+      "fallback": false,
+      "route": "over_45mm"
+    },
+    {
+      "blocked_challenge": true,
+      "teacher_feasible": false,
+      "network_proposal_clear": false,
+      "executed_clear": null,
+      "refused": true,
+      "fallback": true,
+      "route": null
+    },
+    {
+      "blocked_challenge": false,
+      "teacher_feasible": true,
+      "network_proposal_clear": true,
+      "executed_clear": true,
+      "refused": false,
+      "fallback": false,
+      "route": "direct"
+    },
+    {
+      "blocked_challenge": false,
+      "teacher_feasible": true,
+      "network_proposal_clear": true,
+      "executed_clear": true,
+      "refused": false,
+      "fallback": false,
+      "route": "inner_105mm_over_45mm"
+    },
+    {
+      "blocked_challenge": false,
+      "teacher_feasible": true,
+      "network_proposal_clear": true,
+      "executed_clear": true,
+      "refused": false,
+      "fallback": false,
+      "route": "inner_115mm_over_50mm"
+    },
+    {
+      "blocked_challenge": false,
+      "teacher_feasible": false,
+      "network_proposal_clear": false,
+      "executed_clear": null,
+      "refused": true,
+      "fallback": true,
+      "route": null
+    },
+    {
+      "blocked_challenge": false,
+      "teacher_feasible": false,
+      "network_proposal_clear": false,
+      "executed_clear": null,
+      "refused": true,
+      "fallback": true,
+      "route": null
+    },
+    {
+      "blocked_challenge": false,
+      "teacher_feasible": true,
+      "network_proposal_clear": true,
+      "executed_clear": true,
+      "refused": false,
+      "fallback": false,
+      "route": "inner_115mm"
+    },
+    {
+      "blocked_challenge": false,
+      "teacher_feasible": false,
+      "network_proposal_clear": false,
+      "executed_clear": null,
+      "refused": true,
+      "fallback": true,
+      "route": null
+    },
+    {
+      "blocked_challenge": false,
+      "teacher_feasible": false,
+      "network_proposal_clear": false,
+      "executed_clear": null,
+      "refused": true,
+      "fallback": true,
+      "route": null
+    },
+    {
+      "blocked_challenge": false,
+      "teacher_feasible": false,
+      "network_proposal_clear": false,
+      "executed_clear": null,
+      "refused": true,
+      "fallback": true,
+      "route": null
+    },
+    {
+      "blocked_challenge": true,
+      "teacher_feasible": false,
+      "network_proposal_clear": false,
+      "executed_clear": null,
+      "refused": true,
+      "fallback": true,
+      "route": null
+    },
+    {
+      "blocked_challenge": false,
+      "teacher_feasible": false,
+      "network_proposal_clear": false,
+      "executed_clear": null,
+      "refused": true,
+      "fallback": true,
+      "route": null
+    },
+    {
+      "blocked_challenge": false,
+      "teacher_feasible": true,
+      "network_proposal_clear": true,
+      "executed_clear": true,
+      "refused": false,
+      "fallback": false,
+      "route": "inner_105mm_over_45mm"
+    },
+    {
+      "blocked_challenge": false,
+      "teacher_feasible": true,
+      "network_proposal_clear": true,
+      "executed_clear": true,
+      "refused": false,
+      "fallback": false,
+      "route": "inner_115mm"
+    },
+    {
+      "blocked_challenge": false,
+      "teacher_feasible": true,
+      "network_proposal_clear": true,
+      "executed_clear": true,
+      "refused": false,
+      "fallback": false,
+      "route": "inner_115mm"
+    },
+    {
+      "blocked_challenge": false,
+      "teacher_feasible": false,
+      "network_proposal_clear": false,
+      "executed_clear": null,
+      "refused": true,
+      "fallback": true,
+      "route": null
+    },
+    {
+      "blocked_challenge": false,
+      "teacher_feasible": true,
+      "network_proposal_clear": true,
+      "executed_clear": true,
+      "refused": false,
+      "fallback": false,
+      "route": "inner_115mm_over_50mm"
+    },
+    {
+      "blocked_challenge": false,
+      "teacher_feasible": false,
+      "network_proposal_clear": false,
+      "executed_clear": null,
+      "refused": true,
+      "fallback": true,
+      "route": null
+    },
+    {
+      "blocked_challenge": false,
+      "teacher_feasible": false,
+      "network_proposal_clear": false,
+      "executed_clear": null,
+      "refused": true,
+      "fallback": true,
+      "route": null
+    },
+    {
+      "blocked_challenge": false,
+      "teacher_feasible": true,
+      "network_proposal_clear": true,
+      "executed_clear": true,
+      "refused": false,
+      "fallback": false,
+      "route": "over_45mm"
+    },
+    {
+      "blocked_challenge": true,
+      "teacher_feasible": false,
+      "network_proposal_clear": false,
+      "executed_clear": null,
+      "refused": true,
+      "fallback": true,
+      "route": null
+    },
+    {
+      "blocked_challenge": false,
+      "teacher_feasible": false,
+      "network_proposal_clear": false,
+      "executed_clear": null,
+      "refused": true,
+      "fallback": true,
+      "route": null
+    },
+    {
+      "blocked_challenge": false,
+      "teacher_feasible": false,
+      "network_proposal_clear": false,
+      "executed_clear": null,
+      "refused": true,
+      "fallback": true,
+      "route": null
+    },
+    {
+      "blocked_challenge": false,
+      "teacher_feasible": true,
+      "network_proposal_clear": true,
+      "executed_clear": true,
+      "refused": false,
+      "fallback": false,
+      "route": "over_45mm"
+    },
+    {
+      "blocked_challenge": false,
+      "teacher_feasible": true,
+      "network_proposal_clear": true,
+      "executed_clear": true,
+      "refused": false,
+      "fallback": false,
+      "route": "over_45mm"
+    },
+    {
+      "blocked_challenge": false,
+      "teacher_feasible": false,
+      "network_proposal_clear": false,
+      "executed_clear": null,
+      "refused": true,
+      "fallback": true,
+      "route": null
+    },
+    {
+      "blocked_challenge": false,
+      "teacher_feasible": false,
+      "network_proposal_clear": false,
+      "executed_clear": null,
+      "refused": true,
+      "fallback": true,
+      "route": null
+    },
+    {
+      "blocked_challenge": false,
+      "teacher_feasible": true,
+      "network_proposal_clear": true,
+      "executed_clear": true,
+      "refused": false,
+      "fallback": false,
+      "route": "over_45mm"
+    },
+    {
+      "blocked_challenge": false,
+      "teacher_feasible": false,
+      "network_proposal_clear": false,
+      "executed_clear": null,
+      "refused": true,
+      "fallback": true,
+      "route": null
+    },
+    {
+      "blocked_challenge": false,
+      "teacher_feasible": false,
+      "network_proposal_clear": false,
+      "executed_clear": null,
+      "refused": true,
+      "fallback": true,
+      "route": null
+    },
+    {
+      "blocked_challenge": true,
+      "teacher_feasible": false,
+      "network_proposal_clear": false,
+      "executed_clear": null,
+      "refused": true,
+      "fallback": true,
+      "route": null
+    },
+    {
+      "blocked_challenge": false,
+      "teacher_feasible": false,
+      "network_proposal_clear": false,
+      "executed_clear": null,
+      "refused": true,
+      "fallback": true,
+      "route": null
+    },
+    {
+      "blocked_challenge": false,
+      "teacher_feasible": false,
+      "network_proposal_clear": false,
+      "executed_clear": null,
+      "refused": true,
+      "fallback": true,
+      "route": null
+    },
+    {
+      "blocked_challenge": false,
+      "teacher_feasible": false,
+      "network_proposal_clear": false,
+      "executed_clear": null,
+      "refused": true,
+      "fallback": true,
+      "route": null
+    },
+    {
+      "blocked_challenge": false,
+      "teacher_feasible": false,
+      "network_proposal_clear": false,
+      "executed_clear": null,
+      "refused": true,
+      "fallback": true,
+      "route": null
+    },
+    {
+      "blocked_challenge": false,
+      "teacher_feasible": false,
+      "network_proposal_clear": false,
+      "executed_clear": null,
+      "refused": true,
+      "fallback": true,
+      "route": null
+    },
+    {
+      "blocked_challenge": false,
+      "teacher_feasible": false,
+      "network_proposal_clear": false,
+      "executed_clear": null,
+      "refused": true,
+      "fallback": true,
+      "route": null
+    },
+    {
+      "blocked_challenge": false,
+      "teacher_feasible": true,
+      "network_proposal_clear": true,
+      "executed_clear": true,
+      "refused": false,
+      "fallback": false,
+      "route": "direct"
+    },
+    {
+      "blocked_challenge": false,
+      "teacher_feasible": false,
+      "network_proposal_clear": false,
+      "executed_clear": null,
+      "refused": true,
+      "fallback": true,
+      "route": null
+    },
+    {
+      "blocked_challenge": false,
+      "teacher_feasible": false,
+      "network_proposal_clear": false,
+      "executed_clear": null,
+      "refused": true,
+      "fallback": true,
+      "route": null
+    },
+    {
+      "blocked_challenge": true,
+      "teacher_feasible": false,
+      "network_proposal_clear": false,
+      "executed_clear": null,
+      "refused": true,
+      "fallback": true,
+      "route": null
+    },
+    {
+      "blocked_challenge": false,
+      "teacher_feasible": false,
+      "network_proposal_clear": false,
+      "executed_clear": null,
+      "refused": true,
+      "fallback": true,
+      "route": null
+    },
+    {
+      "blocked_challenge": false,
+      "teacher_feasible": true,
+      "network_proposal_clear": true,
+      "executed_clear": true,
+      "refused": false,
+      "fallback": false,
+      "route": "direct"
+    },
+    {
+      "blocked_challenge": false,
+      "teacher_feasible": false,
+      "network_proposal_clear": false,
+      "executed_clear": null,
+      "refused": true,
+      "fallback": true,
+      "route": null
+    },
+    {
+      "blocked_challenge": false,
+      "teacher_feasible": false,
+      "network_proposal_clear": false,
+      "executed_clear": null,
+      "refused": true,
+      "fallback": true,
+      "route": null
+    },
+    {
+      "blocked_challenge": false,
+      "teacher_feasible": true,
+      "network_proposal_clear": true,
+      "executed_clear": true,
+      "refused": false,
+      "fallback": false,
+      "route": "direct"
+    },
+    {
+      "blocked_challenge": false,
+      "teacher_feasible": false,
+      "network_proposal_clear": false,
+      "executed_clear": null,
+      "refused": true,
+      "fallback": true,
+      "route": null
+    },
+    {
+      "blocked_challenge": false,
+      "teacher_feasible": true,
+      "network_proposal_clear": true,
+      "executed_clear": true,
+      "refused": false,
+      "fallback": false,
+      "route": "over_45mm"
+    },
+    {
+      "blocked_challenge": false,
+      "teacher_feasible": true,
+      "network_proposal_clear": true,
+      "executed_clear": true,
+      "refused": false,
+      "fallback": false,
+      "route": "inner_105mm_over_45mm"
+    },
+    {
+      "blocked_challenge": false,
+      "teacher_feasible": false,
+      "network_proposal_clear": false,
+      "executed_clear": null,
+      "refused": true,
+      "fallback": true,
+      "route": null
+    }
+  ]
+}

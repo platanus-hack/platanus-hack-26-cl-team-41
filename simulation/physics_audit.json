@@ -1,0 +1,58 @@
+{
+  "status": "preassembly_prior_not_hardware_calibrated",
+  "hardware_measurements_present": false,
+  "checks": {
+    "positive_physical_inertias": true,
+    "command_delay_s": 0.04,
+    "reference_slew_fraction_max": 1.0000000000000018,
+    "stall_torque_fraction_max": 1.0,
+    "free_fall_error_m": 0.0009810000000000096,
+    "resting_block_normal_N": 0.05885999999760987,
+    "block_weight_N": 0.05886,
+    "timestep_tcp_difference_m": 8.872654198765224e-05
+  },
+  "mass_estimate_kg": 0.7760711563406898,
+  "mass_provenance": "preassembly_estimates",
+  "horizontal_static_load": {
+    "gravity_torque_Nm": [
+      0.0,
+      -0.5528260513586905,
+      -0.22545739419422617,
+      -0.051070709912965556,
+      0.0005125111908355482,
+      -0.001224096856043251
+    ],
+    "stall_fraction": [
+      0.0,
+      0.5997081782202399,
+      0.2445771916974556,
+      0.05540173500696125,
+      0.0029034220590424082,
+      0.006934618946458956
+    ],
+    "interpretation": "No payload. Stall fractions do not establish safe continuous duty or thermal behavior."
+  },
+  "prior_sensitivity_scenarios": [
+    {
+      "name": "lighter_prints",
+      "printed_fraction": 0.65,
+      "torque_factor": 1.0,
+      "tcp_error_m": 0.006675362493906774,
+      "finite": true
+    },
+    {
+      "name": "nominal",
+      "printed_fraction": 0.85,
+      "torque_factor": 1.0,
+      "tcp_error_m": 0.006910755699350049,
+      "finite": true
+    },
+    {
+      "name": "heavy_prints_weaker_servos",
+      "printed_fraction": 1.0,
+      "torque_factor": 0.7,
+      "tcp_error_m": 0.00707098950892325,
+      "finite": true
+    }
+  ]
+}

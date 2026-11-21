@@ -1,0 +1,689 @@
+{
+  "episodes": 12,
+  "successes": 12,
+  "results": [
+    {
+      "seed": 9300,
+      "hypothetical_iron_mass_g": 25.0,
+      "success": true,
+      "latched_axial_displacement_m": 0.0007476513822395336,
+      "latched_lateral_displacement_m": 7.038955811220319e-05,
+      "released_axial_travel_m": 0.1000746268656737,
+      "actual_latched_jaw_deg": 5.300443110084544,
+      "latch_contact_pairs": [
+        [
+          "shoe_1_0",
+          "receiver_collision_5"
+        ],
+        [
+          "shoe_1_1",
+          "receiver_collision_5"
+        ],
+        [
+          "shoe_1_1",
+          "receiver_collision_5"
+        ],
+        [
+          "shoe_-1_0",
+          "receiver_collision_4"
+        ],
+        [
+          "shoe_-1_1",
+          "receiver_collision_4"
+        ],
+        [
+          "shoe_-1_1",
+          "receiver_collision_4"
+        ]
+      ],
+      "release_contacts": [],
+      "released_quat": [
+        0.9999577140086994,
+        0.00024917817671651226,
+        0.00014356263865085328,
+        -0.009191707920787
+      ],
+      "jaw_angle_after_release_deg": 0.04590564962707565,
+      "receiver_initial_m": [
+        0.10581122422411124,
+        0.01262466655161283,
+        0.3169941461114072
+      ],
+      "receiver_seated_m": [
+        0.10581122422411159,
+        0.01262466655163217,
+        0.316994146125241
+      ]
+    },
+    {
+      "seed": 9301,
+      "hypothetical_iron_mass_g": 50.0,
+      "success": true,
+      "latched_axial_displacement_m": 0.0007473481048583253,
+      "latched_lateral_displacement_m": 0.00014676774551502698,
+      "released_axial_travel_m": 0.0728804347826108,
+      "actual_latched_jaw_deg": 5.294493756469578,
+      "latch_contact_pairs": [
+        [
+          "shoe_1_0",
+          "receiver_collision_5"
+        ],
+        [
+          "shoe_1_1",
+          "receiver_collision_5"
+        ],
+        [
+          "shoe_1_1",
+          "receiver_collision_5"
+        ],
+        [
+          "shoe_-1_0",
+          "receiver_collision_4"
+        ],
+        [
+          "shoe_-1_1",
+          "receiver_collision_4"
+        ],
+        [
+          "shoe_-1_1",
+          "receiver_collision_4"
+        ]
+      ],
+      "release_contacts": [],
+      "released_quat": [
+        0.9999974596434416,
+        0.00024905512333269094,
+        0.00014684078805535618,
+        -0.0022354230005129064
+      ],
+      "jaw_angle_after_release_deg": 0.04240122765027624,
+      "receiver_initial_m": [
+        0.10390726674255385,
+        0.014075573403095452,
+        0.31699414611137827
+      ],
+      "receiver_seated_m": [
+        0.10390726674255386,
+        0.014075573403102315,
+        0.3169941461252113
+      ]
+    },
+    {
+      "seed": 9302,
+      "hypothetical_iron_mass_g": 100.0,
+      "success": true,
+      "latched_axial_displacement_m": 0.0007257150972226345,
+      "latched_lateral_displacement_m": 0.00016012948810160992,
+      "released_axial_travel_m": 0.047218309859152596,
+      "actual_latched_jaw_deg": 5.281627321561169,
+      "latch_contact_pairs": [
+        [
+          "shoe_1_0",
+          "receiver_collision_5"
+        ],
+        [
+          "shoe_1_1",
+          "receiver_collision_5"
+        ],
+        [
+          "shoe_1_1",
+          "receiver_collision_5"
+        ],
+        [
+          "shoe_-1_0",
+          "receiver_collision_4"
+        ],
+        [
+          "shoe_-1_1",
+          "receiver_collision_4"
+        ],
+        [
+          "shoe_-1_1",
+          "receiver_collision_4"
+        ],
+        [
+          "shoe_-1_2",
+          "receiver_collision_4"
+        ]
+      ],
+      "release_contacts": [],
+      "released_quat": [
+        0.9999979419043549,
+        0.00024240699292363678,
+        0.0001459837156609561,
+        -0.002009008377142901
+      ],
+      "jaw_angle_after_release_deg": 0.0056348708032366275,
+      "receiver_initial_m": [
+        0.09952947377596932,
+        0.014080350959384034,
+        0.316994146111326
+      ],
+      "receiver_seated_m": [
+        0.09952947377596932,
+        0.014080350959384456,
+        0.3169941461251585
+      ]
+    },
+    {
+      "seed": 9303,
+      "hypothetical_iron_mass_g": 25.0,
+      "success": true,
+      "latched_axial_displacement_m": 0.0007644021267548817,
+      "latched_lateral_displacement_m": 0.00011522200771369404,
+      "released_axial_travel_m": 0.10007462686567387,
+      "actual_latched_jaw_deg": 5.3484493176750165,
+      "latch_contact_pairs": [
+        [
+          "shoe_1_0",
+          "receiver_collision_5"
+        ],
+        [
+          "shoe_1_1",
+          "receiver_collision_5"
+        ],
+        [
+          "shoe_1_1",
+          "receiver_collision_5"
+        ],
+        [
+          "shoe_-1_0",
+          "receiver_collision_4"
+        ],
+        [
+          "shoe_-1_1",
+          "receiver_collision_4"
+        ],
+        [
+          "shoe_-1_1",
+          "receiver_collision_4"
+        ]
+      ],
+      "release_contacts": [],
+      "released_quat": [
+        0.9999985919186061,
+        0.00024470666487462847,
+        0.00014929705843929881,
+        0.0016534781047998005
+      ],
+      "jaw_angle_after_release_deg": 0.020658958095156,
+      "receiver_initial_m": [
+        0.10650318392953123,
+        0.015007667604865242,
+        0.3169941461114071
+      ],
+      "receiver_seated_m": [
+        0.10650318392953116,
+        0.015007667604884584,
+        0.3169941461252409
+      ]
+    },
+    {
+      "seed": 9304,
+      "hypothetical_iron_mass_g": 50.0,
+      "success": true,
+      "latched_axial_displacement_m": 0.0007209873605984463,
+      "latched_lateral_displacement_m": 0.00012082917280550954,
+      "released_axial_travel_m": 0.07288043478261097,
+      "actual_latched_jaw_deg": 5.293496764724694,
+      "latch_contact_pairs": [
+        [
+          "shoe_1_0",
+          "receiver_collision_5"
+        ],
+        [
+          "shoe_1_1",
+          "receiver_collision_5"
+        ],
+        [
+          "shoe_1_1",
+          "receiver_collision_5"
+        ],
+        [
+          "shoe_-1_0",
+          "receiver_collision_4"
+        ],
+        [
+          "shoe_-1_1",
+          "receiver_collision_4"
+        ],
+        [
+          "shoe_-1_1",
+          "receiver_collision_4"
+        ]
+      ],
+      "release_contacts": [],
+      "released_quat": [
+        0.9999899235703543,
+        0.0002481824149008637,
+        0.00014553924284618823,
+        -0.00447995330061902
+      ],
+      "jaw_angle_after_release_deg": 0.025241317940715446,
+      "receiver_initial_m": [
+        0.1000233249723475,
+        0.013677884884609309,
+        0.31699414611146115
+      ],
+      "receiver_seated_m": [
+        0.10002332497234756,
+        0.013677884884616172,
+        0.31699414612529414
+      ]
+    },
+    {
+      "seed": 9305,
+      "hypothetical_iron_mass_g": 100.0,
+      "success": true,
+      "latched_axial_displacement_m": 0.0007605680480813337,
+      "latched_lateral_displacement_m": 0.00020104163133060192,
+      "released_axial_travel_m": 0.04721830985915715,
+      "actual_latched_jaw_deg": 5.2904970965914755,
+      "latch_contact_pairs": [
+        [
+          "shoe_1_0",
+          "receiver_collision_5"
+        ],
+        [
+          "shoe_1_1",
+          "receiver_collision_5"
+        ],
+        [
+          "shoe_1_1",
+          "receiver_collision_5"
+        ],
+        [
+          "shoe_1_2",
+          "receiver_collision_5"
+        ],
+        [
+          "shoe_-1_0",
+          "receiver_collision_4"
+        ],
+        [
+          "shoe_-1_1",
+          "receiver_collision_4"
+        ],
+        [
+          "shoe_-1_1",
+          "receiver_collision_4"
+        ],
+        [
+          "shoe_-1_2",
+          "receiver_collision_4"
+        ]
+      ],
+      "release_contacts": [],
+      "released_quat": [
+        0.9999829899522226,
+        0.0002410765852723337,
+        0.00014686129436494684,
+        -0.005825814969017537
+      ],
+      "jaw_angle_after_release_deg": 0.03670854445402666,
+      "receiver_initial_m": [
+        0.10685521844624886,
+        0.013195107142278914,
+        0.316994146111326
+      ],
+      "receiver_seated_m": [
+        0.10685521844624887,
+        0.013195107142279342,
+        0.31699414612515847
+      ]
+    },
+    {
+      "seed": 9306,
+      "hypothetical_iron_mass_g": 25.0,
+      "success": true,
+      "latched_axial_displacement_m": 0.0007281947266468136,
+      "latched_lateral_displacement_m": 8.906191695356487e-05,
+      "released_axial_travel_m": 0.10007462686567409,
+      "actual_latched_jaw_deg": 5.325436169962114,
+      "latch_contact_pairs": [
+        [
+          "shoe_1_0",
+          "receiver_collision_5"
+        ],
+        [
+          "shoe_1_1",
+          "receiver_collision_5"
+        ],
+        [
+          "shoe_1_1",
+          "receiver_collision_5"
+        ],
+        [
+          "shoe_-1_0",
+          "receiver_collision_4"
+        ],
+        [
+          "shoe_-1_1",
+          "receiver_collision_4"
+        ],
+        [
+          "shoe_-1_1",
+          "receiver_collision_4"
+        ]
+      ],
+      "release_contacts": [],
+      "released_quat": [
+        0.9999952388481248,
+        0.00024635474722972754,
+        0.00014904469522535648,
+        0.00307235676617268
+      ],
+      "jaw_angle_after_release_deg": 0.053438080605772355,
+      "receiver_initial_m": [
+        0.10129320422096025,
+        0.015272617665410425,
+        0.31699414611140714
+      ],
+      "receiver_seated_m": [
+        0.10129320422096012,
+        0.015272617665429767,
+        0.3169941461252409
+      ]
+    },
+    {
+      "seed": 9307,
+      "hypothetical_iron_mass_g": 50.0,
+      "success": true,
+      "latched_axial_displacement_m": 0.0007173397030033057,
+      "latched_lateral_displacement_m": 0.00010122134795163347,
+      "released_axial_travel_m": 0.07288043478260642,
+      "actual_latched_jaw_deg": 5.2921967851105425,
+      "latch_contact_pairs": [
+        [
+          "shoe_1_0",
+          "receiver_collision_5"
+        ],
+        [
+          "shoe_1_1",
+          "receiver_collision_5"
+        ],
+        [
+          "shoe_1_1",
+          "receiver_collision_5"
+        ],
+        [
+          "shoe_-1_0",
+          "receiver_collision_4"
+        ],
+        [
+          "shoe_-1_1",
+          "receiver_collision_4"
+        ],
+        [
+          "shoe_-1_1",
+          "receiver_collision_4"
+        ],
+        [
+          "shoe_-1_2",
+          "receiver_collision_4"
+        ]
+      ],
+      "release_contacts": [],
+      "released_quat": [
+        0.9999497558988125,
+        0.00025025026459726655,
+        0.00014073241258118695,
+        -0.010020142069828486
+      ],
+      "jaw_angle_after_release_deg": 0.020002332059278052,
+      "receiver_initial_m": [
+        0.10023847578316455,
+        0.012520449333410476,
+        0.3169941461113782
+      ],
+      "receiver_seated_m": [
+        0.10023847578316471,
+        0.012520449333417338,
+        0.3169941461252112
+      ]
+    },
+    {
+      "seed": 9308,
+      "hypothetical_iron_mass_g": 100.0,
+      "success": true,
+      "latched_axial_displacement_m": 0.0007284218741852588,
+      "latched_lateral_displacement_m": 0.00020275572878755208,
+      "released_axial_travel_m": 0.047218309859157315,
+      "actual_latched_jaw_deg": 5.291581051261098,
+      "latch_contact_pairs": [
+        [
+          "shoe_1_0",
+          "receiver_collision_5"
+        ],
+        [
+          "shoe_1_1",
+          "receiver_collision_5"
+        ],
+        [
+          "shoe_1_1",
+          "receiver_collision_5"
+        ],
+        [
+          "shoe_1_2",
+          "receiver_collision_5"
+        ],
+        [
+          "shoe_-1_0",
+          "receiver_collision_4"
+        ],
+        [
+          "shoe_-1_1",
+          "receiver_collision_4"
+        ],
+        [
+          "shoe_-1_1",
+          "receiver_collision_4"
+        ],
+        [
+          "shoe_-1_2",
+          "receiver_collision_4"
+        ]
+      ],
+      "release_contacts": [],
+      "released_quat": [
+        0.9999855527062054,
+        0.00024008417189462345,
+        0.00014623117193573632,
+        -0.0053679935636454556
+      ],
+      "jaw_angle_after_release_deg": 0.01986853493867122,
+      "receiver_initial_m": [
+        0.10168243938420704,
+        0.013455443320551173,
+        0.3169941461113259
+      ],
+      "receiver_seated_m": [
+        0.10168243938420704,
+        0.013455443320551604,
+        0.31699414612515847
+      ]
+    },
+    {
+      "seed": 9309,
+      "hypothetical_iron_mass_g": 25.0,
+      "success": true,
+      "latched_axial_displacement_m": 0.0007241172105940663,
+      "latched_lateral_displacement_m": 3.602286789563166e-05,
+      "released_axial_travel_m": 0.1000746268656737,
+      "actual_latched_jaw_deg": 5.339475339256403,
+      "latch_contact_pairs": [
+        [
+          "shoe_1_0",
+          "receiver_collision_5"
+        ],
+        [
+          "shoe_1_1",
+          "receiver_collision_5"
+        ],
+        [
+          "shoe_1_1",
+          "receiver_collision_5"
+        ],
+        [
+          "shoe_-1_0",
+          "receiver_collision_4"
+        ],
+        [
+          "shoe_-1_1",
+          "receiver_collision_4"
+        ],
+        [
+          "shoe_-1_1",
+          "receiver_collision_4"
+        ]
+      ],
+      "release_contacts": [],
+      "released_quat": [
+        0.9998721190665847,
+        0.0002562239628139971,
+        0.0001517967546840376,
+        0.01598927203856001
+      ],
+      "jaw_angle_after_release_deg": 0.039313895956944185,
+      "receiver_initial_m": [
+        0.10050672756113102,
+        0.017875777580174734,
+        0.31699414611140714
+      ],
+      "receiver_seated_m": [
+        0.10050672756113038,
+        0.017875777580194072,
+        0.3169941461252409
+      ]
+    },
+    {
+      "seed": 9310,
+      "hypothetical_iron_mass_g": 50.0,
+      "success": true,
+      "latched_axial_displacement_m": 0.0007259948432372099,
+      "latched_lateral_displacement_m": 0.00012920107691222283,
+      "released_axial_travel_m": 0.0728804347826108,
+      "actual_latched_jaw_deg": 5.279304183141153,
+      "latch_contact_pairs": [
+        [
+          "shoe_1_0",
+          "receiver_collision_5"
+        ],
+        [
+          "shoe_1_1",
+          "receiver_collision_5"
+        ],
+        [
+          "shoe_1_1",
+          "receiver_collision_5"
+        ],
+        [
+          "shoe_-1_0",
+          "receiver_collision_4"
+        ],
+        [
+          "shoe_-1_1",
+          "receiver_collision_4"
+        ],
+        [
+          "shoe_-1_1",
+          "receiver_collision_4"
+        ],
+        [
+          "shoe_-1_2",
+          "receiver_collision_4"
+        ]
+      ],
+      "release_contacts": [],
+      "released_quat": [
+        0.9998645081606076,
+        0.0002410403651060473,
+        0.00013826220716897712,
+        -0.0164586786787899
+      ],
+      "jaw_angle_after_release_deg": 0.03806633114467366,
+      "receiver_initial_m": [
+        0.10212208652426603,
+        0.011164213177860541,
+        0.3169941461113781
+      ],
+      "receiver_seated_m": [
+        0.10212208652426627,
+        0.0111642131778674,
+        0.3169941461252111
+      ]
+    },
+    {
+      "seed": 9311,
+      "hypothetical_iron_mass_g": 100.0,
+      "success": true,
+      "latched_axial_displacement_m": 0.0007937326121224553,
+      "latched_lateral_displacement_m": 0.00019628221487541503,
+      "released_axial_travel_m": 0.04721830985915715,
+      "actual_latched_jaw_deg": 5.2876681621284085,
+      "latch_contact_pairs": [
+        [
+          "shoe_1_0",
+          "receiver_collision_5"
+        ],
+        [
+          "shoe_1_1",
+          "receiver_collision_5"
+        ],
+        [
+          "shoe_1_1",
+          "receiver_collision_5"
+        ],
+        [
+          "shoe_1_2",
+          "receiver_collision_5"
+        ],
+        [
+          "shoe_-1_0",
+          "receiver_collision_4"
+        ],
+        [
+          "shoe_-1_1",
+          "receiver_collision_4"
+        ],
+        [
+          "shoe_-1_1",
+          "receiver_collision_4"
+        ],
+        [
+          "shoe_-1_2",
+          "receiver_collision_4"
+        ]
+      ],
+      "release_contacts": [],
+      "released_quat": [
+        0.9998343220051757,
+        0.00023778181570638604,
+        0.0001527820954269515,
+        0.018200237852566855
+      ],
+      "jaw_angle_after_release_deg": 0.047708910567882616,
+      "receiver_initial_m": [
+        0.10681497132831577,
+        0.018393159760541587,
+        0.3169941461113258
+      ],
+      "receiver_seated_m": [
+        0.1068149713283157,
+        0.018393159760542024,
+        0.31699414612515836
+      ]
+    }
+  ],
+  "holder_weld": false,
+  "full_arm": true,
+  "net_axial_pull_N": 0.15,
+  "gravity": "normal world -Z",
+  "holder_collision": "concave CAD-dimension box decomposition; no flexible deformation",
+  "limitations": [
+    "upright fixed-orientation fixture; privileged receiver pose",
+    "scripted insertion/open/pull/release phases, learned reaching only",
+    "hypothetical iron masses and COM; uncalibrated servos and friction",
+    "not a strength or thermal validation"
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "task": "block",
+  "lift_success": true,
+  "min_hold_height_m": 0.036094656326751094,
+  "start_height_m": 0.007946725390725202,
+  "bilateral_hold_fraction": 1.0,
+  "tcp_errors_m": {
+    "approach": 0.002451361698162884,
+    "descend": 0.0013925644771378095,
+    "close": 0.0008894496818677652,
+    "lift": 0.001235487843494967,
+    "hold": 0.0011080992374740341
+  },
+  "object_final_m": [
+    0.1295298217931183,
+    -0.058632308958068736,
+    0.011946997030044093
+  ],
+  "place_success": true,
+  "pick_place_success": true
+}

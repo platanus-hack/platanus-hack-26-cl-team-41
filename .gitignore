@@ -12,3 +12,19 @@ __pycache__/
 # Intermediate meshes used to render previews
 /design/renders/mesh_*.stl
 /design/renders/ref_*.stl
+
+# Local slicer diagnostics and extracted vendor-format examples
+/bambu_cli_help.txt
+/result.json
+/print_jobs/toolhead_and_TT/cli_*.txt
+/print_jobs/toolhead_and_TT/cli_slices/
+/print_jobs/toolhead_and_TT/native_*
+/print_jobs/toolhead_and_TT/3D_3dmodel.model
+/print_jobs/toolhead_and_TT/[[]Content_Types].xml
+/print_jobs/toolhead_and_TT/_rels_.rels
+/print_jobs/toolhead_and_TT/plate_1.gcode
+
+# Exploratory grasp diagnostics; final reports and previews remain versioned
+/simulation/grasp_debug_*.png
+/simulation/*_expert_debug.json
+/simulation/trained/curriculum/evaluation_progress.json
