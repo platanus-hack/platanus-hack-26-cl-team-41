@@ -20,7 +20,6 @@
 - **Carga útil:**
   - **Brazo estirado:** el hombro necesita unos 7 kg·cm, frente a los 9–11 kg·cm de bloqueo del MG995 a 6 V. Ese es el máximo instantáneo, no un valor de trabajo continuo.
   - **Carga de trabajo declarada:** unos 50 g (pelota de ping-pong, cubo de espuma, lata vacía), agarrando a 15–20 cm del eje del brazo y no con el brazo estirado del todo.
-- **Soporte de cámara:** pieza aparte (`brazo_compacto/stl/SoporteCamara.stl`, 8,1 cm³) que se pega con cianoacrilato a la pared lateral izquierda del gripper y al canto de su placa frontal. Marco de 42 × 42 mm para la cámara de 38 × 38, con ventana central de 30 × 30 y 4 agujeros guía M2 a 34 mm (medir la cámara; también se puede pegar), inclinado 15° hacia los dedos. Centro de la cámara a 52 mm del eje del gripper. No reduce el rango de la muñeca (±96,7° de inclinación, giro completo).
 - **Exportado:** STL por pieza, STEP del conjunto y URDF con las 6 articulaciones.
 
 ### Base móvil (versión actual, TT)
@@ -50,7 +49,7 @@
 
   La inclinación es el parámetro `TILT` en `scripts/base_tt.py`: con 37° de campo vertical, 45° ve de 203 a 994 mm y 55° de 97 a 651 mm.
 - **Línea de visión sobre el brazo:** hacia un punto de agarre a 150 mm, pasa por encima del eje del brazo a 378 mm de altura, más alta que el brazo plegado (~250 mm).
-- **Límite para el brazo:** con la base del brazo mirando hacia adelante, el brazo recto no puede inclinarse hacia atrás más de ~12° sin tocar la varilla. Con el soporte de cámara del gripper montado, el límite baja a ~4°: con la cámara en el mástil, ese soporte ya no hace falta.
+- **Límite para el brazo:** con la base del brazo mirando hacia adelante, el brazo recto no puede inclinarse hacia atrás más de ~12° sin tocar la varilla (lo primero que la toca es la punta de los dedos). El brazo no lleva cámara: la única cámara es la del mástil.
 
 ### Ensamble completo
 
