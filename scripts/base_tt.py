@@ -30,7 +30,7 @@ WX0, WX1 = -28.0, 19.0                 # wall only where the motor is screwed
 HOLE_X, HOLE_DZ = -22.55, 8.8          # stacked M3 holes: 22.55 mm behind the shaft, 17.6 mm apart
 TAB_X = 14.0                           # front ear hole, 14 mm ahead of the shaft
 MZ0 = AXZ - MH / 2                     # 21.25
-ARMX = -25.0                           # arm axis, set back for stability
+ARMX = 0.0                             # arm axis centred on the plate
 BALLX = 73.0                           # caster posts
 
 def plate():
