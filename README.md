@@ -7,6 +7,7 @@ Diseños paramétricos hechos en [SolidCraft](https://github.com/tangency-labs/s
 | `brazo_robotico/` | Primera versión del brazo: 4 × MG995 + 2 × SG90, eslabones en horquilla abierta |
 | `brazo_compacto/` | Brazo compacto y cerrado (eslabones redondeados con tapa), con URDF para simulación |
 | `base_movil/` | Base móvil de 4 ruedas: brushless 1750 KV (5") con reducción 80:1 en 3 etapas, chasis para la electrónica |
+| `base_tt/` | **Base actual**: una sola placa (178 × 170 mm, cabe en A1 mini) para 2 motores TT amarillos + L298N, dos patines, batería atrás; se imprime boca abajo sin soportes |
 | `scripts/` | Generadores en Python que construyen cada diseño a través del servidor MCP de SolidCraft |
 
 Cada carpeta tiene el diseño `.sc` (editable en SolidCraft), un `.step` del conjunto y los `.stl` de las piezas para imprimir.
