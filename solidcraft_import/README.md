@@ -1,3 +1,10 @@
+> **Copia de trabajo para la simulación.** Esta carpeta se importó del `.rar` original y la usan
+> `simulation/` y `toolhead_13mm/` por su ruta. `brazo_compacto/` está sincronizado con el diseño
+> vigente de la carpeta raíz `brazo_compacto/` (mismos STL, STEP y URDF).
+> `base_movil/` y `brazo_robotico/` son versiones **descartadas**: la base vigente es `base_tt/`
+> (placa única para motores TT, bandeja de electrónica y mástil de cámara) y el ensamble
+> articulado está en `robot_ensamble/`. Ver `README_ROBOT.md` y `SPECS.md` en la raíz.
+
 # SolidCraft – brazo robótico y base móvil
 
 Diseños paramétricos hechos en [SolidCraft](https://github.com/tangency-labs/solidcraft) 0.45.
