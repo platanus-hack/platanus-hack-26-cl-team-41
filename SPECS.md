@@ -59,6 +59,27 @@
   - Estable con el brazo recto, estirado hacia adelante sin carga y estirado hacia atrás (justo).
   - Se vuelca estirado hacia adelante con 100 g de carga.
   - Por eso las misiones acercan el rover al objeto antes de agarrarlo, en vez de estirar el brazo.
+- **Ensamble articulado** (`robot_ensamble/robot_ensamble.sc`): la base móvil, con el mástil y la electrónica, queda fija, y el brazo conserva sus 7 articulaciones (base, hombro, codo, muñeca, giro de muñeca y las dos mandíbulas, unidas por engranaje). Exportado también a STEP y URDF.
+- **Conjunto de contacto** "Brazo vs base y mastil": cualquier movimiento del brazo se detiene al tocar la base, la bandeja o la varilla.
+- **Rango con el resto del brazo en 0°** (calculado en el CAD):
+
+  | Articulación | Hacia atrás | Hacia adelante |
+  |---|---|---|
+  | Base (giro) | vuelta completa | vuelta completa |
+  | Hombro | −13,7° (la pinza toca la varilla) | 96,7° (choca consigo mismo) |
+  | Codo | −21,0° (pinza contra varilla) | 96,6° |
+  | Muñeca | −45,7° (pinza contra varilla) | 96,4° |
+
+  Los límites hacia atrás solo aplican con la base mirando hacia adelante. **El codo no pasa de ~96°**, así que el puente y la consola lo limitan a 95°.
+- **Posturas predefinidas** (base, hombro, codo, muñeca), validadas sin choques contra la base, el mástil ni entre eslabones, con la base girando de −90° a +90°. La animación de esa validación está en `robot_ensamble/posturas.gif`:
+
+  | Postura | Ángulos | Nota |
+  |---|---|---|
+  | Recoger | 0, 65,2, 61,3, 53,5 | Punta de los dedos a 5 mm del suelo y a 150 mm del eje del brazo, con la pinza vertical |
+  | Transportar | 0, 0, 95, 60 | |
+  | Entregar | 0, 48, 30, 12 | |
+  | Saludar | 0, 10, 60, −20 | |
+  | Plegado | 0, −10, 95, 80 | |
 
 **Otra versión explorada:** una base de 4 ruedas con motores brushless de 1750 KV y una reducción de 80:1 en 3 etapas de engranajes de perfil involuta. Está diseñada y verificada, pero quedó descartada por la complejidad mecánica y el bajo torque de los ESC sin sensores a baja velocidad.
 

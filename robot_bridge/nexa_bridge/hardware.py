@@ -18,11 +18,11 @@ log = logging.getLogger("nexa.hw")
 
 POSE_PRESETS: dict[str, list[float]] = {
     "home": [0, 0, 0, 0, 0],
-    "recoger": [0, 62, 78, 40, 0],
-    "transportar": [0, -10, 110, 60, 0],
+    "recoger": [0, 65.2, 61.3, 53.5, 0],  # finger tips 5 mm above the floor, 150 mm from the arm axis
+    "transportar": [0, 0, 95, 60, 0],
     "entregar": [0, 48, 30, 12, 0],
     "saludar": [0, 10, 60, -20, 0],
-    "plegado": [0, -20, 120, 75, 0],
+    "plegado": [0, -10, 95, 80, 0],
 }
 
 

@@ -107,17 +107,17 @@ export type PosePreset = "home" | "recoger" | "transportar" | "entregar" | "salu
 
 export const POSE_PRESETS: Record<PosePreset, Joints> = {
   home: [0, 0, 0, 0, 0],
-  recoger: [0, 62, 78, 40, 0],
-  transportar: [0, -10, 110, 60, 0],
+  recoger: [0, 65.2, 61.3, 53.5, 0], // finger tips 5 mm above the floor, 150 mm from the arm axis
+  transportar: [0, 0, 95, 60, 0],
   entregar: [0, 48, 30, 12, 0],
   saludar: [0, 10, 60, -20, 0],
-  plegado: [0, -20, 120, 75, 0],
+  plegado: [0, -10, 95, 80, 0],
 };
 
 export const JOINT_INFO: { name: string; servo: string; min: number; max: number }[] = [
   { name: "Base", servo: "MG995", min: -90, max: 90 },
   { name: "Hombro", servo: "MG995", min: -90, max: 90 },
-  { name: "Codo", servo: "MG995", min: -90, max: 120 },
+  { name: "Codo", servo: "MG995", min: -90, max: 95 }, // the forearm hits the upper arm past ~96°
   { name: "Muñeca", servo: "MG995", min: -90, max: 90 },
   { name: "Giro muñeca", servo: "SG90", min: -90, max: 90 },
 ];
