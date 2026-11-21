@@ -26,9 +26,11 @@ MT, MH = 18.8, 22.5                    # TT gearbox thickness (along the shaft) 
 MY_IN = MY_OUT - MT                    # 66.2
 MZ0 = AXZ - MH / 2                     # 21.25
 ARMX = -25.0                           # arm axis, set back for stability
+BALLX = 76.0                           # caster posts
 
 def plate():
     P = "Base plate"
+    cmd("parameters.add", name="bola", expression="16 mm")
     box("Plate", P, [0, 0, ZB + T / 2], [LX, LY, T], new=True)
     cmd("solid.fillet", edges=[[sx * LX / 2, sy * LY / 2, ZB + T / 2] for sx in (1, -1) for sy in (1, -1)],
         radius=15, body=P, name="Plate corners")
@@ -44,22 +46,26 @@ def plate():
         for i, x in enumerate([-38, -54]):
             box(f"Tie slot {s}{i+1}", P, [x, sy * (MY_IN - 6), ZB + 1.5], [5, 3, 6], op="cut")
         cyl(f"Motor wire hole {s}", P, [-48, sy * (MY_IN - 14), ZB - 1], 10, 5, op="cut")
-    # skids front and rear: post with a rounded tip 1 mm above the floor
+    # ball casters front and rear: post with a spherical socket that wraps the ball past its equator,
+    # 4 slits make flexible fingers so the ball snaps in. Ball bottom 0.5 mm above the floor.
     for sx, nm in ((1, "front"), (-1, "rear")):
-        cyl(f"Skid {nm}", P, [sx * 80, 0, 1], 16, ZB - 1 + 0.01)
-        cmd("solid.fillet", edges=[[sx * 80 + 8, 0, 1]], radius=7.5, body=P, name=f"Skid {nm} tip")
+        x = sx * BALLX
+        cyl(f"Caster post {nm}", P, [x, 0, "0.5 mm + 0.3*bola"], "bola + 8 mm", "44.01 mm - 0.3*bola")
+        S.append({"command": "solid.sphere", "params": {"diameter": "bola + 0.4 mm", "center": [x, 0, "0.5 mm + bola/2"],
+                  "operation": "cut", "targets": [P], "name": f"Ball socket {nm}"}})
+        box(f"Socket slit X {nm}", P, [x, 0, "0.5 mm + 0.475*bola"], ["bola + 10 mm", 1.6, "0.35*bola"], op="cut")
+        box(f"Socket slit Y {nm}", P, [x, 0, "0.5 mm + 0.475*bola"], [1.6, "bola + 10 mm", "0.35*bola"], op="cut")
     # L298N standoffs (37 x 37 hole square), front
     for i, (dx, dy) in enumerate([(18.5, 18.5), (-18.5, 18.5), (18.5, -18.5), (-18.5, -18.5)]):
-        cyl(f"L298N standoff {i+1}", P, [48 + dx, dy, ZB - 6], 6.5, 6.01)
-        cyl(f"L298N pilot {i+1}", P, [48 + dx, dy, ZB - 7], 2.6, 8, op="cut")
+        cyl(f"L298N standoff {i+1}", P, [42 + dx, dy, ZB - 6], 6.5, 6.01)
+        cyl(f"L298N pilot {i+1}", P, [42 + dx, dy, ZB - 7], 2.6, 8, op="cut")
     # battery strap slots (front, under the plate)
-    for i, x in enumerate([-60, -20]):
-        for sy in (1, -1):
-            box(f"Strap slot {i+1}{'L' if sy > 0 else 'R'}", P, [x, sy * 32, ZB + 1.5], [22, 3, 6], op="cut")
+    for sy in (1, -1):
+        box(f"Strap slot {'L' if sy > 0 else 'R'}", P, [-37, sy * 37.5, ZB + 1.5], [22, 3, 6], op="cut")
     # arm: 4 x M4 on D150 at 45 deg, centre cable hole
     for i, (x, y) in enumerate([(53.03, 53.03), (-53.03, 53.03), (-53.03, -53.03), (53.03, -53.03)]):
         cyl(f"Arm bolt {i+1}", P, [ARMX + x, y, ZB - 1], 4.5, 5, op="cut")
-    cyl("Arm cable hole", P, [ARMX, 0, ZB - 1], 24, 5, op="cut")
+    cyl("Arm cable hole", P, [6, 0, ZB - 1], 24, 5, op="cut")
     # controller mounting holes (2 rows, 20 mm pitch) under the arm base, rear-left/right
     for i, (x, y) in enumerate([(-20, 40), (0, 40), (20, 40), (-20, -40), (0, -40), (20, -40)]):
         cyl(f"Mount hole {i+1}", P, [x, y, ZB - 1], 3.2, 5, op="cut")
@@ -72,9 +78,12 @@ def dummies():
         cyl(f"TT can {s}", f"TT motor {s}", [-48, yc, AXZ], 20, 10.5, axis=[-1, 0, 0])
         cyl(f"TT shaft {s}", f"TT motor {s}", [0, sy * MY_OUT, AXZ], 5.4, 9, axis=[0, sy, 0])
         cyl(f"Wheel {s}", f"Wheel {s}", [0, sy * (MY_OUT + 2), AXZ], 65, 26, axis=[0, sy, 0], new=True)
-    box("L298N board", "L298N", [48, 0, ZB - 6 - 0.8], [43, 43, 1.6], new=True)
-    box("L298N heatsink", "L298N", [48, 12, ZB - 7.6 - 12.5], [23, 16, 25])
-    box("Battery 3S", "Battery", [-37, 0, ZB - 12.5], [70, 50, 25], new=True)
+    box("L298N board", "L298N", [42, 0, ZB - 6 - 0.8], [43, 43, 1.6], new=True)
+    box("L298N heatsink", "L298N", [42, 12, ZB - 7.6 - 12.5], [23, 16, 25])
+    box("Battery 3S", "Battery", [-37, 0, ZB - 12.5], [50, 70, 25], new=True)
+    for sx, nm in ((1, "front"), (-1, "rear")):
+        S.append({"command": "solid.sphere", "params": {"diameter": "bola", "center": [sx * BALLX, 0, "0.5 mm + bola/2"],
+                  "body_name": f"Ball {nm}", "name": f"Ball {nm}"}})
 
 stage = sys.argv[1]
 pre = []
