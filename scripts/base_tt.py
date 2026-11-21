@@ -50,7 +50,6 @@ def plate():
         box(f"Motor ear slot {s}", P, [TAB_X, sy * (WY - 1), AXZ], [3.4, 10, 16], op="cut")
         cyl(f"Shaft stub hole {s}", P, [0, sy * (WY - 6), AXZ], 10, 10, axis=ys, op="cut")
         box(f"Nub window {s}", P, [NUB_X, sy * (WY - 1), AXZ], [6, 10, 14], op="cut")
-        cyl(f"Motor wire hole {s}", P, [-48, sy * 48, ZB - 1], 10, 5, op="cut")
     # ball casters front and rear: post with a spherical socket that wraps the ball past its equator,
     # 4 slits make flexible fingers so the ball snaps in. Ball bottom 0.5 mm above the floor.
     for sx, nm in ((1, "front"), (-1, "rear")):
