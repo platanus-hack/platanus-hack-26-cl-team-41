@@ -1,7 +1,7 @@
 # Nexa · Consola del robot
 
 Panel web para el robot móvil con brazo (4 × MG995, 2 × SG90, 2 motores TT con L298N).
-Hecho con Next.js 16, TypeScript y Tailwind; listo para Vercel.
+Hecho con Next.js 16, TypeScript y Tailwind. Con el robot se sirve **en local desde el PC** (HTTP en la red del robot); la versión en Vercel sirve solo como demo del simulador.
 
 ## Modos
 
@@ -43,7 +43,10 @@ npm run dev      # http://localhost:3000
 npm run build    # lo mismo que hace Vercel
 ```
 
-## Deploy en Vercel
+## Deploy en Vercel (solo demo del simulador)
+
+Una página HTTPS no puede conectarse a `ws://` ni cargar video desde `http://`, así que para manejar el robot usa `npm run dev` o `npm run build && npm start` en el PC.
+
 
 1. Sube el repositorio a GitHub.
 2. En Vercel: **Add New → Project**, importa el repositorio.

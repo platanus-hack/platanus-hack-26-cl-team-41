@@ -2,6 +2,8 @@
 
 Diseños paramétricos hechos en [SolidCraft](https://github.com/tangency-labs/solidcraft) 0.45.
 
+Especificaciones técnicas completas: **[SPECS.md](SPECS.md)**.
+
 | Carpeta | Contenido |
 |---|---|
 | `brazo_robotico/` | Primera versión del brazo: 4 × MG995 + 2 × SG90, eslabones en horquilla abierta |
