@@ -26,6 +26,7 @@
 
 - **Una sola pieza** de 178 × 170 mm y 132 cm³ de modelo sólido, que se imprime boca abajo sin soportes.
 - **Tracción diferencial:** 2 motores TT de 1:48 con ruedas de Ø65 mm, más 2 ruedas locas de bola de 16 mm (el diámetro de la bola es un parámetro).
+- **Bolas impresas** (`bola_rueda_loca/`): si no hay canicas, se imprimen bolas de Ø15,8 mm (0,3 mm de holgura en el alojamiento de 16,4). Cada bola son dos mitades con la cara plana sobre la cama, sin soportes, unidas con dos trozos de filamento de 1,75 mm como pasadores y gotita; lijar la junta.
 - **Ruedas impresas** (`rueda_tt/`, generador `scripts/rueda_tt.py`), en reemplazo de las amarillas del TT:
   - **Medidas:** Ø65 mm exterior (misma altura del eje: 32,5 mm) y 34 mm de ancho total, contra 26 mm de la de fábrica. El robot queda en 242 mm de ancho.
   - **Llanta de PLA** (`Llanta_TT_PLA.stl`, 17,3 cm³): asiento de Ø55, dos rebordes de Ø57,4 × 1,6 mm que encierran el neumático, alma con 6 ventanas y cubo con agujero en doble D para el eje del TT (Ø5,6 con caras planas a 3,9 mm, 9,6 mm de profundidad) y agujero de Ø2,3 para el tornillo del motor.
