@@ -1,0 +1,27 @@
+Part,Quantity,X_mm,Y_mm,Z_mm,Solid_CAD_volume_cm3,Printing_note
+01_Desk_Base,1,200.0,180.0,8.0,283.15,Bolt or clamp to desk; 4 x M5 anchor holes. 200 x 180 bed footprint.
+02_Chassis_Adapter,1,160.0,130.0,6.0,115.43,Alternative to desk base. Slots accept M4; drill chassis to suit if patterns do not align.
+03_Yaw_Servo_Stand,1,120.0,100.0,50.0,112.46,Print upright. Localized supports under servo mounting ledges. Captive M4 nuts in floor.
+04_Yaw_Bearing_Bridge,1,76.0,62.0,11.2,20.89,"42.2 mm seat for 6806-2RS, 30 x 42 x 7. Print flat underside down."
+05_Yaw_Outer_Retainer,1,54.0,54.0,1.5,1.89,"3 x M2 x 6 self tapping; only capture outer race, no preload."
+06_Yaw_Platform,1,149.96,149.98,16.0,110.12,Print top face on bed (STL already flipped). Stock horn inside hub; 4 transfer-drilled M2 holes.
+07_Yaw_Inner_Retainer,1,34.0,34.0,2.0,1.03,3 x M2 x 6 to rotating hub; bearing inner race only.
+08_Shoulder_Tower,1,107.0,61.0,83.0,103.94,Print foot down with supports at bearing seats and motor ledges. Shoulder ratio 2:1.
+09_Shoulder_Drive_20T,1,33.0,33.0,8.0,4.61,"Module 1.5, 20T. Stock horn required. Adjust case on slotted mount to set backlash."
+10_Upper_Front_40T,1,84.44,62.87,8.0,26.53,Driven shoulder gear is integral with front link. Flat on bed.
+11_Upper_Rear,1,71.0,36.0,5.0,9.45,"Flat on bed. M5 stub axle at shoulder, 2 long M3 tie bolts at distal tail."
+12_Elbow_Saddle,1,58.0,36.0,73.0,38.22,Servo case faces back along the upper link; 2 x M3 x 75 tie bolts.
+13_Forearm_Front,1,61.0,36.0,5.0,8.6,Stock elbow horn. Transfer drill horn to 2-4 of the radial slots.
+14_Forearm_Rear,1,61.0,36.0,5.0,8.99,M5 stub axle + 625ZZ idler.
+15_Wrist_Pitch_Saddle,1,58.0,36.0,73.0,38.22,Wrist pitch servo with rear 625ZZ support.
+16_Wrist_Yoke_Front,1,57.0,36.0,5.0,8.0,Stock wrist pitch horn.
+17_Wrist_Yoke_Rear,1,57.0,36.0,5.0,8.39,Passive wrist pitch M5 + 625ZZ support.
+18_Roll_Carrier,1,58.0,63.0,39.0,35.7,Roll servo axis is along reach. Empty rear bearing pocket is a lightening/access opening.
+19_625_Retainer,5,24.0,24.0,1.5,0.55,2 x M2 x 6 self tapping. Shoulder front uses the same retainer flipped.
+20_M5_Spacer_3mm,3,8.0,8.0,3.0,0.08,Rear idlers: OD8 x ID5.3 x 3mm. Metal precision spacers preferred.
+21_M5_Spacer_2mm,2,8.0,8.0,2.0,0.06,Shoulder front and passive gripper jaw. Metal precision spacers preferred.
+22_Gripper_Housing,1,46.0,53.0,86.0,42.52,Bolts to stock roll horn through four 2.5mm holes; transfer drill horn. Print on side with supports.
+23_Gripper_Driven_Jaw,1,32.5,77.25,6.0,6.16,24T module1.25; nominal closed 1.5mm pad gap. Add adhesive TPU/rubber grip strips.
+24_Gripper_Idler_Jaw,1,32.3,77.15,6.0,6.62,Mirror finger; phase-shifted teeth mesh with driven jaw at 30mm centres.
+25_Fit_Coupon,1,110.0,44.0,6.0,22.03,"Print FIRST: servo body/ears, 625 bearing, M3/M4/M5 clearance holes."
+26_Yaw_Bearing_Coupon,1,52.0,52.0,9.0,7.21,Print FIRST: verify 6806 outer fit; use inner retainer/hub to check inner fit.

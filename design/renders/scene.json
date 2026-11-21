@@ -1,0 +1,482 @@
+[
+  {
+    "file": "C:\\Users\\claud\\OneDrive\\Documents\\ChatGPT\\PlatanusHack\\design\\renders\\mesh_00.stl",
+    "name": "01 Desk Base001",
+    "color": [
+      0.12,
+      0.38,
+      0.57
+    ],
+    "purchased": false
+  },
+  {
+    "file": "C:\\Users\\claud\\OneDrive\\Documents\\ChatGPT\\PlatanusHack\\design\\renders\\mesh_01.stl",
+    "name": "03 Yaw Servo Stand001",
+    "color": [
+      0.12,
+      0.38,
+      0.57
+    ],
+    "purchased": false
+  },
+  {
+    "file": "C:\\Users\\claud\\OneDrive\\Documents\\ChatGPT\\PlatanusHack\\design\\renders\\mesh_02.stl",
+    "name": "04 Yaw Bearing Bridge001",
+    "color": [
+      0.1,
+      0.63,
+      0.62
+    ],
+    "purchased": false
+  },
+  {
+    "file": "C:\\Users\\claud\\OneDrive\\Documents\\ChatGPT\\PlatanusHack\\design\\renders\\mesh_03.stl",
+    "name": "05 Yaw Outer Retainer001",
+    "color": [
+      0.96,
+      0.47,
+      0.17
+    ],
+    "purchased": false
+  },
+  {
+    "file": "C:\\Users\\claud\\OneDrive\\Documents\\ChatGPT\\PlatanusHack\\design\\renders\\mesh_04.stl",
+    "name": "06 Yaw Platform001",
+    "color": [
+      0.1,
+      0.63,
+      0.62
+    ],
+    "purchased": false
+  },
+  {
+    "file": "C:\\Users\\claud\\OneDrive\\Documents\\ChatGPT\\PlatanusHack\\design\\renders\\mesh_05.stl",
+    "name": "07 Yaw Inner Retainer001",
+    "color": [
+      0.96,
+      0.47,
+      0.17
+    ],
+    "purchased": false
+  },
+  {
+    "file": "C:\\Users\\claud\\OneDrive\\Documents\\ChatGPT\\PlatanusHack\\design\\renders\\mesh_06.stl",
+    "name": "08 Shoulder Tower001",
+    "color": [
+      0.12,
+      0.38,
+      0.57
+    ],
+    "purchased": false
+  },
+  {
+    "file": "C:\\Users\\claud\\OneDrive\\Documents\\ChatGPT\\PlatanusHack\\design\\renders\\mesh_07.stl",
+    "name": "09 Shoulder Drive 20T001",
+    "color": [
+      0.96,
+      0.47,
+      0.17
+    ],
+    "purchased": false
+  },
+  {
+    "file": "C:\\Users\\claud\\OneDrive\\Documents\\ChatGPT\\PlatanusHack\\design\\renders\\mesh_08.stl",
+    "name": "10 Upper Front 40T001",
+    "color": [
+      0.1,
+      0.63,
+      0.62
+    ],
+    "purchased": false
+  },
+  {
+    "file": "C:\\Users\\claud\\OneDrive\\Documents\\ChatGPT\\PlatanusHack\\design\\renders\\mesh_09.stl",
+    "name": "11 Upper Rear001",
+    "color": [
+      0.1,
+      0.63,
+      0.62
+    ],
+    "purchased": false
+  },
+  {
+    "file": "C:\\Users\\claud\\OneDrive\\Documents\\ChatGPT\\PlatanusHack\\design\\renders\\mesh_10.stl",
+    "name": "12 Elbow Saddle001",
+    "color": [
+      0.12,
+      0.38,
+      0.57
+    ],
+    "purchased": false
+  },
+  {
+    "file": "C:\\Users\\claud\\OneDrive\\Documents\\ChatGPT\\PlatanusHack\\design\\renders\\mesh_11.stl",
+    "name": "13 Forearm Front001",
+    "color": [
+      0.1,
+      0.63,
+      0.62
+    ],
+    "purchased": false
+  },
+  {
+    "file": "C:\\Users\\claud\\OneDrive\\Documents\\ChatGPT\\PlatanusHack\\design\\renders\\mesh_12.stl",
+    "name": "14 Forearm Rear001",
+    "color": [
+      0.1,
+      0.63,
+      0.62
+    ],
+    "purchased": false
+  },
+  {
+    "file": "C:\\Users\\claud\\OneDrive\\Documents\\ChatGPT\\PlatanusHack\\design\\renders\\mesh_13.stl",
+    "name": "15 Wrist Pitch Saddle001",
+    "color": [
+      0.12,
+      0.38,
+      0.57
+    ],
+    "purchased": false
+  },
+  {
+    "file": "C:\\Users\\claud\\OneDrive\\Documents\\ChatGPT\\PlatanusHack\\design\\renders\\mesh_14.stl",
+    "name": "16 Wrist Yoke Front001",
+    "color": [
+      0.1,
+      0.63,
+      0.62
+    ],
+    "purchased": false
+  },
+  {
+    "file": "C:\\Users\\claud\\OneDrive\\Documents\\ChatGPT\\PlatanusHack\\design\\renders\\mesh_15.stl",
+    "name": "17 Wrist Yoke Rear001",
+    "color": [
+      0.1,
+      0.63,
+      0.62
+    ],
+    "purchased": false
+  },
+  {
+    "file": "C:\\Users\\claud\\OneDrive\\Documents\\ChatGPT\\PlatanusHack\\design\\renders\\mesh_16.stl",
+    "name": "18 Roll Carrier001",
+    "color": [
+      0.12,
+      0.38,
+      0.57
+    ],
+    "purchased": false
+  },
+  {
+    "file": "C:\\Users\\claud\\OneDrive\\Documents\\ChatGPT\\PlatanusHack\\design\\renders\\mesh_17.stl",
+    "name": "22 Gripper Housing001",
+    "color": [
+      0.12,
+      0.38,
+      0.57
+    ],
+    "purchased": false
+  },
+  {
+    "file": "C:\\Users\\claud\\OneDrive\\Documents\\ChatGPT\\PlatanusHack\\design\\renders\\mesh_18.stl",
+    "name": "23 Gripper Driven Jaw001",
+    "color": [
+      0.96,
+      0.47,
+      0.17
+    ],
+    "purchased": false
+  },
+  {
+    "file": "C:\\Users\\claud\\OneDrive\\Documents\\ChatGPT\\PlatanusHack\\design\\renders\\mesh_19.stl",
+    "name": "24 Gripper Idler Jaw001",
+    "color": [
+      0.96,
+      0.47,
+      0.17
+    ],
+    "purchased": false
+  },
+  {
+    "file": "C:\\Users\\claud\\OneDrive\\Documents\\ChatGPT\\PlatanusHack\\design\\renders\\mesh_20.stl",
+    "name": "19 625 Retainer_rear0",
+    "color": [
+      0.96,
+      0.47,
+      0.17
+    ],
+    "purchased": false
+  },
+  {
+    "file": "C:\\Users\\claud\\OneDrive\\Documents\\ChatGPT\\PlatanusHack\\design\\renders\\mesh_21.stl",
+    "name": "20 M5 Spacer 3mm_rear0",
+    "color": [
+      0.96,
+      0.47,
+      0.17
+    ],
+    "purchased": false
+  },
+  {
+    "file": "C:\\Users\\claud\\OneDrive\\Documents\\ChatGPT\\PlatanusHack\\design\\renders\\mesh_22.stl",
+    "name": "19 625 Retainer_rear1",
+    "color": [
+      0.96,
+      0.47,
+      0.17
+    ],
+    "purchased": false
+  },
+  {
+    "file": "C:\\Users\\claud\\OneDrive\\Documents\\ChatGPT\\PlatanusHack\\design\\renders\\mesh_23.stl",
+    "name": "20 M5 Spacer 3mm_rear1",
+    "color": [
+      0.96,
+      0.47,
+      0.17
+    ],
+    "purchased": false
+  },
+  {
+    "file": "C:\\Users\\claud\\OneDrive\\Documents\\ChatGPT\\PlatanusHack\\design\\renders\\mesh_24.stl",
+    "name": "19 625 Retainer_rear2",
+    "color": [
+      0.96,
+      0.47,
+      0.17
+    ],
+    "purchased": false
+  },
+  {
+    "file": "C:\\Users\\claud\\OneDrive\\Documents\\ChatGPT\\PlatanusHack\\design\\renders\\mesh_25.stl",
+    "name": "20 M5 Spacer 3mm_rear2",
+    "color": [
+      0.96,
+      0.47,
+      0.17
+    ],
+    "purchased": false
+  },
+  {
+    "file": "C:\\Users\\claud\\OneDrive\\Documents\\ChatGPT\\PlatanusHack\\design\\renders\\mesh_26.stl",
+    "name": "19 625 Retainer_front_shoulder",
+    "color": [
+      0.96,
+      0.47,
+      0.17
+    ],
+    "purchased": false
+  },
+  {
+    "file": "C:\\Users\\claud\\OneDrive\\Documents\\ChatGPT\\PlatanusHack\\design\\renders\\mesh_27.stl",
+    "name": "21 M5 Spacer 2mm_shoulder",
+    "color": [
+      0.96,
+      0.47,
+      0.17
+    ],
+    "purchased": false
+  },
+  {
+    "file": "C:\\Users\\claud\\OneDrive\\Documents\\ChatGPT\\PlatanusHack\\design\\renders\\mesh_28.stl",
+    "name": "19 625 Retainer_front_gripper",
+    "color": [
+      0.96,
+      0.47,
+      0.17
+    ],
+    "purchased": false
+  },
+  {
+    "file": "C:\\Users\\claud\\OneDrive\\Documents\\ChatGPT\\PlatanusHack\\design\\renders\\mesh_29.stl",
+    "name": "21 M5 Spacer 2mm_gripper",
+    "color": [
+      0.96,
+      0.47,
+      0.17
+    ],
+    "purchased": false
+  },
+  {
+    "file": "C:\\Users\\claud\\OneDrive\\Documents\\ChatGPT\\PlatanusHack\\design\\renders\\ref_00.stl",
+    "name": "REFERENCE - J1_MG995",
+    "color": [
+      0.11999999731779099,
+      0.14000000059604645,
+      0.17000000178813934
+    ],
+    "purchased": true
+  },
+  {
+    "file": "C:\\Users\\claud\\OneDrive\\Documents\\ChatGPT\\PlatanusHack\\design\\renders\\ref_01.stl",
+    "name": "REFERENCE - J1_stock_horn",
+    "color": [
+      0.6499999761581421,
+      0.6899999976158142,
+      0.7200000286102295
+    ],
+    "purchased": true
+  },
+  {
+    "file": "C:\\Users\\claud\\OneDrive\\Documents\\ChatGPT\\PlatanusHack\\design\\renders\\ref_02.stl",
+    "name": "REFERENCE - 6806_yaw_bearing",
+    "color": [
+      0.6499999761581421,
+      0.6899999976158142,
+      0.7200000286102295
+    ],
+    "purchased": true
+  },
+  {
+    "file": "C:\\Users\\claud\\OneDrive\\Documents\\ChatGPT\\PlatanusHack\\design\\renders\\ref_03.stl",
+    "name": "REFERENCE - J2_MG995",
+    "color": [
+      0.11999999731779099,
+      0.14000000059604645,
+      0.17000000178813934
+    ],
+    "purchased": true
+  },
+  {
+    "file": "C:\\Users\\claud\\OneDrive\\Documents\\ChatGPT\\PlatanusHack\\design\\renders\\ref_04.stl",
+    "name": "REFERENCE - J2_stock_horn",
+    "color": [
+      0.6499999761581421,
+      0.6899999976158142,
+      0.7200000286102295
+    ],
+    "purchased": true
+  },
+  {
+    "file": "C:\\Users\\claud\\OneDrive\\Documents\\ChatGPT\\PlatanusHack\\design\\renders\\ref_05.stl",
+    "name": "REFERENCE - J3_MG995",
+    "color": [
+      0.11999999731779099,
+      0.14000000059604645,
+      0.17000000178813934
+    ],
+    "purchased": true
+  },
+  {
+    "file": "C:\\Users\\claud\\OneDrive\\Documents\\ChatGPT\\PlatanusHack\\design\\renders\\ref_06.stl",
+    "name": "REFERENCE - J3_stock_horn",
+    "color": [
+      0.6499999761581421,
+      0.6899999976158142,
+      0.7200000286102295
+    ],
+    "purchased": true
+  },
+  {
+    "file": "C:\\Users\\claud\\OneDrive\\Documents\\ChatGPT\\PlatanusHack\\design\\renders\\ref_07.stl",
+    "name": "REFERENCE - J4_MG995",
+    "color": [
+      0.11999999731779099,
+      0.14000000059604645,
+      0.17000000178813934
+    ],
+    "purchased": true
+  },
+  {
+    "file": "C:\\Users\\claud\\OneDrive\\Documents\\ChatGPT\\PlatanusHack\\design\\renders\\ref_08.stl",
+    "name": "REFERENCE - J4_stock_horn",
+    "color": [
+      0.6499999761581421,
+      0.6899999976158142,
+      0.7200000286102295
+    ],
+    "purchased": true
+  },
+  {
+    "file": "C:\\Users\\claud\\OneDrive\\Documents\\ChatGPT\\PlatanusHack\\design\\renders\\ref_09.stl",
+    "name": "REFERENCE - J5_MG995",
+    "color": [
+      0.11999999731779099,
+      0.14000000059604645,
+      0.17000000178813934
+    ],
+    "purchased": true
+  },
+  {
+    "file": "C:\\Users\\claud\\OneDrive\\Documents\\ChatGPT\\PlatanusHack\\design\\renders\\ref_10.stl",
+    "name": "REFERENCE - J5_stock_horn",
+    "color": [
+      0.6499999761581421,
+      0.6899999976158142,
+      0.7200000286102295
+    ],
+    "purchased": true
+  },
+  {
+    "file": "C:\\Users\\claud\\OneDrive\\Documents\\ChatGPT\\PlatanusHack\\design\\renders\\ref_11.stl",
+    "name": "REFERENCE - J6_MG995",
+    "color": [
+      0.11999999731779099,
+      0.14000000059604645,
+      0.17000000178813934
+    ],
+    "purchased": true
+  },
+  {
+    "file": "C:\\Users\\claud\\OneDrive\\Documents\\ChatGPT\\PlatanusHack\\design\\renders\\ref_12.stl",
+    "name": "REFERENCE - J6_stock_horn",
+    "color": [
+      0.6499999761581421,
+      0.6899999976158142,
+      0.7200000286102295
+    ],
+    "purchased": true
+  },
+  {
+    "file": "C:\\Users\\claud\\OneDrive\\Documents\\ChatGPT\\PlatanusHack\\design\\renders\\ref_13.stl",
+    "name": "REFERENCE - 625_rear_0",
+    "color": [
+      0.6499999761581421,
+      0.6899999976158142,
+      0.7200000286102295
+    ],
+    "purchased": true
+  },
+  {
+    "file": "C:\\Users\\claud\\OneDrive\\Documents\\ChatGPT\\PlatanusHack\\design\\renders\\ref_14.stl",
+    "name": "REFERENCE - 625_rear_1",
+    "color": [
+      0.6499999761581421,
+      0.6899999976158142,
+      0.7200000286102295
+    ],
+    "purchased": true
+  },
+  {
+    "file": "C:\\Users\\claud\\OneDrive\\Documents\\ChatGPT\\PlatanusHack\\design\\renders\\ref_15.stl",
+    "name": "REFERENCE - 625_rear_2",
+    "color": [
+      0.6499999761581421,
+      0.6899999976158142,
+      0.7200000286102295
+    ],
+    "purchased": true
+  },
+  {
+    "file": "C:\\Users\\claud\\OneDrive\\Documents\\ChatGPT\\PlatanusHack\\design\\renders\\ref_16.stl",
+    "name": "REFERENCE - 625_front_shoulder",
+    "color": [
+      0.6499999761581421,
+      0.6899999976158142,
+      0.7200000286102295
+    ],
+    "purchased": true
+  },
+  {
+    "file": "C:\\Users\\claud\\OneDrive\\Documents\\ChatGPT\\PlatanusHack\\design\\renders\\ref_17.stl",
+    "name": "REFERENCE - 625_front_gripper",
+    "color": [
+      0.6499999761581421,
+      0.6899999976158142,
+      0.7200000286102295
+    ],
+    "purchased": true
+  }
+]

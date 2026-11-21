@@ -1,0 +1,21 @@
+{
+  "upper_link_mm": 95.0,
+  "fore_link_mm": 85.0,
+  "wrist_to_roll_mm": 83.0,
+  "servo_body_length_mm": 40.7,
+  "servo_body_width_mm": 19.7,
+  "shaft_from_near_end_mm": 10.2,
+  "case_clearance_mm": 0.8,
+  "bearing_625_seat_mm": 16.2,
+  "bearing_6806_seat_mm": 42.2,
+  "yaw_hub_od_mm": 29.95,
+  "gear_backlash_mm": 0.20,
+  "provisional_payload_g": 25,
+  "display_pose_deg": {
+    "shoulder": 55,
+    "elbow": -65,
+    "wrist_pitch": 20,
+    "wrist_roll": 0,
+    "gripper_open": 16
+  }
+}

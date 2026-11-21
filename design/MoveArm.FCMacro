@@ -1,0 +1,4 @@
+# Run this macro in FreeCAD to open the arm and its joint control panel.
+from pathlib import Path
+import runpy
+runpy.run_path(str(Path(__file__).resolve().parent / 'arm_controls.py'),run_name='__main__')

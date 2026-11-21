@@ -1,0 +1,30 @@
+{
+  "checks": [
+    {
+      "control": "BaseYaw",
+      "descendant_updated": true
+    },
+    {
+      "control": "ShoulderPitch",
+      "descendant_updated": true
+    },
+    {
+      "control": "ElbowPitch",
+      "descendant_updated": true
+    },
+    {
+      "control": "WristPitch",
+      "descendant_updated": true
+    },
+    {
+      "control": "WristRoll",
+      "descendant_updated": true
+    },
+    {
+      "control": "GripperOpening",
+      "descendant_updated": true
+    }
+  ],
+  "reopen_expression_persistence": true,
+  "collision_checks": "skipped at user request"
+}

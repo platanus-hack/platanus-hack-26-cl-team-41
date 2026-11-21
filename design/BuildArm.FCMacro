@@ -1,0 +1,17 @@
+# Open this macro in FreeCAD, then run it to regenerate the deliverables beside it.
+import os, runpy
+try:
+    source = os.path.join(os.path.dirname(__file__), 'build_arm.py')
+except NameError:
+    source = FreeCAD.ConfigGet('UserAppData') # choose path below if your FreeCAD does not expose __file__
+    raise RuntimeError('Run build_arm.py with FreeCAD bundled Python, or set source to its absolute path.')
+runpy.run_path(source, run_name='__main__')
+Gui.activeDocument().activeView().viewAxonometric()
+for obj in App.ActiveDocument.Print_Catalog.Group:
+    obj.Visibility = False
+App.ActiveDocument.Print_Catalog.Visibility = False
+App.ActiveDocument.Desk_Assembly.Visibility = True
+App.ActiveDocument.Purchased_References.Visibility = True
+Gui.activeDocument().activeView().fitAll()
+App.ActiveDocument.recompute()
+App.ActiveDocument.save()

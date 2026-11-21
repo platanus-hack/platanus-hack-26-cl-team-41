@@ -1,0 +1,18 @@
+# Check the current live FreeCAD pose without changing it.
+from pathlib import Path
+import runpy
+import FreeCAD as App, FreeCADGui as Gui
+from PySide import QtWidgets
+root=Path(__file__).resolve().parent
+api=runpy.run_path(str(root/'arm_kinematics.py'))
+doc=App.ActiveDocument
+if doc is None or doc.getObject('JointControls') is None:
+    doc=App.openDocument(str(root/'MG995_5DOF_Movable.FCStd'))
+model=api['model_from_document'](doc)
+result=api['evaluate'](model,[getattr(doc.JointControls,k).Value for k in api['JOINT_PROPERTIES']])
+matrix='\n'.join(' '.join('%11.4f'%v for v in row) for row in result['J0_rows_vx_vy_vz_wx_wy_wz'])
+message=QtWidgets.QMessageBox(Gui.getMainWindow());message.setWindowTitle('J0 singularity check')
+message.setText(api['status_text'](result)+'\nTCP XYZ (mm): '+', '.join('%.3f'%v for v in result['tcp_world_mm']))
+message.setInformativeText('The 6 x 5 geometric Jacobian has no determinant.\nXYZ is singular below rank 3; five-joint motion is singular below rank 5.\nExpand Details to see the base-frame matrix. The pose is unchanged.')
+message.setDetailedText('Joint output angles (degrees):\n'+str(result['angles_deg'])+'\n\nJ0: rows vx vy vz wx wy wz; columns yaw shoulder elbow pitch roll\nLinear rows mm/rad; angular rows rad/rad\n'+matrix+'\n\nXYZ singular values, mm/rad:\n'+str(result['position']['singular_values_mm_per_rad'])+'\nFull singular values, linear rows divided by 359mm:\n'+str(result['five_joint_geometric']['singular_values']))
+message.exec_()

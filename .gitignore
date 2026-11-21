@@ -1,0 +1,14 @@
+# Python caches
+__pycache__/
+*.py[cod]
+
+# FreeCAD backups
+*.FCBak
+*.FCStd[0-9]
+
+# Local build and render logs
+*.log
+
+# Intermediate meshes used to render previews
+/design/renders/mesh_*.stl
+/design/renders/ref_*.stl

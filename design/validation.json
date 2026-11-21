@@ -1,0 +1,410 @@
+{
+  "freecad_version": [
+    "1",
+    "1",
+    "3"
+  ],
+  "units": "mm",
+  "parts": [
+    {
+      "part": "01_Desk_Base",
+      "qty": 1,
+      "volume_mm3": 283149.91,
+      "stl_size_mm": [
+        200.0,
+        180.0,
+        8.0
+      ],
+      "triangles": 3408,
+      "brep_valid": true,
+      "solids": 1,
+      "mesh_closed": true,
+      "note": "Bolt or clamp to desk; 4 x M5 anchor holes. 200 x 180 bed footprint."
+    },
+    {
+      "part": "02_Chassis_Adapter",
+      "qty": 1,
+      "volume_mm3": 115426.45,
+      "stl_size_mm": [
+        160.0,
+        130.0,
+        6.0
+      ],
+      "triangles": 4832,
+      "brep_valid": true,
+      "solids": 1,
+      "mesh_closed": true,
+      "note": "Alternative to desk base. Slots accept M4; drill chassis to suit if patterns do not align."
+    },
+    {
+      "part": "03_Yaw_Servo_Stand",
+      "qty": 1,
+      "volume_mm3": 112456.8,
+      "stl_size_mm": [
+        120.0,
+        100.0,
+        50.0
+      ],
+      "triangles": 4660,
+      "brep_valid": true,
+      "solids": 1,
+      "mesh_closed": true,
+      "note": "Print upright. Localized supports under servo mounting ledges. Captive M4 nuts in floor."
+    },
+    {
+      "part": "04_Yaw_Bearing_Bridge",
+      "qty": 1,
+      "volume_mm3": 20891.47,
+      "stl_size_mm": [
+        76.0,
+        62.0,
+        11.2
+      ],
+      "triangles": 3728,
+      "brep_valid": true,
+      "solids": 1,
+      "mesh_closed": true,
+      "note": "42.2 mm seat for 6806-2RS, 30 x 42 x 7. Print flat underside down."
+    },
+    {
+      "part": "05_Yaw_Outer_Retainer",
+      "qty": 1,
+      "volume_mm3": 1886.43,
+      "stl_size_mm": [
+        54.0,
+        54.0,
+        1.5
+      ],
+      "triangles": 1692,
+      "brep_valid": true,
+      "solids": 1,
+      "mesh_closed": true,
+      "note": "3 x M2 x 6 self tapping; only capture outer race, no preload."
+    },
+    {
+      "part": "06_Yaw_Platform",
+      "qty": 1,
+      "volume_mm3": 110120.64,
+      "stl_size_mm": [
+        149.96,
+        149.98,
+        16.0
+      ],
+      "triangles": 6792,
+      "brep_valid": true,
+      "solids": 1,
+      "mesh_closed": true,
+      "note": "Print top face on bed (STL already flipped). Stock horn inside hub; 4 transfer-drilled M2 holes."
+    },
+    {
+      "part": "07_Yaw_Inner_Retainer",
+      "qty": 1,
+      "volume_mm3": 1026.12,
+      "stl_size_mm": [
+        34.0,
+        34.0,
+        2.0
+      ],
+      "triangles": 1692,
+      "brep_valid": true,
+      "solids": 1,
+      "mesh_closed": true,
+      "note": "3 x M2 x 6 to rotating hub; bearing inner race only."
+    },
+    {
+      "part": "08_Shoulder_Tower",
+      "qty": 1,
+      "volume_mm3": 103936.59,
+      "stl_size_mm": [
+        107.0,
+        61.0,
+        83.0
+      ],
+      "triangles": 5914,
+      "brep_valid": true,
+      "solids": 1,
+      "mesh_closed": true,
+      "note": "Print foot down with supports at bearing seats and motor ledges. Shoulder ratio 2:1."
+    },
+    {
+      "part": "09_Shoulder_Drive_20T",
+      "qty": 1,
+      "volume_mm3": 4609.97,
+      "stl_size_mm": [
+        33.0,
+        33.0,
+        8.0
+      ],
+      "triangles": 3968,
+      "brep_valid": true,
+      "solids": 1,
+      "mesh_closed": true,
+      "note": "Module 1.5, 20T. Stock horn required. Adjust case on slotted mount to set backlash."
+    },
+    {
+      "part": "10_Upper_Front_40T",
+      "qty": 1,
+      "volume_mm3": 26528.57,
+      "stl_size_mm": [
+        84.44,
+        62.87,
+        8.0
+      ],
+      "triangles": 5120,
+      "brep_valid": true,
+      "solids": 1,
+      "mesh_closed": true,
+      "note": "Driven shoulder gear is integral with front link. Flat on bed."
+    },
+    {
+      "part": "11_Upper_Rear",
+      "qty": 1,
+      "volume_mm3": 9445.25,
+      "stl_size_mm": [
+        71.0,
+        36.0,
+        5.0
+      ],
+      "triangles": 1608,
+      "brep_valid": true,
+      "solids": 1,
+      "mesh_closed": true,
+      "note": "Flat on bed. M5 stub axle at shoulder, 2 long M3 tie bolts at distal tail."
+    },
+    {
+      "part": "12_Elbow_Saddle",
+      "qty": 1,
+      "volume_mm3": 38218.01,
+      "stl_size_mm": [
+        58.0,
+        36.0,
+        73.0
+      ],
+      "triangles": 3884,
+      "brep_valid": true,
+      "solids": 1,
+      "mesh_closed": true,
+      "note": "Servo case faces back along the upper link; 2 x M3 x 75 tie bolts."
+    },
+    {
+      "part": "13_Forearm_Front",
+      "qty": 1,
+      "volume_mm3": 8601.55,
+      "stl_size_mm": [
+        61.0,
+        36.0,
+        5.0
+      ],
+      "triangles": 2652,
+      "brep_valid": true,
+      "solids": 1,
+      "mesh_closed": true,
+      "note": "Stock elbow horn. Transfer drill horn to 2-4 of the radial slots."
+    },
+    {
+      "part": "14_Forearm_Rear",
+      "qty": 1,
+      "volume_mm3": 8990.74,
+      "stl_size_mm": [
+        61.0,
+        36.0,
+        5.0
+      ],
+      "triangles": 1260,
+      "brep_valid": true,
+      "solids": 1,
+      "mesh_closed": true,
+      "note": "M5 stub axle + 625ZZ idler."
+    },
+    {
+      "part": "15_Wrist_Pitch_Saddle",
+      "qty": 1,
+      "volume_mm3": 38218.01,
+      "stl_size_mm": [
+        58.0,
+        36.0,
+        73.0
+      ],
+      "triangles": 3884,
+      "brep_valid": true,
+      "solids": 1,
+      "mesh_closed": true,
+      "note": "Wrist pitch servo with rear 625ZZ support."
+    },
+    {
+      "part": "16_Wrist_Yoke_Front",
+      "qty": 1,
+      "volume_mm3": 8001.55,
+      "stl_size_mm": [
+        57.0,
+        36.0,
+        5.0
+      ],
+      "triangles": 2652,
+      "brep_valid": true,
+      "solids": 1,
+      "mesh_closed": true,
+      "note": "Stock wrist pitch horn."
+    },
+    {
+      "part": "17_Wrist_Yoke_Rear",
+      "qty": 1,
+      "volume_mm3": 8390.74,
+      "stl_size_mm": [
+        57.0,
+        36.0,
+        5.0
+      ],
+      "triangles": 1260,
+      "brep_valid": true,
+      "solids": 1,
+      "mesh_closed": true,
+      "note": "Passive wrist pitch M5 + 625ZZ support."
+    },
+    {
+      "part": "18_Roll_Carrier",
+      "qty": 1,
+      "volume_mm3": 35704.54,
+      "stl_size_mm": [
+        58.0,
+        63.0,
+        39.0
+      ],
+      "triangles": 3616,
+      "brep_valid": true,
+      "solids": 1,
+      "mesh_closed": true,
+      "note": "Roll servo axis is along reach. Empty rear bearing pocket is a lightening/access opening."
+    },
+    {
+      "part": "19_625_Retainer",
+      "qty": 5,
+      "volume_mm3": 546.05,
+      "stl_size_mm": [
+        24.0,
+        24.0,
+        1.5
+      ],
+      "triangles": 1352,
+      "brep_valid": true,
+      "solids": 1,
+      "mesh_closed": true,
+      "note": "2 x M2 x 6 self tapping. Shoulder front uses the same retainer flipped."
+    },
+    {
+      "part": "20_M5_Spacer_3mm",
+      "qty": 3,
+      "volume_mm3": 84.61,
+      "stl_size_mm": [
+        8.0,
+        8.0,
+        3.0
+      ],
+      "triangles": 672,
+      "brep_valid": true,
+      "solids": 1,
+      "mesh_closed": true,
+      "note": "Rear idlers: OD8 x ID5.3 x 3mm. Metal precision spacers preferred."
+    },
+    {
+      "part": "21_M5_Spacer_2mm",
+      "qty": 2,
+      "volume_mm3": 56.41,
+      "stl_size_mm": [
+        8.0,
+        8.0,
+        2.0
+      ],
+      "triangles": 672,
+      "brep_valid": true,
+      "solids": 1,
+      "mesh_closed": true,
+      "note": "Shoulder front and passive gripper jaw. Metal precision spacers preferred."
+    },
+    {
+      "part": "22_Gripper_Housing",
+      "qty": 1,
+      "volume_mm3": 42522.63,
+      "stl_size_mm": [
+        46.0,
+        53.0,
+        86.0
+      ],
+      "triangles": 4912,
+      "brep_valid": true,
+      "solids": 1,
+      "mesh_closed": true,
+      "note": "Bolts to stock roll horn through four 2.5mm holes; transfer drill horn. Print on side with supports."
+    },
+    {
+      "part": "23_Gripper_Driven_Jaw",
+      "qty": 1,
+      "volume_mm3": 6157.43,
+      "stl_size_mm": [
+        32.5,
+        77.25,
+        6.0
+      ],
+      "triangles": 4200,
+      "brep_valid": true,
+      "solids": 1,
+      "mesh_closed": true,
+      "note": "24T module1.25; nominal closed 1.5mm pad gap. Add adhesive TPU/rubber grip strips."
+    },
+    {
+      "part": "24_Gripper_Idler_Jaw",
+      "qty": 1,
+      "volume_mm3": 6620.57,
+      "stl_size_mm": [
+        32.3,
+        77.15,
+        6.0
+      ],
+      "triangles": 2796,
+      "brep_valid": true,
+      "solids": 1,
+      "mesh_closed": true,
+      "note": "Mirror finger; phase-shifted teeth mesh with driven jaw at 30mm centres."
+    },
+    {
+      "part": "25_Fit_Coupon",
+      "qty": 1,
+      "volume_mm3": 22030.63,
+      "stl_size_mm": [
+        110.0,
+        44.0,
+        6.0
+      ],
+      "triangles": 3120,
+      "brep_valid": true,
+      "solids": 1,
+      "mesh_closed": true,
+      "note": "Print FIRST: servo body/ears, 625 bearing, M3/M4/M5 clearance holes."
+    },
+    {
+      "part": "26_Yaw_Bearing_Coupon",
+      "qty": 1,
+      "volume_mm3": 7210.86,
+      "stl_size_mm": [
+        52.0,
+        52.0,
+        9.0
+      ],
+      "triangles": 1008,
+      "brep_valid": true,
+      "solids": 1,
+      "mesh_closed": true,
+      "note": "Print FIRST: verify 6806 outer fit; use inner retainer/hub to check inner fit."
+    }
+  ],
+  "display_pose": {
+    "shoulder": 55,
+    "elbow": -65,
+    "wrist_pitch": 20,
+    "wrist_roll": 0,
+    "gripper_open": 16
+  },
+  "positive_volume_printed_collisions": [],
+  "servo_envelope_collisions": [],
+  "scope": "BREP and closed STL validation plus displayed-pose interference only; no physical load, FEA or full-motion certification."
+}

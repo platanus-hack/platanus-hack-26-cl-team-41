@@ -1,0 +1,5 @@
+# Preserve CAD and scene files exactly; resolve edits in their native applications.
+*.FCStd binary
+*.step binary
+*.stl binary
+*.blend binary
