@@ -1,0 +1,2 @@
+# Apaga los scripts Lua (brazo_estable y rampa): al poner la bateria nada se mueve solo
+SCR_ENABLE,0

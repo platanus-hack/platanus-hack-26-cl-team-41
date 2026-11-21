@@ -1,0 +1,18 @@
+# Brazo completo estabilizado por scripts/brazo_estable.lua
+# Apaga el estabilizador de prueba (Mount en S2/S3) y entrega S2..S6 al script.
+MNT1_TYPE,0
+# S2 base, S3 hombro, S4 codo, S5 inclinacion muneca, S6 giro muneca (Script1..Script5)
+SERVO2_FUNCTION,94
+SERVO3_FUNCTION,95
+SERVO4_FUNCTION,96
+SERVO5_FUNCTION,97
+SERVO6_FUNCTION,98
+# Pinza (Script6) en S1: mismo grupo de timer que S2 (50 Hz). S7..S10 siguen siendo del L298N (490 Hz).
+SERVO1_FUNCTION,99
+# Postura de reposo cuando no hay puente (grados): base, hombro, codo, muneca, giro. 0 = todo al centro (1500 us)
+SCR_USER2,0
+SCR_USER3,0
+SCR_USER4,0
+SCR_USER5,0
+SCR_USER6,0
+SCR_ENABLE,1
