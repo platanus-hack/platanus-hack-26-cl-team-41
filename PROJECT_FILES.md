@@ -2,8 +2,15 @@
 
 Clone or download the whole repository into a normal local folder, for example `C:\Projects\PlatanusHack`. Keep the folders together; simulation meshes and CAD generators use their relative locations. Do not copy just the simulator scripts.
 
-- `solidcraft_import/brazo_compacto/`: current SolidCraft compact arm, STEP, URDF and print meshes; 4 MG995 + 2 SG90 servos.
-- `solidcraft_import/base_movil/`: imported mobile chassis design.
+- `SPECS.md`, `README_ROBOT.md`: current technical specs (Matek H743 + Radxa Zero 3W + PC) and robot overview.
+- `brazo_compacto/`: current SolidCraft compact arm (4 MG995 + 2 SG90), STEP, URDF and print STLs.
+- `base_tt/`: current mobile base: one-piece plate for 2 TT motors + L298N, ball casters, electronics tray (H743, Radxa) and the camera mast (12 x 500 mm carbon rod socket and tilted camera head).
+- `rueda_tt/`: printed wheels for the TT motors (65 x 34 mm): PLA rim with bead flanges and TPU tyre, print-ready STLs.
+- `bola_rueda_loca/`: printed 15.8 mm caster balls as two halves (print 4 halves), joined with 1.75 mm filament pins and glue.
+- `robot_ensamble/`: articulated assembly: the arm moves on its 7 joints over the fixed base, with a contact set and validated poses (`posturas.gif`).
+- `app/`: web console (Next.js); `robot_bridge/`: bridge on the Radxa (MAVLink to the H743); `h743/`: ArduPilot Lua script; `pc_vision/`: YOLO client for the PC.
+- `solidcraft_import/brazo_compacto/`: copy of the current arm kept at this path for the simulator meshes (synced with `brazo_compacto/`).
+- `solidcraft_import/base_movil/`, `brazo_robotico/`, `base_movil/`: discarded earlier versions (brushless 4-wheel base, open-fork arm), kept for reference.
 - `toolhead_13mm/`: editable FreeCAD holder, STEP interchange, printable parts and documentation.
 - `print_jobs/toolhead_and_TT/`: three **unsliced A2L 3MF projects**, embedded PLA / 0.4 mm profiles, M3 fit coupon and bundled TT base STL. Open the 3MF as a project in Bambu Studio.
 - `simulation/`: MuJoCo simulator, training code, servo priors and launchers.

@@ -1,0 +1,3 @@
+# Servo doble (Script7) en S1 y pinza (Script6) en S11. Ver brazo_estable.lua: BRH_JNT / BRH_DIR / BRH_TRIM.
+SERVO1_FUNCTION,100
+SERVO11_FUNCTION,99

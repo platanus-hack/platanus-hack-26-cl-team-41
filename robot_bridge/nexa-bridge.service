@@ -1,0 +1,15 @@
+[Unit]
+Description=Nexa robot bridge (web console <-> Matek H743 over MAVLink)
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+# adjust the user and the path to where the repository lives on the Radxa
+User=radxa
+WorkingDirectory=/home/radxa/SOLIDCRAFT/robot_bridge
+ExecStart=/home/radxa/SOLIDCRAFT/robot_bridge/.venv/bin/python -m nexa_bridge
+Restart=on-failure
+RestartSec=3
+
+[Install]
+WantedBy=multi-user.target

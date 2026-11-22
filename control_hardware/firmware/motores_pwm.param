@@ -1,0 +1,17 @@
+# Motores DC via L298N (jumpers ENA/ENB puestos, PWM en IN1..IN4)
+# S7..S10 como canales de motor -> grupo TIM4 a Q_RC_SPEED Hz, PWM normal (no DShot).
+# El script Lua sobreescribe el ancho de pulso: duty = pwm_us / (1e6/490).
+SERVO7_FUNCTION,33
+SERVO8_FUNCTION,34
+SERVO9_FUNCTION,35
+SERVO10_FUNCTION,36
+Q_M_PWM_TYPE,0
+Q_RC_SPEED,490
+# Desarmado: sin pulsos en S7..S10 (si no, quedan en 1000us y el L298N frena)
+Q_M_SAFE_DISARM,1
+RELAY1_FUNCTION,0
+RELAY2_FUNCTION,0
+RELAY3_FUNCTION,0
+RELAY4_FUNCTION,0
+SCR_ENABLE,1
+SCR_USER1,0

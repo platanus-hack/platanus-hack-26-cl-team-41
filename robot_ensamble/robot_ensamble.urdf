@@ -1,0 +1,209 @@
+<?xml version="1.0"?>
+<!-- Exported by SolidCraft; units: m, kg, rad -->
+<robot name="robot_ensamble">
+  <link name="base_link">
+  </link>
+  <link name="Base_part">
+    <inertial>
+      <origin xyz="0.002210785713918129 5.133576579074321e-7 0.03125863148933742" rpy="0 0 0"/>
+      <mass value="0.17886679157228155"/>
+      <inertia ixx="3.1244594127665244e-4" ixy="-8.931426301644482e-10" ixz="-2.6865654191651183e-6" iyy="3.1610269187013786e-4" iyz="-5.915348681368136e-10" izz="4.963584643600235e-4"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry><mesh filename="robot_ensamble-Base_part.stl"/></geometry>
+      <material name="Base_part_color"><color rgba="0.843137264251709 0.8549019694328308 0.8745098114013672 1"/></material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry><mesh filename="robot_ensamble-Base_part.stl"/></geometry>
+    </collision>
+  </link>
+  <link name="Base_movil">
+    <inertial>
+      <origin xyz="-0.0170683857676466 1.6886020675002718e-4 0.06891772554422532" rpy="0 0 0"/>
+      <mass value="0.8434752297189357"/>
+      <inertia ixx="0.014054650079165894" ixy="-7.840317479382486e-6" ixz="0.002104435727787717" iyy="0.011702790217793576" iyz="6.3419264054613875e-6" izz="0.00574522565584777"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry><mesh filename="robot_ensamble-Base_movil.stl"/></geometry>
+      <material name="Base_movil_color"><color rgba="0.843137264251709 0.8549019694328308 0.8745098114013672 1"/></material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry><mesh filename="robot_ensamble-Base_movil.stl"/></geometry>
+    </collision>
+  </link>
+  <link name="Shoulder_part">
+    <inertial>
+      <origin xyz="9.494014941269336e-4 1.7049203974366356e-8 0.021578575209618044" rpy="0 0 0"/>
+      <mass value="0.16767267493999"/>
+      <inertia ixx="1.4806358788175912e-4" ixy="8.670929754854872e-10" ixz="-1.6943824094510483e-6" iyy="1.5190648511791388e-4" iyz="1.4821271572588927e-10" izz="1.4270165496974192e-4"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 -0.066" rpy="0 0 -1.5707963267948966"/>
+      <geometry><mesh filename="robot_ensamble-Shoulder_part.stl"/></geometry>
+      <material name="Shoulder_part_color"><color rgba="0.7058823704719543 0.7254902124404907 0.7529411911964417 1"/></material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 -0.066" rpy="0 0 -1.5707963267948966"/>
+      <geometry><mesh filename="robot_ensamble-Shoulder_part.stl"/></geometry>
+    </collision>
+  </link>
+  <link name="UpperArm_part">
+    <inertial>
+      <origin xyz="-0.04500075654150348 4.408758597005858e-9 -1.7831092793324824e-4" rpy="0 0 0"/>
+      <mass value="0.1293220673464765"/>
+      <inertia ixx="1.1598360170120709e-4" ixy="2.8230359951300737e-11" ixz="3.5724153042774175e-10" iyy="2.10382734279524e-4" iyz="1.9363206235926242e-11" izz="1.41371428601584e-4"/>
+    </inertial>
+    <visual>
+      <origin xyz="0.112 0 0" rpy="1.5707963267948966 0 -1.5707963267948966"/>
+      <geometry><mesh filename="robot_ensamble-UpperArm_part.stl"/></geometry>
+      <material name="UpperArm_part_color"><color rgba="0.843137264251709 0.8549019694328308 0.8745098114013672 1"/></material>
+    </visual>
+    <collision>
+      <origin xyz="0.112 0 0" rpy="1.5707963267948966 0 -1.5707963267948966"/>
+      <geometry><mesh filename="robot_ensamble-UpperArm_part.stl"/></geometry>
+    </collision>
+  </link>
+  <link name="Forearm_part">
+    <inertial>
+      <origin xyz="-0.04250032716105135 2.2304895635906113e-7 0.0015783067448255851" rpy="0 0 0"/>
+      <mass value="0.18888878319772245"/>
+      <inertia ixx="7.480415575575822e-5" ixy="1.558919703865544e-9" ixz="8.577750142035877e-10" iyy="3.0498835765949866e-4" iyz="-8.937116525919415e-11" izz="2.9677428522073025e-4"/>
+    </inertial>
+    <visual>
+      <origin xyz="0.202 0 0" rpy="1.5707963267948966 0 -1.5707963267948966"/>
+      <geometry><mesh filename="robot_ensamble-Forearm_part.stl"/></geometry>
+      <material name="Forearm_part_color"><color rgba="0.843137264251709 0.8549019694328308 0.8745098114013672 1"/></material>
+    </visual>
+    <collision>
+      <origin xyz="0.202 0 0" rpy="1.5707963267948966 0 -1.5707963267948966"/>
+      <geometry><mesh filename="robot_ensamble-Forearm_part.stl"/></geometry>
+    </collision>
+  </link>
+  <link name="Wrist_part">
+    <inertial>
+      <origin xyz="-0.021457639134731542 -0.0011247490576679529 -1.7946195786751044e-4" rpy="0 0 0"/>
+      <mass value="0.06436490940610722"/>
+      <inertia ixx="4.43819193156903e-5" ixy="-1.5397218448158843e-6" ixz="2.478073240765492e-7" iyy="5.707859607152501e-5" iyz="1.2954570757312585e-8" izz="3.360705204481599e-5"/>
+    </inertial>
+    <visual>
+      <origin xyz="0.28700000000000003 0 0" rpy="1.5707963267948966 0 -1.5707963267948966"/>
+      <geometry><mesh filename="robot_ensamble-Wrist_part.stl"/></geometry>
+      <material name="Wrist_part_color"><color rgba="0.843137264251709 0.8549019694328308 0.8745098114013672 1"/></material>
+    </visual>
+    <collision>
+      <origin xyz="0.28700000000000003 0 0" rpy="1.5707963267948966 0 -1.5707963267948966"/>
+      <geometry><mesh filename="robot_ensamble-Wrist_part.stl"/></geometry>
+    </collision>
+  </link>
+  <link name="Gripper_part">
+    <inertial>
+      <origin xyz="-0.00354359622401746 -0.002376187354406294 0.01512358552982503" rpy="0 0 0"/>
+      <mass value="0.034174425907723696"/>
+      <inertia ixx="1.5773176172183337e-5" ixy="-3.0645028317157284e-7" ixz="3.100225334993493e-7" iyy="8.020922203229218e-6" iyz="5.450444185533567e-7" izz="1.3316093581066357e-5"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 -0.34900000000000003" rpy="0 0 -1.5707963267948966"/>
+      <geometry><mesh filename="robot_ensamble-Gripper_part.stl"/></geometry>
+      <material name="Gripper_part_color"><color rgba="0.843137264251709 0.8549019694328308 0.8745098114013672 1"/></material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 -0.34900000000000003" rpy="0 0 -1.5707963267948966"/>
+      <geometry><mesh filename="robot_ensamble-Gripper_part.stl"/></geometry>
+    </collision>
+  </link>
+  <link name="JawR_part">
+    <inertial>
+      <origin xyz="-0.019950917898559226 4.860702737768481e-4 0.002533132008712803" rpy="0 0 0"/>
+      <mass value="0.004710176888084433"/>
+      <inertia ixx="9.313444255761796e-8" ixy="6.078421593235099e-8" ixz="-3.1134894828352326e-9" iyy="1.9016370330356672e-6" iyz="7.584738488885108e-11" izz="1.975260790813645e-6"/>
+    </inertial>
+    <visual>
+      <origin xyz="0.376 0.0106 -0.012" rpy="1.5707963267948966 0 -1.5707963267948966"/>
+      <geometry><mesh filename="robot_ensamble-JawR_part.stl"/></geometry>
+      <material name="JawR_part_color"><color rgba="0.8235294222831726 0.23529411852359772 0.23529411852359772 1"/></material>
+    </visual>
+    <collision>
+      <origin xyz="0.376 0.0106 -0.012" rpy="1.5707963267948966 0 -1.5707963267948966"/>
+      <geometry><mesh filename="robot_ensamble-JawR_part.stl"/></geometry>
+    </collision>
+  </link>
+  <link name="JawL_part">
+    <inertial>
+      <origin xyz="-0.019677423101775903 -4.8034924317875933e-4 0.0024999997052757017" rpy="0 0 0"/>
+      <mass value="0.004766015837448542"/>
+      <inertia ixx="9.354659123034204e-8" ixy="-6.141203338392264e-8" ixz="2.6140352971851823e-14" iyy="1.929590009892373e-6" iyz="-4.2138253455050286e-16" izz="2.0032788247575988e-6"/>
+    </inertial>
+    <visual>
+      <origin xyz="0.376 -0.0106 -0.012" rpy="1.5707963267948966 0 -1.5707963267948966"/>
+      <geometry><mesh filename="robot_ensamble-JawL_part.stl"/></geometry>
+      <material name="JawL_part_color"><color rgba="0.8235294222831726 0.23529411852359772 0.23529411852359772 1"/></material>
+    </visual>
+    <collision>
+      <origin xyz="0.376 -0.0106 -0.012" rpy="1.5707963267948966 0 -1.5707963267948966"/>
+      <geometry><mesh filename="robot_ensamble-JawL_part.stl"/></geometry>
+    </collision>
+  </link>
+  <joint name="Base_part_fixed" type="fixed">
+    <parent link="base_link"/>
+    <child link="Base_part"/>
+    <origin xyz="0 0 0.0499" rpy="0 0 0"/>
+  </joint>
+  <joint name="Base_movil_fixed" type="fixed">
+    <parent link="base_link"/>
+    <child link="Base_movil"/>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+  </joint>
+  <joint name="J1_base" type="revolute">
+    <parent link="Base_part"/>
+    <child link="Shoulder_part"/>
+    <origin xyz="0 0 0.066" rpy="0 0 1.5707963267948966"/>
+    <axis xyz="0 0 1"/>
+    <limit lower="-1.5707963267948966" upper="1.5707963267948966" effort="1000" velocity="10"/>
+  </joint>
+  <joint name="J2_shoulder" type="revolute">
+    <parent link="Shoulder_part"/>
+    <child link="UpperArm_part"/>
+    <origin xyz="0 0 0.046" rpy="0 1.5707963267948966 0"/>
+    <axis xyz="0 0 1"/>
+    <limit lower="-1.5707963267948966" upper="1.5707963267948966" effort="1000" velocity="10"/>
+  </joint>
+  <joint name="J3_elbow" type="revolute">
+    <parent link="UpperArm_part"/>
+    <child link="Forearm_part"/>
+    <origin xyz="-0.09 0 0" rpy="0 0 0"/>
+    <axis xyz="0 0 1"/>
+    <limit lower="-1.5707963267948966" upper="1.5707963267948966" effort="1000" velocity="10"/>
+  </joint>
+  <joint name="J4_wrist_pitch" type="revolute">
+    <parent link="Forearm_part"/>
+    <child link="Wrist_part"/>
+    <origin xyz="-0.08499999999999998 0 0" rpy="0 0 0"/>
+    <axis xyz="0 0 1"/>
+    <limit lower="-1.5707963267948966" upper="1.5707963267948966" effort="1000" velocity="10"/>
+  </joint>
+  <joint name="J5_wrist_roll" type="revolute">
+    <parent link="Wrist_part"/>
+    <child link="Gripper_part"/>
+    <origin xyz="-0.062 0 0" rpy="0 -1.5707963267948966 0"/>
+    <axis xyz="0 0 1"/>
+    <limit lower="-1.5707963267948966" upper="1.5707963267948966" effort="1000" velocity="10"/>
+  </joint>
+  <joint name="J6_jaw_R" type="revolute">
+    <parent link="Gripper_part"/>
+    <child link="JawR_part"/>
+    <origin xyz="0.012 -0.0106 0.027" rpy="0 1.5707963267948966 0"/>
+    <axis xyz="0 0 1"/>
+    <limit lower="-0.05235987755982989" upper="0.6108652381980153" effort="1000" velocity="10"/>
+  </joint>
+  <joint name="J6_jaw_L" type="revolute">
+    <parent link="Gripper_part"/>
+    <child link="JawL_part"/>
+    <origin xyz="0.012 0.0106 0.027" rpy="0 1.5707963267948966 0"/>
+    <axis xyz="0 0 1"/>
+    <limit lower="-0.6108652381980153" upper="0.05235987755982989" effort="1000" velocity="10"/>
+  </joint>
+</robot>
