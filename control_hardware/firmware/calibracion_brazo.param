@@ -1,0 +1,15 @@
+# Calibracion del brazo (2026-11-22, a ojo). Se crean al cargar brazo_estable.lua.
+# Hombro auxiliar (S1): copia al hombro, en el mismo sentido y con el desfase de su montaje.
+# OJO: no cambiar BRH_* con el servo auxiliar activo (salta): poner antes BRH_DIR 0.
+BRH_JNT,2
+BRH_TRIM,-57
+BRH_DIR,1
+# Offsets: 0 grados = brazo recto y vertical
+BRO_BASE,-10
+BRO_HOMB,7
+BRO_CODO,-20
+BRO_MUN,0
+BRO_GIRO,-26
+# Pinza (S11): pulsos en us, cerrada (0) y abierta (1)
+BRG_CLOSE,950
+BRG_OPEN,1750

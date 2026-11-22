@@ -49,6 +49,47 @@ param:add_param(PARAM_KEY, 1, "STAB", 0)
 param:add_param(PARAM_KEY, 2, "ROLLB", 0)
 param:add_param(PARAM_KEY, 3, "YAW", 0)
 local P_STAB, P_ROLLB, P_YAW = Parameter("BRZ_STAB"), Parameter("BRZ_ROLLB"), Parameter("BRZ_YAW")
+
+-- ===== SERVO DOBLE (Script7 = SERVOx_FUNCTION 100, en S1) =====
+-- Un segundo servo en el mismo eje que una articulacion: sigue exactamente su angulo (mismo limite de
+-- velocidad y recorrido); nunca es una articulacion aparte.
+--   BRH_JNT   articulacion que acompana: 1 base, 2 hombro (por defecto), 3 codo, 4 muneca
+--   BRH_DIR   0 = sin pulso (servo suelto, por defecto), 1 = mismo sentido, -1 = en espejo
+--   BRH_TRIM  desfase en grados entre los dos servos (montaje del horn) + ajuste fino para que no se peleen
+--             (el ajuste fino lo busca tools/buscar_trim_hombro.py). Hombro auxiliar actual: DIR 1, TRIM -57 (medido)
+--             (servo auxiliar a -80 = hombro a -20; la camara impide montarlo mas atras).
+local H2_KEY = 74
+assert(param:add_table(H2_KEY, "BRH_", 3), "no se pudo crear la tabla BRH_")
+param:add_param(H2_KEY, 1, "DIR", 0)
+param:add_param(H2_KEY, 2, "TRIM", 0)
+param:add_param(H2_KEY, 3, "JNT", 2)
+local P_H2DIR, P_H2TRIM, P_H2JNT = Parameter("BRH_DIR"), Parameter("BRH_TRIM"), Parameter("BRH_JNT")
+local H2_TRIM_MAX = 75
+
+-- ===== OFFSETS DE CALIBRACION (en vivo) =====
+-- Grados que se suman al angulo pedido antes de convertirlo a pulso, para que 0 = posicion real
+-- (brazo recto/vertical). Al cambiar uno, el servo se desplaza a MAX_RATE_DPS (sin saltos).
+--   BRO_BASE, BRO_HOMB, BRO_CODO, BRO_MUN, BRO_GIRO   (limite +-OFS_MAX)
+local OFS_KEY = 75
+assert(param:add_table(OFS_KEY, "BRO_", 5), "no se pudo crear la tabla BRO_")
+local OFS_NAMES = { "BASE", "HOMB", "CODO", "MUN", "GIRO" }
+local P_OFS = {}
+for i = 1, 5 do
+  param:add_param(OFS_KEY, i, OFS_NAMES[i], 0)
+  P_OFS[i] = Parameter("BRO_" .. OFS_NAMES[i])
+end
+local OFS_MAX = 45
+
+-- ===== PINZA (en vivo) =====
+--   BRG_CLOSE / BRG_OPEN   pulso (us) con la pinza cerrada (0) y abierta (1). Se limitan a 800..2200.
+local GRP_KEY = 76
+assert(param:add_table(GRP_KEY, "BRG_", 2), "no se pudo crear la tabla BRG_")
+param:add_param(GRP_KEY, 1, "CLOSE", 1050)
+param:add_param(GRP_KEY, 2, "OPEN", 1750)
+local P_GC, P_GO = Parameter("BRG_CLOSE"), Parameter("BRG_OPEN")
+local GRIP_STEP_US = 13      -- maximo por ciclo de 20 ms (~60 grados/s)
+local grip_us = nil
+local chan_h2 = SRV_Channels:find_channel(100)  -- funcion 100 = Script7
 local STAB, ROLL_BASE, YAW_HOLD = 0, 0, 0
 
 -- geometria del CAD (mm): eje base -> hombro, eslabones, muneca -> punta de los dedos
@@ -61,10 +102,10 @@ local JOINT = {
   { name = "hombro",  dir = 1, offset = 0, us_per_deg = 11.1, lo = -13,   hi = 90 },
   { name = "codo",    dir = -1, offset = 0, us_per_deg = 11.1, lo = -20,   hi = 95 },
   { name = "muneca",  dir = -1, offset = 0, us_per_deg = 11.1, lo = -45,   hi = 90 },
-  { name = "giro",    dir = -1, offset = 0, us_per_deg = 10.6, lo = -90,   hi = 90 },
+  { name = "giro",    dir = 1,  offset = 0, us_per_deg = 10.6, lo = -90,   hi = 90 },
 }
 local MIN_US, MAX_US = 500, 2500
-local GRIP_CLOSED_US, GRIP_OPEN_US = 1050, 1750
+local SAFE_MAX_US = 2400   -- margen al tope del servo: 600..2400 us (simetrico respecto de 1500)
 
 local rad, deg, sin, cos, atan, sqrt, abs = math.rad, math.deg, math.sin, math.cos, math.atan, math.sqrt, math.abs
 local function atan2(y, x) return atan(y, x) end
@@ -132,7 +173,8 @@ local yaw_ref = nil
 local lean_back = false
 local last_report = 0
 local t_start = nil
-local cur = { 0, 0, 0, 0, 0 }   -- angulo que se esta enviando (arranca en el centro, 1500 us)
+local cur = { 0, 0, 0, 0, 0 }   -- angulo pedido, limitado en velocidad
+local phys = { 0, 0, 0, 0, 0 }  -- angulo fisico enviado al servo (cur + offsets), limitado en velocidad
 
 local function out(i, us)
   if chan[i] then SRV_Channels:set_output_pwm_chan_timeout(chan[i], math.floor(us + 0.5), 200) end
@@ -172,7 +214,10 @@ function update()
   if t_start == nil then
     t_start = now
     -- al (re)cargar el script se supone que el brazo ya esta en la postura pedida: no saltar al centro
-    for i = 1, 5 do cur[i] = hold[i] end
+    for i = 1, 5 do
+      cur[i] = hold[i]
+      phys[i] = hold[i] + JOINT[i].offset + clamp(P_OFS[i]:get(), -OFS_MAX, OFS_MAX)
+    end
   end
   local q = { hold[1], hold[2], hold[3], hold[4], hold[5] }
   local h = { hold[1], hold[2], hold[3], hold[4], hold[5] }
@@ -227,18 +272,43 @@ function update()
   end
 
   -- 3) salidas
+  -- angulo fisico = pedido + offset de calibracion; tambien limitado en velocidad (cambiar BRO_* no salta).
+  -- Se limita DESPUES del offset para que el pulso quede en 600..2400 us. En la articulacion con
+  -- servo doble el limite vale para los dos, asi nunca topa uno solo (se pelearian).
+  local h2dir = P_H2DIR:get()
+  local k = math.floor(P_H2JNT:get() + 0.5)
+  local h2on = chan_h2 and (h2dir == 1 or h2dir == -1) and k >= 1 and k <= 4
+  local trim = clamp(P_H2TRIM:get(), -H2_TRIM_MAX, H2_TRIM_MAX)
   for i = 1, 5 do
     local J = JOINT[i]
-    local qi = q[i]   -- ya limitado arriba
-    out(i, clamp(1500 + J.dir * (qi + J.offset) * J.us_per_deg, MIN_US, MAX_US))
-    q[i] = qi
+    local target = q[i] + J.offset + clamp(P_OFS[i]:get(), -OFS_MAX, OFS_MAX)
+    local span = (SAFE_MAX_US - 1500) / J.us_per_deg
+    local tlo, thi = -span, span
+    if h2on and i == k then
+      tlo, thi = math.max(tlo, -span - trim), math.min(thi, span - trim)
+    end
+    target = clamp(target, tlo, thi)
+    phys[i] = phys[i] + clamp(target - phys[i], -step, step)
+    out(i, clamp(1500 + J.dir * phys[i] * J.us_per_deg, MIN_US, MAX_US))
   end
-  out(6, GRIP_CLOSED_US + (GRIP_OPEN_US - GRIP_CLOSED_US) * grip)
+  -- pinza, con limite de velocidad (al cargar parte en lo pedido, sin recorrido)
+  local gc, go = clamp(P_GC:get(), 800, 2200), clamp(P_GO:get(), 800, 2200)
+  local gt = gc + (go - gc) * grip
+  grip_us = grip_us and (grip_us + clamp(gt - grip_us, -GRIP_STEP_US, GRIP_STEP_US)) or gt
+  out(6, grip_us)
+
+  -- servo doble: mismo angulo fisico que su articulacion (phys[k] ya limitado en velocidad y recorrido)
+  if h2on then
+    local J = JOINT[k]
+    local us = clamp(1500 + h2dir * (phys[k] + trim) * J.us_per_deg, MIN_US, MAX_US)
+    SRV_Channels:set_output_pwm_chan_timeout(chan_h2, math.floor(us + 0.5), 200)
+  end
 
   if now - last_report > 2000 then
     last_report = now
-    gcs:send_text(6, string.format("Brazo b%.1f h%.1f c%.1f m%.1f g%.1f %s%s", q[1], q[2], q[3], q[4], q[5],
-      stab_on and "estab" or "SIN-estab", got_rc and " puente" or ""))
+    gcs:send_text(6, string.format("Brazo b%.1f h%.1f c%.1f m%.1f g%.1f %s%s%s", q[1], q[2], q[3], q[4], q[5],
+      stab_on and "estab" or "SIN-estab", got_rc and " puente" or "",
+      (h2dir == 1 or h2dir == -1) and string.format(" doble j%d d%d t%.1f", k, h2dir, P_H2TRIM:get()) or ""))
   end
   return update, PERIOD_MS
 end

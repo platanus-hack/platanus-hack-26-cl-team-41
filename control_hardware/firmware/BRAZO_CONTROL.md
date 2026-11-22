@@ -20,14 +20,25 @@ Referencia para quien mande el brazo, persona o IA. Los sentidos de giro están 
 | Hombro | S3 | MG995 | 1 | Inclina el brazo hacia adelante | −13 … +90; **hasta −30 si el codo está doblado ≥ 45°** |
 | Codo | S4 | MG995 | **−1** | Dobla el antebrazo hacia adelante | −20 … +95 (no usar más de ~80, ver §5) |
 | Muñeca (inclinación) | S5 | MG995 | **−1** | Dobla la pinza hacia adelante y abajo | −45 … +90 (no usar más de ~80) |
-| Giro de muñeca | S6 | SG90 | **−1** | Gira las mandíbulas antihorario (vistas de frente) | −90 … +90 |
-| Pinza | S1 | SG90 | — | — | 1050 µs cerrada … 1750 µs abierta |
+| Giro de muñeca | S6 | SG90 | 1 (hasta el 2026-11-22 era −1) | Gira las mandíbulas antihorario (vistas de frente) | −90 … +90 |
+| Hombro auxiliar | S1 | MG995 | `BRH_DIR` = 1 | Copia el ángulo del hombro (no es una articulación aparte) | El del hombro; desfase `BRH_TRIM` = −57 |
+| Pinza | **S11** | SG90 | — | 0 = cerrada, 1 = abierta | `BRG_CLOSE` 950 µs (dedos apenas tocándose) … `BRG_OPEN` 1750 µs; ~60°/s (calibrada 2026-11-22) |
 
+- **Hombro doble (2026-11-22):** un segundo MG995 en S1 (`SERVO1_FUNCTION = 100`, Script7) ayuda al hombro.
+  - Pulso: `1500 + BRH_DIR × (hombro + BRO_HOMB + BRH_TRIM) × 11,1`. Hombro 0° → 945 µs; hombro −30° → 612 µs (su límite es 600); hacia adelante el hombro llega a ~74° porque S3 topa en 2400 µs.
+  - Su horn quedó montado con un desfase grande porque la cámara no deja ponerlo más atrás. El ajuste fino (−57) lo encontró `tools/buscar_trim_hombro.py`, que busca la menor corriente (los dos servos sin pelearse).
+  - `BRH_DIR = 0` deja el servo auxiliar sin pulso (suelto). **No cambiar `BRH_DIR` ni `BRH_TRIM` de golpe con el servo activo**: salta a toda velocidad. Para cambiarlos, poner antes `BRH_DIR = 0`.
+  - Si se calienta o zumba, los dos se están peleando: `BRH_DIR = 0` y repetir la búsqueda del trim.
+
+- **Offsets de calibración (a ojo, 2026-11-22), para que 0° sea brazo recto y vertical:** `BRO_BASE` −10, `BRO_HOMB` +7, `BRO_CODO` −20, `BRO_MUN` 0, `BRO_GIRO` −26. Se cambian en vivo y el servo se desplaza a 60°/s. El hombro auxiliar sigue al hombro ya corregido.
+  - Ejemplo con todo en 0°: S1 945, S2 1389, S3 1578, S4 1722, S5 1500, S6 1224 µs. El script limita todos los pulsos a 600–2400 µs (la pinza a 800–2200) después de sumar el offset.
+  - **Base comprobada (2026-11-22):** con el brazo estirado, +45° y −45° pedidos se vieron como 45° reales a cada lado, y + es la izquierda del rover. Por el offset y los límites de pulso, hacia la derecha llega a unos −71° y hacia la izquierda a 90°.
+  - **Sentido del giro corregido (2026-11-22):** con `dir = −1`, +30° se vio horario desde arriba hacia la punta. Ahora `dir = 1`, y +30° se vio antihorario (verificado). Las posturas con giro distinto de 0 anteriores a esta fecha quedan al lado contrario, y la estabilización hay que volver a probarla.
 - **Pulso:** `1500 + dir × (grados + offset) × us_por_grado`.
   - `us_por_grado` es 11,1 en los MG995 y 10,6 en el SG90.
   - Son valores nominales, sin medir: hacen que el ángulo real pueda no coincidir con el pedido.
 - **Regla práctica:** mantener los pulsos entre 800 y 2200 µs. En 500 µs los servos topan, se traban y botan la alimentación (§5).
-- **Por qué hay `dir` en −1:** el codo, la muñeca y el giro iban al revés en el robot y se corrigieron con `dir = −1`. **No cambiar `dir` con el brazo fuera de 0°**: el servo salta al lado opuesto. Para cambiar un `dir`, llevar primero esa articulación a 0°.
+- **Por qué hay `dir` en −1:** el codo y la muñeca iban al revés en el robot y se corrigieron con `dir = −1`. **No cambiar `dir` con el brazo fuera de 0°**: el servo salta al lado opuesto. Para cambiar un `dir`, llevar primero esa articulación a 0°.
 
 ## 3. Cómo dar órdenes
 
@@ -48,7 +59,7 @@ Referencia para quien mande el brazo, persona o IA. Los sentidos de giro están 
 
 | Postura | Base | Hombro | Codo | Muñeca | Giro | Estado |
 |---|---|---|---|---|---|---|
-| **Reposo** (elegida, al encender) | 0 | −30 | 60 | 50 | 0 | Probada en el robot |
+| **Reposo** (al encender; encendido desde cero probado el 2026-11-22) | 0 | −30 | 60 | 50 | 0 | Probada con los offsets nuevos (0,23 A). Es el máximo atrás: el hombro auxiliar (S1) queda en 612 µs y su límite es 600. Para ir más atrás hay que mover su horn |
 | Recto (calibración) | 0 | 0 | 0 | 0 | 0 | Probada |
 | Recoger (punta a 5 mm del suelo, a 150 mm del eje, pinza vertical) | 0 | 65,2 | 61,3 | 53,5 | 0 | Solo en el CAD |
 | Entregar | 0 | 48 | 30 | 12 | 0 | Solo en el CAD |
