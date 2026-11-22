@@ -1,6 +1,7 @@
 "use client";
 
 import { Camera, CameraOff, Loader2, ScanEye } from "lucide-react";
+import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { useRobot } from "@/lib/robot/store";
 import { detect, type BrowserDetection } from "@/lib/vision";
@@ -16,7 +17,7 @@ export function CameraPanel({ title = "Visión", compact = false }: { title?: st
       title={title}
       icon={<ScanEye size={16} />}
       actions={
-        <div className="flex rounded-lg border border-line p-0.5 text-xs">
+        <div className="flex flex-wrap items-center gap-1 rounded-lg border border-line p-0.5 text-xs">
           {(["browser", "robot"] as Source[]).map((s) => (
             <button
               key={s}
@@ -26,6 +27,9 @@ export function CameraPanel({ title = "Visión", compact = false }: { title?: st
               {s === "browser" ? "Cámara local" : "Cámara del robot"}
             </button>
           ))}
+          <Link href="/rover" className="rounded-md px-2.5 py-1.5 text-accent hover:bg-white/10">
+            Rover en vivo
+          </Link>
         </div>
       }
     >

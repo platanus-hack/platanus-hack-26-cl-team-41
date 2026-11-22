@@ -35,6 +35,16 @@ en metros o `bbox` normalizado sobre el video). El video del robot se muestra si
 **Ojo con HTTPS:** una página en Vercel (https) no puede abrir `ws://` hacia otra máquina. Usa `wss://`
 (por ejemplo un túnel de Cloudflare o ngrok hacia el robot) o abre la consola en local (`npm run dev`).
 
+## Cámara del rover en Render
+
+La vista de solo lectura está en **Visión → Rover en vivo**. El operador decide cuándo compartir desde el computador conectado a la Raspberry Pi.
+
+1. Ejecuta `python camera_relay.py --prepare` en el computador del rover. El comando crea las dos claves locales y muestra sus hashes. Configura los hashes como `NEXA_CAMERA_PUBLISH_SHA256` y `NEXA_CAMERA_VIEW_SHA256` en Render.
+2. Abre **Share Rover Camera.cmd** en Windows o ejecuta `python camera_relay.py`. Confirma con `SHARE`. El programa muestra el enlace de la cámara y el código para el público autorizado después de publicar el primer cuadro.
+3. En **Rover en vivo**, ingresa ese código. Pulsa **Ctrl+C** en el computador del rover para terminar. La vista conserva únicamente el último cuadro en memoria y lo elimina tras seis segundos sin nuevas imágenes.
+
+`--camera-url` permite elegir otra cámara de red que sirva instantáneas JPEG. `--site` selecciona otro despliegue HTTPS de Nexa. El servicio requiere una sola instancia para compartir el último cuadro. Usa los controles del brazo y las ruedas en el computador local.
+
 ## Desarrollo
 
 ```bash
