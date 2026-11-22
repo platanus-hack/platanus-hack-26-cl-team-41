@@ -1,0 +1,4 @@
+# Estabilizacion del brazo por la IMU (inclinacion). Apagar: BRZ_STAB,0
+BRZ_YAW,0
+BRZ_ROLLB,0
+BRZ_STAB,1

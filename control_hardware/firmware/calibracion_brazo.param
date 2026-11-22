@@ -4,6 +4,10 @@
 BRH_JNT,2
 BRH_TRIM,-57
 BRH_DIR,1
+# Codo auxiliar (S12), horn pegado: mismas reglas. Con este montaje el codo llega solo a 19..95 grados.
+BRE_DIR,0
+BRE_TRIM,-80
+BRE_DIR,1
 # Offsets: 0 grados = brazo recto y vertical
 BRO_BASE,-10
 BRO_HOMB,7

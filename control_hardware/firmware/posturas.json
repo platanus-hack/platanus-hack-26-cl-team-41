@@ -1,0 +1,16 @@
+{
+ "reposo": {
+  "base": 0,
+  "hombro": -30,
+  "codo": 60,
+  "muneca": 50,
+  "giro": 0
+ },
+ "abajo": {
+  "base": 0,
+  "hombro": -4.6,
+  "codo": 83.6,
+  "muneca": 60,
+  "giro": 0
+ }
+}

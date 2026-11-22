@@ -4,15 +4,16 @@ El brazo se mueve suave mientras espera (idle). **Claude mira las fotos de la c�
 
 | Lo que ve | Gesto | Después |
 |---|---|---|
-| Rollo de **cinta aislante** | **"no"**: sacude de lado a lado, se encoge y tiembla (~17 s) | sigue mirando |
-| **Plátano** | **"sí"**: asiente, se estira y celebra (~23 s) | **termina la búsqueda** |
+| Rollo de **cinta aislante** | **"no"**: sacude de lado a lado, se encoge y tiembla (~17 s), y **retrocede 1 s** | sigue mirando |
+| **Plátano** | **"sí"**: asiente, se estira y celebra (~23 s), y **avanza 1 s** | **termina la búsqueda** |
 | Nada, pies, sillas, otra cosa | ninguno, sigue en idle | sigue mirando |
 
 Cualquier PC con el repositorio puede correrla: no usa GPU, YOLO, clave SSH ni USB. Solo hay que estar en la **misma red que la Raspberry** (WiFi `PlatanusHack`).
 
 ## Para las personas
 
-1. Enciende el rover (batería de la H743 y Raspberry) y espera unos 40 s. Las ruedas no se usan.
+1. Enciende el rover (batería de la H743 y Raspberry) y espera unos 40 s. Ponlo **en el suelo**, con **1 m libre adelante y atrás**: las ruedas se mueven (unos 10 cm por segundo al 45 %).
+   Si está sobre una mesa, pídele a Claude que lo corra **sin ruedas**.
 2. Conéctate al WiFi `PlatanusHack`.
 3. Abre Claude Code en la carpeta del repositorio y escribe **`/demo-si-no`** (o "haz la demo de DEMO_SI_NO.md").
 4. Deja unos **60 cm libres** alrededor del brazo (la base gira hasta 40° a cada lado), con el rover a nivel, con manos y pies lejos de la garra.
@@ -55,11 +56,17 @@ Sigue estos pasos en orden, desde esta carpeta.
 
 ### 2. Pedir permiso una sola vez
 
-El brazo va a moverse en la realidad. Pregunta: **"¿Manos fuera, 60 cm libres, rover a nivel y nadie más moviendo el brazo?"** Con un sí claro, sigue, y **no vuelvas a preguntar** durante la demo.
+El brazo va a moverse en la realidad. Pregunta: **"¿El rover está en el suelo con 1 m libre adelante y atrás, 60 cm a los lados, manos fuera y nadie más moviéndolo?"** Con un sí claro, sigue, y **no vuelvas a preguntar** durante la demo.
 
 ### 3. Arrancar el idle en segundo plano
 
-`PY robot_vivo.py --claude` (comando en segundo plano; queda corriendo). Espera a que `PY claude_demo.py estado` diga `idle`.
+- Rover **en el suelo**, confirmado por la persona: `PY robot_vivo.py --claude --ruedas`
+- Sobre una mesa, o si no lo confirmó: `PY robot_vivo.py --claude` (solo el brazo)
+
+Corre en segundo plano y queda andando. Espera a que `PY claude_demo.py estado` diga `idle`.
+- Las ruedas no parten si el rover está inclinado más de 10°, si la placa está armada o si no responde el script de ruedas (`PickerDrive`); en ese caso hace solo el gesto del brazo y lo escribe en la salida del programa (`ruedas quietas: …`).
+- No cambies la potencia ni el tiempo de las ruedas.
+- Las ruedas con los gestos están simuladas pero **aún no probadas en el robot**: la primera vez, con alguien al lado.
 - `otro programa esta moviendo el brazo`: avisa y espera a que lo cierren. No insistas.
 
 ### 4. Mirar sin parar hasta ver el plátano
@@ -80,7 +87,7 @@ Reglas del ciclo:
 - `gesto` espera a que el gesto termine, así que la foto siguiente ya es de después.
 - **No reacciones dos veces al mismo objeto**: después de un "no", espera a ver una foto sin la cinta antes de volver a reaccionar a ella. Si en su lugar aparece el plátano, responde de inmediato.
 - Un objeto guardado en un borde, en el piso o en una mesa, que nadie está mostrando, no cuenta.
-- Si hay una mano o un pie **tocando la garra**, pide que lo alejen antes de mandar el gesto.
+- Si hay una mano o un pie **tocando la garra, o pegado al rover por delante o por detrás**, pide que lo alejen antes de mandar el gesto.
 
 ### 5. Terminar
 
@@ -91,6 +98,7 @@ Cuenta en una o dos líneas qué viste. El robot queda en idle, por si quieren r
 - Blanco y negro, desde arriba. **El brazo entra por arriba a la izquierda**, y el frente del rover es hacia **abajo** en la imagen.
 - **Cinta aislante:** aro negro, con el centro claro o transparente; a veces se ve de lado, como un cilindro oscuro corto. No confundir con las **ruedas de las sillas** (discos claros con borde oscuro, en la punta de una pata) ni con los círculos de la pinza.
 - **Plátano:** impreso en 3D, claro, curvo, con **caras planas** y dos bloques oscuros en el lado de adentro. Suele ir en una mano.
+- **Pieza blanca con malla:** una pieza clara con una zona de **rejilla calada** en la superficie también es el **plátano** (así salió la impresión). Si la ves, responde **"sí"** igual que con el plátano, sin esperar a otra foto.
 - El piso tiene una franja muy clara de sol y la sombra del brazo se mueve: no son objetos.
 - Si la imagen sale muy quemada o muy oscura, dilo; la exposición se ajusta en la Pi (solo quien tiene la clave SSH): `v4l2-ctl -d /dev/video0 --set-ctrl=auto_exposure=1` y después `--set-ctrl=exposure_time_absolute=60,gain=30`. Se pierde al reiniciar la Pi.
 

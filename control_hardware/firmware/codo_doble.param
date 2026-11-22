@@ -1,0 +1,7 @@
+# Segundo servo del codo (Script8) en S12 (grupo S11-S12, 50 Hz). Calibrado 2026-11-22 (horn pegado).
+# Sentido 1, desfase -80: en reposo (codo 60) S4 1056 y S12 1944. El codo queda en 19..95 grados.
+# OJO: con -1 los servos se pelean. No cambiar BRE_DIR ni BRE_TRIM con el servo activo: poner antes BRE_DIR 0.
+SERVO12_FUNCTION,101
+BRE_DIR,0
+BRE_TRIM,-80
+BRE_DIR,1

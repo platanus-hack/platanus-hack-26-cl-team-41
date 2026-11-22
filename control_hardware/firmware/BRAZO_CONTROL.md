@@ -18,10 +18,11 @@ Referencia para quien mande el brazo, persona o IA. Los sentidos de giro están 
 |---|---|---|---|---|---|
 | Base | S2 | MG995 | 1 | Gira a la izquierda (antihorario desde arriba) | −90 … +90 (la compensación la aleja a lo más ±25° de lo pedido) |
 | Hombro | S3 | MG995 | 1 | Inclina el brazo hacia adelante | −13 … +90; **hasta −30 si el codo está doblado ≥ 45°** |
-| Codo | S4 | MG995 | **−1** | Dobla el antebrazo hacia adelante | −20 … +95 (no usar más de ~80, ver §5) |
+| Codo | S4 | MG995 | **−1** | Dobla el antebrazo hacia adelante | **19 … 95** con el auxiliar activo (pedir menos lo deja en 19); no usar más de ~80, ver §5 |
 | Muñeca (inclinación) | S5 | MG995 | **−1** | Dobla la pinza hacia adelante y abajo | −45 … +90 (no usar más de ~80) |
 | Giro de muñeca | S6 | SG90 | 1 (hasta el 2026-11-22 era −1) | Gira las mandíbulas antihorario (vistas de frente) | −90 … +90 |
 | Hombro auxiliar | S1 | MG995 | `BRH_DIR` = 1 | Copia el ángulo del hombro (no es una articulación aparte) | El del hombro; desfase `BRH_TRIM` = −57 |
+| Codo auxiliar | **S12** | — | `BRE_DIR` = 1 | Copia el ángulo del codo | El del codo; desfase `BRE_TRIM` = −80 |
 | Pinza | **S11** | SG90 | — | 0 = cerrada, 1 = abierta | `BRG_CLOSE` 950 µs (dedos apenas tocándose) … `BRG_OPEN` 1750 µs; ~60°/s (calibrada 2026-11-22) |
 
 - **Hombro doble (2026-11-22):** un segundo MG995 en S1 (`SERVO1_FUNCTION = 100`, Script7) ayuda al hombro.
@@ -29,6 +30,11 @@ Referencia para quien mande el brazo, persona o IA. Los sentidos de giro están 
   - Su horn quedó montado con un desfase grande porque la cámara no deja ponerlo más atrás. El ajuste fino (−57) lo encontró `tools/buscar_trim_hombro.py`, que busca la menor corriente (los dos servos sin pelearse).
   - `BRH_DIR = 0` deja el servo auxiliar sin pulso (suelto). **No cambiar `BRH_DIR` ni `BRH_TRIM` de golpe con el servo activo**: salta a toda velocidad. Para cambiarlos, poner antes `BRH_DIR = 0`.
   - Si se calienta o zumba, los dos se están peleando: `BRH_DIR = 0` y repetir la búsqueda del trim.
+- **Codo doble (2026-11-22):** un segundo servo en S12 (`SERVO12_FUNCTION = 101`, Script8) ayuda al codo. Parámetros en `codo_doble.param`.
+  - Pulso: `1500 − BRE_DIR × (codo + BRO_CODO + BRE_TRIM) × 11,1`, o sea S12 = S4 + 888 µs. Reposo (codo 60°): S4 1056, S12 1944 µs.
+  - El horn quedó pegado, por eso el desfase es de −80 y S12 topa en 2400 µs con el codo en 19°: **el brazo no se puede estirar recto** con el auxiliar activo. `BRE_DIR = −1` hace que los servos se peleen.
+  - Probado sin pelea de 48° a 78°: 0,11–0,29 A. El resto del recorrido (19–48° y 78–95°) no está probado.
+  - `BRE_DIR = 0` manda pulso 0 (suelto). Solo con esta versión del script; antes ArduPilot mantenía el último pulso.
 
 - **Offsets de calibración (a ojo, 2026-11-22), para que 0° sea brazo recto y vertical:** `BRO_BASE` −10, `BRO_HOMB` +7, `BRO_CODO` −20, `BRO_MUN` 0, `BRO_GIRO` −26. Se cambian en vivo y el servo se desplaza a 60°/s. El hombro auxiliar sigue al hombro ya corregido.
   - Ejemplo con todo en 0°: S1 945, S2 1389, S3 1578, S4 1722, S5 1500, S6 1224 µs. El script limita todos los pulsos a 600–2400 µs (la pinza a 800–2200) después de sumar el offset.
@@ -65,6 +71,7 @@ Referencia para quien mande el brazo, persona o IA. Los sentidos de giro están 
 | Entregar | 0 | 48 | 30 | 12 | 0 | Solo en el CAD |
 | Saludar | 0 | 10 | 60 | −20 | 0 | Solo en el CAD |
 | ~~Plegado~~ | 0 | −10 | 95 | 80 | 0 | **No usar**: el codo pide 446 µs, fuera de rango |
+| Abajo (2026-11-22) | 0 | −4,6 | 83,6 | 60 | 0 | Guardada a la vista en el robot; `firmware/posturas.json` |
 
 Alcance con la punta en el suelo, medido desde el eje de la base:
 - **Pinza vertical:** de 118 a 174 mm. Más cerca, el codo pasa su límite; más lejos, el hombro.
@@ -96,7 +103,15 @@ Geometría para la cinemática:
    - **Límite en reposo:** con el hombro en −30° no queda margen para compensar hacia atrás (rover de nariz abajo), y esa parte se recorta.
 6. **Para apagar todo:** `python tools/apply_params.py COM4 brazo_off.param --reboot` (`SCR_ENABLE = 0`; los servos quedan sin pulsos).
 
-## 5b. Estado de la estabilización (probada en el robot el 2026-11-21)
+## 5b. Estado de la estabilización
+
+**Actual (2026-11-22, H743 montada de lado):**
+- **Orientación:** la placa quedó girada ~73° y se usa una rotación a medida: `AHRS_ORIENTATION` 101 con `CUST_ROT1` 72,27 / −4,42 / 92 (`imu_rotacion.param` + `imu_orientacion.param`, requiere reinicio). Apoyado marca roll 0° y pitch 0°. **Si se vuelve a mover la placa hay que medir otra vez** (quieto, nariz arriba, derecha abajo).
+- **Signos verificados:** nariz arriba = pitch +, derecha abajo = roll +, giro a la derecha = yaw +.
+- **Activa:** `BRZ_STAB` 1, `BRZ_YAW` 0, `BRZ_ROLLB` 0. Probada inclinando al 30% con sentidos correctos a la vista; al 100% solo comprobada quieta y en simulación.
+- Se puede apagar con `BRZ_STAB` 0.
+
+**Registro de la prueba anterior (2026-11-21, con la placa plana):**
 
 - **Activa:** `BRZ_STAB = 1` y `BRZ_YAW = 1`; `BRZ_ROLLB = 0`.
 - **Roll y pitch:** con roll lateral la base gira para seguir la punta, y el giro de muñeca deshace la rotación de la pinza. La punta se mantuvo en su lugar (verificado a la vista con la ganancia al 30%).

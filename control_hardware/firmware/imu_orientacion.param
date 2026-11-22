@@ -1,0 +1,2 @@
+# Paso 2 de 2: usar la rotacion a medida CUST_ROT1. Requiere reinicio (sostener el brazo). Volver atras: AHRS_ORIENTATION 0.
+AHRS_ORIENTATION,101

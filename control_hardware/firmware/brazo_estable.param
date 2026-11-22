@@ -11,6 +11,8 @@ SERVO6_FUNCTION,98
 SERVO1_FUNCTION,100
 # Pinza (Script6) en S11 (grupo S11-S12, 50 Hz). S7..S10 siguen siendo del L298N (490 Hz).
 SERVO11_FUNCTION,99
+# Segundo servo del codo (Script8) en S12. Sin pulso hasta que BRE_DIR = 1 o -1.
+SERVO12_FUNCTION,101
 # Postura de reposo cuando no hay puente (grados): base, hombro, codo, muneca, giro. Reposo calibrado (2026-11-22)
 SCR_USER2,0
 SCR_USER3,-30

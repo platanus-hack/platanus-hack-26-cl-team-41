@@ -5,6 +5,7 @@ Uso (desde la carpeta vision, con el Python de .venv):
   .venv\\Scripts\\python robot_vivo.py                  # ventana; q = reposo y salir, espacio = pausa, s/n = forzar gesto
   .venv\\Scripts\\python robot_vivo.py --grabar CARPETA --seg 40 --sin-reaccion     # solo idle y guarda cuadros
   .venv\\Scripts\\python robot_vivo.py --dry            # solo deteccion, no mueve el brazo
+  python robot_vivo.py --claude --ruedas   # lo mismo y ademas avanza (si) o retrocede (no) 1 s. Solo en el suelo
   python robot_vivo.py --claude         # idle; el que mira y decide es Claude (ver DEMO_SI_NO.md). Sin YOLO ni GPU
 """
 import argparse, math, os, random, threading, time
@@ -25,6 +26,8 @@ ap.add_argument("--sin-reaccion", action="store_true")
 ap.add_argument("--dry", action="store_true")
 ap.add_argument("--ordenes", help="archivo de ordenes: si, no, atento, idle, salir (para que decida otro programa)")
 ap.add_argument("--sin-ventana", action="store_true")
+ap.add_argument("--ruedas", action="store_true",
+                help="mueve las ruedas con los gestos: si = avanza 1 s, no = retrocede 1 s. SOLO con el rover en el suelo")
 ap.add_argument("--claude", action="store_true", help="idle + ordenes de claude_demo.py, sin deteccion local")
 A = ap.parse_args()
 AQUI = os.path.dirname(os.path.abspath(__file__))
@@ -38,6 +41,9 @@ ESTADO = os.path.join(AQUI, "demo_tmp", "estado.txt")
 A.source = A.source or "http://%s:8080/stream" % IP
 A.port = A.port or "udpout:%s:14550" % IP
 GESTO = {"platano": "si", "cinta": "no"}
+RUEDAS = {"si": 1, "no": -1}                   # sentido de las ruedas en cada gesto
+NIVEL = 450                                    # RC sobre/bajo 1500: 450 = 45 % (limite del script PickerDrive de la placa)
+T_ARMA, T_RUEDA, T_FRENO, T_RAMPA = 0.8, 1.0, 0.8, 0.25     # neutro para armar el vigilante, marcha, neutro final, rampa
 VIDLE = 32.0                                   # grados/s maximos en idle
 
 
@@ -88,6 +94,7 @@ class Brazo(threading.Thread):
         self.fin = False
         self.a = self.v = self.pico = 0.0
         self.error = None
+        self.m = None
 
     def run(self):
         try:
@@ -95,11 +102,16 @@ class Brazo(threading.Thread):
         except Exception as e:
             self.error = str(e)
             self.estado = "ERROR"
+        if A.ruedas and self.m:                            # ruedas a neutro al salir por cualquier motivo
+            for _ in range(10):
+                self.m.mav.rc_channels_override_send(1, 1, *([65535] * 8), *([0] * 6), 1500, 1500, 0, 0)
+                time.sleep(.03)
 
     def _run(self):
         from pymavlink import mavutil
-        m = mavutil.mavlink_connection(A.port, baud=115200, source_system=255)
-        S = dict(rc=None, ok=False, hi=None, ult=time.time())
+        m = self.m = mavutil.mavlink_connection(A.port, baud=115200, source_system=255)
+        S = dict(rc=None, ok=False, hi=None, ult=time.time(), pd=0.0, armada=None, incl=None)
+        rueda, tok = None, [1150, 0.0]
 
         def lee(dt):
             fin = time.time() + dt
@@ -120,13 +132,19 @@ class Brazo(threading.Thread):
                             raise RuntimeError("voltaje bajo %.2f V" % self.v)
                     elif k == "STATUSTEXT" and p.text.startswith("Brazo"):
                         S["ok"] = True
+                    elif k == "STATUSTEXT" and p.text.startswith("PickerDrive"):
+                        S["pd"] = time.time()
+                    elif k == "HEARTBEAT" and p.get_srcComponent() == 1:
+                        S["armada"] = bool(p.base_mode & 128)
+                    elif k == "ATTITUDE":
+                        S["incl"] = max(abs(p.roll), abs(p.pitch)) * 57.3
                 if time.time() >= fin:
                     return
 
         for i in range(48):
             m.mav.heartbeat_send(6, 8, 0, 0, 0)
             if i % 6 == 2:
-                for mid, us in ((65, 200000), (1, 100000)):
+                for mid, us in ((65, 200000), (1, 100000), (30, 100000)):
                     m.mav.command_long_send(1, 1, 511, 0, mid, us, 0, 0, 0, 0, 0)
             lee(.25)
             if i > 8 and S["ok"] and S["rc"]:
@@ -160,6 +178,14 @@ class Brazo(threading.Thread):
                     continue
                 tr = gestos.trayectoria(g, self.x)
                 self.estado = g
+                if A.ruedas and g in RUEDAS and rueda is None:
+                    falta = ("la placa esta armada" if S["armada"] is not False else
+                             "no responde el script de ruedas" if time.time() - S["pd"] > 5 else
+                             "el rover esta inclinado" if S["incl"] is None or S["incl"] > 10 else "")
+                    if falta:
+                        print("ruedas quietas:", falta, flush=True)
+                    else:
+                        rueda = (time.time(), RUEDAS[g])
             if tr is not None:
                 sig = next(tr, None)
                 if sig is None:
@@ -179,11 +205,21 @@ class Brazo(threading.Thread):
             else:
                 self.estado = "pausa"
             ch = [int(round(1500 + v * 5)) for v in self.x[:5]] + [int(round(1000 + self.x[5] * 1000))]
-            m.mav.rc_channels_override_send(1, 1, *([65535] * 8), *ch, *([0] * 4))
+            cab, cola = [65535] * 8, [0] * 4
+            if rueda is not None:
+                lr = ruedas_en(time.time() - rueda[0], rueda[1])
+                if lr is None:
+                    rueda = None
+                else:                                      # RC7 alterna: es la senal de vida que pide la placa
+                    if time.time() - tok[1] > .1:
+                        tok = [1850 if tok[0] == 1150 else 1150, time.time()]
+                    cab, cola = [65535] * 6 + [tok[0], 65535], [lr, lr, 0, 0]
+            m.mav.rc_channels_override_send(1, 1, *cab, *ch, *cola)
             if n % 10 == 0:
                 m.mav.heartbeat_send(6, 8, 0, 0, 0)
             if n % 400 == 0:
-                m.mav.command_long_send(1, 1, 511, 0, 1, 100000, 0, 0, 0, 0, 0)
+                for mid in (1, 30):
+                    m.mav.command_long_send(1, 1, 511, 0, mid, 100000, 0, 0, 0, 0, 0)
             if time.time() - S["ult"] > 5:
                 raise RuntimeError("se perdio el enlace con la H743")
             n += 1
@@ -191,6 +227,18 @@ class Brazo(threading.Thread):
             if time.time() - (t0 + n * DT) > .3:
                 t0 = time.time() - n * DT                  # no recuperar el tiempo perdido a saltos
         self.estado = "fuera"
+
+
+def ruedas_en(t, sentido):
+    """Orden de las ruedas (RC 15/16) a los t segundos de partir; None = ya termino y no se manda nada."""
+    if t < T_ARMA:
+        return 1500
+    u = t - T_ARMA
+    if u < T_RUEDA:
+        return 1500 + sentido * int(NIVEL * min(1.0, u / T_RAMPA))
+    if u < T_RUEDA + T_FRENO:
+        return 1500
+    return None
 
 
 class Video(threading.Thread):

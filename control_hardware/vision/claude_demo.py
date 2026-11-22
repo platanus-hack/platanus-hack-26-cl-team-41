@@ -61,7 +61,14 @@ def main():
         if not mal:
             os.environ["MAVLINK20"] = "1"
             from pymavlink import mavutil
-            m = mavutil.mavlink_connection("udpout:%s:14550" % IP, source_system=254)
+            try:
+                m = mavutil.mavlink_connection("udpout:%s:14550" % IP, source_system=254)
+            except OSError:
+                if corriendo():
+                    print("OK    robot_vivo.py ya esta corriendo en este PC (%s)" % estado()[0])
+                    sys.exit(0)
+                print("FALLA: otro programa de este PC ya usa el puente (otra demo abierta?). Cierralo con q y repite")
+                sys.exit(1)
             t, ok, brazo = time.time(), False, ""
             while time.time() - t < 8 and not (ok and brazo):
                 m.mav.heartbeat_send(6, 8, 0, 0, 0)

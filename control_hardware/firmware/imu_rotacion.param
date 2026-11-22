@@ -1,0 +1,6 @@
+# H743 montada de lado (2026-11-22). Rotacion placa -> rover medida con la gravedad: nivel, nariz arriba y derecha abajo.
+# Paso 1 de 2: no cambia nada hasta usar imu_orientacion.param (AHRS_ORIENTATION 101 + reinicio).
+CUST_ROT_ENABLE,1
+CUST_ROT1_ROLL,72.27
+CUST_ROT1_PITCH,-4.42
+CUST_ROT1_YAW,92

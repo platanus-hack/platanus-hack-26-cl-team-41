@@ -15,6 +15,12 @@ local trig = Parameter("SCR_USER1")
 local t0 = nil
 local dir = 1
 local last_report = -1
+-- Picker app: RC15/16 signed wheel commands, RC7 alternating keepalive.
+-- The bench uses RC_OVERRIDE_TIME=-1, so PWM presence alone is not freshness.
+local last_token = nil
+local last_edge = nil
+local drive_ready = false
+local last_advert = nil
 
 local function out(ch, duty)
   SRV_Channels:set_output_pwm_chan_timeout(ch, math.floor(duty * PERIOD_US), 200)
@@ -28,11 +34,35 @@ local function motores(duty_izq, duty_der)
   else out(CH_IN3, 0); out(CH_IN4, -duty_der) end
 end
 
+local function app_drive(now)
+  local token = rc:get_pwm(7)
+  local left, right = rc:get_pwm(15), rc:get_pwm(16)
+  if arming:is_armed() or (token ~= 1150 and token ~= 1850)
+      or not left or not right or math.abs(left-1500)>450 or math.abs(right-1500)>450 then
+    drive_ready, last_edge, last_token = false, nil, nil
+    return false
+  end
+  if last_edge and (now-last_edge):tofloat() > 320 then drive_ready = false end
+  if token ~= last_token then
+    if last_token and left == 1500 and right == 1500 then drive_ready = true end
+    last_token, last_edge = token, now
+  end
+  if drive_ready then motores((left-1500)/1000, (right-1500)/1000) end
+  return drive_ready
+end
+
 function update()
+  local now = millis()
+  if not last_advert or (now-last_advert):tofloat() > 2000 then
+    gcs:send_text(6, "PickerDrive v1 RC15/16 watchdog320")
+    last_advert = now
+  end
   if t0 == nil then
-    motores(0, 0)
     local v = trig:get()
+    if v == 0 and app_drive(now) then return update, 20 end
+    motores(0, 0)
     if v == 1 or v == -1 then
+      drive_ready, last_edge, last_token = false, nil, nil
       dir = v
       t0 = millis()
       last_report = -1

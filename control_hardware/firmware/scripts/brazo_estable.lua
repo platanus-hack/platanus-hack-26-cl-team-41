@@ -12,9 +12,9 @@
 --
 -- Salidas (SERVOx_FUNCTION):
 --   94 Script1 base   95 Script2 hombro   96 Script3 codo   97 Script4 inclinacion muneca
---   98 Script5 giro muneca   99 Script6 pinza
--- Cableado actual: S2..S6 = base..giro muneca. La pinza (Script6) va en una salida a 50 Hz
--- (S1 o S11/S12), NO en S7..S10 que corren a 490 Hz para el L298N.
+--   98 Script5 giro muneca   99 Script6 pinza   100 Script7 hombro auxiliar   101 Script8 codo auxiliar
+-- Cableado actual: S2..S6 = base..giro muneca, S11 pinza, S1 hombro auxiliar, S12 codo auxiliar.
+-- Los servos van en salidas a 50 Hz (S1..S6, S11, S12), NO en S7..S10 que corren a 490 Hz para el L298N.
 --
 -- Postura pedida (grados, 0 = brazo recto hacia arriba, + = hacia adelante/abajo):
 --   - si llegan RC overrides del puente (nexa_bridge): ch1..ch5 = 1500 + grados*DEG_SCALE, ch6 pinza 1000..2000
@@ -63,8 +63,21 @@ assert(param:add_table(H2_KEY, "BRH_", 3), "no se pudo crear la tabla BRH_")
 param:add_param(H2_KEY, 1, "DIR", 0)
 param:add_param(H2_KEY, 2, "TRIM", 0)
 param:add_param(H2_KEY, 3, "JNT", 2)
-local P_H2DIR, P_H2TRIM, P_H2JNT = Parameter("BRH_DIR"), Parameter("BRH_TRIM"), Parameter("BRH_JNT")
-local H2_TRIM_MAX = 75
+local H2_TRIM_MAX = 90
+-- Segundo servo del CODO (Script8 = SERVOx_FUNCTION 101, en S12): igual que el anterior, fijo a la articulacion 3.
+--   BRE_DIR   0 = sin pulso (por defecto), 1 = mismo sentido que el servo del codo, -1 = en espejo
+--   BRE_TRIM  desfase en grados. Al cambiarlo se aplica a MAX_RATE_DPS (sin saltos).
+local E2_KEY = 77
+assert(param:add_table(E2_KEY, "BRE_", 2), "no se pudo crear la tabla BRE_")
+param:add_param(E2_KEY, 1, "DIR", 0)
+param:add_param(E2_KEY, 2, "TRIM", 0)
+-- dir/trim/jnt: parametros; chan: salida; fijo: articulacion fija (nil = usa jnt)
+local AUX = {
+  { tag = "doble", dir = Parameter("BRH_DIR"), trim = Parameter("BRH_TRIM"), jnt = Parameter("BRH_JNT"),
+    chan = SRV_Channels:find_channel(100) },
+  { tag = "doble", dir = Parameter("BRE_DIR"), trim = Parameter("BRE_TRIM"), fijo = 3,
+    chan = SRV_Channels:find_channel(101) },
+}
 
 -- ===== OFFSETS DE CALIBRACION (en vivo) =====
 -- Grados que se suman al angulo pedido antes de convertirlo a pulso, para que 0 = posicion real
@@ -89,7 +102,6 @@ param:add_param(GRP_KEY, 2, "OPEN", 1750)
 local P_GC, P_GO = Parameter("BRG_CLOSE"), Parameter("BRG_OPEN")
 local GRIP_STEP_US = 13      -- maximo por ciclo de 20 ms (~60 grados/s)
 local grip_us = nil
-local chan_h2 = SRV_Channels:find_channel(100)  -- funcion 100 = Script7
 local STAB, ROLL_BASE, YAW_HOLD = 0, 0, 0
 
 -- geometria del CAD (mm): eje base -> hombro, eslabones, muneca -> punta de los dedos
@@ -275,17 +287,23 @@ function update()
   -- angulo fisico = pedido + offset de calibracion; tambien limitado en velocidad (cambiar BRO_* no salta).
   -- Se limita DESPUES del offset para que el pulso quede en 600..2400 us. En la articulacion con
   -- servo doble el limite vale para los dos, asi nunca topa uno solo (se pelearian).
-  local h2dir = P_H2DIR:get()
-  local k = math.floor(P_H2JNT:get() + 0.5)
-  local h2on = chan_h2 and (h2dir == 1 or h2dir == -1) and k >= 1 and k <= 4
-  local trim = clamp(P_H2TRIM:get(), -H2_TRIM_MAX, H2_TRIM_MAX)
+  for _, A in ipairs(AUX) do
+    A.d = A.dir:get()
+    A.k = A.fijo or math.floor(A.jnt:get() + 0.5)
+    A.on = A.chan and (A.d == 1 or A.d == -1) and A.k >= 1 and A.k <= 4
+    local t = clamp(A.trim:get(), -H2_TRIM_MAX, H2_TRIM_MAX)
+    -- con el servo activo, un cambio de TRIM entra de a poco; suelto, se toma directo
+    A.t = (A.on and A.t) and (A.t + clamp(t - A.t, -step, step)) or t
+  end
   for i = 1, 5 do
     local J = JOINT[i]
     local target = q[i] + J.offset + clamp(P_OFS[i]:get(), -OFS_MAX, OFS_MAX)
     local span = (SAFE_MAX_US - 1500) / J.us_per_deg
     local tlo, thi = -span, span
-    if h2on and i == k then
-      tlo, thi = math.max(tlo, -span - trim), math.min(thi, span - trim)
+    for _, A in ipairs(AUX) do
+      if A.on and i == A.k then
+        tlo, thi = math.max(tlo, -span - A.t), math.min(thi, span - A.t)
+      end
     end
     target = clamp(target, tlo, thi)
     phys[i] = phys[i] + clamp(target - phys[i], -step, step)
@@ -297,18 +315,27 @@ function update()
   grip_us = grip_us and (grip_us + clamp(gt - grip_us, -GRIP_STEP_US, GRIP_STEP_US)) or gt
   out(6, grip_us)
 
-  -- servo doble: mismo angulo fisico que su articulacion (phys[k] ya limitado en velocidad y recorrido)
-  if h2on then
-    local J = JOINT[k]
-    local us = clamp(1500 + h2dir * (phys[k] + trim) * J.us_per_deg, MIN_US, MAX_US)
-    SRV_Channels:set_output_pwm_chan_timeout(chan_h2, math.floor(us + 0.5), 200)
+  -- servos dobles: mismo angulo fisico que su articulacion (phys ya limitado en velocidad y recorrido).
+  -- DIR es relativo al servo principal: 1 = mismo sentido, -1 = en espejo.
+  for _, A in ipairs(AUX) do
+    if A.on then
+      local J = JOINT[A.k]
+      local us = clamp(1500 + J.dir * A.d * (phys[A.k] + A.t) * J.us_per_deg, MIN_US, MAX_US)
+      SRV_Channels:set_output_pwm_chan_timeout(A.chan, math.floor(us + 0.5), 200)
+    elseif A.chan then
+      -- apagado: pulso 0 (si solo se deja de escribir, ArduPilot mantiene el ultimo pulso y el servo no se suelta)
+      SRV_Channels:set_output_pwm_chan_timeout(A.chan, 0, 200)
+    end
   end
 
   if now - last_report > 2000 then
     last_report = now
+    local dobles = ""
+    for _, A in ipairs(AUX) do
+      if A.on then dobles = dobles .. string.format(" %s j%d d%d t%.1f", A.tag, A.k, A.d, A.t) end
+    end
     gcs:send_text(6, string.format("Brazo b%.1f h%.1f c%.1f m%.1f g%.1f %s%s%s", q[1], q[2], q[3], q[4], q[5],
-      stab_on and "estab" or "SIN-estab", got_rc and " puente" or "",
-      (h2dir == 1 or h2dir == -1) and string.format(" doble j%d d%d t%.1f", k, h2dir, P_H2TRIM:get()) or ""))
+      stab_on and "estab" or "SIN-estab", got_rc and " puente" or "", dobles))
   end
   return update, PERIOD_MS
 end
