@@ -66,7 +66,6 @@ El brazo va a moverse en la realidad. Pregunta: **"¿El rover está en el suelo 
 Corre en segundo plano y queda andando. Espera a que `PY claude_demo.py estado` diga `idle`.
 - Las ruedas no parten si el rover está inclinado más de 10°, si la placa está armada o si no responde el script de ruedas (`PickerDrive`); en ese caso hace solo el gesto del brazo y lo escribe en la salida del programa (`ruedas quietas: …`).
 - No cambies la potencia ni el tiempo de las ruedas.
-- Las ruedas con los gestos están simuladas pero **aún no probadas en el robot**: la primera vez, con alguien al lado.
 - `otro programa esta moviendo el brazo`: avisa y espera a que lo cierren. No insistas.
 
 ### 4. Mirar sin parar hasta ver el plátano
