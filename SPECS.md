@@ -6,7 +6,7 @@
 
 - **Grados de libertad:** 5 más la pinza, en este orden:
   1. Giro de la base (MG995).
-  2. Hombro (MG995).
+  2. Hombro (2 × MG995, uno a cada lado del brazo).
   3. Codo (MG995).
   4. Inclinación de la muñeca (MG995).
   5. Giro de la muñeca (SG90).
@@ -19,6 +19,13 @@
 - **Apertura de la pinza:** unos 60 mm.
 - **Carga útil:**
   - **Brazo estirado:** el hombro necesita unos 7 kg·cm, frente a los 9–11 kg·cm de bloqueo del MG995 a 6 V. Ese es el máximo instantáneo, no un valor de trabajo continuo.
+  - **Hombro doble:** el MG995 del hombro se calentaba y se apagaba sosteniendo el brazo, así que se agregó un segundo MG995 al otro lado, en el soporte `brazo_compacto/stl/SoporteServoHombroB.stl`. Cada servo carga ~3,5 kg·cm en vez de 7, lejos del bloqueo.
+    - **Montaje:** el soporte apoya sobre la tapa del plato giratorio y se fija con los 2 tornillos de abajo de la tapa de la torre (unos 3 mm más largos, pasan por el soporte, la tapa y la torre). Conviene pegarlo además al plato con gotita.
+    - **Lo único que se reimprime es el soporte** (10,5 cm³, sin soportes, con la pata sobre la cama). El brazo superior (`UpperArm`) solo necesita 4 agujeros de Ø2 mm en la mejilla del lado B para el horn: se perforan usando el propio horn como plantilla. El STL nuevo de `UpperArm` ya trae esos agujeros por si se prefiere reimprimirlo.
+    - **El eje M5 del lado B se saca:** ahora ese lado lo sostiene el segundo servo.
+    - **Control:** los dos ejes miran hacia +Y, así que giran en el mismo sentido con el mismo pulso. Va a la salida S11 de la H743 (`SERVO11_FUNCTION = 104`), que repite el ángulo del hombro con su propio ajuste (`SHOULDER_B` en `h743/nexa.lua`). Antes de poner los horns, centrar los dos servos a 1500 µs; después ajustar `offset` hasta que ninguno zumbe con el brazo quieto.
+    - **Alimentación:** son dos servos que pueden pedir ~1,2 A cada uno en bloqueo: el BEC de servos debe dar al menos 5 A en total.
+    - **Espacio:** el servo queda colgando hacia afuera del lado B, hasta 76 mm del eje del brazo. No cambia el rango del hombro (±96,7°) y el ensamble no muestra choques con la base ni el mástil.
   - **Carga de trabajo declarada:** unos 50 g (pelota de ping-pong, cubo de espuma, lata vacía), agarrando a 15–20 cm del eje del brazo y no con el brazo estirado del todo.
 - **Exportado:** STL por pieza, STEP del conjunto y URDF con las 6 articulaciones.
 

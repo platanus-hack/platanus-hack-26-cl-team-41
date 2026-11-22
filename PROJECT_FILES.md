@@ -3,7 +3,7 @@
 Clone or download the whole repository into a normal local folder, for example `C:\Projects\PlatanusHack`. Keep the folders together; simulation meshes and CAD generators use their relative locations. Do not copy just the simulator scripts.
 
 - `SPECS.md`, `README_ROBOT.md`: current technical specs (Matek H743 + Radxa Zero 3W + PC) and robot overview.
-- `brazo_compacto/`: current SolidCraft compact arm (4 MG995 + 2 SG90), STEP, URDF and print STLs.
+- `brazo_compacto/`: current SolidCraft compact arm (5 MG995 with a dual shoulder + 2 SG90), STEP, URDF and print STLs.
 - `base_tt/`: current mobile base: one-piece plate for 2 TT motors + L298N, ball casters, electronics tray (H743, Radxa) and the camera mast (12 x 500 mm carbon rod socket and tilted camera head).
 - `rueda_tt/`: printed wheels for the TT motors (65 x 34 mm): PLA rim with bead flanges and TPU tyre, print-ready STLs.
 - `bola_rueda_loca/`: printed 15.8 mm caster balls as two halves (print 4 halves), joined with 1.75 mm filament pins and glue.

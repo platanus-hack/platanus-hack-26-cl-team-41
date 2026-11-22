@@ -8,6 +8,8 @@
 --   servos  -> outputs with SERVOx_FUNCTION = 94..99 (Script1..Script6)
 --   L298N   -> IN1, IN2, IN3, IN4 on outputs with SERVOx_FUNCTION = 100..103 (Script7..Script10),
 --              PWM on one input and 0 on the other, only while armed.
+--   second shoulder MG995 (side B, outboard of the upper arm) -> SERVOx_FUNCTION = 104 (Script11).
+--              Same shoulder angle with its own calibration, so the two servos can be trimmed not to fight.
 -- No override (link lost, RC_OVERRIDE_TIME expired): wheels stop, the arm holds its last pose.
 
 local DEG_SCALE = 5.0      -- must match [mavlink] deg_scale in robot_bridge/config.toml
@@ -27,14 +29,17 @@ local JOINT = {
   { name = "wrist pitch", dir = 1, offset = 0, us_per_deg = 11.1, min_us = 500, max_us = 2500 },
   { name = "wrist roll",  dir = 1, offset = 0, us_per_deg = 10.6, min_us = 500, max_us = 2400 },
 }
+-- second shoulder servo: its shaft points the same way as the first one (+Y), so dir = 1. Trim offset
+-- (degrees) until both servos are quiet (no buzzing, low current) holding the arm still.
+local SHOULDER_B = { dir = 1, offset = 0, us_per_deg = 11.1, min_us = 500, max_us = 2500 }
 local GRIPPER_CLOSED_US = 1050
 local GRIPPER_OPEN_US = 1750
 
-local SCRIPT_FN = 94 -- Script1; Script1..6 servos, Script7..10 IN1..IN4
+local SCRIPT_FN = 94 -- Script1; Script1..6 servos, Script7..10 IN1..IN4, Script11 shoulder B
 local TIMEOUT_MS = 100
 
 local chan = {}
-for i = 1, 10 do
+for i = 1, 11 do
   chan[i] = SRV_Channels:find_channel(SCRIPT_FN + i - 1)
 end
 
@@ -95,6 +100,8 @@ local function update()
     local j = JOINT[i]
     out(i, clamp(1500 + j.dir * (deg[i] + j.offset) * j.us_per_deg, j.min_us, j.max_us))
   end
+  local b = SHOULDER_B
+  out(11, clamp(1500 + b.dir * (deg[2] + b.offset) * b.us_per_deg, b.min_us, b.max_us))
   out(6, GRIPPER_CLOSED_US + (GRIPPER_OPEN_US - GRIPPER_CLOSED_US) * grip)
 
   -- wheels: only while armed and while the bridge keeps sending

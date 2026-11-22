@@ -27,6 +27,7 @@ carpeta `APM/scripts/` de la SD de la H743 (ArduPilot 4.5.x).
 | `RC_OVERRIDE_TIME` | 0.5 | Si el puente deja de enviar, a los 0,5 s el script deja de recibir órdenes: las ruedas paran |
 | `SERVO1_FUNCTION`…`SERVO6_FUNCTION` | 94…99 | S1–S6: base, hombro, codo, inclinación de muñeca, giro de muñeca, pinza |
 | `SERVO7_FUNCTION`…`SERVO10_FUNCTION` | 100…103 | S7–S10: IN1, IN2, IN3, IN4 del L298N (ENA y ENB con jumper) |
+| `SERVO11_FUNCTION` | 104 | S11: segundo servo del hombro (lado B). Recibe el mismo ángulo que S2, con su propio `offset` en `SHOULDER_B` del script |
 | Frecuencia del grupo de timer de S1–S6 | 50 Hz | Servos (por ejemplo `SERVO_GPIO`/`SERVO_RATE` según la placa) |
 | Frecuencia del grupo de timer de S7–S10 | 490 Hz | Motores (por ejemplo `SERVO_RATE` del grupo o `ONESHOT_MASK` según la versión) |
 | `ARMING_CHECK` | 0 | El puente arma la placa al iniciar un modo y la desarma en reposo o en parada de emergencia |
