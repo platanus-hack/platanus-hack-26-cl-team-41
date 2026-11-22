@@ -4,8 +4,8 @@ El brazo se mueve suave mientras espera (idle). **Claude mira las fotos de la c�
 
 | Lo que ve | Gesto | Después |
 |---|---|---|
-| Rollo de **cinta aislante** | **"no"**: sacude de lado a lado, se encoge y tiembla (~13 s) | sigue mirando |
-| **Plátano** | **"sí"**: asiente, se estira y celebra (~17 s) | **termina la búsqueda** |
+| Rollo de **cinta aislante** | **"no"**: sacude de lado a lado, se encoge y tiembla (~17 s) | sigue mirando |
+| **Plátano** | **"sí"**: asiente, se estira y celebra (~23 s) | **termina la búsqueda** |
 | Nada, pies, sillas, otra cosa | ninguno, sigue en idle | sigue mirando |
 
 Cualquier PC con el repositorio puede correrla: no usa GPU, YOLO, clave SSH ni USB. Solo hay que estar en la **misma red que la Raspberry** (WiFi `PlatanusHack`).
@@ -15,7 +15,7 @@ Cualquier PC con el repositorio puede correrla: no usa GPU, YOLO, clave SSH ni U
 1. Enciende el rover (batería de la H743 y Raspberry) y espera unos 40 s. Las ruedas no se usan.
 2. Conéctate al WiFi `PlatanusHack`.
 3. Abre Claude Code en la carpeta del repositorio y escribe **`/demo-si-no`** (o "haz la demo de DEMO_SI_NO.md").
-4. Deja unos **50 cm libres** alrededor del brazo, con manos y pies lejos de la garra.
+4. Deja unos **60 cm libres** alrededor del brazo (la base gira hasta 40° a cada lado), con el rover a nivel, con manos y pies lejos de la garra.
 5. Muestra **un objeto a la vez**, quieto y entero, a 20–40 cm de la cámara. La cinta, con el aro hacia la cámara y sobre fondo claro. Retíralo cuando empiece el gesto.
 
 Teclas en la ventana "robot vivo": **q** = reposo y salir, **espacio** = pausa, **s** = forzar "sí", **n** = forzar "no".
@@ -55,7 +55,7 @@ Sigue estos pasos en orden, desde esta carpeta.
 
 ### 2. Pedir permiso una sola vez
 
-El brazo va a moverse en la realidad. Pregunta: **"¿Manos fuera, 50 cm libres y nadie más moviendo el brazo?"** Con un sí claro, sigue, y **no vuelvas a preguntar** durante la demo.
+El brazo va a moverse en la realidad. Pregunta: **"¿Manos fuera, 60 cm libres, rover a nivel y nadie más moviendo el brazo?"** Con un sí claro, sigue, y **no vuelvas a preguntar** durante la demo.
 
 ### 3. Arrancar el idle en segundo plano
 

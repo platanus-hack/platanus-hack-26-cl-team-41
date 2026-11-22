@@ -1,7 +1,7 @@
 """Gestos del brazo con todos los ejes: "no" (sacude y se encoge) y "si" (asiente y se estira).
 
 Uso:  python gestos.py si|no|reposo [--port udpout:172.16.0.127:14550 | COM4]     (python del sistema)
-Parte desde donde este el brazo y termina en reposo. Ningun eje pasa de ~52 grados/s (la placa limita a 60).
+Parte desde donde este el brazo y termina en reposo. Ningun eje pasa de ~58 grados/s (la placa limita a 60).
 Corta (el brazo se queda quieto) con Ctrl+C, corriente alta sostenida o voltaje bajo.
 """
 import argparse, math, os, sys, time
@@ -11,7 +11,7 @@ DT = 0.025
 REPOSO = [0.0, -30.0, 46.0, 50.0, 0.0, 0.40]       # base, hombro, codo, muneca, giro, pinza (0..1)
 LO = [-50, -30, 30, -25, -50, 0.05]
 HI = [50, 40, 83, 74, 50, 0.95]
-VMAX = 52.0
+VMAX = 55.0
 
 
 def suave(x):
@@ -27,32 +27,38 @@ def s(t, T, f=0.0):
     return math.sin(2 * math.pi * t / T + f)
 
 
+def v(t, T, f=0.0):
+    """Vaiven de -1 a 1 con velocidad mas pareja que un seno: mas amplitud con la misma velocidad maxima."""
+    return math.asin(0.95 * s(t, T, f)) / math.asin(0.95)
+
+
 def gesto_no():
     """(duracion, centro_ini, centro_fin, funcion de oscilacion)"""
     alerta = [0, -8, 58, 22, 0, 0.75]
     encogido = [0, -30, 80, 70, 0, 0.10]
-    escondido = [24, -30, 82, 72, -28, 0.08]
+    escondido = [40, -30, 82, 72, -32, 0.08]
     return [
-        ("mira", 1.3, None, alerta, None),
-        ("no, no, no", 6.9, alerta, encogido,
-         lambda t: [16.5 * s(t, 2.3), 3 * s(t, 1.15), -3 * s(t, 1.15, 1.2), 7 * s(t, 1.15), -17 * s(t, 2.3, 0.5), 0.0]),
-        ("se esconde", 1.3, encogido, escondido, None),
+        ("mira", 1.2, None, alerta, None),
+        ("no, no, no", 10.6, alerta, encogido,
+         lambda t: [37 * v(t, 3.3), 3 * s(t, 1.65), -3 * s(t, 1.65, 1.2), 7 * s(t, 1.65), -24 * v(t, 3.3, 0.2), 0.0]),
+        ("se esconde", 1.4, encogido, escondido, None),
         ("tiembla", 1.6, escondido, escondido, lambda t: [2.5 * s(t, 0.4), 0, 0, 2.2 * s(t, 0.4, 1), 3 * s(t, 0.4, 2), 0.0]),
         ("vuelve", 2.2, escondido, REPOSO, None),
     ]
 
 
 def gesto_si():
-    alerta = [0, -6, 60, 30, 0, 0.45]
-    feliz = [0, 2, 52, 22, 0, 0.75]
-    estirado = [0, 8, 31, -8, 0, 0.92]
+    alerta = [0, -5, 58, 24, 0, 0.45]
+    feliz = [0, -4, 57, 22, 0, 0.75]
+    estirado = [0, 8, 31, 4, 0, 0.92]
     return [
-        ("mira", 1.3, None, alerta, None),
-        ("si, si, si", 6.0, alerta, feliz,
-         lambda t: [9 * s(t, 4.0), 7 * s(t, 2.0), -5 * s(t, 2.0), 13 * s(t, 2.0), 13 * s(t, 3.0), 0.12 * s(t, 1.0)]),
+        ("mira", 1.2, None, alerta, None),
+        # la muneca hace el recorrido grande; hombro y codo van en fase y suman al cabeceo de la pinza
+        ("si, si, si", 10.6, alerta, feliz,
+         lambda t: [7 * s(t, 6.4), 7 * s(t, 3.2), 6 * s(t, 3.2), 37 * v(t, 3.2), 12 * s(t, 4.3), 0.14 * s(t, 1.6)]),
         ("se estira", 2.0, feliz, estirado, None),
-        ("celebra", 4.6, estirado, estirado,
-         lambda t: [20 * s(t, 3.7), 3 * s(t, 1.6), 0.0, 9 * s(t, 1.6, 1.5), 22 * s(t, 3.7, 0.6), -0.28 + 0.28 * s(t, 1.2, 1.57)]),
+        ("celebra", 5.4, estirado, estirado,
+         lambda t: [18 * s(t, 3.7), 3 * s(t, 2.7), 0.0, 28 * v(t, 2.7, 0.8), 20 * s(t, 3.7, 0.6), -0.28 + 0.28 * s(t, 1.2, 1.57)]),
         ("se recoge", 1.8, estirado, [0, -8, 50, 25, 0, 0.6], None),
         ("vuelve", 1.6, [0, -8, 50, 25, 0, 0.6], REPOSO, None),
     ]
@@ -81,7 +87,8 @@ def trayectoria(nombre, actual):
             t = i * DT
             x = mezcla(a, b, suave(t / T))
             if osc:
-                env = suave(t / 0.7) * suave((T - t) / 0.7)
+                r = 2.0 if T > 5 else 0.7             # los vaivenes grandes entran y salen mas de a poco
+                env = suave(t / r) * suave((T - t) / r)
                 x = [c + env * d for c, d in zip(x, osc(t))]
             x = [min(h, max(l, v)) for v, l, h in zip(x, LO, HI)]
             if x[2] < 46.0:                      # con el codo estirado el hombro no puede ir atras (varilla de la camara)
