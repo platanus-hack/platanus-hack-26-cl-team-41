@@ -34,3 +34,6 @@ __pycache__/
 *.lock
 *.bak
 *.rar
+
+# fotos y ordenes de la demo si/no
+demo_tmp/

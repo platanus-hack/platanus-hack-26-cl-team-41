@@ -12,6 +12,8 @@ Lo que se configuró y probó sobre el robot físico: Matek H743 con ArduPilot, 
 
 No incluido: entorno virtual (`vision/.venv`), pesos de YOLO (se descargan solos), fotos de la cámara y credenciales (quedan en el PC, en `~/.rover`).
 
+**Demo sí / no con Claude:** escribe `/demo-si-no` en Claude Code; la guía está en [vision/DEMO_SI_NO.md](vision/DEMO_SI_NO.md).
+
 Visión en el PC:
 
 ```
