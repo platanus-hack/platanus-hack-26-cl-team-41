@@ -1,0 +1,11 @@
+[Unit]
+Description=Rover: puente MAVLink UART H743 <-> UDP 14550
+After=network-online.target
+[Service]
+User=pi
+SupplementaryGroups=dialout
+ExecStart=/usr/bin/python3 /home/pi/mav_puente.py
+Restart=always
+RestartSec=2
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,6 @@
+# Postura de encendido (reposo): base, hombro, codo, muneca, giro en grados calibrados
+SCR_USER2,0
+SCR_USER3,-30
+SCR_USER4,60
+SCR_USER5,50
+SCR_USER6,0

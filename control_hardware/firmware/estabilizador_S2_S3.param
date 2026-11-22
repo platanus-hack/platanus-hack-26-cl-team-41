@@ -1,0 +1,42 @@
+# ArduPilot Rover - Matek H743 (firmware MatekH743)
+# Estabilizacion de 2 ejes con servos en S2 y S3 usando el driver de Mount (gimbal por servo).
+# Cargar en Mission Planner: Config > Full Parameter List > Load from file > Write Params > Reboot.
+# Nota: MNT1_TYPE requiere reiniciar antes de que aparezcan el resto de parametros MNT1_*.
+#       Si al cargar dice que faltan parametros, reinicia y carga el archivo otra vez.
+
+# --- Mount tipo Servo ---
+MNT1_TYPE,1
+
+# --- Salidas: S2 = Mount1 Roll, S3 = Mount1 Pitch ---
+SERVO2_FUNCTION,8
+SERVO3_FUNCTION,7
+SERVO2_MIN,1000
+SERVO2_MAX,2000
+SERVO2_TRIM,1500
+SERVO3_MIN,1000
+SERVO3_MAX,2000
+SERVO3_TRIM,1500
+SERVO2_REVERSED,0
+SERVO3_REVERSED,1
+
+# --- Rango angular que cubre cada servo (grados). Servo tipico de 180 deg -> -90..90 ---
+MNT1_ROLL_MIN,-90
+MNT1_ROLL_MAX,90
+MNT1_PITCH_MIN,-90
+MNT1_PITCH_MAX,90
+
+# --- Modo al arrancar: 3 = RC Targeting. Sin radio el objetivo es 0 deg -> se mantiene nivelado ---
+MNT1_DEFLT_MODE,3
+MNT1_RC_RATE,0
+
+# --- Neutral (por si cae a modo Neutral) ---
+MNT1_NEUTRAL_X,0
+MNT1_NEUTRAL_Y,0
+MNT1_NEUTRAL_Z,0
+
+# --- Compensacion del retraso del servo (subir de a 0.02 si se atrasa) ---
+MNT1_LEAD_RLL,0
+MNT1_LEAD_PTCH,0
+
+# --- Banco de pruebas: sin boton de seguridad ---
+BRD_SAFETY_DEFLT,0

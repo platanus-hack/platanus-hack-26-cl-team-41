@@ -1,0 +1,19 @@
+[Unit]
+Description=Rover: video MJPEG de la camara (ustreamer, solo local 8081; lo publica camara-giro en 8080)
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+User=pi
+SupplementaryGroups=video
+# Ajustes de imagen: valores de fabrica (SkyDock los habia cambiado) + antiparpadeo 50 Hz (red electrica de Chile)
+ExecStartPre=-/usr/bin/v4l2-ctl -d /dev/video0 -c brightness=0,contrast=1,gamma=100,gain=100,power_line_frequency=1,auto_exposure=3
+# MJPEG directo de la camara (sin recomprimir). Cambiar resolucion/fps aqui.
+ExecStart=/usr/bin/ustreamer --device=/dev/video0 --format=JPEG --encoder=HW \
+  --resolution=1280x720 --desired-fps=30 --host=127.0.0.1 --port=8081 \
+  --device-timeout=2 --device-error-delay=2
+Restart=always
+RestartSec=2
+
+[Install]
+WantedBy=multi-user.target
